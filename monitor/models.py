@@ -3,6 +3,7 @@ from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser, PermissionsMixin
 )
 
+
 class UserProfileManager(BaseUserManager):
     """用户表管理"""
     def create_user(self, email, name, phone=None, weixin=None,  password=None):
@@ -70,3 +71,92 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     @property
     def is_staff(self):
         return self.is_admin
+
+
+class Hosts(models.Model):
+    """主机表"""
+    ip = models.GenericIPAddressField(verbose_name='IP', unique=True)
+    hostname = models.CharField(verbose_name='主机名称', max_length=64, unique=True)
+    hosts_groups = models.ManyToManyField(verbose_name='所属主机组', to='HostsGroups', blank=True)
+    templates = models.ManyToManyField(verbose_name='所属模板', to='Templates', blank=True)
+    monitor_by_choices = (
+        ('agent', 'Agent'),
+        ('snmp', 'SNMP')
+    )
+    monitor_by = models.CharField(verbose_name='监控方式', max_length=64, choices=monitor_by_choices)
+    status_choices = (
+        (1, '在线'),
+        (2, '宕机'),
+        (3, '未知'),
+        (4, '下线'),
+        (5, '问题')
+    )
+    status = models.IntegerField(verbose_name='主机状态', max_length=64, choices=status_choices)
+    host_alive_check_interval = models.IntegerField(verbose_name='主机存活状态检测间隔', default=30)
+    memo = models.TextField(verbose_name='备注', blank=True, null=True)
+
+    class Meta:
+        verbose_name_plural = '主机表'
+
+    def __str__(self):
+        return '%s<%s>' % (self.hostname, self.ip)
+
+
+class HostsGroups(models.Model):
+    """主机组表"""
+    name = models.CharField(verbose_name='主机组名称', max_length=64, unique=True)
+    templates = models.ManyToManyField(verbose_name='所属模板', to='Templates')
+    memo = models.TextField(verbose_name='备注', blank=True, null=True)
+
+    class Meta:
+        verbose_name_plural = '主机组表'
+
+    def __str__(self):
+        return self.name
+
+
+class Applications(models.Model):
+    """应用集"""
+    name = models.CharField(verbose_name='应用集名称', max_length=64, unique=True)
+    plugin_name = models.CharField(verbose_name='插件名称', max_length=64, null=True, blank=True)
+    items = models.ManyToManyField(verbose_name='所属监控项', to='Items')
+    memo = models.TextField(verbose_name='备注', blank=True, null=True)
+
+    class Meta:
+        verbose_name_plural = '应用集表'
+
+    def __str__(self):
+        return self.name
+
+
+class Items(models.Model):
+    """监控项"""
+    name = models.CharField(verbose_name='监控项名称', max_length=64, unique=True)
+    key = models.CharField(verbose_name='键值', max_length=64, unique=True)
+    data_type_choices = (
+        ('int', '整数'),
+        ('float', '小数'),
+        ('str', '字符串'),
+    )
+    interval = models.IntegerField(verbose_name='监控间隔', default=60)
+    data_type = models.CharField(verbose_name='数据类型', max_length=64, choices=data_type_choices)
+    memo = models.TextField(verbose_name='备注', blank=True, null=True)
+
+    class Meta:
+        verbose_name_plural = '监控项表'
+
+    def __str__(self):
+        return '%s<%s>' % (self.name, self.key)
+
+
+class Templates(models.Model):
+    """模板表"""
+    name = models.CharField(verbose_name='模板名称', max_length=64, unique=True)
+    applications = models.ManyToManyField(verbose_name='所属应用集', to='Applications')
+
+    class Meta:
+        verbose_name_plural = '模板表'
+
+    def __str__(self):
+        return self.name
+
