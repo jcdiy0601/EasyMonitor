@@ -13,9 +13,16 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
+from EasyMonitor import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^login.html$', views.acclogin, name='acclogin'),
+    url(r'^logout.html$', views.acclogout, name='acclogout'),
+    url(r'^$', views.index, name='index'),
+    # url(r'^user_info.html$', views.user_info, name='user_info'),
+    url(r'^monitor_api/', include('monitor_api.urls')),
+    url(r'^monitor/', include('monitor.urls')),
 ]

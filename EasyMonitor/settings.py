@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'EasyMonitor',
     'monitor',
 ]
 
@@ -136,3 +137,5 @@ STATICFILES_DIRS = (
 )
 
 AUTH_USER_MODEL = 'monitor.UserProfile'
+
+LOGIN_URL = '/login.html'

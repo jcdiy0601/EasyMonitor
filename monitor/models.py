@@ -91,7 +91,7 @@ class Hosts(models.Model):
         (4, '下线'),
         (5, '问题')
     )
-    status = models.IntegerField(verbose_name='主机状态', max_length=64, choices=status_choices)
+    status = models.IntegerField(verbose_name='主机状态', choices=status_choices)
     host_alive_check_interval = models.IntegerField(verbose_name='主机存活状态检测间隔', default=30)
     memo = models.TextField(verbose_name='备注', blank=True, null=True)
 
@@ -119,7 +119,7 @@ class Applications(models.Model):
     """应用集"""
     name = models.CharField(verbose_name='应用集名称', max_length=64, unique=True)
     plugin_name = models.CharField(verbose_name='插件名称', max_length=64, null=True, blank=True)
-    items = models.ManyToManyField(verbose_name='所属监控项', to='Items')
+    items = models.ManyToManyField(verbose_name='所属监控项', to='Items', blank=True)
     memo = models.TextField(verbose_name='备注', blank=True, null=True)
 
     class Meta:
@@ -133,12 +133,12 @@ class Items(models.Model):
     """监控项"""
     name = models.CharField(verbose_name='监控项名称', max_length=64, unique=True)
     key = models.CharField(verbose_name='键值', max_length=64, unique=True)
+    interval = models.IntegerField(verbose_name='监控间隔', default=60)
     data_type_choices = (
         ('int', '整数'),
         ('float', '小数'),
         ('str', '字符串'),
     )
-    interval = models.IntegerField(verbose_name='监控间隔', default=60)
     data_type = models.CharField(verbose_name='数据类型', max_length=64, choices=data_type_choices)
     memo = models.TextField(verbose_name='备注', blank=True, null=True)
 
@@ -152,7 +152,7 @@ class Items(models.Model):
 class Templates(models.Model):
     """模板表"""
     name = models.CharField(verbose_name='模板名称', max_length=64, unique=True)
-    applications = models.ManyToManyField(verbose_name='所属应用集', to='Applications')
+    applications = models.ManyToManyField(verbose_name='所属应用集', to='Applications', blank=True)
 
     class Meta:
         verbose_name_plural = '模板表'
