@@ -80,7 +80,7 @@ class Hosts(models.Model):
     hosts_groups = models.ManyToManyField(verbose_name='所属主机组', to='HostsGroups', blank=True)
     templates = models.ManyToManyField(verbose_name='所属模板', to='Templates', blank=True)
     monitor_by_choices = (
-        ('agent', 'Agent'),
+        ('agent', '客户端'),
         ('snmp', 'SNMP')
     )
     monitor_by = models.CharField(verbose_name='监控方式', max_length=64, choices=monitor_by_choices)
@@ -91,7 +91,7 @@ class Hosts(models.Model):
         (4, '下线'),
         (5, '问题')
     )
-    status = models.IntegerField(verbose_name='主机状态', choices=status_choices)
+    status = models.IntegerField(verbose_name='主机状态', choices=status_choices, default=3)
     host_alive_check_interval = models.IntegerField(verbose_name='主机存活状态检测间隔', default=30)
     memo = models.TextField(verbose_name='备注', blank=True, null=True)
 
@@ -132,7 +132,7 @@ class Applications(models.Model):
 
 class Items(models.Model):
     """监控项"""
-    name = models.CharField(verbose_name='监控项名称', max_length=64, unique=True)
+    name = models.CharField(verbose_name='监控项名称', max_length=64)
     key = models.CharField(verbose_name='键值', max_length=64, unique=True)
     data_type_choices = (
         ('int', '整数'),

@@ -81,3 +81,9 @@ admin.site.register(models.UserProfile, UserProfileAdmin)
 # ... and, since we're not using Django's built-in permissions,
 # unregister the Group model from admin.
 admin.site.unregister(Group)
+
+admin.site.register(models.Hosts)
+admin.site.register(models.HostsGroups)
+admin.site.register(models.Applications)
+admin.site.register(models.Items)
+admin.site.register(models.Templates)
