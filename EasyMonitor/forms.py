@@ -16,3 +16,20 @@ class AccloginForm(forms.Form):
         max_length=128,
         error_messages={'required': '密码不能为空', 'max_length': '密码长度不能大于128字节'}
     )
+
+
+class UserInfoForm(forms.Form):
+    """用户信息更改Form表单提交验证类"""
+    password1 = forms.CharField(
+        max_length=128,
+        error_messages={'required': '密码不能为空', 'max_length': '密码长度不能大于128字节'}
+    )
+    password2 = forms.CharField(
+        max_length=128,
+        error_messages={'required': '密码不能为空', 'max_length': '密码长度不能大于128字节'}
+    )
+
+    def clean(self):
+        if self.cleaned_data['password1'] != self.cleaned_data['password2']:
+            raise ValidationError(_('两次输入的密码不一致'), code='invalid')
+        return self.cleaned_data

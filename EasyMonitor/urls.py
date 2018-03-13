@@ -22,7 +22,7 @@ urlpatterns = [
     url(r'^login.html$', views.acclogin, name='acclogin'),
     url(r'^logout.html$', views.acclogout, name='acclogout'),
     url(r'^$', views.index, name='index'),
-    # url(r'^user_info.html$', views.user_info, name='user_info'),
+    url(r'^user_info.html$', views.user_info, name='user_info'),
     url(r'^monitor_api/', include('monitor_api.urls')),
     url(r'^monitor/', include('monitor.urls')),
 ]

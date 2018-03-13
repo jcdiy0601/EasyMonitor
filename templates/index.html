@@ -1,0 +1,289 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div id="container" class="effect mainnav-lg mainnav-fixed navbar-fixed footer-fixed">
+
+        <!--NAVBAR-->
+        <!--===================================================-->
+        <header id="navbar">
+            <div id="navbar-container" class="boxed">
+
+                <!--Brand logo & name-->
+                <!--================================-->
+                <div class="navbar-header">
+                    <a href="{% url 'index' %}" class="navbar-brand">
+                        <img src="/static/plugin/nifty/img/logo.png" alt="Nifty Logo" class="brand-icon">
+                        <div class="brand-title">
+                            <span class="brand-text">监控系统</span>
+                        </div>
+                    </a>
+                </div>
+                <!--================================-->
+                <!--End brand logo & name-->
+
+
+                <!--Navbar Dropdown-->
+                <!--================================-->
+                <div class="navbar-content clearfix">
+                    <ul class="nav navbar-top-links pull-left">
+
+                        <!--Navigation toogle button-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <li class="tgl-menu-btn">
+                            <a class="mainnav-toggle" href="#">
+                                <i class="fa fa-navicon fa-lg"></i>
+                            </a>
+                        </li>
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <!--End Navigation toogle button-->
+
+                    </ul>
+                    <ul class="nav navbar-top-links pull-right">
+
+                        <!--User dropdown-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <li id="dropdown-user" class="dropdown">
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
+								<span class="pull-right">
+									<img class="img-circle img-user media-object" src="/static/plugin/nifty/img/av2.png"
+                                         alt="Profile Picture">
+								</span>
+                                <div class="username hidden-xs">{{ request.user.name }}</div>
+                            </a>
+
+
+                            <div class="dropdown-menu dropdown-menu-md dropdown-menu-right with-arrow panel-default">
+
+                                <!-- Dropdown heading  -->
+                                <div class="pad-all bord-btm">
+                                    <p class="text-lg text-muted text-thin mar-btm">你好，{{ request.user.name }}</p>
+                                </div>
+
+                                <!-- User dropdown menu -->
+                                <ul class="head-list">
+                                    <li>
+                                        <a href="{% url 'user_info' %}">
+                                            <i class="fa fa-user fa-fw fa-lg"></i> 个人信息
+                                        </a>
+                                    </li>
+                                </ul>
+
+                                <!-- Dropdown footer -->
+                                <div class="pad-all text-right">
+                                    <a href="{% url 'acclogout' %}" class="btn btn-rounded btn-dark">
+                                        <i class="fa fa-sign-out fa-fw"></i> 登出
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <!--End user dropdown-->
+
+                    </ul>
+                </div>
+                <!--================================-->
+                <!--End Navbar Dropdown-->
+
+            </div>
+        </header>
+        <!--===================================================-->
+        <!--END NAVBAR-->
+
+        <div class="boxed">
+
+            <!--CONTENT CONTAINER-->
+            <!--===================================================-->
+            <div id="content-container">
+
+                <!--Page Title-->
+                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                <div id="page-title">
+                    <h1 class="page-header text-overflow">{% block page-title %}仪表盘{% endblock %}</h1>
+                </div>
+                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                <!--End page title-->
+
+
+                <!--Breadcrumb-->
+                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                <ol class="breadcrumb">
+                    {% block page-path %}
+                        <li><a href="{% url 'index' %}">首页</a></li>
+                    {% endblock %}
+                </ol>
+                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                <!--End breadcrumb-->
+
+
+                <!--Page content-->
+                <!--===================================================-->
+
+                <div id="page-content">
+                    {% block page-content %}
+                        <div id="container-chart1" class="col-lg-6" style="height: 400px; margin-bottom: 10px"></div>
+                        <div id="container-chart2" class="col-lg-6" style="height: 400px; margin-bottom: 10px"></div>
+                    {% endblock %}
+                </div>
+
+
+                <!--===================================================-->
+                <!--End page content-->
+
+
+            </div>
+            <!--===================================================-->
+            <!--END CONTENT CONTAINER-->
+
+
+            <!--MAIN NAVIGATION-->
+            <!--===================================================-->
+            <nav id="mainnav-container">
+                <div id="mainnav">
+
+                    <!--Shortcut buttons-->
+					<!--================================-->
+					<div id="mainnav-shortcut">
+						<ul class="list-unstyled">
+							<li class="col-xs-4" data-content="图形">
+								<a id="demo-toggle-aside" class="shortcut-grid" href="#">
+									<i class="fa fa-signal"></i>
+								</a>
+							</li>
+							<li class="col-xs-4" data-content="最新数据">
+								<a id="demo-alert" class="shortcut-grid" href="#">
+									<i class="fa fa-database"></i>
+								</a>
+							</li>
+							<li class="col-xs-4" data-content="主机">
+								<a id="demo-page-alert" class="shortcut-grid" href="#">
+									<i class="fa fa-laptop"></i>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<!--================================-->
+					<!--End shortcut buttons-->
+
+                    <!--Menu-->
+                    <!--================================-->
+                    <div id="mainnav-menu-wrap">
+                        <div class="nano">
+                            <div class="nano-content">
+                                <ul id="mainnav-menu" class="list-group">
+
+                                    <!--Menu list item-->
+                                    <li>
+                                        <a href="{% url 'index' %}">
+                                            <i class="fa fa-tachometer"></i>
+                                            <span class="menu-title">
+                                                <strong>仪表盘</strong>
+                                                <span class="label label-danger pull-right">Top</span>
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                    <!--Menu list item-->
+                                    <li>
+										<a href="#">
+											<i class="fa fa-desktop"></i>
+											<span class="menu-title">
+												<strong>监测中</strong>
+											</span>
+											<i class="arrow"></i>
+										</a>
+
+										<!--Submenu-->
+										<ul class="collapse">
+                                            <li><a href="">最新数据</a></li>
+                                            <li><a href="">图形</a></li>
+										</ul>
+									</li>
+
+                                    <!--Menu list item-->
+                                    <li>
+										<a href="#">
+											<i class="fa fa-cogs"></i>
+											<span class="menu-title">
+												<strong>配置</strong>
+											</span>
+											<i class="arrow"></i>
+										</a>
+
+										<!--Submenu-->
+										<ul class="collapse">
+                                            <li><a href="">主机</a></li>
+                                            <li><a href="">主机组</a></li>
+                                            <li><a href="">模板</a></li>
+                                            <li><a href="">动作</a></li>
+										</ul>
+									</li>
+
+                                    <!--Menu list item-->
+                                    <li>
+										<a href="#">
+											<i class="fa fa-users"></i>
+											<span class="menu-title">
+												<strong>管理</strong>
+											</span>
+											<i class="arrow"></i>
+										</a>
+
+										<!--Submenu-->
+										<ul class="collapse">
+                                            <li><a href="">用户</a></li>
+										</ul>
+									</li>
+
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--================================-->
+                    <!--End menu-->
+
+                </div>
+            </nav>
+            <!--===================================================-->
+            <!--END MAIN NAVIGATION-->
+
+
+        </div>
+
+
+        <!-- FOOTER -->
+        <!--===================================================-->
+        <footer id="footer">
+
+            <!-- Visible when footer positions are static -->
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <div class="hide-fixed pull-right pad-rgt">Currently v1.0.0</div>
+
+
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <!-- Remove the class name "show-fixed" and "hide-fixed" to make the content always appears. -->
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+            <p class="pad-lft">&#0169; 桃花石</p>
+
+
+        </footer>
+        <!--===================================================-->
+        <!-- END FOOTER -->
+
+
+        <!-- SCROLL TOP BUTTON -->
+        <!--===================================================-->
+        <button id="scroll-top" class="btn"><i class="fa fa-chevron-up"></i></button>
+        <!--===================================================-->
+
+
+    </div>
+    <!--===================================================-->
+    <!-- END OF CONTAINER -->
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript" src="/static/plugin/highcharts/code/highcharts.js"></script>
+    <script type="text/javascript" src="/static/plugin/highcharts/code/highcharts-3d.js"></script>
+{% endblock %}

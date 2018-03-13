@@ -1,0 +1,73 @@
+{% extends 'index.html' %}
+
+{% block page-title %}
+    个人信息
+{% endblock %}
+
+{% block page-path %}
+    <li><a href="{% url 'index' %}">首页</a></li>
+    <li><a href="{% url 'user_info' %}">个人信息页</a></li>
+{% endblock %}
+
+{% block page-content %}
+    <div class="panel panel-colorful panel-dark">
+        <div class="panel-heading">
+            <h3 class="panel-title">HI,{{ request.user.name }}</h3>
+        </div>
+        <div class="panel-body">
+            <p>邮箱: {{ request.user.email }}</p>
+            <p>姓名: {{ request.user.name }}</p>
+            <p>密码: {{ request.user.password }}
+                <button id="change-password" class="btn btn-rounded btn-danger">修改密码</button>
+                <button id="show-change-password-result" class="hidden btn btn-rounded"></button>
+            </p>
+        </div>
+    </div>
+
+    <div id="change-password-div" class="bootbox modal fade in" tabindex="-1" role="dialog" aria-hidden="false"
+         style="display: none; padding-right: 17px;">
+        <div class="modal-backdrop fade in" style="height: 100%;"></div>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button id="close" type="button" class="bootbox-close-button close" data-dismiss="modal"
+                            aria-hidden="true">×
+                    </button>
+                    <h4 class="modal-title">修改密码</h4></div>
+                <div class="modal-body">
+                    <div class="bootbox-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form id="change-password-form" class="form-horizontal" method="post">
+                                    {% csrf_token %}
+                                    <div class="form-group"><label class="col-md-4 control-label"
+                                                                   for="inputpassword1">新密码</label>
+                                        <div class="col-md-4"><input id="inputpassword1" name="password1"
+                                                                     type="password"
+                                                                     placeholder="Password"
+                                                                     class="form-control input-md"></div>
+                                    </div>
+                                    <div class="form-group"><label class="col-md-4 control-label"
+                                                                   for="inputpassword2">确认密码</label>
+                                        <div class="col-md-4"><input id="inputpassword1" name="password2"
+                                                                     type="password"
+                                                                     placeholder="Confirm Password"
+                                                                     class="form-control input-md"></div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="confirm" type="button" class="btn btn-rounded btn-success">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block js %}
+    <script src="/static/js/change_password.js"></script>
+{% endblock %}

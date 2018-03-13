@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from EasyMonitor import forms
+from django.http import JsonResponse
+from utils.response import BaseResponse
 
 
 def acclogin(request):
@@ -36,3 +38,19 @@ def index(request):
     """首页视图"""
     return render(request, 'index.html')
 
+
+@login_required
+def user_info(request):
+    """用户信息视图"""
+    if request.method == 'POST':
+        response = BaseResponse()
+        form_obj = forms.UserInfoForm(request.POST)
+        if form_obj.is_valid():
+            password = form_obj.cleaned_data['password1']
+            request.user.set_password(password)
+            request.user.save()
+        else:
+            response.status = False
+            response.message = '密码修改失败'
+        return JsonResponse(response.__dict__)
+    return render(request, 'user_info.html')
