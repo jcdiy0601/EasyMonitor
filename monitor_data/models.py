@@ -119,6 +119,7 @@ class Applications(models.Model):
     """应用集"""
     name = models.CharField(verbose_name='应用集名称', max_length=64, unique=True)
     plugin_name = models.CharField(verbose_name='插件名称', max_length=64, null=True, blank=True)
+    interval = models.IntegerField(verbose_name='监控间隔', default=60)
     items = models.ManyToManyField(verbose_name='所属监控项', to='Items', blank=True)
     memo = models.TextField(verbose_name='备注', blank=True, null=True)
 
@@ -133,7 +134,6 @@ class Items(models.Model):
     """监控项"""
     name = models.CharField(verbose_name='监控项名称', max_length=64, unique=True)
     key = models.CharField(verbose_name='键值', max_length=64, unique=True)
-    interval = models.IntegerField(verbose_name='监控间隔', default=60)
     data_type_choices = (
         ('int', '整数'),
         ('float', '小数'),
