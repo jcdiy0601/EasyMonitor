@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'EasyMonitor',
-    'monitor',
+    'monitor_data',
 ]
 
 MIDDLEWARE = [
@@ -136,6 +136,6 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-AUTH_USER_MODEL = 'monitor.UserProfile'
+AUTH_USER_MODEL = 'monitor_data.UserProfile'
 
 LOGIN_URL = '/login.html'

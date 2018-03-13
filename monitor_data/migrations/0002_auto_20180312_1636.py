@@ -8,7 +8,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('monitor', '0001_initial'),
+        ('monitor_data', '0001_initial'),
     ]
 
     operations = [
@@ -69,7 +69,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=64, unique=True, verbose_name='模板名称')),
-                ('applications', models.ManyToManyField(to='monitor.Applications', verbose_name='所属应用集')),
+                ('applications', models.ManyToManyField(to='monitor_data.Applications', verbose_name='所属应用集')),
             ],
             options={
                 'verbose_name_plural': '模板表',
@@ -78,21 +78,21 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='hostsgroups',
             name='templates',
-            field=models.ManyToManyField(to='monitor.Templates', verbose_name='所属模板'),
+            field=models.ManyToManyField(to='monitor_data.Templates', verbose_name='所属模板'),
         ),
         migrations.AddField(
             model_name='hosts',
             name='hosts_groups',
-            field=models.ManyToManyField(blank=True, to='monitor.HostsGroups', verbose_name='所属主机组'),
+            field=models.ManyToManyField(blank=True, to='monitor_data.HostsGroups', verbose_name='所属主机组'),
         ),
         migrations.AddField(
             model_name='hosts',
             name='templates',
-            field=models.ManyToManyField(blank=True, to='monitor.Templates', verbose_name='所属模板'),
+            field=models.ManyToManyField(blank=True, to='monitor_data.Templates', verbose_name='所属模板'),
         ),
         migrations.AddField(
             model_name='applications',
             name='items',
-            field=models.ManyToManyField(to='monitor.Items', verbose_name='所属监控项'),
+            field=models.ManyToManyField(to='monitor_data.Items', verbose_name='所属监控项'),
         ),
     ]

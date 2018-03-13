@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django import forms
-from monitor import models
+from monitor_data import models
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import Group

@@ -8,18 +8,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('monitor', '0002_auto_20180312_1636'),
+        ('monitor_data', '0002_auto_20180312_1636'),
     ]
 
     operations = [
         migrations.AlterField(
             model_name='applications',
             name='items',
-            field=models.ManyToManyField(blank=True, to='monitor.Items', verbose_name='所属监控项'),
+            field=models.ManyToManyField(blank=True, to='monitor_data.Items', verbose_name='所属监控项'),
         ),
         migrations.AlterField(
             model_name='templates',
             name='applications',
-            field=models.ManyToManyField(blank=True, to='monitor.Applications', verbose_name='所属应用集'),
+            field=models.ManyToManyField(blank=True, to='monitor_data.Applications', verbose_name='所属应用集'),
         ),
     ]
