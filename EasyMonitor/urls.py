@@ -24,5 +24,5 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^user_info.html$', views.user_info, name='user_info'),
     url(r'^monitor_api/', include('monitor_api.urls')),
-    url(r'^monitor_data/', include('monitor_data.urls')),
+    url(r'^monitor_data/', include('monitor_web.urls')),
 ]
