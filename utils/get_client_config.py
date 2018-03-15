@@ -4,12 +4,12 @@
 from monitor_data import models
 
 
-class ClientHandler(object):
+class ClientHandle(object):
     """获取客户端监控配置"""
     def __init__(self, hostname):
         self.hostname = hostname
         self.client_configs = {
-            'application': {}
+            'application': {}   # {'application': {'LinuxCpu': ['LinuxCpuPlugin', 30], 'LinuxNetwork': ['LinuxNetworkPlugin', 60], 'LinuxLoad': ['LinuxLoadPlugin', 60], 'LinuxMemory': ['LinuxMemoryPlugin', 60]}}
         }
 
     def fetch_configs(self):
