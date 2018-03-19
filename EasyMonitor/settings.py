@@ -144,3 +144,25 @@ LOGIN_URL = '/login.html'
 MONITOR_AUTH_HEADER_NAME = 'HTTP_MONITOR_API_AUTH_KEY'
 MONITOR_AUTH_KEY = '299095cc-1330-11e5-b06a-a45e60bec08b'
 MONITOR_AUTH_TIME = 2
+
+# 错误日志
+ERROR_LOG_FILE = os.path.join(BASE_DIR, "logs", 'error.log')
+
+# 运行日志
+RUN_LOG_FILE = os.path.join(BASE_DIR, "logs", 'run.log')
+"""
+code:
+- 200 一切正常;
+- 201 新资源已被创建;
+- 204 资源删除成功;
+
+- 400 错误的请求;
+- 401 未认证;
+- 403 未授权;
+- 404 资源不存在;
+- 422 不可指定的请求体;
+
+- 500 标准服务器错误;
+
+POST时，返回值：{'code': xx, 'message': 'xx'}
+"""

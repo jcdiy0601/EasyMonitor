@@ -5,6 +5,7 @@ import time
 import hashlib
 from django.http import JsonResponse
 from django.conf import settings
+from utils.log import Logger
 
 ENCRYPT_LIST = []   # {'encrypt': encrypt, 'time': timestamp}
 
@@ -50,6 +51,7 @@ def monitor_api_auth(func):
     """api认证装饰器"""
     def wrapper(request, *args, **kwargs):
         if not monitor_api_auth_method(request):
-            return JsonResponse({'code': 401, 'message': 'API认证失败'}, json_dumps_params={'ensure_ascii': False})
+            Logger().log(message='API认证未通过', mode=False)
+            return JsonResponse(data={'code': 401, 'message': 'API认证未通过'}, json_dumps_params={'ensure_ascii': False})
         return func(request, *args, **kwargs)
     return wrapper
