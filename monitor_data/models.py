@@ -75,8 +75,8 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
 
 class Hosts(models.Model):
     """主机表"""
-    ip = models.GenericIPAddressField(verbose_name='IP', unique=True)
-    hostname = models.CharField(verbose_name='主机名称', max_length=64, unique=True)
+    hostname = models.CharField(verbose_name='主机名称', max_length=64, unique=True, help_text='agen输入cmdb客户端配置文件中hostname，snmp输入管理IP')
+    ip = models.GenericIPAddressField(verbose_name='IP')
     hosts_groups = models.ManyToManyField(verbose_name='所属主机组', to='HostsGroups', blank=True)
     templates = models.ManyToManyField(verbose_name='所属模板', to='Templates', blank=True)
     monitor_by_choices = (
@@ -93,7 +93,7 @@ class Hosts(models.Model):
     )
     status = models.IntegerField(verbose_name='主机状态', choices=status_choices, default=3)
     host_alive_check_interval = models.IntegerField(verbose_name='主机存活状态检测间隔', default=30)
-    memo = models.TextField(verbose_name='备注', blank=True, null=True)
+    memo = models.TextField(verbose_name='备注', null=True, blank=True)
 
     class Meta:
         verbose_name_plural = '主机表'
@@ -106,7 +106,7 @@ class HostsGroups(models.Model):
     """主机组表"""
     name = models.CharField(verbose_name='主机组名称', max_length=64, unique=True)
     templates = models.ManyToManyField(verbose_name='所属模板', to='Templates')
-    memo = models.TextField(verbose_name='备注', blank=True, null=True)
+    memo = models.TextField(verbose_name='备注', null=True, blank=True)
 
     class Meta:
         verbose_name_plural = '主机组表'
@@ -121,7 +121,7 @@ class Applications(models.Model):
     plugin_name = models.CharField(verbose_name='插件名称', max_length=64, null=True, blank=True)
     interval = models.IntegerField(verbose_name='监控间隔', default=60)
     items = models.ManyToManyField(verbose_name='所属监控项', to='Items', blank=True)
-    memo = models.TextField(verbose_name='备注', blank=True, null=True)
+    memo = models.TextField(verbose_name='备注', null=True, blank=True)
 
     class Meta:
         verbose_name_plural = '应用集表'
@@ -140,7 +140,8 @@ class Items(models.Model):
         ('str', '字符串'),
     )
     data_type = models.CharField(verbose_name='数据类型', max_length=64, choices=data_type_choices)
-    memo = models.TextField(verbose_name='备注', blank=True, null=True)
+    unit = models.CharField(verbose_name='数据单位', max_length=64, null=True, blank=True)
+    memo = models.TextField(verbose_name='备注', null=True, blank=True)
 
     class Meta:
         verbose_name_plural = '监控项表'
@@ -153,6 +154,7 @@ class Templates(models.Model):
     """模板表"""
     name = models.CharField(verbose_name='模板名称', max_length=64, unique=True)
     applications = models.ManyToManyField(verbose_name='所属应用集', to='Applications', blank=True)
+    memo = models.TextField(verbose_name='备注', null=True, blank=True)
 
     class Meta:
         verbose_name_plural = '模板表'
