@@ -4,7 +4,10 @@ from utils.monitor_api_auth import monitor_api_auth
 from django.views.decorators.csrf import csrf_exempt
 import json
 from utils.get_client_config import ClientHandle
+from utils.redis_conn import redis_conn
+from django.conf import settings
 
+REDIS_OBJ = redis_conn(settings)
 
 @csrf_exempt
 @monitor_api_auth
@@ -25,11 +28,10 @@ def client_data(request):
         try:
             report_data = json.loads(request.body.decode('utf-8'))
             report_data = json.loads(report_data)
-            print('report_data--------->', report_data, type(report_data))
             hostname = report_data['hostname']
             application_name = report_data['application_name']
             data = report_data['data']
-            print('data---------->', type(data))
+            print('---------->', hostname, application_name, data)
         except Exception as e:
             pass
     return JsonResponse(response)

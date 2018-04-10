@@ -151,6 +151,14 @@ ERROR_LOG_FILE = os.path.join(BASE_DIR, "logs", 'error.log')
 # 运行日志
 RUN_LOG_FILE = os.path.join(BASE_DIR, "logs", 'run.log')
 
+# redis连接参数
+REDIS_CONN = {
+    'HOST': '192.168.222.52',
+    'PORT': 6379,
+    'PASSWD': '',
+    'DB': 0
+}
+
 """
 code:
 - 200 一切正常;
