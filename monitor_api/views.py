@@ -6,10 +6,13 @@ import json
 from utils.get_client_config import ClientHandle
 from utils.redis_conn import redis_conn
 from django.conf import settings
+from utils.data_optimization import DataStore
+from monitor_data import models
+
 
 REDIS_OBJ = redis_conn(settings)
 
-@csrf_exempt
+
 @monitor_api_auth
 def client_config(request):
     """客户端向api提交申请并返回配置数据"""
@@ -31,7 +34,14 @@ def client_data(request):
             hostname = report_data['hostname']
             application_name = report_data['application_name']
             data = report_data['data']
-            print('---------->', hostname, application_name, data)
+            print('hostname:%s application_name:%s, data:%s' % (hostname, application_name, data))
+            hostname_obj = models.Hosts.objects.filter(hostname=hostname).first()
+            if not hostname_obj:
+                response['code'] = 404
+                response['message'] = '资源不存在,%s' % hostname
+                return JsonResponse(response)
+            response = DataStore(hostname, application_name, data, REDIS_OBJ, response)    # 对客户端汇报上来的数据进行优化存储
+
         except Exception as e:
             pass
     return JsonResponse(response)
