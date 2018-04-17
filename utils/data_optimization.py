@@ -50,6 +50,8 @@ class DataStore(object):
                                 self.save_optimized_data(data_key_in_redis, optimized_data)     # 保存优化数据
                 if self.redis_obj.llen(data_key_in_redis) >= max_data_point:    # 如果数据列表点数大于最大数据点数
                     self.redis_obj.lpop(data_key_in_redis)      # 删除最旧的一个点的数据
+            self.response['code'] = 200
+            self.response['message'] = '监控数据发送成功并保存,%s' % self.data
             return self.response
         else:  # 汇报数据是无效的
             self.response['code'] = 422
