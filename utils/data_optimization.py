@@ -20,10 +20,10 @@ class DataStore(object):
 
     def process_and_save(self):
         """处理并保存数据到redis中"""
-        # self.data {'iowait': 0.33, 'idle': 98.33, 'system': 1.0, 'status': 0, 'user': 0.33}
+        # self.data ->{'iowait': 0.33, 'idle': 98.33, 'system': 1.0, 'status': 0, 'user': 0.33}
         if self.data['status'] == 0:  # 汇报数据是有效的
             del self.data['status']  # 将状态信息从数据中删除
-            for key, value in settings.DATA_OPTIMIZATION.items():
+            for key, value in settings.DATA_OPTIMIZATION.items():   # key -> latest,value -> [0, 10080]
                 data_optimize_interval, max_data_point = value  # 获取数据优化间隔和最大存储点
                 data_key_in_redis = 'StatusData_%s_%s_%s' % (
                     self.hostname, self.application_name, key)  # 获取对应主机应用集下的key名称
@@ -85,7 +85,7 @@ class DataStore(object):
         ]
        '''
         application_data_keys = data_set[0][0].keys()   # ['user', 'idle'] or ['data']
-        first_application_data_point = data_set[0][0]   # 用这个来构建一个新的空字典
+        first_application_data_point = data_set[0][0]   # 用这个来构建一个新的空字典,{\"user\": 0.33, \"system\": 1.34, \"idle\": 98.33, \"iowait\": 0.0}
         optimized_data = {}     # 设置一个空字典，用来保存最终优化数据
         if 'data' not in application_data_keys:     # 意味着这个字典没有子字典，用于像cpu、内存这样的服务
             for key in application_data_keys:
@@ -93,16 +93,13 @@ class DataStore(object):
             tmp_data_dict = copy.deepcopy(optimized_data)   # 为了临时存最近n分钟的数据,把它们按照每个指标都搞成一个一个列表 ,来存最近N分钟的数据
             for item_application_data, last_save_time in data_set:  # 循环最近n分钟的数据
                 for items_name, value in item_application_data.items():     # 循环每个数据点的指标，items_name监控项名如idle,value为监控的值
-                    try:
-                        tmp_data_dict[items_name].append(value)
-                    except Exception as e:
-                        pass
-            for application_k, v_list in tmp_data_dict.items():     # application_k idle,v_list [98.33, 99.22, 93.55]
+                    tmp_data_dict[items_name].append(value)
+            for items_name, v_list in tmp_data_dict.items():     # items_name idle,v_list [98.33, 99.22, 93.55]
                 avg_res = self.get_average(v_list)  # 取平均值
                 max_res = self.get_max(v_list)  # 取最大值
                 min_res = self.get_min(v_list)  # 取最小值
                 mid_res = self.get_mid(v_list)  # 取中间值
-                optimized_data[application_k] = [avg_res, max_res, min_res, mid_res]    # 将计算结果保存到最终的优化数据字典中
+                optimized_data[items_name] = [avg_res, max_res, min_res, mid_res]    # 将计算结果保存到最终的优化数据字典中
         else:   # 意味着这个字典有子字典，用于像硬盘、网卡这样的服务
             for application_item_key, v_dict in first_application_data_point['data'].items():   # 应用集下监控项key和值的字典
                 optimized_data['application_item_key'] = {}
@@ -129,7 +126,7 @@ class DataStore(object):
     def get_average(self, v_list):
         """获取平均值"""
         if len(v_list) > 0:
-            return sum(v_list)/len(v_list)
+            return round(sum(v_list)/len(v_list), 2)
         else:
             return 0
 
@@ -149,7 +146,7 @@ class DataStore(object):
 
     def get_mid(self, v_list):
         """获取中间值"""
-        v_list = v_list.sort()
+        v_list.sort()
         if len(v_list) > 0:
             return v_list[int(len(v_list)/2)]
         else:
