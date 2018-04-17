@@ -46,7 +46,10 @@ class DataStore(object):
                         if len(data_set) > 0:
                             # 接下来拿这个data_set交给下面的方法，算出优化结果
                             optimized_data = self.get_optimized_data(data_key_in_redis, data_set)
-
+                            if optimized_data:  # 如果优化数据存在
+                                self.save_optimized_data(data_key_in_redis, optimized_data)     # 保存优化数据
+                if self.redis_obj.llen(data_key_in_redis) >= max_data_point:    # 如果数据列表点数大于最大数据点数
+                    self.redis_obj.lpop(data_key_in_redis)      # 删除最旧的一个点的数据
             return self.response
         else:  # 汇报数据是无效的
             self.response['code'] = 422
@@ -87,7 +90,7 @@ class DataStore(object):
                 optimized_data[key] = []    # {'user': [], 'idle': []}
             tmp_data_dict = copy.deepcopy(optimized_data)   # 为了临时存最近n分钟的数据,把它们按照每个指标都搞成一个一个列表 ,来存最近N分钟的数据
             for item_application_data, last_save_time in data_set:  # 循环最近n分钟的数据
-                for items_name, value in item_application_data.items():     # 循环配个数据点的指标，items_name监控项名如idle,value为监控的值
+                for items_name, value in item_application_data.items():     # 循环每个数据点的指标，items_name监控项名如idle,value为监控的值
                     try:
                         tmp_data_dict[items_name].append(value)
                     except Exception as e:
@@ -99,7 +102,26 @@ class DataStore(object):
                 mid_res = self.get_mid(v_list)  # 取中间值
                 optimized_data[application_k] = [avg_res, max_res, min_res, mid_res]    # 将计算结果保存到最终的优化数据字典中
         else:   # 意味着这个字典有子字典，用于像硬盘、网卡这样的服务
-            pass
+            for application_item_key, v_dict in first_application_data_point['data'].items():   # 应用集下监控项key和值的字典
+                optimized_data['application_item_key'] = {}
+                for k2, v2 in v_dict.items():
+                    optimized_data['application_item_key'][k2] = []     # {'eth0': {'t_in': [], 't_out': []}}
+            tmp_data_dict = copy.deepcopy(optimized_data)
+            if tmp_data_dict:   # 由于客户端汇报数据有误，有可能为空
+                for item_application_data, last_save_time in data_set:  # 循环最近n分钟数据
+                    for name, value_dict in item_application_data['data'].items():    # name如eth0,value为监控的值的字典
+                        for items_name, value in value_dict.items():    # 循环每个数据点的指标，items_name监控项名如in_t,value为监控的值
+                            tmp_data_dict[name][items_name].append(value)
+                for name, v_dict in tmp_data_dict.items():
+                    for items_name, v_list in v_dict.items():
+                        avg_res = self.get_average(v_list)
+                        max_res = self.get_max(v_list)
+                        min_res = self.get_min(v_list)
+                        mid_res = self.get_mid(v_list)
+                        optimized_data[name][items_name] = [avg_res, max_res, min_res, mid_res]
+            else:   # 客户端汇报的数据一定是错误的
+                pass
+        print('优化后的数据----->', optimized_data)
         return optimized_data
 
     def get_average(self, v_list):
@@ -130,3 +152,7 @@ class DataStore(object):
             return v_list[int(len(v_list)/2)]
         else:
             return 0
+
+    def save_optimized_data(self, data_key_in_redis, optimized_data):
+        """保存优化后的数据"""
+        self.redis_obj.rpush(data_key_in_redis, json.dumps([optimized_data, time.time()]))
