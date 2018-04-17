@@ -34,14 +34,13 @@ def client_data(request):
             hostname = report_data['hostname']
             application_name = report_data['application_name']
             data = report_data['data']
-            print('hostname:%s application_name:%s, data:%s' % (hostname, application_name, data))
             hostname_obj = models.Hosts.objects.filter(hostname=hostname).first()
             if not hostname_obj:
                 response['code'] = 404
                 response['message'] = '资源不存在,%s' % hostname
-                return JsonResponse(response)
+                return JsonResponse(data=response, json_dumps_params={'ensure_ascii': False})
             response = DataStore(hostname, application_name, data, REDIS_OBJ, response)    # 对客户端汇报上来的数据进行优化存储
 
         except Exception as e:
             pass
-    return JsonResponse(response)
+    return JsonResponse(data=response, json_dumps_params={'ensure_ascii': False})
