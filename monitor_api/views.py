@@ -39,8 +39,9 @@ def client_data(request):
                 response['code'] = 404
                 response['message'] = '资源不存在,%s' % hostname
                 return JsonResponse(data=response, json_dumps_params={'ensure_ascii': False})
-            response = DataStore(hostname, application_name, data, REDIS_OBJ, response)    # 对客户端汇报上来的数据进行优化存储
-
+            data_save_obj = DataStore(hostname, application_name, data, REDIS_OBJ, response)    # 对客户端汇报上来的数据进行优化存储
+            response = data_save_obj.response   # 回复客户端，至此与客户端交互操作完成
+            # 触发器检测
         except Exception as e:
             pass
     return JsonResponse(data=response, json_dumps_params={'ensure_ascii': False})
