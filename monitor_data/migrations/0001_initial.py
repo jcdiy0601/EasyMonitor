@@ -6,7 +6,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -20,7 +19,9 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('password', models.CharField(max_length=128, verbose_name='password')),
                 ('last_login', models.DateTimeField(blank=True, null=True, verbose_name='last login')),
-                ('is_superuser', models.BooleanField(default=False, help_text='Designates that this user has all permissions without explicitly assigning them.', verbose_name='superuser status')),
+                ('is_superuser', models.BooleanField(default=False,
+                                                     help_text='Designates that this user has all permissions without explicitly assigning them.',
+                                                     verbose_name='superuser status')),
                 ('email', models.EmailField(max_length=255, unique=True, verbose_name='邮箱')),
                 ('name', models.CharField(max_length=64, verbose_name='姓名')),
                 ('phone', models.BigIntegerField(blank=True, null=True, verbose_name='手机号')),
@@ -29,8 +30,13 @@ class Migration(migrations.Migration):
                 ('is_admin', models.BooleanField(default=False, verbose_name='是否为管理员')),
                 ('memo', models.TextField(blank=True, default=None, null=True, verbose_name='备注')),
                 ('date_joined', models.DateTimeField(auto_now_add=True, null=True, verbose_name='创建时间')),
-                ('groups', models.ManyToManyField(blank=True, help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.', related_name='user_set', related_query_name='user', to='auth.Group', verbose_name='groups')),
-                ('user_permissions', models.ManyToManyField(blank=True, help_text='Specific permissions for this user.', related_name='user_set', related_query_name='user', to='auth.Permission', verbose_name='user permissions')),
+                ('groups', models.ManyToManyField(blank=True,
+                                                  help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.',
+                                                  related_name='user_set', related_query_name='user', to='auth.Group',
+                                                  verbose_name='groups')),
+                ('user_permissions', models.ManyToManyField(blank=True, help_text='Specific permissions for this user.',
+                                                            related_name='user_set', related_query_name='user',
+                                                            to='auth.Permission', verbose_name='user permissions')),
             ],
             options={
                 'verbose_name_plural': '用户表',
@@ -55,8 +61,10 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('ip', models.GenericIPAddressField(unique=True, verbose_name='IP')),
                 ('hostname', models.CharField(max_length=64, unique=True, verbose_name='主机名称')),
-                ('monitor_by', models.CharField(choices=[('agent', 'Agent'), ('snmp', 'SNMP')], max_length=64, verbose_name='监控方式')),
-                ('status', models.IntegerField(choices=[(1, '在线'), (2, '宕机'), (3, '未知'), (4, '下线'), (5, '问题')], verbose_name='主机状态')),
+                ('monitor_by',
+                 models.CharField(choices=[('agent', 'Agent'), ('snmp', 'SNMP')], max_length=64, verbose_name='监控方式')),
+                ('status', models.IntegerField(choices=[(1, '在线'), (2, '宕机'), (3, '未知'), (4, '下线'), (5, '问题')],
+                                               verbose_name='主机状态')),
                 ('host_alive_check_interval', models.IntegerField(default=30, verbose_name='主机存活状态检测间隔')),
                 ('memo', models.TextField(blank=True, null=True, verbose_name='备注')),
             ],
@@ -81,7 +89,8 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=64, unique=True, verbose_name='监控项名称')),
                 ('key', models.CharField(max_length=64, unique=True, verbose_name='键值')),
-                ('data_type', models.CharField(choices=[('int', '整数'), ('float', '小数'), ('str', '字符串')], max_length=64, verbose_name='数据类型')),
+                ('data_type', models.CharField(choices=[('int', '整数'), ('float', '小数'), ('str', '字符串')], max_length=64,
+                                               verbose_name='数据类型')),
                 ('memo', models.TextField(blank=True, null=True, verbose_name='备注')),
             ],
             options={
@@ -93,7 +102,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=64, unique=True, verbose_name='模板名称')),
-                ('applications', models.ManyToManyField(blank=True, to='monitor_data.Applications', verbose_name='所属应用集')),
+                ('applications',
+                 models.ManyToManyField(blank=True, to='monitor_data.Applications', verbose_name='所属应用集')),
             ],
             options={
                 'verbose_name_plural': '模板表',

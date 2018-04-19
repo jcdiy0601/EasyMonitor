@@ -7,7 +7,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('monitor_data', '0005_auto_20180410_1414'),
     ]
@@ -18,10 +17,13 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(blank=True, max_length=64, null=True, verbose_name='触发器名称')),
-                ('severity', models.CharField(choices=[('information', '信息'), ('warning', '警告'), ('general', '一般严重'), ('high', '严重'), ('disaster', '灾难')], max_length=64, verbose_name='报警级别')),
+                ('severity', models.CharField(
+                    choices=[('information', '信息'), ('warning', '警告'), ('general', '一般严重'), ('high', '严重'),
+                             ('disaster', '灾难')], max_length=64, verbose_name='报警级别')),
                 ('enabled', models.BooleanField(default=True, verbose_name='是否启用')),
                 ('memo', models.TextField(blank=True, null=True, verbose_name='备注')),
-                ('template', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='monitor_data.Templates', verbose_name='所属模板')),
+                ('template', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='monitor_data.Templates',
+                                               verbose_name='所属模板')),
             ],
             options={
                 'verbose_name_plural': '触发器表',

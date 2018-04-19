@@ -16,33 +16,33 @@ module.exports = function (grunt) {
             }
         },
         uglify: {
-            all : {
+            all: {
                 options: {
                     preserveComments: 'some',
                     mangle: {
-                        except: [ "undefined" ]
+                        except: ["undefined"]
                     }
                 },
                 files: {
-                    'dist/footable.min.js': [ 'js/footable.js' ],
-                    'dist/footable.grid.min.js': [ 'js/footable.grid.js' ],
-                    'dist/footable.filter.min.js': [ 'js/footable.filter.js' ],
-                    'dist/footable.paginate.min.js': [ 'js/footable.paginate.js' ],
-                    'dist/footable.sort.min.js': [ 'js/footable.sort.js' ],
-                    'dist/footable.striping.min.js': [ 'js/footable.striping.js' ],
-                    'dist/footable.bookmarkable.min.js': [ 'js/footable.bookmarkable.js' ]
+                    'dist/footable.min.js': ['js/footable.js'],
+                    'dist/footable.grid.min.js': ['js/footable.grid.js'],
+                    'dist/footable.filter.min.js': ['js/footable.filter.js'],
+                    'dist/footable.paginate.min.js': ['js/footable.paginate.js'],
+                    'dist/footable.sort.min.js': ['js/footable.sort.js'],
+                    'dist/footable.striping.min.js': ['js/footable.striping.js'],
+                    'dist/footable.bookmarkable.min.js': ['js/footable.bookmarkable.js']
                 }
             }
         },
-		concat: {
-			options: {
-				separator: ';'
-			},
-			dist: {
-				src: [ 'dist/footable.min.js', 'dist/footable.grid.min.js', 'dist/footable.filter.min.js', 'dist/footable.paginate.min.js', 'dist/footable.sort.min.js', 'dist/footable.striping.min.js', 'dist/footable.bookmarkable.min.js' ],
-				dest: 'dist/footable.all.min.js'
-			}
-		},		
+        concat: {
+            options: {
+                separator: ';'
+            },
+            dist: {
+                src: ['dist/footable.min.js', 'dist/footable.grid.min.js', 'dist/footable.filter.min.js', 'dist/footable.paginate.min.js', 'dist/footable.sort.min.js', 'dist/footable.striping.min.js', 'dist/footable.bookmarkable.min.js'],
+                dest: 'dist/footable.all.min.js'
+            }
+        },
         jshint: {
             gruntfile: {
                 options: {
@@ -103,9 +103,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-csslint');
-	grunt.loadNpmTasks('grunt-contrib-jshint');
-	
-	
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+
 
     // Default task.
     grunt.registerTask('default', ['jshint', 'clean', 'uglify', 'concat', 'less', 'csslint']);

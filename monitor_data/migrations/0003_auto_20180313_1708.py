@@ -6,7 +6,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('monitor_data', '0002_auto_20180313_1656'),
     ]

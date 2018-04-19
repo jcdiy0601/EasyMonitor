@@ -6,7 +6,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('monitor_data', '0001_initial'),
     ]
@@ -20,6 +19,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='hosts',
             name='status',
-            field=models.IntegerField(choices=[(1, '在线'), (2, '宕机'), (3, '未知'), (4, '下线'), (5, '问题')], default=3, verbose_name='主机状态'),
+            field=models.IntegerField(choices=[(1, '在线'), (2, '宕机'), (3, '未知'), (4, '下线'), (5, '问题')], default=3,
+                                      verbose_name='主机状态'),
         ),
     ]

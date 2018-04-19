@@ -10,6 +10,7 @@
 .bv-form .help-block {
     margin-bottom: 0;
 }
+
 .bv-form .tooltip-inner {
     text-align: left;
 }
@@ -33,16 +34,15 @@
 }
 
 .nav-tabs li.bv-tab-success > a .fa-,
-.nav-tabs li.bv-tab-error > a .fa{
+.nav-tabs li.bv-tab-error > a .fa {
     padding-right: 5px;
 }
 
-
 .bv-form .bv-icon-no-label {
-	top: 0;
+    top: 0;
 }
 
 .bv-form .bv-icon-input-group {
-	top: 0;
-	z-index: 100;
+    top: 0;
+    z-index: 100;
 }

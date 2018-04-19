@@ -7,7 +7,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('monitor_data', '0006_trigger'),
     ]
@@ -17,12 +16,19 @@ class Migration(migrations.Migration):
             name='TriggerExpression',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('operator', models.CharField(choices=[('eq', '='), ('lt', '<'), ('gt', '>')], max_length=64, verbose_name='运算符')),
+                ('operator',
+                 models.CharField(choices=[('eq', '='), ('lt', '<'), ('gt', '>')], max_length=64, verbose_name='运算符')),
                 ('threshold', models.IntegerField(verbose_name='阈值')),
-                ('logic_with_next', models.CharField(blank=True, choices=[('or', 'OR'), ('and', 'AND')], max_length=64, null=True, verbose_name='与一个条件的逻辑关系')),
-                ('applications', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='monitor_data.Applications', verbose_name='所属应用集')),
-                ('items', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='monitor_data.Items', verbose_name='所属监控项')),
-                ('trigger', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='monitor_data.Trigger', verbose_name='所属触发器')),
+                ('logic_with_next',
+                 models.CharField(blank=True, choices=[('or', 'OR'), ('and', 'AND')], max_length=64, null=True,
+                                  verbose_name='与一个条件的逻辑关系')),
+                ('applications',
+                 models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='monitor_data.Applications',
+                                   verbose_name='所属应用集')),
+                ('items', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='monitor_data.Items',
+                                            verbose_name='所属监控项')),
+                ('trigger', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='monitor_data.Trigger',
+                                              verbose_name='所属触发器')),
             ],
             options={
                 'verbose_name_plural': '触发器表达式表',

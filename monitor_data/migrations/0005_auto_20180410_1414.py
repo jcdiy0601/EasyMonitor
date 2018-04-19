@@ -6,7 +6,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('monitor_data', '0004_items_unit'),
     ]
@@ -20,7 +19,8 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='hosts',
             name='hostname',
-            field=models.CharField(help_text='agen输入cmdb客户端配置文件中hostname，snmp输入管理IP', max_length=64, unique=True, verbose_name='主机名称'),
+            field=models.CharField(help_text='agen输入cmdb客户端配置文件中hostname，snmp输入管理IP', max_length=64, unique=True,
+                                   verbose_name='主机名称'),
         ),
         migrations.AlterField(
             model_name='hosts',

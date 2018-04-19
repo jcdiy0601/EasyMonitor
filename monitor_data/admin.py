@@ -32,6 +32,7 @@ class UserCreationForm(forms.ModelForm):
             user.save()
         return user
 
+
 class UserChangeForm(forms.ModelForm):
     """A form for updating users. Includes all the fields on
     the user, but replaces the password field with admin's
@@ -49,6 +50,7 @@ class UserChangeForm(forms.ModelForm):
         # field does not have access to the initial value
         return self.initial["password"]
 
+
 class UserProfileAdmin(BaseUserAdmin):
     # The forms to add and change user instances
     form = UserChangeForm
@@ -57,9 +59,9 @@ class UserProfileAdmin(BaseUserAdmin):
     # The fields to be used in displaying the User model.
     # These override the definitions on the base UserAdmin
     # that reference specific fields on auth.User.
-    list_display = ('email', 'name', 'phone', 'weixin', 'is_active', 'is_admin')   # 列表页表格显示的字段
-    list_filter = ('is_admin',)     # 列表页可以过滤的字段
-    fieldsets = (                                                   # 信息页显示
+    list_display = ('email', 'name', 'phone', 'weixin', 'is_active', 'is_admin')  # 列表页表格显示的字段
+    list_filter = ('is_admin',)  # 列表页可以过滤的字段
+    fieldsets = (  # 信息页显示
         ('账号信息', {'fields': ('email', 'password')}),
         ('个人信息', {'fields': ('name', 'phone', 'weixin')}),
         ('权限', {'fields': ('is_active', 'is_admin', 'user_permissions', 'groups')}),
@@ -70,11 +72,12 @@ class UserProfileAdmin(BaseUserAdmin):
         ('创建账号', {
             'classes': ('wide',),
             'fields': ('email', 'name', 'phone', 'weixin', 'password1', 'password2', 'is_active', 'is_admin')}
-        ),
+         ),
     )
     search_fields = ('email',)
     ordering = ('email',)
     filter_horizontal = ('user_permissions', 'groups')
+
 
 # Now register the new UserAdmin...
 admin.site.register(models.UserProfile, UserProfileAdmin)
@@ -89,7 +92,7 @@ class TriggerExpressionInline(admin.TabularInline):
 
 class TriggerAdmin(admin.ModelAdmin):
     list_display = ('name', 'severity', 'enabled')
-    inlines = [TriggerExpressionInline,]
+    inlines = [TriggerExpressionInline, ]
 
 
 admin.site.register(models.Host)

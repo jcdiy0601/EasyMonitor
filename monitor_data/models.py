@@ -6,7 +6,8 @@ from django.contrib.auth.models import (
 
 class UserProfileManager(BaseUserManager):
     """用户表管理"""
-    def create_user(self, email, name, phone=None, weixin=None,  password=None):
+
+    def create_user(self, email, name, phone=None, weixin=None, password=None):
         if not email:
             raise ValueError('用户必须有一个email地址')
         user = self.model(
@@ -75,7 +76,8 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
 
 class Host(models.Model):
     """主机表"""
-    hostname = models.CharField(verbose_name='主机名称', max_length=64, unique=True, help_text='agen输入cmdb客户端配置文件中hostname，snmp输入管理IP')
+    hostname = models.CharField(verbose_name='主机名称', max_length=64, unique=True,
+                                help_text='agen输入cmdb客户端配置文件中hostname，snmp输入管理IP')
     ip = models.GenericIPAddressField(verbose_name='IP')
     host_groups = models.ManyToManyField(verbose_name='所属主机组', to='HostGroup', blank=True)
     templates = models.ManyToManyField(verbose_name='所属模板', to='Template', blank=True)
@@ -188,8 +190,8 @@ class Trigger(models.Model):
 class TriggerExpression(models.Model):
     """触发器表达式"""
     triggers = models.ForeignKey(verbose_name='所属触发器', to='Trigger')
-    applications = models.ForeignKey(verbose_name='所属应用集', to='Application')   # 根据触发器对应的模板获取相关应用集
-    items = models.ForeignKey(verbose_name='所属监控项', to='Item')     # 根据触发器对应的模板的应用集获取相关的监控项
+    applications = models.ForeignKey(verbose_name='所属应用集', to='Application')  # 根据触发器对应的模板获取相关应用集
+    items = models.ForeignKey(verbose_name='所属监控项', to='Item')  # 根据触发器对应的模板的应用集获取相关的监控项
     operator_choices = (
         ('eq', '='),
         ('lt', '<'),
@@ -201,7 +203,8 @@ class TriggerExpression(models.Model):
         ('or', 'OR'),
         ('and', 'AND')
     )
-    logic_with_next = models.CharField(verbose_name='与一个条件的逻辑关系', max_length=64, choices=logic_choices, null=True, blank=True)
+    logic_with_next = models.CharField(verbose_name='与一个条件的逻辑关系', max_length=64, choices=logic_choices, null=True,
+                                       blank=True)
     data_calc_func_choices = (
         ('avg', '平均值'),
         ('max', '最大值'),
@@ -209,7 +212,8 @@ class TriggerExpression(models.Model):
         ('hit', 'HIT'),
         ('last', '最近的值'),
     )
-    data_calc_func = models.CharField(verbose_name='数据运算函数', max_length=64, choices=data_calc_func_choices, default='last')
+    data_calc_func = models.CharField(verbose_name='数据运算函数', max_length=64, choices=data_calc_func_choices,
+                                      default='last')
     data_calc_func_args = models.CharField(verbose_name='数据运算函数的非固定参数,json格式', max_length=64, null=True, blank=True)
     memo = models.TextField(verbose_name='备注', null=True, blank=True)
 
@@ -253,7 +257,7 @@ class ActionOperation(models.Model):
     userprofiles = models.ManyToManyField(verbose_name='所属用户', to='UserProfile', blank=True)
     script_name = models.CharField(verbose_name='脚本名称', max_length=64, null=True, blank=True)
     _msg_format = '''主机({hostname},{ip}) 应用集({name})存在问题,内容:{msg}'''
-    msg_format= models.TextField(verbose_name='消息格式', default=_msg_format)
+    msg_format = models.TextField(verbose_name='消息格式', default=_msg_format)
     memo = models.TextField(verbose_name='备注', null=True, blank=True)
 
     class Meta:

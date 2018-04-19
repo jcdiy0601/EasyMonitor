@@ -6,14 +6,14 @@
  * License: www.highcharts.com/license
  */
 'use strict';
-(function(factory) {
+(function (factory) {
     if (typeof module === 'object' && module.exports) {
         module.exports = factory;
     } else {
         factory(Highcharts);
     }
-}(function(Highcharts) {
-    (function(H) {
+}(function (Highcharts) {
+    (function (H) {
         /**
          * (c) 2010-2017 Torstein Honsi
          *
@@ -28,7 +28,7 @@
              * Get the center of the pie based on the size and center options relative to the
              * plot area. Borrowed by the polar and gauge series types.
              */
-            getCenter: function() {
+            getCenter: function () {
 
                 var options = this.options,
                     chart = this.chart,
@@ -78,8 +78,8 @@
                             // difference must be less than 360 degrees
                             (end - startAngle) < 360
                         ) ?
-                        end :
-                        startAngle + 360
+                            end :
+                            startAngle + 360
                     ),
                     correction = -90;
                 return {
@@ -90,7 +90,7 @@
         };
 
     }(Highcharts));
-    (function(H) {
+    (function (H) {
         /**
          * (c) 2010-2017 Torstein Honsi
          *
@@ -101,6 +101,7 @@
             extend = H.extend,
             merge = H.merge,
             splat = H.splat;
+
         /**
          * The Pane object allows options that are common to a set of X and Y axes.
          *
@@ -119,7 +120,7 @@
             /**
              * Initiate the Pane object
              */
-            init: function(options, chart) {
+            init: function (options, chart) {
                 this.chart = chart;
                 this.background = [];
 
@@ -128,7 +129,7 @@
                 this.setOptions(options);
             },
 
-            setOptions: function(options) {
+            setOptions: function (options) {
 
                 // Set options. Angular charts have a default background (#3318)
                 this.options = options = merge(
@@ -143,7 +144,7 @@
             /**
              * Render the pane with its backgrounds.
              */
-            render: function() {
+            render: function () {
 
                 var options = this.options,
                     backgroundOption = this.options.background,
@@ -192,7 +193,7 @@
              * @param  {Object} backgroundOptions Background options
              * @param  {number} i The index of the background in this.backgrounds
              */
-            renderBackground: function(backgroundOptions, i) {
+            renderBackground: function (backgroundOptions, i) {
                 var method = 'animate';
 
                 if (!this.background[i]) {
@@ -219,7 +220,7 @@
             },
 
             /**
-             * The pane serves as a container for axes and backgrounds for circular 
+             * The pane serves as a container for axes and backgrounds for circular
              * gauges and polar charts.
              * @since 2.3.0
              * @optionparent pane
@@ -229,7 +230,7 @@
                  * The center of a polar chart or angular gauge, given as an array
                  * of [x, y] positions. Positions can be given as integers that transform
                  * to pixels, or as percentages of the plot area size.
-                 * 
+                 *
                  * @type {Array<String|Number>}
                  * @sample {highcharts} highcharts/demo/gauge-vu-meter/
                  *         Two gauges with different center
@@ -242,7 +243,7 @@
                 /**
                  * The size of the pane, either as a number defining pixels, or a
                  * percentage defining a percentage of the plot are.
-                 * 
+                 *
                  * @type {Number|String}
                  * @sample {highcharts} highcharts/demo/gauge-vu-meter/ Smaller size
                  * @default 85%
@@ -253,7 +254,7 @@
                 /**
                  * The start angle of the polar X axis or gauge axis, given in degrees
                  * where 0 is north. Defaults to 0.
-                 * 
+                 *
                  * @type {Number}
                  * @sample {highcharts} highcharts/demo/gauge-vu-meter/
                  *         VU-meter with custom start and end angle
@@ -265,7 +266,7 @@
                 /**
                  * The end angle of the polar X axis or gauge value axis, given in degrees
                  * where 0 is north. Defaults to [startAngle](#pane.startAngle) + 360.
-                 * 
+                 *
                  * @type {Number}
                  * @sample {highcharts} highcharts/demo/gauge-vu-meter/
                  *         VU-meter with custom start and end angle
@@ -285,7 +286,7 @@
             defaultBackgroundOptions: {
                 /**
                  * The class name for this background.
-                 * 
+                 *
                  * @type {String}
                  * @sample {highcharts} highcharts/css/pane/ Panes styled by CSS
                  * @sample {highstock} highcharts/css/pane/ Panes styled by CSS
@@ -299,7 +300,7 @@
                  * Tha shape of the pane background. When `solid`, the background
                  * is circular. When `arc`, the background extends only from the min
                  * to the max of the value axis.
-                 * 
+                 *
                  * @validvalue ["solid", "arc"]
                  * @type {String}
                  * @default solid
@@ -311,7 +312,7 @@
 
                 /**
                  * The pixel border width of the pane background.
-                 * 
+                 *
                  * @type {Number}
                  * @default 1
                  * @since 2.3.0
@@ -321,7 +322,7 @@
 
                 /**
                  * The pane background border color.
-                 * 
+                 *
                  * @type {Color}
                  * @default #cccccc
                  * @since 2.3.0
@@ -331,7 +332,7 @@
 
                 /**
                  * The background color or gradient for the pane.
-                 * 
+                 *
                  * @type {Color}
                  * @since 2.3.0
                  * @product highcharts
@@ -372,7 +373,7 @@
                 /**
                  * The inner radius of the pane background. Can be either numeric
                  * (pixels) or a percentage string.
-                 * 
+                 *
                  * @type {Number|String}
                  * @default 0
                  * @since 2.3.0
@@ -386,7 +387,7 @@
                 /**
                  * The outer radius of the circular pane background. Can be either
                  * numeric (pixels) or a percentage string.
-                 * 
+                 *
                  * @type {Number|String}
                  * @default 105%
                  * @since 2.3.0
@@ -398,7 +399,7 @@
             /**
              * Gets the center for the pane and its axis.
              */
-            updateCenter: function(axis) {
+            updateCenter: function (axis) {
                 this.center = (axis || this.axis || {}).center =
                     CenteredSeriesMixin.getCenter.call(this);
             },
@@ -406,7 +407,7 @@
             /**
              * Destroy the pane item
              * /
-            destroy: function () {
+             destroy: function () {
             	H.erase(this.chart.pane, this);
             	each(this.background, function (background) {
             		background.destroy();
@@ -414,18 +415,18 @@
             	this.background.length = 0;
             	this.group = this.group.destroy();
             },
-            */
+             */
 
             /**
              * Update the pane item with new options
              * @param  {Object} options New pane options
              */
-            update: function(options, redraw) {
+            update: function (options, redraw) {
 
                 merge(true, this.options, options);
                 this.setOptions(this.options);
                 this.render();
-                each(this.chart.axes, function(axis) {
+                each(this.chart.axes, function (axis) {
                     if (axis.pane === this) {
                         axis.pane = null;
                         axis.update({}, redraw);
@@ -438,7 +439,7 @@
         H.Pane = Pane;
 
     }(Highcharts));
-    (function(H) {
+    (function (H) {
         /**
          * (c) 2010-2017 Torstein Honsi
          *
@@ -466,10 +467,10 @@
          */
         hiddenAxisMixin = {
             getOffset: noop,
-            redraw: function() {
+            redraw: function () {
                 this.isDirty = false; // prevent setting Y axis dirty
             },
-            render: function() {
+            render: function () {
                 this.isDirty = false; // prevent setting Y axis dirty
             },
             setScale: noop,
@@ -542,7 +543,7 @@
             /**
              * Merge and set options
              */
-            setOptions: function(userOptions) {
+            setOptions: function (userOptions) {
 
                 var options = this.options = merge(
                     this.defaultOptions,
@@ -561,7 +562,7 @@
              * Wrap the getOffset method to return zero offset for title or labels in a radial
              * axis
              */
-            getOffset: function() {
+            getOffset: function () {
                 // Call the Axis prototype method (the method we're in now is on the instance)
                 axisProto.getOffset.call(this);
 
@@ -575,7 +576,7 @@
              * Get the path for the axis line. This method is also referenced in the getPlotLinePath
              * method.
              */
-            getLinePath: function(lineWidth, radius) {
+            getLinePath: function (lineWidth, radius) {
                 var center = this.center,
                     end,
                     chart = this.chart,
@@ -612,7 +613,7 @@
              * in rotation. This allows the translate method to return angle for
              * any given value.
              */
-            setAxisTranslation: function() {
+            setAxisTranslation: function () {
 
                 // Call uber method
                 axisProto.setAxisTranslation.call(this);
@@ -642,7 +643,7 @@
              * In case of auto connect, add one closestPointRange to the max value right before
              * tickPositions are computed, so that ticks will extend passed the real max.
              */
-            beforeSetTickPositions: function() {
+            beforeSetTickPositions: function () {
                 // If autoConnect is true, polygonal grid lines are connected, and one closestPointRange
                 // is added to the X axis to prevent the last point from overlapping the first.
                 this.autoConnect = this.isCircular && pick(this.userMax, this.options.max) === undefined &&
@@ -657,7 +658,7 @@
              * Override the setAxisSize method to use the arc's circumference as length. This
              * allows tickPixelInterval to apply to pixel lengths along the perimeter
              */
-            setAxisSize: function() {
+            setAxisSize: function () {
 
                 axisProto.setAxisSize.call(this);
 
@@ -682,7 +683,7 @@
              * Returns the x, y coordinate of a point given by a value and a pixel distance
              * from center
              */
-            getPosition: function(value, length) {
+            getPosition: function (value, length) {
                 return this.postTranslate(
                     this.isCircular ? this.translate(value) : this.angleRad, // #2848
                     pick(this.isCircular ? length : this.translate(value), this.center[2] / 2) - this.offset
@@ -692,7 +693,7 @@
             /**
              * Translate from intermediate plotX (angle), plotY (axis.len - radius) to final chart coordinates.
              */
-            postTranslate: function(angle, radius) {
+            postTranslate: function (angle, radius) {
 
                 var chart = this.chart,
                     center = this.center;
@@ -709,7 +710,7 @@
             /**
              * Find the path for plot bands along the radial axis
              */
-            getPlotBandPath: function(from, to, options) {
+            getPlotBandPath: function (from, to, options) {
                 var center = this.center,
                     startAngleRad = this.startAngleRad,
                     fullRadius = center[2] / 2,
@@ -744,7 +745,7 @@
                     }
 
                     // Convert percentages to pixel values
-                    radii = map(radii, function(radius) {
+                    radii = map(radii, function (radius) {
                         if (percentRegex.test(radius)) {
                             radius = (pInt(radius, 10) * fullRadius) / 100;
                         }
@@ -783,7 +784,7 @@
             /**
              * Find the path for plot lines perpendicular to the radial axis.
              */
-            getPlotLinePath: function(value, reverse) {
+            getPlotLinePath: function (value, reverse) {
                 var axis = this,
                     center = axis.center,
                     chart = axis.chart,
@@ -806,7 +807,7 @@
                     // Concentric polygons
                 } else {
                     // Find the X axis in the same pane
-                    each(chart.xAxis, function(a) {
+                    each(chart.xAxis, function (a) {
                         if (a.pane === axis.pane) {
                             xAxis = a;
                         }
@@ -822,7 +823,7 @@
                         tickPositions = [].concat(tickPositions).reverse();
                     }
 
-                    each(tickPositions, function(pos, i) {
+                    each(tickPositions, function (pos, i) {
                         xy = xAxis.getPosition(pos, value);
                         ret.push(i ? 'L' : 'M', xy.x, xy.y);
                     });
@@ -834,7 +835,7 @@
             /**
              * Find the position for the axis title, by default inside the gauge
              */
-            getTitlePosition: function() {
+            getTitlePosition: function () {
                 var center = this.center,
                     chart = this.chart,
                     titleOptions = this.options.title;
@@ -842,11 +843,11 @@
                 return {
                     x: chart.plotLeft + center[0] + (titleOptions.x || 0),
                     y: chart.plotTop + center[1] - ({
-                            high: 0.5,
-                            middle: 0.25,
-                            low: 0
-                        }[titleOptions.align] *
-                        center[2]) + (titleOptions.y || 0)
+                        high: 0.5,
+                        middle: 0.25,
+                        low: 0
+                    }[titleOptions.align] *
+                    center[2]) + (titleOptions.y || 0)
                 };
             }
 
@@ -855,7 +856,7 @@
         /**
          * Override axisProto.init to mix in special axis instance functions and function overrides
          */
-        wrap(axisProto, 'init', function(proceed, chart, userOptions) {
+        wrap(axisProto, 'init', function (proceed, chart, userOptions) {
             var angular = chart.angular,
                 polar = chart.polar,
                 isX = userOptions.isX,
@@ -921,7 +922,7 @@
          * @param   {Function} proceed
          * @returns {String} Alignment
          */
-        wrap(axisProto, 'autoLabelAlign', function(proceed) {
+        wrap(axisProto, 'autoLabelAlign', function (proceed) {
             if (!this.isRadial) {
                 return proceed.apply(this, [].slice.call(arguments, 1));
             } // else return undefined
@@ -930,7 +931,7 @@
         /**
          * Add special cases within the Tick class' methods for radial axes.
          */
-        wrap(tickProto, 'getPosition', function(proceed, horiz, pos, tickmarkOffset, old) {
+        wrap(tickProto, 'getPosition', function (proceed, horiz, pos, tickmarkOffset, old) {
             var axis = this.axis;
 
             return axis.getPosition ?
@@ -942,7 +943,7 @@
          * Wrap the getLabelPosition function to find the center position of the label
          * based on the distance option
          */
-        wrap(tickProto, 'getLabelPosition', function(proceed, x, y, label, horiz, labelOptions, tickmarkOffset, index, step) {
+        wrap(tickProto, 'getLabelPosition', function (proceed, x, y, label, horiz, labelOptions, tickmarkOffset, index, step) {
             var axis = this.axis,
                 optionsY = labelOptions.y,
                 ret,
@@ -997,7 +998,7 @@
         /**
          * Wrap the getMarkPath function to return the path of the radial marker
          */
-        wrap(tickProto, 'getMarkPath', function(proceed, x, y, tickLength, tickWidth, horiz, renderer) {
+        wrap(tickProto, 'getMarkPath', function (proceed, x, y, tickLength, tickWidth, horiz, renderer) {
             var axis = this.axis,
                 endPoint,
                 ret;
@@ -1019,7 +1020,7 @@
         });
 
     }(Highcharts));
-    (function(H) {
+    (function (H) {
         /**
          * (c) 2010-2017 Torstein Honsi
          *
@@ -1039,7 +1040,7 @@
          * The area range series is a carteseian series with higher and lower values
          * for each point along an X axis, where the area between the values is shaded.
          * Requires `highcharts-more.js`.
-         * 
+         *
          * @extends plotOptions.area
          * @product highcharts highstock
          * @sample {highcharts} highcharts/demo/arearange/ Area range chart
@@ -1051,7 +1052,7 @@
 
             /**
              * Pixel width of the arearange graph line.
-             * 
+             *
              * @type {Number}
              * @default 1
              * @since 2.3.0
@@ -1075,7 +1076,7 @@
             /**
              * Whether the whole area or just the line should respond to mouseover
              * tooltips and other mouse or touch events.
-             * 
+             *
              * @type {Boolean}
              * @default true
              * @since 2.3.0
@@ -1088,7 +1089,7 @@
              * have no `x` and `y` options. Instead, they have `xLow`, `xHigh`,
              * `yLow` and `yHigh` options to allow the higher and lower data label
              * sets individually.
-             * 
+             *
              * @type {Object}
              * @extends plotOptions.series.dataLabels
              * @excluding x,y
@@ -1102,7 +1103,7 @@
 
                 /**
                  * X offset of the lower data labels relative to the point value.
-                 * 
+                 *
                  * @type {Number}
                  * @sample {highcharts} highcharts/plotoptions/arearange-datalabels/ Data labels on range series
                  * @sample {highstock} highcharts/plotoptions/arearange-datalabels/ Data labels on range series
@@ -1114,7 +1115,7 @@
 
                 /**
                  * X offset of the higher data labels relative to the point value.
-                 * 
+                 *
                  * @type {Number}
                  * @sample {highcharts} highcharts/plotoptions/arearange-datalabels/ Data labels on range series
                  * @sample {highstock} highcharts/plotoptions/arearange-datalabels/ Data labels on range series
@@ -1126,7 +1127,7 @@
 
                 /**
                  * Y offset of the lower data labels relative to the point value.
-                 * 
+                 *
                  * @type {Number}
                  * @sample {highcharts} highcharts/plotoptions/arearange-datalabels/ Data labels on range series
                  * @sample {highstock} highcharts/plotoptions/arearange-datalabels/ Data labels on range series
@@ -1138,7 +1139,7 @@
 
                 /**
                  * Y offset of the higher data labels relative to the point value.
-                 * 
+                 *
                  * @type {Number}
                  * @sample {highcharts} highcharts/plotoptions/arearange-datalabels/ Data labels on range series
                  * @sample {highstock} highcharts/plotoptions/arearange-datalabels/ Data labels on range series
@@ -1153,7 +1154,7 @@
              * Whether to apply a drop shadow to the graph line. Since 2.3 the shadow
              * can be an object configuration containing `color`, `offsetX`, `offsetY`,
              *  `opacity` and `width`.
-             * 
+             *
              * @type {Boolean|Object}
              * @product highcharts
              * @apioption plotOptions.arearange.shadow
@@ -1163,7 +1164,7 @@
         }, {
             pointArrayMap: ['low', 'high'],
             dataLabelCollections: ['dataLabel', 'dataLabelUpper'],
-            toYData: function(point) {
+            toYData: function (point) {
                 return [point.low, point.high];
             },
             pointValKey: 'low',
@@ -1174,7 +1175,7 @@
              * true plotHigh coordinates. This is an addition of the toXY method found in
              * Polar.js, because it runs too early for arearanges to be considered (#3419).
              */
-            highToXY: function(point) {
+            highToXY: function (point) {
                 // Find the polar plotX and plotY
                 var chart = this.chart,
                     xy = this.xAxis.postTranslate(point.rectPlotX, this.yAxis.len - point.plotHigh);
@@ -1186,7 +1187,7 @@
             /**
              * Translate data points from raw values x and y to plotX and plotY
              */
-            translate: function() {
+            translate: function () {
                 var series = this,
                     yAxis = series.yAxis,
                     hasModifyValue = !!series.modifyValue;
@@ -1194,7 +1195,7 @@
                 seriesTypes.area.prototype.translate.apply(series);
 
                 // Set plotLow and plotHigh
-                each(series.points, function(point) {
+                each(series.points, function (point) {
 
                     var low = point.low,
                         high = point.high,
@@ -1220,7 +1221,7 @@
 
                 // Postprocess plotHigh
                 if (this.chart.polar) {
-                    each(this.points, function(point) {
+                    each(this.points, function (point) {
                         series.highToXY(point);
                         point.tooltipPos = [
                             (point.plotHighX + point.plotLowX) / 2,
@@ -1234,7 +1235,7 @@
              * Extend the line series' getSegmentPath method by applying the segment
              * path to both lower and higher values of the range
              */
-            getGraphPath: function(points) {
+            getGraphPath: function (points) {
 
                 var highPoints = [],
                     highAreaPoints = [],
@@ -1338,7 +1339,7 @@
              * Extend the basic drawDataLabels method by running it for both lower and higher
              * values.
              */
-            drawDataLabels: function() {
+            drawDataLabels: function () {
 
                 var data = this.data,
                     length = data.length,
@@ -1433,11 +1434,11 @@
                 dataLabelOptions.verticalAlign = verticalAlign;
             },
 
-            alignDataLabel: function() {
+            alignDataLabel: function () {
                 seriesTypes.column.prototype.alignDataLabel.apply(this, arguments);
             },
 
-            drawPoints: function() {
+            drawPoints: function () {
                 var series = this,
                     pointLength = series.points.length,
                     point,
@@ -1476,7 +1477,7 @@
 
             setStackedPoints: noop
         }, {
-            setState: function() {
+            setState: function () {
                 var prevState = this.state,
                     series = this.series,
                     isPolar = series.chart.polar;
@@ -1528,7 +1529,7 @@
                     series.lowerStateMarkerGraphic = undefined;
                 }
             },
-            haloPath: function() {
+            haloPath: function () {
                 var isPolar = this.series.chart.polar,
                     path = [];
 
@@ -1551,7 +1552,7 @@
 
                 return path;
             },
-            destroy: function() {
+            destroy: function () {
                 if (this.upperGraphic) {
                     this.upperGraphic = this.upperGraphic.destroy();
                 }
@@ -1563,13 +1564,13 @@
         /**
          * A `arearange` series. If the [type](#series.arearange.type) option
          * is not specified, it is inherited from [chart.type](#chart.type).
-         * 
-         * 
+         *
+         *
          * For options that apply to multiple series, it is recommended to add
          * them to the [plotOptions.series](#plotOptions.series) options structure.
          * To apply to all series of this specific type, apply it to [plotOptions.
          * arearange](#plotOptions.arearange).
-         * 
+         *
          * @type {Object}
          * @extends series,plotOptions.arearange
          * @excluding dataParser,dataURL,stack
@@ -1580,7 +1581,7 @@
         /**
          * An array of data points for the series. For the `arearange` series
          * type, points can be given in the following ways:
-         * 
+         *
          * 1.  An array of arrays with 3 or 2 values. In this case, the values
          * correspond to `x,low,high`. If the first value is a string, it is
          * applied as the name of the point, and the `x` value is inferred.
@@ -1588,7 +1589,7 @@
          * should be of length 2\. Then the `x` value is automatically calculated,
          * either starting at 0 and incremented by 1, or from `pointStart`
          * and `pointInterval` given in the series options.
-         * 
+         *
          *  ```js
          *     data: [
          *         [0, 8, 3],
@@ -1596,12 +1597,12 @@
          *         [2, 6, 8]
          *     ]
          *  ```
-         * 
+         *
          * 2.  An array of objects with named values. The objects are point
          * configuration objects as seen below. If the total number of data
          * points exceeds the series' [turboThreshold](#series.arearange.turboThreshold),
          * this option is not available.
-         * 
+         *
          *  ```js
          *     data: [{
          *         x: 1,
@@ -1617,7 +1618,7 @@
          *         color: "#FF00FF"
          *     }]
          *  ```
-         * 
+         *
          * @type {Array<Object|Array>}
          * @extends series.line.data
          * @excluding marker,y
@@ -1632,7 +1633,7 @@
 
         /**
          * The high or maximum value for each data point.
-         * 
+         *
          * @type {Number}
          * @product highcharts highstock
          * @apioption series.arearange.data.high
@@ -1640,14 +1641,14 @@
 
         /**
          * The low or minimum value for each data point.
-         * 
+         *
          * @type {Number}
          * @product highcharts highstock
          * @apioption series.arearange.data.low
          */
 
     }(Highcharts));
-    (function(H) {
+    (function (H) {
         /**
          * (c) 2010-2017 Torstein Honsi
          *
@@ -1662,7 +1663,7 @@
          * lower Y values along an X axis. The area inside the range is colored, and
          * the graph outlining the area is a smoothed spline. Requires
          * `highcharts-more.js`.
-         * 
+         *
          * @extends plotOptions.arearange
          * @excluding step
          * @since 2.3.0
@@ -1679,12 +1680,12 @@
          * A `areasplinerange` series. If the [type](#series.areasplinerange.
          * type) option is not specified, it is inherited from [chart.type](#chart.
          * type).
-         * 
+         *
          * For options that apply to multiple series, it is recommended to add
          * them to the [plotOptions.series](#plotOptions.series) options structure.
          * To apply to all series of this specific type, apply it to [plotOptions.
          * areasplinerange](#plotOptions.areasplinerange).
-         * 
+         *
          * @type {Object}
          * @extends series,plotOptions.areasplinerange
          * @excluding dataParser,dataURL,stack
@@ -1695,7 +1696,7 @@
         /**
          * An array of data points for the series. For the `areasplinerange`
          * series type, points can be given in the following ways:
-         * 
+         *
          * 1.  An array of arrays with 3 or 2 values. In this case, the values
          * correspond to `x,low,high`. If the first value is a string, it is
          * applied as the name of the point, and the `x` value is inferred.
@@ -1703,7 +1704,7 @@
          * should be of length 2\. Then the `x` value is automatically calculated,
          * either starting at 0 and incremented by 1, or from `pointStart`
          * and `pointInterval` given in the series options.
-         * 
+         *
          *  ```js
          *     data: [
          *         [0, 0, 5],
@@ -1711,12 +1712,12 @@
          *         [2, 5, 2]
          *     ]
          *  ```
-         * 
+         *
          * 2.  An array of objects with named values. The objects are point
          * configuration objects as seen below. If the total number of data
          * points exceeds the series' [turboThreshold](#series.areasplinerange.
          * turboThreshold), this option is not available.
-         * 
+         *
          *  ```js
          *     data: [{
          *         x: 1,
@@ -1732,7 +1733,7 @@
          *         color: "#FF00FF"
          *     }]
          *  ```
-         * 
+         *
          * @type {Array<Object|Array>}
          * @extends series.arearange.data
          * @sample {highcharts} highcharts/chart/reflow-true/ Numerical values
@@ -1745,7 +1746,7 @@
          */
 
     }(Highcharts));
-    (function(H) {
+    (function (H) {
         /**
          * (c) 2010-2017 Torstein Honsi
          *
@@ -1809,12 +1810,11 @@
             defaultPlotOptions.column,
             defaultPlotOptions.arearange,
             columnRangeOptions
-
         ), {
             /**
              * Translate data points from raw values x and y to plotX and plotY
              */
-            translate: function() {
+            translate: function () {
                 var series = this,
                     yAxis = series.yAxis,
                     xAxis = series.xAxis,
@@ -1836,7 +1836,7 @@
                 colProto.translate.apply(series);
 
                 // Set plotLow and plotHigh
-                each(series.points, function(point) {
+                each(series.points, function (point) {
                     var shapeArgs = point.shapeArgs,
                         minPointLength = series.options.minPointLength,
                         heightDifference,
@@ -1901,16 +1901,16 @@
             pointAttribs: colProto.pointAttribs,
 
             // Overrides from modules that may be loaded after this module
-            animate: function() {
+            animate: function () {
                 return colProto.animate.apply(this, arguments);
             },
-            polarArc: function() {
+            polarArc: function () {
                 return colProto.polarArc.apply(this, arguments);
             },
-            translate3dPoints: function() {
+            translate3dPoints: function () {
                 return colProto.translate3dPoints.apply(this, arguments);
             },
-            translate3dShapes: function() {
+            translate3dShapes: function () {
                 return colProto.translate3dShapes.apply(this, arguments);
             }
         }, {
@@ -1990,7 +1990,7 @@
 
 
     }(Highcharts));
-    (function(H) {
+    (function (H) {
         /**
          * (c) 2010-2017 Torstein Honsi
          *
@@ -2007,7 +2007,7 @@
             TrackerMixin = H.TrackerMixin;
 
 
-        /** 
+        /**
          * Gauges are circular plots displaying one or more values with a dial pointing
          * to values along the perimeter.
          *
@@ -2022,7 +2022,7 @@
             /**
              * Data labels for the gauge. For gauges, the data labels are enabled
              * by default and shown in a bordered box below the point.
-             * 
+             *
              * @type {Object}
              * @extends plotOptions.series.dataLabels
              * @since 2.3.0
@@ -2032,7 +2032,7 @@
 
                 /**
                  * Enable or disable the data labels.
-                 * 
+                 *
                  * @type {Boolean}
                  * @since 2.3.0
                  * @product highcharts highmaps
@@ -2044,7 +2044,7 @@
                 /**
                  * The y position offset of the label relative to the center of the
                  * gauge.
-                 * 
+                 *
                  * @type {Number}
                  * @default 15
                  * @since 2.3.0
@@ -2054,7 +2054,7 @@
 
                 /**
                  * The border radius in pixels for the gauge's data label.
-                 * 
+                 *
                  * @type {Number}
                  * @default 3
                  * @since 2.3.0
@@ -2066,7 +2066,7 @@
 
                 /**
                  * The vertical alignment of the data label.
-                 * 
+                 *
                  * @type {String}
                  * @default top
                  * @product highcharts highmaps
@@ -2076,7 +2076,7 @@
                 /**
                  * The Z index of the data labels. A value of 2 display them behind
                  * the dial.
-                 * 
+                 *
                  * @type {Number}
                  * @default 2
                  * @since 2.1.5
@@ -2088,7 +2088,7 @@
 
                 /**
                  * The border width in pixels for the gauge data label.
-                 * 
+                 *
                  * @type {Number}
                  * @default 1
                  * @since 2.3.0
@@ -2098,7 +2098,7 @@
 
                 /**
                  * The border color for the data label.
-                 * 
+                 *
                  * @type {Color}
                  * @default #cccccc
                  * @since 2.3.0
@@ -2110,10 +2110,10 @@
 
             /**
              * Options for the dial or arrow pointer of the gauge.
-             * 
+             *
              * In styled mode, the dial is styled with the `.highcharts-gauge-
              * series .highcharts-dial` rule.
-             * 
+             *
              * @type {Object}
              * @sample {highcharts} highcharts/css/gauge/ Styled mode
              * @since 2.3.0
@@ -2126,7 +2126,7 @@
                 /**
                  * The length of the dial's base part, relative to the total radius
                  * or length of the dial.
-                 * 
+                 *
                  * @type {String}
                  * @sample {highcharts} highcharts/plotoptions/gauge-dial/
                  *         Dial options demonstrated
@@ -2139,7 +2139,7 @@
                 /**
                  * The pixel width of the base of the gauge dial. The base is the part
                  * closest to the pivot, defined by baseLength.
-                 * 
+                 *
                  * @type {Number}
                  * @sample {highcharts} highcharts/plotoptions/gauge-dial/
                  *         Dial options demonstrated
@@ -2152,7 +2152,7 @@
                 /**
                  * The radius or length of the dial, in percentages relative to the
                  * radius of the gauge itself.
-                 * 
+                 *
                  * @type {String}
                  * @sample {highcharts} highcharts/plotoptions/gauge-dial/
                  *         Dial options demonstrated
@@ -2165,7 +2165,7 @@
                 /**
                  * The length of the dial's rear end, the part that extends out on the
                  * other side of the pivot. Relative to the dial's length.
-                 * 
+                 *
                  * @type {String}
                  * @sample {highcharts} highcharts/plotoptions/gauge-dial/ Dial options demonstrated
                  * @default 10%
@@ -2177,7 +2177,7 @@
                 /**
                  * The width of the top of the dial, closest to the perimeter. The pivot
                  * narrows in from the base to the top.
-                 * 
+                 *
                  * @type {Number}
                  * @sample {highcharts} highcharts/plotoptions/gauge-dial/ Dial options demonstrated
                  * @default 1
@@ -2190,7 +2190,7 @@
 
                 /**
                  * The background or fill color of the gauge's dial.
-                 * 
+                 *
                  * @type {Color}
                  * @sample {highcharts} highcharts/plotoptions/gauge-dial/ Dial options demonstrated
                  * @default #000000
@@ -2202,7 +2202,7 @@
                 /**
                  * The border color or stroke of the gauge's dial. By default, the borderWidth
                  * is 0, so this must be set in addition to a custom border color.
-                 * 
+                 *
                  * @type {Color}
                  * @sample {highcharts} highcharts/plotoptions/gauge-dial/ Dial options demonstrated
                  * @default #cccccc
@@ -2213,7 +2213,7 @@
 
                 /**
                  * The width of the gauge dial border in pixels.
-                 * 
+                 *
                  * @type {Number}
                  * @sample {highcharts} highcharts/plotoptions/gauge-dial/ Dial options demonstrated
                  * @default 0
@@ -2229,7 +2229,7 @@
              * Allow the dial to overshoot the end of the perimeter axis by this
              * many degrees. Say if the gauge axis goes from 0 to 60, a value of
              * 100, or 1000, will show 5 degrees beyond the end of the axis.
-             * 
+             *
              * @type {Number}
              * @see [wrap](#plotOptions.gauge.wrap)
              * @sample {highcharts} highcharts/plotoptions/gauge-overshoot/
@@ -2242,10 +2242,10 @@
 
             /**
              * Options for the pivot or the center point of the gauge.
-             * 
+             *
              * In styled mode, the pivot is styled with the `.highcharts-gauge-
              * series .highcharts-pivot` rule.
-             * 
+             *
              * @type {Object}
              * @sample {highcharts} highcharts/css/gauge/ Styled mode
              * @since 2.3.0
@@ -2255,7 +2255,7 @@
 
                 /**
                  * The pixel radius of the pivot.
-                 * 
+                 *
                  * @type {Number}
                  * @sample {highcharts} highcharts/plotoptions/gauge-pivot/ Pivot options demonstrated
                  * @default 5
@@ -2268,7 +2268,7 @@
 
                 /**
                  * The border or stroke width of the pivot.
-                 * 
+                 *
                  * @type {Number}
                  * @sample {highcharts} highcharts/plotoptions/gauge-pivot/ Pivot options demonstrated
                  * @default 0
@@ -2281,7 +2281,7 @@
                  * The border or stroke color of the pivot. In able to change this,
                  * the borderWidth must also be set to something other than the default
                  * 0.
-                 * 
+                 *
                  * @type {Color}
                  * @sample {highcharts} highcharts/plotoptions/gauge-pivot/ Pivot options demonstrated
                  * @default #cccccc
@@ -2292,7 +2292,7 @@
 
                 /**
                  * The background color or fill of the pivot.
-                 * 
+                 *
                  * @type {Color}
                  * @sample {highcharts} highcharts/plotoptions/gauge-pivot/ Pivot options demonstrated
                  * @default #000000
@@ -2310,7 +2310,7 @@
             /**
              * Whether to display this particular series or series type in the
              * legend. Defaults to false for gauge series.
-             * 
+             *
              * @type {Boolean}
              * @since 2.3.0
              * @product highcharts
@@ -2321,7 +2321,7 @@
              * When this option is `true`, the dial will wrap around the axes. For
              * instance, in a full-range gauge going from 0 to 360, a value of 400
              * will point to 40\. When `wrap` is `false`, the dial stops at 360.
-             * 
+             *
              * @type {Boolean}
              * @see [overshoot](#plotOptions.gauge.overshoot)
              * @default true
@@ -2347,7 +2347,7 @@
             /**
              * Calculate paths etc
              */
-            translate: function() {
+            translate: function () {
 
                 var series = this,
                     yAxis = series.yAxis,
@@ -2356,7 +2356,7 @@
 
                 series.generatePoints();
 
-                each(series.points, function(point) {
+                each(series.points, function (point) {
 
                     var dialOptions = merge(options.dial, point.dial),
                         radius = (pInt(pick(dialOptions.radius, 80)) * center[2]) / 200,
@@ -2403,7 +2403,7 @@
             /**
              * Draw the points where each point is one needle
              */
-            drawPoints: function() {
+            drawPoints: function () {
 
                 var series = this,
                     center = series.yAxis.center,
@@ -2412,7 +2412,7 @@
                     pivotOptions = options.pivot,
                     renderer = series.chart.renderer;
 
-                each(series.points, function(point) {
+                each(series.points, function (point) {
 
                     var graphic = point.graphic,
                         shapeArgs = point.shapeArgs,
@@ -2471,11 +2471,11 @@
             /**
              * Animate the arrow up from startAngle
              */
-            animate: function(init) {
+            animate: function (init) {
                 var series = this;
 
                 if (!init) {
-                    each(series.points, function(point) {
+                    each(series.points, function (point) {
                         var graphic = point.graphic;
 
                         if (graphic) {
@@ -2496,7 +2496,7 @@
                 }
             },
 
-            render: function() {
+            render: function () {
                 this.group = this.plotGroup(
                     'group',
                     'series',
@@ -2512,7 +2512,7 @@
              * Extend the basic setData method by running processData and generatePoints immediately,
              * in order to access the points from the legend.
              */
-            setData: function(data, redraw) {
+            setData: function (data, redraw) {
                 Series.prototype.setData.call(this, data, false);
                 this.processData();
                 this.generatePoints();
@@ -2531,7 +2531,7 @@
             /**
              * Don't do any hover colors or anything
              */
-            setState: function(state) {
+            setState: function (state) {
                 this.state = state;
             }
         });
@@ -2539,12 +2539,12 @@
         /**
          * A `gauge` series. If the [type](#series.gauge.type) option is not
          * specified, it is inherited from [chart.type](#chart.type).
-         * 
+         *
          * For options that apply to multiple series, it is recommended to add
          * them to the [plotOptions.series](#plotOptions.series) options structure.
          * To apply to all series of this specific type, apply it to [plotOptions.
          * gauge](#plotOptions.gauge).
-         * 
+         *
          * @type {Object}
          * @extends series,plotOptions.gauge
          * @excluding dataParser,dataURL,stack
@@ -2555,19 +2555,19 @@
         /**
          * An array of data points for the series. For the `gauge` series type,
          * points can be given in the following ways:
-         * 
+         *
          * 1.  An array of numerical values. In this case, the numerical values
          * will be interpreted as `y` options. Example:
-         * 
+         *
          *  ```js
          *  data: [0, 5, 3, 5]
          *  ```
-         * 
+         *
          * 2.  An array of objects with named values. The objects are point
          * configuration objects as seen below. If the total number of data
          * points exceeds the series' [turboThreshold](#series.gauge.turboThreshold),
          * this option is not available.
-         * 
+         *
          *  ```js
          *     data: [{
          *     y: 6,
@@ -2578,9 +2578,9 @@
          *     name: "Point1",
          *     color: "#FF00FF"
          * }]</pre>
-         * 
+         *
          * The typical gauge only contains a single data value.
-         * 
+         *
          * @type {Array<Object|Number>}
          * @extends series.line.data
          * @excluding drilldown,marker,x
@@ -2594,7 +2594,7 @@
          */
 
     }(Highcharts));
-    (function(H) {
+    (function (H) {
         /**
          * (c) 2010-2017 Torstein Honsi
          *
@@ -2618,7 +2618,7 @@
          * five-number summaries: the smallest observation (sample minimum), lower
          * quartile (Q1), median (Q2), upper quartile (Q3), and largest observation
          * (sample maximum).
-         * 
+         *
          * @sample highcharts/demo/box-plot/ Box plot
          * @extends {plotOptions.column}
          * @product highcharts
@@ -2632,11 +2632,11 @@
 
 
                 pointFormat: '<span style="color:{point.color}">\u25CF</span> <b> {series.name}</b><br/>' + // eslint-disable-line no-dupe-keys
-                    'Maximum: {point.high}<br/>' +
-                    'Upper quartile: {point.q3}<br/>' +
-                    'Median: {point.median}<br/>' +
-                    'Lower quartile: {point.q1}<br/>' +
-                    'Minimum: {point.low}<br/>'
+                'Maximum: {point.high}<br/>' +
+                'Upper quartile: {point.q3}<br/>' +
+                'Median: {point.median}<br/>' +
+                'Lower quartile: {point.q1}<br/>' +
+                'Minimum: {point.low}<br/>'
 
             },
 
@@ -2644,7 +2644,7 @@
              * The length of the whiskers, the horizontal lines marking low and
              * high values. It can be a numerical pixel value, or a percentage
              * value of the box width. Set `0` to disable whiskers.
-             * 
+             *
              * @type {Number|String}
              * @sample {highcharts} highcharts/plotoptions/box-plot-styling/
              *         True by default
@@ -2657,7 +2657,7 @@
 
             /**
              * The fill color of the box.
-             * 
+             *
              * @type {Color}
              * @see In styled mode, the fill color can be set with the
              * `.highcharts-boxplot-box` class.
@@ -2674,7 +2674,7 @@
              * boxplot.stemWidth), [medianWidth](#plotOptions.boxplot.medianWidth)
              * or [whiskerWidth](#plotOptions.boxplot.whiskerWidth) are `null`,
              *  the lineWidth also applies to these lines.
-             * 
+             *
              * @type {Number}
              * @sample {highcharts} highcharts/plotoptions/box-plot-styling/
              *         Box plot styling
@@ -2689,11 +2689,11 @@
             /**
              * The color of the median line. If `null`, the general series color
              * applies.
-             * 
+             *
              * @type {Color}
              * @see In styled mode, the median stroke width can be set with the
              * `.highcharts-boxplot-median` class.
-             * 
+             *
              * @sample {highcharts} highcharts/plotoptions/box-plot-styling/
              *         Box plot styling
              * @sample {highcharts} highcharts/css/boxplot/
@@ -2709,7 +2709,7 @@
             /**
              * The pixel width of the median line. If `null`, the [lineWidth](#plotOptions.
              * boxplot.lineWidth) is used.
-             * 
+             *
              * @type {Number}
              * @see In styled mode, the median stroke width can be set with the
              * `.highcharts-boxplot-median` class.
@@ -2731,7 +2731,7 @@
             /**
              * The color of the stem, the vertical line extending from the box to
              * the whiskers. If `null`, the series color is used.
-             * 
+             *
              * @type {Color}
              * @see In styled mode, the stem stroke can be set with the `.highcharts-boxplot-stem` class.
              * @sample {highcharts} highcharts/plotoptions/box-plot-styling/
@@ -2749,7 +2749,7 @@
             /**
              * The dash style of the stem, the vertical line extending from the
              * box to the whiskers.
-             * 
+             *
              * @validvalue ["Solid", "ShortDash", "ShortDot", "ShortDashDot",
              *         "ShortDashDotDot", "Dot", "Dash" ,"LongDash", "DashDot",
              *         "LongDashDot", "LongDashDotDot"]
@@ -2770,7 +2770,7 @@
              * The width of the stem, the vertical line extending from the box to
              * the whiskers. If `null`, the width is inherited from the [lineWidth](#plotOptions.
              * boxplot.lineWidth) option.
-             * 
+             *
              * @type {Number}
              * @see In styled mode, the stem stroke width can be set with the `.
              * highcharts-boxplot-stem` class.
@@ -2789,7 +2789,7 @@
             /**
              * The color of the whiskers, the horizontal lines marking low and high
              * values. When `null`, the general series color is used.
-             * 
+             *
              * @type {Color}
              * @see In styled mode, the whisker stroke can be set with the `.highcharts-boxplot-whisker` class .
              * @sample {highcharts} highcharts/plotoptions/box-plot-styling/
@@ -2806,11 +2806,11 @@
              * The line width of the whiskers, the horizontal lines marking low
              * and high values. When `null`, the general [lineWidth](#plotOptions.
              * boxplot.lineWidth) applies.
-             * 
+             *
              * @type {Number}
              * @see In styled mode, the whisker stroke width can be set with the
              * `.highcharts-boxplot-whisker` class.
-             * 
+             *
              * @sample {highcharts} highcharts/plotoptions/box-plot-styling/
              *         Box plot styling
              * @sample {highcharts} highcharts/css/boxplot/
@@ -2823,7 +2823,7 @@
 
         }, /** @lends seriesTypes.boxplot */ {
             pointArrayMap: ['low', 'q1', 'median', 'q3', 'high'], // array point configs are mapped to this
-            toYData: function(point) { // return a plain array for speedy calculation
+            toYData: function (point) { // return a plain array for speedy calculation
                 return [point.low, point.q1, point.median, point.q3, point.high];
             },
             pointValKey: 'high', // defines the top of the tracker
@@ -2832,7 +2832,7 @@
             /**
              * Get presentational attributes
              */
-            pointAttribs: function(point) {
+            pointAttribs: function (point) {
                 var options = this.options,
                     color = (point && point.color) || this.color;
 
@@ -2852,7 +2852,7 @@
             /**
              * Translate data points from raw values x and y to plotX and plotY
              */
-            translate: function() {
+            translate: function () {
                 var series = this,
                     yAxis = series.yAxis,
                     pointArrayMap = series.pointArrayMap;
@@ -2860,8 +2860,8 @@
                 seriesTypes.column.prototype.translate.apply(series);
 
                 // do the translation on each point dimension
-                each(series.points, function(point) {
-                    each(pointArrayMap, function(key) {
+                each(series.points, function (point) {
+                    each(pointArrayMap, function (key) {
                         if (point[key] !== null) {
                             point[key + 'Plot'] = yAxis.translate(point[key], 0, 1, 0, 1);
                         }
@@ -2872,7 +2872,7 @@
             /**
              * Draw the data points
              */
-            drawPoints: function() {
+            drawPoints: function () {
                 var series = this,
                     points = series.points,
                     options = series.options,
@@ -2896,7 +2896,7 @@
                     whiskerLength = series.options.whiskerLength;
 
 
-                each(points, function(point) {
+                each(points, function (point) {
 
                     var graphic = point.graphic,
                         verb = graphic ? 'animate' : 'attr',
@@ -2946,10 +2946,6 @@
                         }
 
 
-
-
-
-
                         // Stem attributes
                         stemAttr.stroke = point.stemColor || options.stemColor || color;
                         stemAttr['stroke-width'] = pick(point.stemWidth, options.stemWidth, options.lineWidth);
@@ -2973,9 +2969,6 @@
                         medianAttr.stroke = point.medianColor || options.medianColor || color;
                         medianAttr['stroke-width'] = pick(point.medianWidth, options.medianWidth, options.lineWidth);
                         point.medianShape.attr(medianAttr);
-
-
-
 
 
                         // The stem
@@ -3075,12 +3068,12 @@
         /**
          * A `boxplot` series. If the [type](#series.boxplot.type) option is
          * not specified, it is inherited from [chart.type](#chart.type).
-         * 
+         *
          * For options that apply to multiple series, it is recommended to add
          * them to the [plotOptions.series](#plotOptions.series) options structure.
          * To apply to all series of this specific type, apply it to [plotOptions.
          * boxplot](#plotOptions.boxplot).
-         * 
+         *
          * @type {Object}
          * @extends series,plotOptions.boxplot
          * @excluding dataParser,dataURL,stack
@@ -3091,7 +3084,7 @@
         /**
          * An array of data points for the series. For the `boxplot` series
          * type, points can be given in the following ways:
-         * 
+         *
          * 1.  An array of arrays with 6 or 5 values. In this case, the values
          * correspond to `x,low,q1,median,q3,high`. If the first value is a
          * string, it is applied as the name of the point, and the `x` value
@@ -3099,7 +3092,7 @@
          * inner arrays should be of length 5\. Then the `x` value is automatically
          * calculated, either starting at 0 and incremented by 1, or from `pointStart`
          * and `pointInterval` given in the series options.
-         * 
+         *
          *  ```js
          *     data: [
          *         [0, 3, 0, 10, 3, 5],
@@ -3107,12 +3100,12 @@
          *         [2, 6, 9, 5, 1, 3]
          *     ]
          *  ```
-         * 
+         *
          * 2.  An array of objects with named values. The objects are point
          * configuration objects as seen below. If the total number of data
          * points exceeds the series' [turboThreshold](#series.boxplot.turboThreshold),
          * this option is not available.
-         * 
+         *
          *  ```js
          *     data: [{
          *         x: 1,
@@ -3134,7 +3127,7 @@
          *         color: "#FF00FF"
          *     }]
          *  ```
-         * 
+         *
          * @type {Array<Object|Array>}
          * @extends series.line.data
          * @excluding marker
@@ -3150,7 +3143,7 @@
         /**
          * The `high` value for each data point, signifying the highest value
          * in the sample set. The top whisker is drawn here.
-         * 
+         *
          * @type {Number}
          * @product highcharts
          * @apioption series.boxplot.data.high
@@ -3159,7 +3152,7 @@
         /**
          * The `low` value for each data point, signifying the lowest value
          * in the sample set. The bottom whisker is drawn here.
-         * 
+         *
          * @type {Number}
          * @product highcharts
          * @apioption series.boxplot.data.low
@@ -3168,7 +3161,7 @@
         /**
          * The median for each data point. This is drawn as a line through the
          * middle area of the box.
-         * 
+         *
          * @type {Number}
          * @product highcharts
          * @apioption series.boxplot.data.median
@@ -3177,7 +3170,7 @@
         /**
          * The lower quartile for each data point. This is the bottom of the
          * box.
-         * 
+         *
          * @type {Number}
          * @product highcharts
          * @apioption series.boxplot.data.q1
@@ -3185,7 +3178,7 @@
 
         /**
          * The higher quartile for each data point. This is the top of the box.
-         * 
+         *
          * @type {Number}
          * @product highcharts
          * @apioption series.boxplot.data.q3
@@ -3193,7 +3186,7 @@
 
 
     }(Highcharts));
-    (function(H) {
+    (function (H) {
         /**
          * (c) 2010-2017 Torstein Honsi
          *
@@ -3204,7 +3197,7 @@
             seriesType = H.seriesType,
             seriesTypes = H.seriesTypes;
 
-        /**  
+        /**
          * Error bars are a graphical representation of the variability of data and are
          * used on graphs to indicate the error, or uncertainty in a reported
          * measurement.
@@ -3221,7 +3214,7 @@
              * The main color of the bars. This can be overridden by [stemColor](#plotOptions.
              * errorbar.stemColor) and [whiskerColor](#plotOptions.errorbar.whiskerColor)
              * individually.
-             * 
+             *
              * @type {Color}
              * @sample {highcharts} highcharts/plotoptions/error-bar-styling/ Error bar styling
              * @default #000000
@@ -3236,7 +3229,7 @@
             /**
              * The parent series of the error bar. The default value links it to
              * the previous series. Otherwise, use the id of the parent series.
-             * 
+             *
              * @type {String}
              * @default :previous
              * @since 3.0
@@ -3252,7 +3245,7 @@
              * The line width of the whiskers, the horizontal lines marking low
              * and high values. When `null`, the general [lineWidth](#plotOptions.
              * errorbar.lineWidth) applies.
-             * 
+             *
              * @type {Number}
              * @sample {highcharts} highcharts/plotoptions/error-bar-styling/ Error bar styling
              * @default null
@@ -3265,16 +3258,16 @@
         }, {
             type: 'errorbar',
             pointArrayMap: ['low', 'high'], // array point configs are mapped to this
-            toYData: function(point) { // return a plain array for speedy calculation
+            toYData: function (point) { // return a plain array for speedy calculation
                 return [point.low, point.high];
             },
             pointValKey: 'high', // defines the top of the tracker
             doQuartiles: false,
-            drawDataLabels: seriesTypes.arearange ? function() {
+            drawDataLabels: seriesTypes.arearange ? function () {
                 var valKey = this.pointValKey;
                 seriesTypes.arearange.prototype.drawDataLabels.call(this);
                 // Arearange drawDataLabels does not reset point.y to high, but to low after drawing. #4133 
-                each(this.data, function(point) {
+                each(this.data, function (point) {
                     point.y = point[valKey];
                 });
             } : noop,
@@ -3283,7 +3276,7 @@
              * Get the width and X offset, either on top of the linked series column
              * or standalone
              */
-            getColumnMetrics: function() {
+            getColumnMetrics: function () {
                 return (this.linkedParent && this.linkedParent.columnMetrics) ||
                     seriesTypes.column.prototype.getColumnMetrics.call(this);
             }
@@ -3292,13 +3285,13 @@
         /**
          * A `errorbar` series. If the [type](#series.errorbar.type) option
          * is not specified, it is inherited from [chart.type](#chart.type).
-         * 
-         * 
+         *
+         *
          * For options that apply to multiple series, it is recommended to add
          * them to the [plotOptions.series](#plotOptions.series) options structure.
          * To apply to all series of this specific type, apply it to [plotOptions.
          * errorbar](#plotOptions.errorbar).
-         * 
+         *
          * @type {Object}
          * @extends series,plotOptions.errorbar
          * @excluding dataParser,dataURL,stack
@@ -3309,7 +3302,7 @@
         /**
          * An array of data points for the series. For the `errorbar` series
          * type, points can be given in the following ways:
-         * 
+         *
          * 1.  An array of arrays with 3 or 2 values. In this case, the values
          * correspond to `x,low,high`. If the first value is a string, it is
          * applied as the name of the point, and the `x` value is inferred.
@@ -3317,7 +3310,7 @@
          * should be of length 2\. Then the `x` value is automatically calculated,
          * either starting at 0 and incremented by 1, or from `pointStart`
          * and `pointInterval` given in the series options.
-         * 
+         *
          *  ```js
          *     data: [
          *         [0, 10, 2],
@@ -3325,12 +3318,12 @@
          *         [2, 4, 5]
          *     ]
          *  ```
-         * 
+         *
          * 2.  An array of objects with named values. The objects are point
          * configuration objects as seen below. If the total number of data
          * points exceeds the series' [turboThreshold](#series.errorbar.turboThreshold),
          * this option is not available.
-         * 
+         *
          *  ```js
          *     data: [{
          *         x: 1,
@@ -3346,7 +3339,7 @@
          *         color: "#FF00FF"
          *     }]
          *  ```
-         * 
+         *
          * @type {Array<Object|Array>}
          * @extends series.arearange.data
          * @excluding dataLabels,drilldown,marker
@@ -3360,7 +3353,7 @@
          */
 
     }(Highcharts));
-    (function(H) {
+    (function (H) {
         /**
          * (c) 2010-2017 Torstein Honsi
          *
@@ -3392,7 +3385,7 @@
 
             /**
              * The width of the line connecting waterfall columns.
-             * 
+             *
              * @type {Number}
              * @default 1
              * @product highcharts
@@ -3401,10 +3394,10 @@
 
             /**
              * The color of the line that connects columns in a waterfall series.
-             * 
-             * 
+             *
+             *
              * In styled mode, the stroke can be set with the `.highcharts-graph` class.
-             * 
+             *
              * @type {Color}
              * @default #333333
              * @since 3.0
@@ -3415,7 +3408,7 @@
             /**
              * A name for the dash style to use for the line connecting the columns
              * of the waterfall series. Possible values:
-             * 
+             *
              * *   Solid
              * *   ShortDash
              * *   ShortDot
@@ -3427,10 +3420,10 @@
              * *   DashDot
              * *   LongDashDot
              * *   LongDashDotDot
-             * 
+             *
              * In styled mode, the stroke dash-array can be set with the `.
              * highcharts-graph` class.
-             * 
+             *
              * @type {String}
              * @default Dot
              * @since 3.0
@@ -3440,9 +3433,9 @@
 
             /**
              * The color of the border of each waterfall column.
-             * 
+             *
              * In styled mode, the border stroke can be set with the `.highcharts-point` class.
-             * 
+             *
              * @type {Color}
              * @default #333333
              * @since 3.0
@@ -3460,11 +3453,11 @@
             /**
              * The color used specifically for positive point columns. When not
              * specified, the general series color is used.
-             * 
+             *
              * In styled mode, the waterfall colors can be set with the
              * `.highcharts-point-negative`, `.highcharts-sum` and
              * `.highcharts-intermediate-sum` classes.
-             * 
+             *
              * @type {Color}
              * @sample {highcharts} highcharts/demo/waterfall/ Waterfall
              * @product highcharts
@@ -3478,7 +3471,7 @@
             /**
              * Translate data points from raw values
              */
-            translate: function() {
+            translate: function () {
                 var series = this,
                     options = series.options,
                     yAxis = series.yAxis,
@@ -3592,7 +3585,7 @@
             /**
              * Call default processData then override yData to reflect waterfall's extremes on yAxis
              */
-            processData: function(force) {
+            processData: function (force) {
                 var series = this,
                     options = series.options,
                     yData = series.yData,
@@ -3637,7 +3630,7 @@
             /**
              * Return y value or string if point is sum
              */
-            toYData: function(pt) {
+            toYData: function (pt) {
                 if (pt.isSum) {
                     return (pt.x === 0 ? null : 'sum'); // #3245 Error when first element is Sum or Intermediate Sum
                 }
@@ -3651,7 +3644,7 @@
             /**
              * Postprocess mapping between options and SVG attributes
              */
-            pointAttribs: function(point, state) {
+            pointAttribs: function (point, state) {
 
                 var upColor = this.options.upColor,
                     attr;
@@ -3672,17 +3665,17 @@
 
 
             /**
-             * Return an empty path initially, because we need to know the stroke-width in order 
+             * Return an empty path initially, because we need to know the stroke-width in order
              * to set the final path.
              */
-            getGraphPath: function() {
+            getGraphPath: function () {
                 return ['M', 0, 0];
             },
 
             /**
              * Draw columns' connector lines
              */
-            getCrispPath: function() {
+            getCrispPath: function () {
 
                 var data = this.data,
                     length = data.length,
@@ -3726,7 +3719,7 @@
              * The graph is initally drawn with an empty definition, then updated with
              * crisp rendering.
              */
-            drawGraph: function() {
+            drawGraph: function () {
                 Series.prototype.drawGraph.call(this);
                 this.graph.attr({
                     d: this.getCrispPath()
@@ -3736,7 +3729,7 @@
             /**
              * Waterfall has stacking along the x-values too.
              */
-            setStackedPoints: function() {
+            setStackedPoints: function () {
                 var series = this,
                     options = series.options,
                     stackedYLength,
@@ -3761,7 +3754,7 @@
              * Extremes for a non-stacked series are recorded in processData.
              * In case of stacking, use Series.stackedYData to calculate extremes.
              */
-            getExtremes: function() {
+            getExtremes: function () {
                 if (this.options.stacking) {
                     return Series.prototype.getExtremes.apply(this, arguments);
                 }
@@ -3770,7 +3763,7 @@
 
             // Point members
         }, {
-            getClassName: function() {
+            getClassName: function () {
                 var className = Point.prototype.getClassName.call(this);
 
                 if (this.isSum) {
@@ -3783,7 +3776,7 @@
             /**
              * Pass the null test in ColumnSeries.translate.
              */
-            isValid: function() {
+            isValid: function () {
                 return isNumber(this.y, true) || this.isSum || this.isIntermediateSum;
             }
 
@@ -3792,13 +3785,13 @@
         /**
          * A `waterfall` series. If the [type](#series.waterfall.type) option
          * is not specified, it is inherited from [chart.type](#chart.type).
-         * 
-         * 
+         *
+         *
          * For options that apply to multiple series, it is recommended to add
          * them to the [plotOptions.series](#plotOptions.series) options structure.
          * To apply to all series of this specific type, apply it to [plotOptions.
          * waterfall](#plotOptions.waterfall).
-         * 
+         *
          * @type {Object}
          * @extends series,plotOptions.waterfall
          * @excluding dataParser,dataURL
@@ -3809,21 +3802,21 @@
         /**
          * An array of data points for the series. For the `waterfall` series
          * type, points can be given in the following ways:
-         * 
+         *
          * 1.  An array of numerical values. In this case, the numerical values
          * will be interpreted as `y` options. The `x` values will be automatically
          * calculated, either starting at 0 and incremented by 1, or from `pointStart`
          * and `pointInterval` given in the series options. If the axis has
          * categories, these will be used. Example:
-         * 
+         *
          *  ```js
          *  data: [0, 5, 3, 5]
          *  ```
-         * 
+         *
          * 2.  An array of arrays with 2 values. In this case, the values correspond
          * to `x,y`. If the first value is a string, it is applied as the name
          * of the point, and the `x` value is inferred.
-         * 
+         *
          *  ```js
          *     data: [
          *         [0, 7],
@@ -3831,12 +3824,12 @@
          *         [2, 3]
          *     ]
          *  ```
-         * 
+         *
          * 3.  An array of objects with named values. The objects are point
          * configuration objects as seen below. If the total number of data
          * points exceeds the series' [turboThreshold](#series.waterfall.turboThreshold),
          * this option is not available.
-         * 
+         *
          *  ```js
          *     data: [{
          *         x: 1,
@@ -3850,7 +3843,7 @@
          *         color: "#FF00FF"
          *     }]
          *  ```
-         * 
+         *
          * @type {Array<Object|Array|Number>}
          * @extends series.line.data
          * @excluding marker
@@ -3868,7 +3861,7 @@
          * When this property is true, the points acts as a summary column for
          * the values added or substracted since the last intermediate sum,
          * or since the start of the series. The `y` value is ignored.
-         * 
+         *
          * @type {Boolean}
          * @sample {highcharts} highcharts/demo/waterfall/ Waterfall
          * @default false
@@ -3879,7 +3872,7 @@
         /**
          * When this property is true, the point display the total sum across
          * the entire series. The `y` value is ignored.
-         * 
+         *
          * @type {Boolean}
          * @sample {highcharts} highcharts/demo/waterfall/ Waterfall
          * @default false
@@ -3888,7 +3881,7 @@
          */
 
     }(Highcharts));
-    (function(H) {
+    (function (H) {
         /**
          * (c) 2010-2017 Torstein Honsi
          *
@@ -3905,7 +3898,7 @@
          * coordinate system. A fill is applied with the `color` option, and
          * stroke is applied through `lineWidth` and `lineColor` options. Requires
          * the `highcharts-more.js` file.
-         * 
+         *
          * @type {Object}
          * @extends plotOptions.scatter
          * @excluding softThreshold,threshold
@@ -3934,7 +3927,7 @@
             // Prototype members
         }, {
             type: 'polygon',
-            getGraphPath: function() {
+            getGraphPath: function () {
 
                 var graphPath = Series.prototype.getGraphPath.call(this),
                     i = graphPath.length + 1;
@@ -3948,7 +3941,7 @@
                 this.areaPath = graphPath;
                 return graphPath;
             },
-            drawGraph: function() {
+            drawGraph: function () {
 
                 this.options.fillColor = this.color; // Hack into the fill logic in area.drawGraph
 
@@ -3960,16 +3953,15 @@
         });
 
 
-
         /**
          * A `polygon` series. If the [type](#series.polygon.type) option is
          * not specified, it is inherited from [chart.type](#chart.type).
-         * 
+         *
          * For options that apply to multiple series, it is recommended to add
          * them to the [plotOptions.series](#plotOptions.series) options structure.
          * To apply to all series of this specific type, apply it to [plotOptions.
          * polygon](#plotOptions.polygon).
-         * 
+         *
          * @type {Object}
          * @extends series,plotOptions.polygon
          * @excluding dataParser,dataURL,stack
@@ -3980,21 +3972,21 @@
         /**
          * An array of data points for the series. For the `polygon` series
          * type, points can be given in the following ways:
-         * 
+         *
          * 1.  An array of numerical values. In this case, the numerical values
          * will be interpreted as `y` options. The `x` values will be automatically
          * calculated, either starting at 0 and incremented by 1, or from `pointStart`
          * and `pointInterval` given in the series options. If the axis has
          * categories, these will be used. Example:
-         * 
+         *
          *  ```js
          *  data: [0, 5, 3, 5]
          *  ```
-         * 
+         *
          * 2.  An array of arrays with 2 values. In this case, the values correspond
          * to `x,y`. If the first value is a string, it is applied as the name
          * of the point, and the `x` value is inferred.
-         * 
+         *
          *  ```js
          *     data: [
          *         [0, 10],
@@ -4002,12 +3994,12 @@
          *         [2, 1]
          *     ]
          *  ```
-         * 
+         *
          * 3.  An array of objects with named values. The objects are point
          * configuration objects as seen below. If the total number of data
          * points exceeds the series' [turboThreshold](#series.polygon.turboThreshold),
          * this option is not available.
-         * 
+         *
          *  ```js
          *     data: [{
          *         x: 1,
@@ -4021,7 +4013,7 @@
          *         color: "#FF00FF"
          *     }]
          *  ```
-         * 
+         *
          * @type {Array<Object|Array>}
          * @extends series.line.data
          * @sample {highcharts} highcharts/chart/reflow-true/ Numerical values
@@ -4034,7 +4026,7 @@
          */
 
     }(Highcharts));
-    (function(H) {
+    (function (H) {
         /**
          * (c) 2010-2017 Torstein Honsi
          *
@@ -4069,7 +4061,7 @@
         seriesType('bubble', 'scatter', {
 
             dataLabels: {
-                formatter: function() { // #2945
+                formatter: function () { // #2945
                     return this.point.z;
                 },
                 inside: true,
@@ -4081,7 +4073,7 @@
              * by the [zThreshold](#plotOptions.bubble.zThreshold) option, and negative
              * bubbles can be visualized by setting [negativeColor](#plotOptions.
              * bubble.negativeColor).
-             * 
+             *
              * @type {Boolean}
              * @sample {highcharts} highcharts/plotoptions/bubble-negative/
              *         Negative bubbles
@@ -4096,10 +4088,10 @@
              * `fillColor`, `lineColor` and `lineWidth` define the visual appearance
              * of the markers. Other series types, like column series, don't have
              * markers, but have visual options on the series level instead.
-             * 
+             *
              * In styled mode, the markers can be styled with the `.highcharts-point`, `.highcharts-point-hover` and `.highcharts-point-select`
              * class names.
-             * 
+             *
              * @type {Object}
              * @extends plotOptions.series.marker
              * @excluding enabled,height,radius,width
@@ -4117,7 +4109,7 @@
                  */
 
                 /**
-                 * In bubble charts, the radius is overridden and determined based on 
+                 * In bubble charts, the radius is overridden and determined based on
                  * the point's data value.
                  */
                 radius: null,
@@ -4130,15 +4122,15 @@
                 /**
                  * A predefined shape or symbol for the marker. Possible values are
                  * "circle", "square", "diamond", "triangle" and "triangle-down".
-                 * 
+                 *
                  * Additionally, the URL to a graphic can be given on the form
                  * `url(graphic.png)`. Note that for the image to be applied to exported
                  * charts, its URL needs to be accessible by the export server.
-                 * 
+                 *
                  * Custom callbacks for symbol path generation can also be added to
                  * `Highcharts.SVGRenderer.prototype.symbols`. The callback is then
                  * used by its method name, as shown in the demo.
-                 * 
+                 *
                  * @validvalue ["circle", "square", "diamond", "triangle", "triangle-down"]
                  * @type {String}
                  * @sample {highcharts} highcharts/plotoptions/bubble-symbol/
@@ -4157,7 +4149,7 @@
              * `minSize` and `maxSize` to reflect the `z` value of each bubble.
              * Can be either pixels (when no unit is given), or a percentage of
              * the smallest one of the plot width and height.
-             * 
+             *
              * @type {String}
              * @sample {highcharts} highcharts/plotoptions/bubble-size/ Bubble size
              * @default 8
@@ -4171,7 +4163,7 @@
              * `minSize` and `maxSize` to reflect the `z` value of each bubble.
              * Can be either pixels (when no unit is given), or a percentage of
              * the smallest one of the plot width and height.
-             * 
+             *
              * @type {String}
              * @sample {highcharts} highcharts/plotoptions/bubble-size/ Bubble size
              * @default 20%
@@ -4183,7 +4175,7 @@
             /**
              * When a point's Z value is below the [zThreshold](#plotOptions.bubble.
              * zThreshold) setting, this color is used.
-             * 
+             *
              * @type {Color}
              * @sample {highcharts} highcharts/plotoptions/bubble-negative/
              *         Negative bubbles
@@ -4197,7 +4189,7 @@
              * Whether the bubble's value should be represented by the area or the
              * width of the bubble. The default, `area`, corresponds best to the
              * human perception of the size of each bubble.
-             * 
+             *
              * @validvalue ["area", "width"]
              * @type {String}
              * @sample {highcharts} highcharts/plotoptions/bubble-sizeby/
@@ -4214,7 +4206,7 @@
              * bubble of value -1 will have the same size as a bubble of value 1,
              * while a bubble of value 0 will have a smaller size according to
              * `minSize`.
-             * 
+             *
              * @type {Boolean}
              * @sample {highcharts} highcharts/plotoptions/bubble-sizebyabsolutevalue/
              *         Size by absolute value, various thresholds
@@ -4228,11 +4220,11 @@
              * When this is true, the series will not cause the Y axis to cross
              * the zero plane (or [threshold](#plotOptions.series.threshold) option)
              * unless the data actually crosses the plane.
-             * 
+             *
              * For example, if `softThreshold` is `false`, a series of 0, 1, 2,
              * 3 will make the Y axis show negative values according to the `minPadding`
              * option. If `softThreshold` is `true`, the Y axis starts at 0.
-             * 
+             *
              * @type {Boolean}
              * @default false
              * @since 4.1.9
@@ -4259,7 +4251,7 @@
              * bubbles with lower Z values are skipped. When `displayNegative`
              * is `true` and a [negativeColor](#plotOptions.bubble.negativeColor)
              * is given, points with lower Z is colored.
-             * 
+             *
              * @type {Number}
              * @sample {highcharts} highcharts/plotoptions/bubble-negative/
              *         Negative bubbles
@@ -4274,7 +4266,7 @@
             /**
              * The minimum for the Z value range. Defaults to the highest Z value
              * in the data.
-             * 
+             *
              * @type {Number}
              * @see [zMax](#plotOptions.bubble.zMin)
              * @sample {highcharts} highcharts/plotoptions/bubble-zmin-zmax/
@@ -4288,7 +4280,7 @@
             /**
              * The minimum for the Z value range. Defaults to the lowest Z value
              * in the data.
-             * 
+             *
              * @type {Number}
              * @see [zMax](#plotOptions.bubble.zMax)
              * @sample {highcharts} highcharts/plotoptions/bubble-zmin-zmax/
@@ -4310,7 +4302,7 @@
             directTouch: true,
 
 
-            pointAttribs: function(point, state) {
+            pointAttribs: function (point, state) {
                 var markerOptions = this.options.marker,
                     fillOpacity = pick(markerOptions.fillOpacity, 0.5),
                     attr = Series.prototype.pointAttribs.call(this, point, state);
@@ -4328,7 +4320,7 @@
              * must be done prior to Series.translate because the axis needs to add padding in
              * accordance with the point sizes.
              */
-            getRadii: function(zMin, zMax, minSize, maxSize) {
+            getRadii: function (zMin, zMax, minSize, maxSize) {
                 var len,
                     i,
                     pos,
@@ -4376,11 +4368,11 @@
             /**
              * Perform animation on the bubbles
              */
-            animate: function(init) {
+            animate: function (init) {
                 var animation = this.options.animation;
 
                 if (!init) { // run the animation
-                    each(this.points, function(point) {
+                    each(this.points, function (point) {
                         var graphic = point.graphic,
                             animationTarget;
 
@@ -4413,7 +4405,7 @@
             /**
              * Extend the base translate method to handle bubble size
              */
-            translate: function() {
+            translate: function () {
 
                 var i,
                     data = this.data,
@@ -4458,7 +4450,7 @@
 
             // Point class
         }, {
-            haloPath: function(size) {
+            haloPath: function (size) {
                 return Point.prototype.haloPath.call(
                     this,
                     size === 0 ? 0 : (this.marker ? this.marker.radius || 0 : 0) + size // #6067
@@ -4471,7 +4463,7 @@
          * Add logic to pad each axis with the amount of pixels
          * necessary to avoid the bubbles to overflow.
          */
-        Axis.prototype.beforePadding = function() {
+        Axis.prototype.beforePadding = function () {
             var axis = this,
                 axisLength = this.len,
                 chart = this.chart,
@@ -4489,7 +4481,7 @@
                 activeSeries = [];
 
             // Handle padding on the second pass, or on redraw
-            each(this.series, function(series) {
+            each(this.series, function (series) {
 
                 var seriesOptions = series.options,
                     zData;
@@ -4505,7 +4497,7 @@
                     if (isXAxis) { // because X axis is evaluated first
 
                         // For each series, translate the size extremes to pixel values
-                        each(['minSize', 'maxSize'], function(prop) {
+                        each(['minSize', 'maxSize'], function (prop) {
                             var length = seriesOptions[prop],
                                 isPercent = /%$/.test(length);
 
@@ -4536,7 +4528,7 @@
                 }
             });
 
-            each(activeSeries, function(series) {
+            each(activeSeries, function (series) {
 
                 var data = series[dataKey],
                     i = data.length,
@@ -4563,7 +4555,7 @@
                 each([
                     ['min', 'userMin', pxMin],
                     ['max', 'userMax', pxMax]
-                ], function(keys) {
+                ], function (keys) {
                     if (pick(axis.options[keys[0]], axis[keys[1]]) === undefined) {
                         axis[keys[0]] += keys[2] / transA;
                     }
@@ -4575,12 +4567,12 @@
         /**
          * A `bubble` series. If the [type](#series.bubble.type) option is
          * not specified, it is inherited from [chart.type](#chart.type).
-         * 
+         *
          * For options that apply to multiple series, it is recommended to add
          * them to the [plotOptions.series](#plotOptions.series) options structure.
          * To apply to all series of this specific type, apply it to [plotOptions.
          * bubble](#plotOptions.bubble).
-         * 
+         *
          * @type {Object}
          * @extends series,plotOptions.bubble
          * @excluding dataParser,dataURL,stack
@@ -4591,7 +4583,7 @@
         /**
          * An array of data points for the series. For the `bubble` series type,
          * points can be given in the following ways:
-         * 
+         *
          * 1.  An array of arrays with 3 or 2 values. In this case, the values
          * correspond to `x,y,z`. If the first value is a string, it is applied
          * as the name of the point, and the `x` value is inferred. The `x`
@@ -4599,7 +4591,7 @@
          * be of length 2\. Then the `x` value is automatically calculated,
          * either starting at 0 and incremented by 1, or from `pointStart` and
          * `pointInterval` given in the series options.
-         * 
+         *
          *  ```js
          *     data: [
          *         [0, 1, 2],
@@ -4607,12 +4599,12 @@
          *         [2, 0, 2]
          *     ]
          *  ```
-         * 
+         *
          * 2.  An array of objects with named values. The objects are point
          * configuration objects as seen below. If the total number of data
          * points exceeds the series' [turboThreshold](#series.bubble.turboThreshold),
          * this option is not available.
-         * 
+         *
          *  ```js
          *     data: [{
          *         x: 1,
@@ -4628,7 +4620,7 @@
          *         color: "#FF00FF"
          *     }]
          *  ```
-         * 
+         *
          * @type {Array<Object|Array>}
          * @extends series.line.data
          * @excluding marker
@@ -4645,14 +4637,14 @@
          * The size value for each bubble. The bubbles' diameters are computed
          * based on the `z`, and controlled by series options like `minSize`,
          *  `maxSize`, `sizeBy`, `zMin` and `zMax`.
-         * 
+         *
          * @type {Number}
          * @product highcharts
          * @apioption series.bubble.data.z
          */
 
     }(Highcharts));
-    (function(H) {
+    (function (H) {
         /**
          * (c) 2010-2017 Torstein Honsi
          *
@@ -4679,7 +4671,7 @@
         /**
          * Search a k-d tree by the point angle, used for shared tooltips in polar charts
          */
-        seriesProto.searchPointByAngle = function(e) {
+        seriesProto.searchPointByAngle = function (e) {
             var series = this,
                 chart = series.chart,
                 xAxis = series.xAxis,
@@ -4694,11 +4686,11 @@
         };
 
         /**
-         * #6212 Calculate connectors for spline series in polar chart. 
+         * #6212 Calculate connectors for spline series in polar chart.
          * @param {Boolean} calculateNeighbours - Check if connectors should be calculated for neighbour points as well
          * allows short recurence
          */
-        seriesProto.getConnectors = function(segment, index, calculateNeighbours, connectEnds) {
+        seriesProto.getConnectors = function (segment, index, calculateNeighbours, connectEnds) {
 
             var i,
                 prevPointInd,
@@ -4787,7 +4779,7 @@
          * Wrap the buildKDTree function so that it searches by angle (clientX) in case of shared tooltip,
          * and by two dimensional distance in case of non-shared.
          */
-        wrap(seriesProto, 'buildKDTree', function(proceed) {
+        wrap(seriesProto, 'buildKDTree', function (proceed) {
             if (this.chart.polar) {
                 if (this.kdByAngle) {
                     this.searchPoint = this.searchPointByAngle;
@@ -4802,7 +4794,7 @@
          * Translate a point's plotX and plotY from the internal angle and radius measures to
          * true plotX, plotY coordinates
          */
-        seriesProto.toXY = function(point) {
+        seriesProto.toXY = function (point) {
             var xy,
                 chart = this.chart,
                 plotX = point.plotX,
@@ -4835,7 +4827,7 @@
             /**
              * Overridden method for calculating a spline from one point to the next
              */
-            wrap(seriesTypes.spline.prototype, 'getPointSpline', function(proceed, segment, point, i) {
+            wrap(seriesTypes.spline.prototype, 'getPointSpline', function (proceed, segment, point, i) {
                 var ret,
                     connectors;
 
@@ -4872,7 +4864,7 @@
          * cartesian plane, where plotX denotes the angle in radians and (yAxis.len - plotY) is the pixel distance from
          * center.
          */
-        wrap(seriesProto, 'translate', function(proceed) {
+        wrap(seriesProto, 'translate', function (proceed) {
             var chart = this.chart,
                 points,
                 i;
@@ -4900,7 +4892,7 @@
          * Extend getSegmentPath to allow connecting ends across 0 to provide a closed circle in
          * line-like series.
          */
-        wrap(seriesProto, 'getGraphPath', function(proceed, points) {
+        wrap(seriesProto, 'getGraphPath', function (proceed, points) {
             var series = this,
                 i,
                 firstValid,
@@ -4922,7 +4914,7 @@
                 /**
                  * Polar charts only. Whether to connect the ends of a line series plot
                  * across the extremes.
-                 * 
+                 *
                  * @type {Boolean}
                  * @sample {highcharts} highcharts/plotoptions/line-connectends-false/
                  *         Do not connect
@@ -4937,7 +4929,7 @@
                 }
 
                 // For area charts, pseudo points are added to the graph, now we need to translate these
-                each(points, function(point) {
+                each(points, function (point) {
                     if (point.polarPlotY === undefined) {
                         series.toXY(point);
                     }
@@ -5026,7 +5018,7 @@
 
             colProto = seriesTypes.column.prototype;
 
-            colProto.polarArc = function(low, high, start, end) {
+            colProto.polarArc = function (low, high, start, end) {
                 var center = this.xAxis.center,
                     len = this.yAxis.len;
 
@@ -5051,7 +5043,7 @@
             /**
              * Extend the column prototype's translate method
              */
-            wrap(colProto, 'translate', function(proceed) {
+            wrap(colProto, 'translate', function (proceed) {
 
                 var xAxis = this.xAxis,
                     startAngleRad = xAxis.startAngleRad,
@@ -5088,7 +5080,7 @@
             /**
              * Align column data labels outside the columns. #1199.
              */
-            wrap(colProto, 'alignDataLabel', function(proceed, point, dataLabel, options, alignTo, isNew) {
+            wrap(colProto, 'alignDataLabel', function (proceed, point, dataLabel, options, alignTo, isNew) {
 
                 if (this.chart.polar) {
                     var angle = point.rectPlotX / Math.PI * 180,
@@ -5128,7 +5120,7 @@
         /**
          * Extend getCoordinates to prepare for polar axis values
          */
-        wrap(pointerProto, 'getCoordinates', function(proceed, e) {
+        wrap(pointerProto, 'getCoordinates', function (proceed, e) {
             var chart = this.chart,
                 ret = {
                     xAxis: [],
@@ -5137,7 +5129,7 @@
 
             if (chart.polar) {
 
-                each(chart.axes, function(axis) {
+                each(chart.axes, function (axis) {
                     var isXAxis = axis.isXAxis,
                         center = axis.center,
                         x = e.chartX - center[0] - chart.plotLeft,
@@ -5147,8 +5139,8 @@
                         axis: axis,
                         value: axis.translate(
                             isXAxis ?
-                            Math.PI - Math.atan2(x, y) : // angle
-                            Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2)), // distance from center
+                                Math.PI - Math.atan2(x, y) : // angle
+                                Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2)), // distance from center
                             true
                         )
                     });
@@ -5161,12 +5153,12 @@
             return ret;
         });
 
-        wrap(H.Chart.prototype, 'getAxes', function(proceed) {
+        wrap(H.Chart.prototype, 'getAxes', function (proceed) {
 
             if (!this.pane) {
                 this.pane = [];
             }
-            each(H.splat(this.options.pane), function(paneOptions) {
+            each(H.splat(this.options.pane), function (paneOptions) {
                 new H.Pane( // eslint-disable-line no-new
                     paneOptions,
                     this
@@ -5176,10 +5168,10 @@
             proceed.call(this);
         });
 
-        wrap(H.Chart.prototype, 'drawChartBox', function(proceed) {
+        wrap(H.Chart.prototype, 'drawChartBox', function (proceed) {
             proceed.call(this);
 
-            each(this.pane, function(pane) {
+            each(this.pane, function (pane) {
                 pane.render();
             });
         });
@@ -5188,10 +5180,10 @@
          * Extend chart.get to also search in panes. Used internally in responsiveness
          * and chart.update.
          */
-        wrap(H.Chart.prototype, 'get', function(proceed, id) {
-            return H.find(this.pane, function(pane) {
-                return pane.options.id === id;
-            }) || proceed.call(this, id);
+        wrap(H.Chart.prototype, 'get', function (proceed, id) {
+            return H.find(this.pane, function (pane) {
+                    return pane.options.id === id;
+                }) || proceed.call(this, id);
         });
 
     }(Highcharts));
