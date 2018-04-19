@@ -73,12 +73,12 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
         return self.is_admin
 
 
-class Hosts(models.Model):
+class Host(models.Model):
     """主机表"""
     hostname = models.CharField(verbose_name='主机名称', max_length=64, unique=True, help_text='agen输入cmdb客户端配置文件中hostname，snmp输入管理IP')
     ip = models.GenericIPAddressField(verbose_name='IP')
-    hosts_groups = models.ManyToManyField(verbose_name='所属主机组', to='HostsGroups', blank=True)
-    templates = models.ManyToManyField(verbose_name='所属模板', to='Templates', blank=True)
+    host_groups = models.ManyToManyField(verbose_name='所属主机组', to='HostGroup', blank=True)
+    templates = models.ManyToManyField(verbose_name='所属模板', to='Template', blank=True)
     monitor_by_choices = (
         ('agent', '客户端'),
         ('snmp', 'SNMP')
@@ -102,10 +102,10 @@ class Hosts(models.Model):
         return '%s<%s>' % (self.hostname, self.ip)
 
 
-class HostsGroups(models.Model):
+class HostGroup(models.Model):
     """主机组表"""
     name = models.CharField(verbose_name='主机组名称', max_length=64, unique=True)
-    templates = models.ManyToManyField(verbose_name='所属模板', to='Templates')
+    templates = models.ManyToManyField(verbose_name='所属模板', to='Template')
     memo = models.TextField(verbose_name='备注', null=True, blank=True)
 
     class Meta:
@@ -115,12 +115,12 @@ class HostsGroups(models.Model):
         return self.name
 
 
-class Applications(models.Model):
+class Application(models.Model):
     """应用集"""
     name = models.CharField(verbose_name='应用集名称', max_length=64, unique=True)
     plugin_name = models.CharField(verbose_name='插件名称', max_length=64, null=True, blank=True)
     interval = models.IntegerField(verbose_name='监控间隔', default=60)
-    items = models.ManyToManyField(verbose_name='所属监控项', to='Items', blank=True)
+    items = models.ManyToManyField(verbose_name='所属监控项', to='Item', blank=True)
     memo = models.TextField(verbose_name='备注', null=True, blank=True)
 
     class Meta:
@@ -130,7 +130,7 @@ class Applications(models.Model):
         return self.name
 
 
-class Items(models.Model):
+class Item(models.Model):
     """监控项"""
     name = models.CharField(verbose_name='监控项名称', max_length=64)
     key = models.CharField(verbose_name='键值', max_length=64, unique=True)
@@ -150,10 +150,10 @@ class Items(models.Model):
         return '%s<%s>' % (self.name, self.key)
 
 
-class Templates(models.Model):
+class Template(models.Model):
     """模板表"""
     name = models.CharField(verbose_name='模板名称', max_length=64, unique=True)
-    applications = models.ManyToManyField(verbose_name='所属应用集', to='Applications', blank=True)
+    applications = models.ManyToManyField(verbose_name='所属应用集', to='Application', blank=True)
     memo = models.TextField(verbose_name='备注', null=True, blank=True)
 
     class Meta:
@@ -162,3 +162,102 @@ class Templates(models.Model):
     def __str__(self):
         return self.name
 
+
+class Trigger(models.Model):
+    """触发器表"""
+    name = models.CharField(verbose_name='触发器名称', max_length=64, null=True, blank=True)
+    templates = models.ForeignKey(verbose_name='所属模板', to='Template')
+    severity_choices = (
+        ('information', '信息'),
+        ('warning', '警告'),
+        ('general', '一般严重'),
+        ('high', '严重'),
+        ('disaster', '灾难')
+    )
+    severity = models.CharField(verbose_name='报警级别', max_length=64, choices=severity_choices)
+    enabled = models.BooleanField(verbose_name='是否启用', default=True)
+    memo = models.TextField(verbose_name='备注', null=True, blank=True)
+
+    class Meta:
+        verbose_name_plural = '触发器表'
+
+    def __str__(self):
+        return self.name
+
+
+class TriggerExpression(models.Model):
+    """触发器表达式"""
+    triggers = models.ForeignKey(verbose_name='所属触发器', to='Trigger')
+    applications = models.ForeignKey(verbose_name='所属应用集', to='Application')   # 根据触发器对应的模板获取相关应用集
+    items = models.ForeignKey(verbose_name='所属监控项', to='Item')     # 根据触发器对应的模板的应用集获取相关的监控项
+    operator_choices = (
+        ('eq', '='),
+        ('lt', '<'),
+        ('gt', '>')
+    )
+    operator = models.CharField(verbose_name='运算符', max_length=64, choices=operator_choices)
+    threshold = models.IntegerField(verbose_name='阈值')  # 字符串判断时可规定0或1来判断
+    logic_choices = (
+        ('or', 'OR'),
+        ('and', 'AND')
+    )
+    logic_with_next = models.CharField(verbose_name='与一个条件的逻辑关系', max_length=64, choices=logic_choices, null=True, blank=True)
+    data_calc_func_choices = (
+        ('avg', '平均值'),
+        ('max', '最大值'),
+        ('min', '最小值'),
+        ('hit', 'HIT'),
+        ('last', '最近的值'),
+    )
+    data_calc_func = models.CharField(verbose_name='数据运算函数', max_length=64, choices=data_calc_func_choices, default='last')
+    data_calc_func_args = models.CharField(verbose_name='数据运算函数的非固定参数,json格式', max_length=64, null=True, blank=True)
+    memo = models.TextField(verbose_name='备注', null=True, blank=True)
+
+    class Meta:
+        verbose_name_plural = '触发器表达式表'
+
+    def __str__(self):
+        return '%s' % self.triggers
+
+
+class Action(models.Model):
+    """报警策略，定义trigger发生后，如何报警"""
+    name = models.CharField(verbose_name='报警策略名称', max_length=64, unique=True)
+    triggers = models.ManyToManyField(verbose_name='所属触发器', to='Trigger')
+    interval = models.IntegerField(verbose_name='报警间隔(s)', default=300)
+    recover_notice = models.BooleanField(verbose_name='故障恢复后是否发送通知', default=True)
+    recover_subject = models.CharField(verbose_name='恢复通知主题', max_length=128, null=True, blank=True)
+    recover_message = models.TextField(verbose_name='恢复通知内容', null=True, blank=True)
+    actionoperations = models.ManyToManyField(verbose_name='所属报警动作', to='ActionOperation')
+    enabled = models.BooleanField(verbose_name='是否启用', default=True)
+    memo = models.TextField(verbose_name='备注', null=True, blank=True)
+
+    class Meta:
+        verbose_name_plural = '报警策略表'
+
+    def __str__(self):
+        return self.name
+
+
+class ActionOperation(models.Model):
+    """报警动作"""
+    name = models.CharField(verbose_name='报警动作名称', max_length=64, unique=True)
+    action_type_choices = (
+        ('email', '邮件'),
+        ('sms', '短信'),
+        ('weixin', '微信'),
+        ('script', '脚本')
+    )
+    action_type = models.CharField(verbose_name='动作类型', max_length=64, choices=action_type_choices, default='email')
+    step = models.IntegerField(verbose_name='报警升级阈值')
+    userprofiles = models.ManyToManyField(verbose_name='所属用户', to='UserProfile', blank=True)
+    script_name = models.CharField(verbose_name='脚本名称', max_length=64, null=True, blank=True)
+    _msg_format = '''主机({hostname},{ip}) 应用集({name})存在问题,内容:{msg}'''
+    msg_format= models.TextField(verbose_name='消息格式', default=_msg_format)
+    memo = models.TextField(verbose_name='备注', null=True, blank=True)
+
+    class Meta:
+        verbose_name_plural = '报警动作表'
+
+    def __str__(self):
+        return self.name

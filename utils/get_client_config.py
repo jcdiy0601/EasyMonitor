@@ -19,7 +19,7 @@ class ClientHandle(object):
     def fetch_configs(self):
         """获取监控配置"""
         try:
-            host_obj = models.Hosts.objects.get(hostname=self.hostname)
+            host_obj = models.Host.objects.get(hostname=self.hostname)
             template_list = list(host_obj.templates.all())  # 获取主机模板列表
             for host_group in host_obj.hosts_groups.all():
                 template_list.extend(host_group.templates.all())    # 主机模板中添加主机组模板

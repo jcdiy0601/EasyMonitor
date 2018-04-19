@@ -82,8 +82,22 @@ admin.site.register(models.UserProfile, UserProfileAdmin)
 # unregister the Group model from admin.
 admin.site.unregister(Group)
 
-admin.site.register(models.Hosts)
-admin.site.register(models.HostsGroups)
-admin.site.register(models.Applications)
-admin.site.register(models.Items)
-admin.site.register(models.Templates)
+
+class TriggerExpressionInline(admin.TabularInline):
+    model = models.TriggerExpression
+
+
+class TriggerAdmin(admin.ModelAdmin):
+    list_display = ('name', 'severity', 'enabled')
+    inlines = [TriggerExpressionInline,]
+
+
+admin.site.register(models.Host)
+admin.site.register(models.HostGroup)
+admin.site.register(models.Application)
+admin.site.register(models.Item)
+admin.site.register(models.Template)
+admin.site.register(models.Trigger, TriggerAdmin)
+admin.site.register(models.TriggerExpression)
+admin.site.register(models.Action)
+admin.site.register(models.ActionOperation)

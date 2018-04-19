@@ -8,7 +8,7 @@ from utils.redis_conn import redis_conn
 from django.conf import settings
 from utils.data_optimization import DataStore
 from monitor_data import models
-
+from utils.serializer import get_host_triggers
 
 REDIS_OBJ = redis_conn(settings)
 
@@ -34,14 +34,15 @@ def client_data(request):
             hostname = report_data['hostname']
             application_name = report_data['application_name']
             data = report_data['data']
-            hostname_obj = models.Hosts.objects.filter(hostname=hostname).first()
-            if not hostname_obj:
+            hosts_obj = models.Host.objects.filter(hostname=hostname).first()
+            if not hosts_obj:
                 response['code'] = 404
                 response['message'] = '资源不存在,%s' % hostname
                 return JsonResponse(data=response, json_dumps_params={'ensure_ascii': False})
-            data_save_obj = DataStore(hostname, application_name, data, REDIS_OBJ, response)    # 对客户端汇报上来的数据进行优化存储
-            response = data_save_obj.response   # 回复客户端，至此与客户端交互操作完成
+            data_save_obj = DataStore(hostname, application_name, data, REDIS_OBJ, response)  # 对客户端汇报上来的数据进行优化存储
+            response = data_save_obj.response  # 回复客户端，至此与客户端交互操作完成
             # 触发器检测
+            application_triggers = get_host_triggers(hosts_obj)
         except Exception as e:
             pass
     return JsonResponse(data=response, json_dumps_params={'ensure_ascii': False})
