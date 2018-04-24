@@ -5,6 +5,7 @@ from django.conf import settings
 import time
 from utils.redis_conn import redis_conn
 import json
+import operator
 
 
 class DataHandler(object):
@@ -58,8 +59,72 @@ class ExpressionProcess(object):
         approximate_data_range = [json.loads(i.decode()) for i in data_range_raw]   # 大概的数据
         data_range = []     # 精确的数据列表
         for point in approximate_data_range:
-            pass
+            '''
+            [{'SwapFree': 2031592, 'SwapUsage': 20, 'MemTotal': 493952, 'MemUsage_p': 23.13, 'Buffers': 110700,
+              'MemFree': 57852, 'SwapUsage_p': 0.0, 'SwapTotal': 2031612, 'MemUsage': 114232, 'Cached': 211168},
+             1524535751.7057292]
+            '''
+            value, saving_time = point
+            if time.time() - saving_time < time_in_sec:     # 时间范围内有效数据
+                data_range.append(point)
+        return data_range
 
     def process(self):
         """算出单条expression表达式的结果"""
-        data_list = self.load_data_from_redis() # 已经按照用户的配置把数据 从redis里取出来了, 比如 最近5分钟,或10分钟的数据
+        data_list = self.load_data_from_redis()     # 已经按照用户的配置把数据 从redis里取出来了, 比如 最近5分钟,或10分钟的数据
+        data_calc_func = getattr(self, 'get_%s' % self.expression_obj.data_calc_func)
+        single_expression_calc_res = data_calc_func(data_list)  # 一个表达式结果
+
+    def get_avg(self, data_list):
+        """平均值"""
+        clean_data_list = []
+        clean_data_dict = {}
+        for point in data_list:
+            value, saving_time = point
+            if value:
+                if 'data' not in value:     # 没有子字典数据
+                    clean_data_list.append(value[self.expression_obj.items.key])
+                else:   # 有子字典数据
+                    for k, v in value['data'].items():  # k->eth0,v->{'t_in': xx, 't_out': xx}
+                        if k not in clean_data_dict:
+                            clean_data_dict[k] = []
+                        clean_data_dict[k].append(v[self.expression_obj.items.key])
+        if clean_data_list:
+            # [23.15, 23.65, 23.22, 24.01, 23.24, 23.7, 23.23, 23.66, 23.23]
+            avg_res = round(sum(clean_data_list)/len(clean_data_list), 2)
+            return [self.judge(avg_res), avg_res, None]
+        elif clean_data_dict:
+            # {'lo': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'eth0': [0.09, 4.7, 3.3, 2.18, 2.57, 2.86, 2.26, 2.23, 2.23]}
+            for k, v in clean_data_dict.items():
+                clean_value_list = [i for i in v]
+                avg_res = 0 if sum(clean_value_list) == 0 else sum(clean_value_list)/len(clean_value_list)
+                if self.expression_obj.specified_item_key:  # 监控了特定的指标,比如有多个网卡,但这里只特定监控eth0
+                    if k == self.expression_obj.specified_item_key:     # 就是监控这个特定指标,match上了
+                        calc_res = self.judge(avg_res)
+                        if calc_res:
+                            return [calc_res, avg_res, k]   # 后面的循环不用走了,反正 已经成立了一个了
+                else:   # 监控这个服务的所有项, 比如一台机器的多个网卡, 任意一个超过了阈值,都 算是有问题的
+                    calc_res = self.judge(avg_res)
+                    if calc_res:
+                        return [calc_res, avg_res, k]
+            else:   # 能走到这一步,代表上面的循环判段都未成立
+                return [False, avg_res, k]
+        else:   # 可能是由于最近这个服务没有数据汇报过来,取到的数据为空,所以没办法判断阈值
+            return [False, None, None]
+
+    def get_max(self, data_list):
+        pass
+
+    def get_min(self, data_list):
+        pass
+
+    def get_hit(self, data_list):
+        pass
+
+    def get_last(self, data_list):
+        pass
+
+    def judge(self, calculated_val):
+        """判断计算后结果是否到达阈值，已经算好的结果,可能是avg(5) or ...."""
+        calc_func = getattr(operator, self.expression_obj.operator_type)
+        return calc_func(calculated_val, self.expression_obj.threshold)

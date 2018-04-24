@@ -192,6 +192,7 @@ class TriggerExpression(models.Model):
     triggers = models.ForeignKey(verbose_name='所属触发器', to='Trigger')
     applications = models.ForeignKey(verbose_name='所属应用集', to='Application')  # 根据触发器对应的模板获取相关应用集
     items = models.ForeignKey(verbose_name='所属监控项', to='Item')  # 根据触发器对应的模板的应用集获取相关的监控项
+    specified_item_key = models.CharField(verbose_name='只监控专门指定的指标key', max_length=64, blank=True, null=True)     # 例如eth0
     operator_choices = (
         ('eq', '='),
         ('lt', '<'),
