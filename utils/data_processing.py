@@ -6,6 +6,7 @@ import time
 from utils.redis_conn import redis_conn
 import json
 import operator
+import pickle
 
 
 class DataHandler(object):
@@ -35,6 +36,45 @@ class DataHandler(object):
         for expression_obj in trigger_obj.triggerexpression_set.all().order_by('id'):  # 循环触发器下所有触发器表达式
             expression_process_obj = ExpressionProcess(self, host_obj, expression_obj)
             single_expression_res = expression_process_obj.process()  # 得到单条expression表达式的结果
+            if single_expression_res:
+                calc_sub_res_list.append(single_expression_res)
+                if single_expression_res['expression_obj'].logic_with_next:     # 不是最后一条
+                    expression_res_string += str(single_expression_res['calc_res']) + ' ' + \
+                                             single_expression_res['expression_obj'].logic_with_next + ' '
+                else:
+                    expression_res_string += str(single_expression_res['calc_res']) + ' '
+                # 把所有结果为True的expression提出来,报警时你得知道是谁出问题导致trigger触发了
+                if single_expression_res['calc_res'] == True:
+                    single_expression_res['expression_obj'] = single_expression_res['expression_obj'].id    # 要存到redis里,数据库对象转成id
+                    positive_expressions.append(single_expression_res)
+        if expression_res_string:
+            trigger_res = eval(expression_res_string)
+            if trigger_res:     # 终于走到这一步,该触发报警了
+                self.trigger_notifier(host_obj, trigger_obj.id, positive_expressions, msg=trigger_obj.name)     # msg 需要专门分析后生成, 这里是临时写的
+
+    def trigger_notifier(self, host_obj, trigger_id, positive_expressions, redis_obj=None, msg=None):
+        """所有触发报警都需要在这里发布"""
+        if redis_obj:   # 从外部调用 时才用的到,为了避免重复调用redis连接
+            self.redis = redis_obj
+        msg_dic = {'hostname': host_obj.hostname,
+                   'trigger_id': trigger_id,
+                   'positive_expressions': positive_expressions,
+                   'msg': msg,
+                   'time': time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()),
+                   'start_time': time.time(),
+                   'duration': None
+                   }
+        self.redis.publish(settings.TRIGGER_CHAN, pickle.dumps(msg_dic))
+        # 先把之前的trigger加载回来,获取上次报警的时间,以统计故障持续时间
+        trigger_redis_key = 'host_%s_trigger_%s' % (host_obj.hostname, trigger_id)
+        old_trigger_data = self.redis.get(trigger_redis_key)
+        if old_trigger_data:
+            old_trigger_data = old_trigger_data.decode()
+            trigger_startime = json.loads(old_trigger_data)['start_time']
+            msg_dic['start_time'] = trigger_startime
+            msg_dic['duration'] = round(time.time() - trigger_startime)
+        # 同时在redis中纪录这个trigger,前端页面展示时要统计trigger个数
+        self.redis.set(trigger_redis_key, json.dumps(msg_dic), 300)  # 一个trigger纪录5分钟后会自动清除,为了在前端统计trigger个数用的
 
 
 class ExpressionProcess(object):
@@ -74,6 +114,16 @@ class ExpressionProcess(object):
         data_list = self.load_data_from_redis()     # 已经按照用户的配置把数据 从redis里取出来了, 比如 最近5分钟,或10分钟的数据
         data_calc_func = getattr(self, 'get_%s' % self.expression_obj.data_calc_func)
         single_expression_calc_res = data_calc_func(data_list)  # 一个表达式结果
+        if single_expression_calc_res:  # 确保上面的条件有正确的返回
+            res_dict = {
+                'calc_res': single_expression_calc_res[0],
+                'calc_res_val': single_expression_calc_res[1],
+                'expression_obj': self.expression_obj,
+                'specified_item_key': single_expression_calc_res[2]
+            }
+            return res_dict
+        else:
+            return False
 
     def get_avg(self, data_list):
         """平均值"""

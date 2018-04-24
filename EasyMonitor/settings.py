@@ -177,3 +177,6 @@ DATA_OPTIMIZATION = {
     '30min': [1800, 4320],  # 3个月的数据
     '1hour': [3600, 8760]  # 1年的数据
 }
+
+# 所有的触发器被发布到这个通道
+TRIGGER_CHAN = 'trigger_event_channel'
