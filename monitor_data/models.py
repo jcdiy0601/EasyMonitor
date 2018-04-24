@@ -232,7 +232,7 @@ class Action(models.Model):
     recover_notice = models.BooleanField(verbose_name='故障恢复后是否发送通知', default=True)
     recover_subject = models.CharField(verbose_name='恢复通知主题', max_length=128, null=True, blank=True)
     recover_message = models.TextField(verbose_name='恢复通知内容', null=True, blank=True)
-    actionoperations = models.ManyToManyField(verbose_name='所属报警动作', to='ActionOperation')
+    action_operations = models.ManyToManyField(verbose_name='所属报警动作', to='ActionOperation')
     enabled = models.BooleanField(verbose_name='是否启用', default=True)
     memo = models.TextField(verbose_name='备注', null=True, blank=True)
 
@@ -254,7 +254,7 @@ class ActionOperation(models.Model):
     )
     action_type = models.CharField(verbose_name='动作类型', max_length=64, choices=action_type_choices, default='email')
     step = models.IntegerField(verbose_name='报警升级阈值')
-    userprofiles = models.ManyToManyField(verbose_name='所属用户', to='UserProfile', blank=True)
+    user_profiles = models.ManyToManyField(verbose_name='所属用户', to='UserProfile', blank=True)
     script_name = models.CharField(verbose_name='脚本名称', max_length=64, null=True, blank=True)
     _msg_format = '''主机({hostname},{ip}) 应用集({name})存在问题,内容:{msg}'''
     msg_format = models.TextField(verbose_name='消息格式', default=_msg_format)

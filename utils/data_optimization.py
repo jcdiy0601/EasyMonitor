@@ -101,8 +101,7 @@ class DataStore(object):
                 mid_res = self.get_mid(v_list)  # 取中间值
                 optimized_data[items_name] = [avg_res, max_res, min_res, mid_res]  # 将计算结果保存到最终的优化数据字典中
         else:  # 意味着这个字典有子字典，用于像硬盘、网卡这样的服务
-            for name, v_dict in first_application_data_point[
-                'data'].items():  # name -> etho,v_dict -> {'t_in': 65.82, 't_out': 2.03}
+            for name, v_dict in first_application_data_point['data'].items():  # name -> etho,v_dict -> {'t_in': 65.82, 't_out': 2.03}
                 optimized_data[name] = {}
                 for k2, v2 in v_dict.items():
                     optimized_data[name][
@@ -111,8 +110,7 @@ class DataStore(object):
                 optimized_data)  # {'eth0': {'t_in': [], 't_out': []}, 'lo': {'t_in': [], 't_out': []}}
             if tmp_data_dict:  # 由于客户端汇报数据有误，有可能为空
                 for item_application_data, last_save_time in data_set:  # 循环最近n分钟数据
-                    for name, value_dict in item_application_data[
-                        'data'].items():  # name -> eth0,value_dict -> {'t_in': 65.82, 't_out': 2.03}
+                    for name, value_dict in item_application_data['data'].items():  # name -> eth0,value_dict -> {'t_in': 65.82, 't_out': 2.03}
                         for items_name, value in value_dict.items():  # 循环每个数据点的指标，items_name监控项名如in_t,value为监控的值
                             tmp_data_dict[name][items_name].append(value)
                 for name, v_dict in tmp_data_dict.items():
