@@ -31,8 +31,8 @@ class DataHandler(object):
         """
         self.redis = redis_obj
         calc_sub_res_list = []  # 先把每个expression的结果算出来放在这个列表里,最后再统一计算这个列表
-        positive_expressions = []
-        expression_res_string = ''
+        positive_expressions = []   # 最终表达式列表
+        expression_res_string = ''  # 表达式结果字符串
         for expression_obj in trigger_obj.triggerexpression_set.all().order_by('id'):  # 循环触发器下所有触发器表达式
             expression_process_obj = ExpressionProcess(self, host_obj, expression_obj)
             single_expression_res = expression_process_obj.process()  # 得到单条expression表达式的结果
@@ -176,5 +176,5 @@ class ExpressionProcess(object):
 
     def judge(self, calculated_val):
         """判断计算后结果是否到达阈值，已经算好的结果,可能是avg(5) or ...."""
-        calc_func = getattr(operator, self.expression_obj.operator_type)
+        calc_func = getattr(operator, self.expression_obj.operator)
         return calc_func(calculated_val, self.expression_obj.threshold)

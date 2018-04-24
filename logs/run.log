@@ -56,3 +56,544 @@
 2018-04-24 13:02:45,901 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
 2018-04-24 13:07:46,841 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
 2018-04-24 13:12:46,901 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 13:29:10,538 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 13:34:10,689 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 13:39:11,651 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 13:44:12,578 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 13:50:43,550 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 13:55:44,476 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 14:00:45,489 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 14:05:45,546 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 14:10:45,726 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 14:15:46,775 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 14:20:47,736 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 14:25:47,916 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 14:26:02,824 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 14:31:03,844 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 14:36:04,746 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 14:41:05,726 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 14:46:05,869 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 14:51:06,894 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 14:56:07,816 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 15:01:08,817 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 15:06:09,789 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 15:11:10,745 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 15:16:10,909 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 15:21:11,285 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 15:26:11,661 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 15:31:12,012 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 15:36:12,078 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 15:41:12,713 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 15:46:13,334 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 15:51:13,563 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 15:56:13,580 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 16:01:14,542 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 16:06:14,782 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 16:11:15,038 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 16:16:15,836 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 16:21:16,800 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 16:24:45,293 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 16:24:48,551 - INFO : 监控数据汇报成功并保存,{'system': 5.1, 'iowait': 0.0, 'user': 2.38, 'idle': 92.52}
+2018-04-24 16:25:48,694 - INFO : 监控数据汇报成功并保存,{'system': 3.03, 'iowait': 0.0, 'user': 0.34, 'idle': 96.63}
+2018-04-24 16:26:48,815 - INFO : 监控数据汇报成功并保存,{'system': 3.0, 'iowait': 0.0, 'user': 1.0, 'idle': 96.0}
+2018-04-24 16:27:49,057 - INFO : 监控数据汇报成功并保存,{'system': 3.02, 'iowait': 0.0, 'user': 0.67, 'idle': 96.31}
+2018-04-24 16:28:46,284 - INFO : 监控数据汇报成功并保存,{'Buffers': 119104, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage': 114716, 'MemFree': 46680, 'MemTotal': 493952, 'MemUsage_p': 23.22, 'Cached': 213452, 'SwapTotal': 2031612, 'SwapFree': 2031592}
+2018-04-24 16:28:49,223 - INFO : 监控数据汇报成功并保存,{'user': 0.67, 'idle': 96.32, 'system': 3.01, 'iowait': 0.0}
+2018-04-24 16:28:51,204 - INFO : 监控数据汇报成功并保存,{'data': {'eth0': {'t_in': 2.48, 't_out': 3.84}, 'lo': {'t_in': 0.0, 't_out': 0.0}}}
+2018-04-24 16:29:16,299 - INFO : 监控数据汇报成功并保存,{'Buffers': 119112, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage': 112428, 'MemFree': 48952, 'MemTotal': 493952, 'MemUsage_p': 22.76, 'Cached': 213460, 'SwapTotal': 2031612, 'SwapFree': 2031592}
+2018-04-24 16:29:45,312 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 16:29:45,555 - INFO : 监控数据汇报成功并保存,{'Buffers': 119124, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage': 113008, 'MemFree': 48360, 'MemTotal': 493952, 'MemUsage_p': 22.88, 'Cached': 213460, 'SwapTotal': 2031612, 'SwapFree': 2031592}
+2018-04-24 16:29:48,509 - INFO : 监控数据汇报成功并保存,{'user': 0.34, 'idle': 97.99, 'system': 1.68, 'iowait': 0.0}
+2018-04-24 16:29:50,471 - INFO : 监控数据汇报成功并保存,{'data': {'eth0': {'t_in': 3.19, 't_out': 102.07}, 'lo': {'t_in': 0.0, 't_out': 0.0}}}
+2018-04-24 16:30:15,580 - INFO : 监控数据汇报成功并保存,{'Buffers': 119160, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage': 112500, 'MemFree': 48828, 'MemTotal': 493952, 'MemUsage_p': 22.78, 'Cached': 213464, 'SwapTotal': 2031612, 'SwapFree': 2031592}
+2018-04-24 16:30:45,795 - INFO : 监控数据汇报成功并保存,{'Buffers': 119168, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage': 114408, 'MemFree': 46908, 'MemTotal': 493952, 'MemUsage_p': 23.16, 'Cached': 213468, 'SwapTotal': 2031612, 'SwapFree': 2031592}
+2018-04-24 16:30:48,839 - INFO : 监控数据汇报成功并保存,{'user': 0.34, 'idle': 96.98, 'system': 2.68, 'iowait': 0.0}
+2018-04-24 16:30:50,729 - INFO : 监控数据汇报成功并保存,{'data': {'eth0': {'t_in': 4.13, 't_out': 159.11}, 'lo': {'t_in': 0.0, 't_out': 0.0}}}
+2018-04-24 16:31:46,022 - INFO : 监控数据汇报成功并保存,{'Cached': 213484, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage': 113756, 'MemUsage_p': 23.03, 'Buffers': 119200, 'MemFree': 47512, 'MemTotal': 493952, 'SwapFree': 2031592, 'SwapTotal': 2031612}
+2018-04-24 16:31:49,041 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.67, 'system': 3.02, 'idle': 96.31}
+2018-04-24 16:31:50,943 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_out': 0.0, 't_in': 0.0}, 'eth0': {'t_out': 3.77, 't_in': 2.41}}}
+2018-04-24 16:32:16,076 - INFO : 监控数据汇报成功并保存,{'Cached': 213484, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage': 112552, 'MemUsage_p': 22.79, 'Buffers': 119212, 'MemFree': 48704, 'MemTotal': 493952, 'SwapFree': 2031592, 'SwapTotal': 2031612}
+2018-04-24 16:32:46,228 - INFO : 监控数据汇报成功并保存,{'Cached': 213484, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage': 113604, 'MemUsage_p': 23.0, 'Buffers': 119212, 'MemFree': 47652, 'MemTotal': 493952, 'SwapFree': 2031592, 'SwapTotal': 2031612}
+2018-04-24 16:32:49,218 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.34, 'system': 2.01, 'idle': 97.65}
+2018-04-24 16:32:51,201 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_out': 0.0, 't_in': 0.0}, 'eth0': {'t_out': 3.66, 't_in': 2.34}}}
+2018-04-24 16:33:16,253 - INFO : 监控数据汇报成功并保存,{'Cached': 213492, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage': 112516, 'MemUsage_p': 22.78, 'Buffers': 119240, 'MemFree': 48704, 'MemTotal': 493952, 'SwapFree': 2031592, 'SwapTotal': 2031612}
+2018-04-24 16:33:46,399 - INFO : 监控数据汇报成功并保存,{'Cached': 213492, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage': 114504, 'MemUsage_p': 23.18, 'Buffers': 119252, 'MemFree': 46704, 'MemTotal': 493952, 'SwapFree': 2031592, 'SwapTotal': 2031612}
+2018-04-24 16:33:49,385 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.67, 'system': 3.0, 'idle': 96.33}
+2018-04-24 16:33:51,320 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_out': 0.0, 't_in': 0.0}, 'eth0': {'t_out': 3.77, 't_in': 2.36}}}
+2018-04-24 16:34:16,403 - INFO : 监控数据汇报成功并保存,{'Cached': 213496, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage': 112472, 'MemUsage_p': 22.77, 'Buffers': 119280, 'MemFree': 48704, 'MemTotal': 493952, 'SwapFree': 2031592, 'SwapTotal': 2031612}
+2018-04-24 16:34:45,415 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 16:34:45,574 - INFO : 监控数据汇报成功并保存,{'Cached': 213496, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage': 113936, 'MemUsage_p': 23.07, 'Buffers': 119288, 'MemFree': 47232, 'MemTotal': 493952, 'SwapFree': 2031592, 'SwapTotal': 2031612}
+2018-04-24 16:34:48,598 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.34, 'system': 2.35, 'idle': 97.32}
+2018-04-24 16:34:50,563 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_out': 0.0, 't_in': 0.0}, 'eth0': {'t_out': 3.64, 't_in': 2.33}}}
+2018-04-24 16:35:15,636 - INFO : 监控数据汇报成功并保存,{'Cached': 213500, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage': 112548, 'MemUsage_p': 22.79, 'Buffers': 119324, 'MemFree': 48580, 'MemTotal': 493952, 'SwapFree': 2031592, 'SwapTotal': 2031612}
+2018-04-24 16:35:45,779 - INFO : 监控数据汇报成功并保存,{'Cached': 213504, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage': 114112, 'MemUsage_p': 23.1, 'Buffers': 119328, 'MemFree': 47008, 'MemTotal': 493952, 'SwapFree': 2031592, 'SwapTotal': 2031612}
+2018-04-24 16:35:48,773 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.34, 'system': 2.02, 'idle': 97.64}
+2018-04-24 16:35:50,716 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_out': 0.0, 't_in': 0.0}, 'eth0': {'t_out': 3.84, 't_in': 2.45}}}
+2018-04-24 16:36:15,766 - INFO : 监控数据汇报成功并保存,{'Cached': 213504, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage': 112624, 'MemUsage_p': 22.8, 'Buffers': 119352, 'MemFree': 48472, 'MemTotal': 493952, 'SwapFree': 2031592, 'SwapTotal': 2031612}
+2018-04-24 16:36:45,912 - INFO : 监控数据汇报成功并保存,{'data': {'/boot': {'Size': 477, 'Use': 8, 'Used': 33, 'Avail': 419}, '/': {'Size': 47819, 'Use': 5, 'Used': 2008, 'Avail': 43376}}}
+2018-04-24 16:36:45,916 - INFO : 监控数据汇报成功并保存,{'MemUsage_p': 22.95, 'SwapUsage_p': 0.0, 'MemUsage': 113380, 'SwapUsage': 20, 'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemFree': 47700, 'Cached': 213508, 'MemTotal': 493952, 'Buffers': 119364}
+2018-04-24 16:36:45,942 - INFO : 监控数据汇报成功并保存,{'load5': 0.01, 'load1': 0.0, 'load15': 0.05}
+2018-04-24 16:36:48,952 - INFO : 监控数据汇报成功并保存,{'system': 3.37, 'user': 0.34, 'idle': 96.3, 'iowait': 0.0}
+2018-04-24 16:36:50,863 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_in': 0.0, 't_out': 0.0}, 'eth0': {'t_in': 2.36, 't_out': 3.44}}}
+2018-04-24 16:37:15,968 - INFO : 监控数据汇报成功并保存,{'MemUsage_p': 22.8, 'SwapUsage_p': 0.0, 'MemUsage': 112612, 'SwapUsage': 20, 'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemFree': 48456, 'Cached': 213516, 'MemTotal': 493952, 'Buffers': 119368}
+2018-04-24 16:37:46,089 - INFO : 监控数据汇报成功并保存,{'MemUsage_p': 22.95, 'SwapUsage_p': 0.0, 'MemUsage': 113352, 'SwapUsage': 20, 'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemFree': 47716, 'Cached': 213516, 'MemTotal': 493952, 'Buffers': 119368}
+2018-04-24 16:37:46,098 - INFO : 监控数据汇报成功并保存,{'data': {'/boot': {'Size': 477, 'Use': 8, 'Used': 33, 'Avail': 419}, '/': {'Size': 47819, 'Use': 5, 'Used': 2008, 'Avail': 43376}}}
+2018-04-24 16:37:46,121 - INFO : 监控数据汇报成功并保存,{'load5': 0.03, 'load1': 0.08, 'load15': 0.05}
+2018-04-24 16:37:49,125 - INFO : 监控数据汇报成功并保存,{'system': 2.68, 'user': 0.33, 'idle': 96.99, 'iowait': 0.0}
+2018-04-24 16:37:51,074 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_in': 0.0, 't_out': 0.0}, 'eth0': {'t_in': 2.04, 't_out': 2.81}}}
+2018-04-24 16:38:16,154 - INFO : 监控数据汇报成功并保存,{'MemUsage_p': 22.79, 'SwapUsage_p': 0.0, 'MemUsage': 112592, 'SwapUsage': 20, 'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemFree': 48456, 'Cached': 213516, 'MemTotal': 493952, 'Buffers': 119388}
+2018-04-24 16:38:46,290 - INFO : 监控数据汇报成功并保存,{'data': {'/boot': {'Size': 477, 'Use': 8, 'Used': 33, 'Avail': 419}, '/': {'Size': 47819, 'Use': 5, 'Used': 2008, 'Avail': 43376}}}
+2018-04-24 16:38:46,303 - INFO : 监控数据汇报成功并保存,{'MemUsage_p': 23.39, 'SwapUsage_p': 0.0, 'MemUsage': 115516, 'SwapUsage': 20, 'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemFree': 45508, 'Cached': 213520, 'MemTotal': 493952, 'Buffers': 119408}
+2018-04-24 16:38:46,312 - INFO : 监控数据汇报成功并保存,{'load5': 0.04, 'load1': 0.11, 'load15': 0.05}
+2018-04-24 16:38:49,336 - INFO : 监控数据汇报成功并保存,{'system': 2.35, 'user': 0.34, 'idle': 97.32, 'iowait': 0.0}
+2018-04-24 16:38:51,305 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_in': 0.0, 't_out': 0.0}, 'eth0': {'t_in': 2.27, 't_out': 3.25}}}
+2018-04-24 16:39:16,342 - INFO : 监控数据汇报成功并保存,{'SwapTotal': 2031612, 'Buffers': 119424, 'SwapUsage_p': 0.0, 'MemFree': 48332, 'SwapUsage': 20, 'Cached': 213524, 'MemUsage_p': 22.81, 'MemTotal': 493952, 'SwapFree': 2031592, 'MemUsage': 112672}
+2018-04-24 16:39:46,376 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 16:39:46,498 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Used': 2008, 'Size': 47819, 'Use': 5, 'Avail': 43376}, '/boot': {'Used': 33, 'Size': 477, 'Use': 8, 'Avail': 419}}}
+2018-04-24 16:39:46,506 - INFO : 监控数据汇报成功并保存,{'SwapTotal': 2031612, 'Buffers': 119436, 'SwapUsage_p': 0.0, 'MemFree': 47584, 'SwapUsage': 20, 'Cached': 213524, 'MemUsage_p': 22.96, 'MemTotal': 493952, 'SwapFree': 2031592, 'MemUsage': 113408}
+2018-04-24 16:39:46,561 - INFO : 监控数据汇报成功并保存,{'load5': 0.04, 'load15': 0.05, 'load1': 0.04}
+2018-04-24 16:40:16,627 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119456, 'MemFree': 48332, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 22.8, 'MemUsage': 112632, 'Cached': 213532}
+2018-04-24 16:40:46,771 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119468, 'MemFree': 46580, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 23.15, 'MemUsage': 114372, 'Cached': 213532}
+2018-04-24 16:40:46,791 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Size': 47819, 'Used': 2008, 'Avail': 43376, 'Use': 5}, '/boot': {'Size': 477, 'Used': 33, 'Avail': 419, 'Use': 8}}}
+2018-04-24 16:40:46,797 - INFO : 监控数据汇报成功并保存,{'load15': 0.05, 'load5': 0.03, 'load1': 0.01}
+2018-04-24 16:40:49,799 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.34, 'idle': 97.65, 'system': 2.01}
+2018-04-24 16:40:51,720 - INFO : 监控数据汇报成功并保存,{'data': {'eth0': {'t_out': 55.46, 't_in': 2.79}, 'lo': {'t_out': 0.0, 't_in': 0.0}}}
+2018-04-24 16:41:16,796 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119480, 'MemFree': 48332, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 22.8, 'MemUsage': 112600, 'Cached': 213540}
+2018-04-24 16:41:46,914 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119488, 'MemFree': 46408, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 23.18, 'MemUsage': 114512, 'Cached': 213544}
+2018-04-24 16:41:46,960 - INFO : 监控数据汇报成功并保存,{'load15': 0.05, 'load5': 0.02, 'load1': 0.01}
+2018-04-24 16:41:46,968 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Size': 47819, 'Used': 2008, 'Avail': 43376, 'Use': 5}, '/boot': {'Size': 477, 'Used': 33, 'Avail': 419, 'Use': 8}}}
+2018-04-24 16:41:49,917 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 1.34, 'idle': 96.31, 'system': 2.35}
+2018-04-24 16:41:51,936 - INFO : 监控数据汇报成功并保存,{'data': {'eth0': {'t_out': 2.97, 't_in': 2.03}, 'lo': {'t_out': 0.0, 't_in': 0.0}}}
+2018-04-24 16:42:16,960 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119492, 'MemFree': 48208, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 22.82, 'MemUsage': 112708, 'Cached': 213544}
+2018-04-24 16:42:47,125 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119504, 'MemFree': 47328, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 22.99, 'MemUsage': 113572, 'Cached': 213548}
+2018-04-24 16:42:47,125 - INFO : 监控数据汇报成功并保存,{'load15': 0.05, 'load5': 0.02, 'load1': 0.0}
+2018-04-24 16:42:47,130 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Size': 47819, 'Used': 2008, 'Avail': 43376, 'Use': 5}, '/boot': {'Size': 477, 'Used': 33, 'Avail': 419, 'Use': 8}}}
+2018-04-24 16:42:50,168 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.67, 'idle': 96.64, 'system': 2.68}
+2018-04-24 16:42:52,114 - INFO : 监控数据汇报成功并保存,{'data': {'eth0': {'t_out': 3.04, 't_in': 2.14}, 'lo': {'t_out': 0.0, 't_in': 0.0}}}
+2018-04-24 16:43:17,183 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119512, 'MemFree': 48208, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 22.81, 'MemUsage': 112684, 'Cached': 213548}
+2018-04-24 16:43:47,320 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Size': 47819, 'Used': 2008, 'Avail': 43376, 'Use': 5}, '/boot': {'Size': 477, 'Used': 33, 'Avail': 419, 'Use': 8}}}
+2018-04-24 16:43:47,383 - INFO : 监控数据汇报成功并保存,{'load15': 0.05, 'load5': 0.03, 'load1': 0.03}
+2018-04-24 16:43:47,388 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119520, 'MemFree': 46272, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 23.2, 'MemUsage': 114608, 'Cached': 213552}
+2018-04-24 16:43:50,416 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.0, 'idle': 97.98, 'system': 2.02}
+2018-04-24 16:43:52,301 - INFO : 监控数据汇报成功并保存,{'data': {'eth0': {'t_out': 3.23, 't_in': 2.15}, 'lo': {'t_out': 0.0, 't_in': 0.0}}}
+2018-04-24 16:44:17,382 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119540, 'MemFree': 48084, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 22.83, 'MemUsage': 112772, 'Cached': 213556}
+2018-04-24 16:44:47,425 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 16:44:47,535 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Size': 47819, 'Used': 2008, 'Avail': 43376, 'Use': 5}, '/boot': {'Size': 477, 'Used': 33, 'Avail': 419, 'Use': 8}}}
+2018-04-24 16:44:47,628 - INFO : 监控数据汇报成功并保存,{'load15': 0.05, 'load5': 0.02, 'load1': 0.01}
+2018-04-24 16:44:47,632 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119552, 'MemFree': 45264, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 23.4, 'MemUsage': 115580, 'Cached': 213556}
+2018-04-24 16:44:50,665 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.67, 'idle': 97.31, 'system': 2.02}
+2018-04-24 16:44:52,572 - INFO : 监控数据汇报成功并保存,{'data': {'eth0': {'t_out': 2.66, 't_in': 1.86}, 'lo': {'t_out': 0.0, 't_in': 0.0}}}
+2018-04-24 16:45:17,643 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119568, 'MemFree': 48084, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 22.82, 'MemUsage': 112740, 'Cached': 213560}
+2018-04-24 16:45:47,719 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Size': 47819, 'Used': 2008, 'Avail': 43376, 'Use': 5}, '/boot': {'Size': 477, 'Used': 33, 'Avail': 419, 'Use': 8}}}
+2018-04-24 16:45:47,790 - INFO : 监控数据汇报成功并保存,{'load15': 0.05, 'load5': 0.02, 'load1': 0.0}
+2018-04-24 16:45:47,798 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119576, 'MemFree': 45024, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 23.44, 'MemUsage': 115792, 'Cached': 213560}
+2018-04-24 16:45:50,845 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.33, 'idle': 96.99, 'system': 2.68}
+2018-04-24 16:45:52,715 - INFO : 监控数据汇报成功并保存,{'data': {'eth0': {'t_out': 3.06, 't_in': 2.11}, 'lo': {'t_out': 0.0, 't_in': 0.0}}}
+2018-04-24 16:46:17,845 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119588, 'MemFree': 48084, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 22.82, 'MemUsage': 112716, 'Cached': 213564}
+2018-04-24 16:46:47,983 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Size': 47819, 'Used': 2008, 'Avail': 43376, 'Use': 5}, '/boot': {'Size': 477, 'Used': 33, 'Avail': 419, 'Use': 8}}}
+2018-04-24 16:46:47,983 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119600, 'MemFree': 46644, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 23.11, 'MemUsage': 114140, 'Cached': 213568}
+2018-04-24 16:46:47,984 - INFO : 监控数据汇报成功并保存,{'load15': 0.05, 'load5': 0.04, 'load1': 0.12}
+2018-04-24 16:46:51,006 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.33, 'idle': 97.32, 'system': 2.34}
+2018-04-24 16:46:52,956 - INFO : 监控数据汇报成功并保存,{'data': {'eth0': {'t_out': 3.08, 't_in': 2.12}, 'lo': {'t_out': 0.0, 't_in': 0.0}}}
+2018-04-24 16:47:17,996 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119608, 'MemFree': 48084, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 22.81, 'MemUsage': 112688, 'Cached': 213572}
+2018-04-24 16:47:48,076 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Size': 47819, 'Used': 2008, 'Avail': 43376, 'Use': 5}, '/boot': {'Size': 477, 'Used': 33, 'Avail': 419, 'Use': 8}}}
+2018-04-24 16:47:48,172 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119608, 'MemFree': 46924, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 23.05, 'MemUsage': 113848, 'Cached': 213572}
+2018-04-24 16:47:48,172 - INFO : 监控数据汇报成功并保存,{'load15': 0.05, 'load5': 0.04, 'load1': 0.04}
+2018-04-24 16:47:51,205 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.34, 'idle': 97.65, 'system': 2.01}
+2018-04-24 16:47:53,128 - INFO : 监控数据汇报成功并保存,{'data': {'eth0': {'t_out': 2.52, 't_in': 1.65}, 'lo': {'t_out': 0.0, 't_in': 0.0}}}
+2018-04-24 16:48:18,226 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119628, 'MemFree': 49092, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 22.6, 'MemUsage': 111656, 'Cached': 213576}
+2018-04-24 16:48:48,431 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Size': 47819, 'Used': 2008, 'Avail': 43376, 'Use': 5}, '/boot': {'Size': 477, 'Used': 33, 'Avail': 419, 'Use': 8}}}
+2018-04-24 16:48:48,522 - INFO : 监控数据汇报成功并保存,{'load15': 0.05, 'load5': 0.03, 'load1': 0.02}
+2018-04-24 16:48:48,525 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119628, 'MemFree': 48640, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 22.7, 'MemUsage': 112108, 'Cached': 213576}
+2018-04-24 16:48:51,537 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.33, 'idle': 97.34, 'system': 2.33}
+2018-04-24 16:48:53,369 - INFO : 监控数据汇报成功并保存,{'data': {'eth0': {'t_out': 3.32, 't_in': 2.23}, 'lo': {'t_out': 0.0, 't_in': 0.0}}}
+2018-04-24 16:49:18,539 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119640, 'MemFree': 48084, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 22.81, 'MemUsage': 112648, 'Cached': 213580}
+2018-04-24 16:49:47,576 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 16:49:47,686 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Size': 47819, 'Used': 2008, 'Avail': 43376, 'Use': 5}, '/boot': {'Size': 477, 'Used': 33, 'Avail': 419, 'Use': 8}}}
+2018-04-24 16:49:47,749 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119652, 'MemFree': 46644, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 23.09, 'MemUsage': 114076, 'Cached': 213580}
+2018-04-24 16:49:47,751 - INFO : 监控数据汇报成功并保存,{'load15': 0.05, 'load5': 0.03, 'load1': 0.01}
+2018-04-24 16:49:50,779 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.34, 'idle': 97.65, 'system': 2.01}
+2018-04-24 16:49:52,703 - INFO : 监控数据汇报成功并保存,{'data': {'eth0': {'t_out': 2.38, 't_in': 1.71}, 'lo': {'t_out': 0.0, 't_in': 0.0}}}
+2018-04-24 16:50:17,822 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119676, 'MemFree': 47960, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 22.82, 'MemUsage': 112716, 'Cached': 213600}
+2018-04-24 16:50:47,975 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119684, 'MemFree': 44280, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 23.56, 'MemUsage': 116388, 'Cached': 213600}
+2018-04-24 16:50:48,002 - INFO : 监控数据汇报成功并保存,{'load15': 0.05, 'load5': 0.02, 'load1': 0.0}
+2018-04-24 16:50:48,002 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Size': 47819, 'Used': 2008, 'Avail': 43376, 'Use': 5}, '/boot': {'Size': 477, 'Used': 33, 'Avail': 419, 'Use': 8}}}
+2018-04-24 16:50:51,015 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.34, 'idle': 98.32, 'system': 1.35}
+2018-04-24 16:50:52,951 - INFO : 监控数据汇报成功并保存,{'data': {'eth0': {'t_out': 55.91, 't_in': 2.84}, 'lo': {'t_out': 0.0, 't_in': 0.0}}}
+2018-04-24 16:51:17,997 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119700, 'MemFree': 47836, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 22.84, 'MemUsage': 112816, 'Cached': 213600}
+2018-04-24 16:51:48,150 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Size': 47819, 'Used': 2008, 'Avail': 43376, 'Use': 5}, '/boot': {'Size': 477, 'Used': 33, 'Avail': 419, 'Use': 8}}}
+2018-04-24 16:51:48,186 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119712, 'MemFree': 46420, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 23.12, 'MemUsage': 114208, 'Cached': 213612}
+2018-04-24 16:51:48,194 - INFO : 监控数据汇报成功并保存,{'load15': 0.05, 'load5': 0.01, 'load1': 0.0}
+2018-04-24 16:51:51,212 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.67, 'idle': 96.63, 'system': 2.69}
+2018-04-24 16:51:53,128 - INFO : 监控数据汇报成功并保存,{'data': {'eth0': {'t_out': 3.2, 't_in': 2.11}, 'lo': {'t_out': 0.0, 't_in': 0.0}}}
+2018-04-24 16:52:18,238 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119732, 'MemFree': 47836, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 22.83, 'MemUsage': 112772, 'Cached': 213612}
+2018-04-24 16:52:48,348 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Size': 47819, 'Used': 2008, 'Avail': 43376, 'Use': 5}, '/boot': {'Size': 477, 'Used': 33, 'Avail': 419, 'Use': 8}}}
+2018-04-24 16:52:48,394 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119744, 'MemFree': 46272, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 23.14, 'MemUsage': 114324, 'Cached': 213612}
+2018-04-24 16:52:48,398 - INFO : 监控数据汇报成功并保存,{'load15': 0.05, 'load5': 0.04, 'load1': 0.07}
+2018-04-24 16:52:51,411 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.34, 'idle': 96.97, 'system': 2.69}
+2018-04-24 16:52:53,318 - INFO : 监控数据汇报成功并保存,{'data': {'eth0': {'t_out': 3.24, 't_in': 2.16}, 'lo': {'t_out': 0.0, 't_in': 0.0}}}
+2018-04-24 16:53:18,470 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119756, 'MemFree': 47712, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 22.85, 'MemUsage': 112868, 'Cached': 213616}
+2018-04-24 16:53:48,598 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119764, 'MemFree': 46584, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 23.08, 'MemUsage': 113988, 'Cached': 213616}
+2018-04-24 16:53:48,606 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Size': 47819, 'Used': 2008, 'Avail': 43376, 'Use': 5}, '/boot': {'Size': 477, 'Used': 33, 'Avail': 419, 'Use': 8}}}
+2018-04-24 16:53:48,654 - INFO : 监控数据汇报成功并保存,{'load15': 0.05, 'load5': 0.05, 'load1': 0.09}
+2018-04-24 16:53:51,659 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.33, 'idle': 97.33, 'system': 2.33}
+2018-04-24 16:53:53,593 - INFO : 监控数据汇报成功并保存,{'data': {'eth0': {'t_out': 3.32, 't_in': 2.21}, 'lo': {'t_out': 0.0, 't_in': 0.0}}}
+2018-04-24 16:54:18,673 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119784, 'MemFree': 47712, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 22.84, 'MemUsage': 112836, 'Cached': 213620}
+2018-04-24 16:54:47,697 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 16:54:47,836 - INFO : 监控数据汇报成功并保存,{'load15': 0.05, 'load5': 0.04, 'load1': 0.03}
+2018-04-24 16:54:47,853 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Size': 47819, 'Used': 2008, 'Avail': 43376, 'Use': 5}, '/boot': {'Size': 477, 'Used': 33, 'Avail': 419, 'Use': 8}}}
+2018-04-24 16:54:47,878 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119788, 'MemFree': 45760, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 23.24, 'MemUsage': 114784, 'Cached': 213620}
+2018-04-24 16:54:50,874 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.67, 'idle': 96.33, 'system': 3.0}
+2018-04-24 16:54:52,831 - INFO : 监控数据汇报成功并保存,{'data': {'eth0': {'t_out': 2.86, 't_in': 2.06}, 'lo': {'t_out': 0.0, 't_in': 0.0}}}
+2018-04-24 16:55:17,880 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119800, 'MemFree': 47712, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 22.84, 'MemUsage': 112812, 'Cached': 213628}
+2018-04-24 16:55:48,028 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Size': 47819, 'Used': 2008, 'Avail': 43376, 'Use': 5}, '/boot': {'Size': 477, 'Used': 33, 'Avail': 419, 'Use': 8}}}
+2018-04-24 16:55:48,057 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119808, 'MemFree': 44544, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 23.48, 'MemUsage': 115972, 'Cached': 213628}
+2018-04-24 16:55:48,073 - INFO : 监控数据汇报成功并保存,{'load15': 0.05, 'load5': 0.04, 'load1': 0.01}
+2018-04-24 16:55:51,072 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.0, 'idle': 98.65, 'system': 1.35}
+2018-04-24 16:55:52,993 - INFO : 监控数据汇报成功并保存,{'data': {'eth0': {'t_out': 3.05, 't_in': 2.15}, 'lo': {'t_out': 0.0, 't_in': 0.0}}}
+2018-04-24 16:56:18,064 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119816, 'MemFree': 47712, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 22.84, 'MemUsage': 112796, 'Cached': 213628}
+2018-04-24 16:56:48,229 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Size': 47819, 'Used': 2008, 'Avail': 43376, 'Use': 5}, '/boot': {'Size': 477, 'Used': 33, 'Avail': 419, 'Use': 8}}}
+2018-04-24 16:56:48,259 - INFO : 监控数据汇报成功并保存,{'load15': 0.05, 'load5': 0.03, 'load1': 0.0}
+2018-04-24 16:56:48,260 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119820, 'MemFree': 43892, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 23.61, 'MemUsage': 116612, 'Cached': 213628}
+2018-04-24 16:56:51,276 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.33, 'idle': 96.0, 'system': 3.67}
+2018-04-24 16:56:53,171 - INFO : 监控数据汇报成功并保存,{'data': {'eth0': {'t_out': 3.2, 't_in': 2.17}, 'lo': {'t_out': 0.0, 't_in': 0.0}}}
+2018-04-24 16:57:18,262 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119844, 'MemFree': 47588, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 22.85, 'MemUsage': 112888, 'Cached': 213632}
+2018-04-24 16:57:48,383 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Size': 47819, 'Used': 2008, 'Avail': 43376, 'Use': 5}, '/boot': {'Size': 477, 'Used': 33, 'Avail': 419, 'Use': 8}}}
+2018-04-24 16:57:48,456 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119856, 'MemFree': 46824, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 23.01, 'MemUsage': 113640, 'Cached': 213632}
+2018-04-24 16:57:48,456 - INFO : 监控数据汇报成功并保存,{'load15': 0.05, 'load5': 0.04, 'load1': 0.03}
+2018-04-24 16:57:51,483 - INFO : 监控数据汇报成功并保存,{'iowait': 5.35, 'user': 0.33, 'idle': 92.64, 'system': 1.67}
+2018-04-24 16:57:53,367 - INFO : 监控数据汇报成功并保存,{'data': {'eth0': {'t_out': 3.32, 't_in': 2.22}, 'lo': {'t_out': 0.0, 't_in': 0.0}}}
+2018-04-24 16:58:18,468 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119880, 'MemFree': 47588, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 22.85, 'MemUsage': 112844, 'Cached': 213640}
+2018-04-24 16:58:48,577 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119888, 'MemFree': 46816, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 23.0, 'MemUsage': 113608, 'Cached': 213640}
+2018-04-24 16:58:48,589 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Size': 47819, 'Used': 2008, 'Avail': 43376, 'Use': 5}, '/boot': {'Size': 477, 'Used': 33, 'Avail': 419, 'Use': 8}}}
+2018-04-24 16:58:48,602 - INFO : 监控数据汇报成功并保存,{'load15': 0.05, 'load5': 0.03, 'load1': 0.01}
+2018-04-24 16:58:51,620 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.67, 'idle': 97.64, 'system': 1.68}
+2018-04-24 16:58:53,583 - INFO : 监控数据汇报成功并保存,{'data': {'eth0': {'t_out': 2.54, 't_in': 1.86}, 'lo': {'t_out': 0.0, 't_in': 0.0}}}
+2018-04-24 16:59:18,630 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119912, 'MemFree': 47588, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 22.84, 'MemUsage': 112808, 'Cached': 213644}
+2018-04-24 16:59:48,669 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 16:59:48,873 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Size': 47819, 'Used': 2008, 'Avail': 43376, 'Use': 5}, '/boot': {'Size': 477, 'Used': 33, 'Avail': 419, 'Use': 8}}}
+2018-04-24 16:59:48,883 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119924, 'MemFree': 47104, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 22.93, 'MemUsage': 113280, 'Cached': 213644}
+2018-04-24 16:59:48,894 - INFO : 监控数据汇报成功并保存,{'load15': 0.05, 'load5': 0.06, 'load1': 0.07}
+2018-04-24 16:59:51,865 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 1.0, 'idle': 95.65, 'system': 3.34}
+2018-04-24 16:59:53,833 - INFO : 监控数据汇报成功并保存,{'data': {'eth0': {'t_out': 54.88, 't_in': 2.61}, 'lo': {'t_out': 0.0, 't_in': 0.0}}}
+2018-04-24 17:00:18,920 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119944, 'MemFree': 47464, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 22.86, 'MemUsage': 112900, 'Cached': 213644}
+2018-04-24 17:00:49,082 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Size': 47819, 'Used': 2008, 'Avail': 43376, 'Use': 5}, '/boot': {'Size': 477, 'Used': 33, 'Avail': 419, 'Use': 8}}}
+2018-04-24 17:00:49,117 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119964, 'MemFree': 45852, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 23.18, 'MemUsage': 114488, 'Cached': 213648}
+2018-04-24 17:00:49,138 - INFO : 监控数据汇报成功并保存,{'load15': 0.05, 'load5': 0.06, 'load1': 0.08}
+2018-04-24 17:00:52,124 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.67, 'idle': 96.98, 'system': 2.35}
+2018-04-24 17:00:54,018 - INFO : 监控数据汇报成功并保存,{'data': {'eth0': {'t_out': 85.59, 't_in': 2.96}, 'lo': {'t_out': 0.0, 't_in': 0.0}}}
+2018-04-24 17:01:19,089 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119972, 'MemFree': 47464, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 22.85, 'MemUsage': 112860, 'Cached': 213656}
+2018-04-24 17:01:49,225 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Size': 47819, 'Used': 2008, 'Avail': 43376, 'Use': 5}, '/boot': {'Size': 477, 'Used': 33, 'Avail': 419, 'Use': 8}}}
+2018-04-24 17:01:49,225 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119980, 'MemFree': 46412, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 23.06, 'MemUsage': 113892, 'Cached': 213668}
+2018-04-24 17:01:49,226 - INFO : 监控数据汇报成功并保存,{'load15': 0.05, 'load5': 0.05, 'load1': 0.03}
+2018-04-24 17:01:52,235 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.67, 'idle': 96.64, 'system': 2.68}
+2018-04-24 17:01:54,172 - INFO : 监控数据汇报成功并保存,{'data': {'eth0': {'t_out': 3.16, 't_in': 2.17}, 'lo': {'t_out': 0.0, 't_in': 0.0}}}
+2018-04-24 17:02:19,286 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 119996, 'MemFree': 47464, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 22.84, 'MemUsage': 112820, 'Cached': 213672}
+2018-04-24 17:02:49,440 - INFO : 监控数据汇报成功并保存,{'load15': 0.05, 'load5': 0.06, 'load1': 0.09}
+2018-04-24 17:02:49,445 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Size': 47819, 'Used': 2008, 'Avail': 43376, 'Use': 5}, '/boot': {'Size': 477, 'Used': 33, 'Avail': 419, 'Use': 8}}}
+2018-04-24 17:02:49,458 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'MemTotal': 493952, 'Buffers': 120000, 'MemFree': 46412, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 23.05, 'MemUsage': 113868, 'Cached': 213672}
+2018-04-24 17:02:52,484 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.67, 'idle': 96.98, 'system': 2.35}
+2018-04-24 17:02:54,467 - INFO : 监控数据汇报成功并保存,{'data': {'eth0': {'t_out': 2.56, 't_in': 2.0}, 'lo': {'t_out': 0.0, 't_in': 0.0}}}
+2018-04-24 17:03:19,535 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'SwapUsage': 20, 'MemFree': 47464, 'MemUsage_p': 22.84, 'Cached': 213676, 'Buffers': 120016, 'MemTotal': 493952, 'MemUsage': 112796, 'SwapUsage_p': 0.0}
+2018-04-24 17:03:49,634 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'SwapTotal': 2031612, 'SwapUsage': 20, 'MemFree': 44560, 'MemUsage_p': 23.42, 'Cached': 213676, 'Buffers': 120020, 'MemTotal': 493952, 'MemUsage': 115696, 'SwapUsage_p': 0.0}
+2018-04-24 17:03:49,638 - INFO : 监控数据汇报成功并保存,{'load15': 0.05, 'load1': 0.11, 'load5': 0.06}
+2018-04-24 17:03:49,638 - INFO : 监控数据汇报成功并保存,{'data': {'/boot': {'Use': 8, 'Avail': 419, 'Used': 33, 'Size': 477}, '/': {'Use': 5, 'Avail': 43376, 'Used': 2008, 'Size': 47819}}}
+2018-04-24 17:03:52,674 - INFO : 监控数据汇报成功并保存,{'system': 2.35, 'iowait': 0.0, 'user': 0.67, 'idle': 96.98}
+2018-04-24 17:03:54,621 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_out': 0.0, 't_in': 0.0}, 'eth0': {'t_out': 3.07, 't_in': 2.18}}}
+2018-04-24 17:04:19,685 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'MemUsage': 112892, 'Cached': 213676, 'Buffers': 120044, 'MemFree': 47340, 'MemTotal': 493952, 'SwapTotal': 2031612, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 22.85}
+2018-04-24 17:04:48,719 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 17:04:48,926 - INFO : 监控数据汇报成功并保存,{'data': {'/boot': {'Use': 8, 'Size': 477, 'Used': 33, 'Avail': 419}, '/': {'Use': 5, 'Size': 47819, 'Used': 2008, 'Avail': 43376}}}
+2018-04-24 17:04:48,934 - INFO : 监控数据汇报成功并保存,{'load15': 0.05, 'load5': 0.07, 'load1': 0.1}
+2018-04-24 17:04:48,937 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'MemUsage': 114192, 'Cached': 213684, 'Buffers': 120044, 'MemFree': 46032, 'MemTotal': 493952, 'SwapTotal': 2031612, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 23.12}
+2018-04-24 17:04:51,936 - INFO : 监控数据汇报成功并保存,{'user': 0.67, 'iowait': 0.0, 'idle': 96.31, 'system': 3.02}
+2018-04-24 17:04:53,871 - INFO : 监控数据汇报成功并保存,{'data': {'eth0': {'t_in': 2.24, 't_out': 3.31}, 'lo': {'t_in': 0.0, 't_out': 0.0}}}
+2018-04-24 17:05:18,912 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'MemUsage': 112876, 'Cached': 213684, 'Buffers': 120052, 'MemFree': 47340, 'MemTotal': 493952, 'SwapTotal': 2031612, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 22.85}
+2018-04-24 17:05:49,058 - INFO : 监控数据汇报成功并保存,{'SwapFree': 2031592, 'MemUsage': 113916, 'Cached': 213688, 'Buffers': 120052, 'MemFree': 46296, 'MemTotal': 493952, 'SwapTotal': 2031612, 'SwapUsage_p': 0.0, 'SwapUsage': 20, 'MemUsage_p': 23.06}
+2018-04-24 17:05:49,059 - INFO : 监控数据汇报成功并保存,{'load15': 0.05, 'load5': 0.06, 'load1': 0.04}
+2018-04-24 17:05:49,070 - INFO : 监控数据汇报成功并保存,{'data': {'/boot': {'Use': 8, 'Size': 477, 'Used': 33, 'Avail': 419}, '/': {'Use': 5, 'Size': 47819, 'Used': 2008, 'Avail': 43376}}}
+2018-04-24 17:05:54,533 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_in': 0.0, 't_out': 0.0}, 'eth0': {'t_in': 1.73, 't_out': 2.59}}}
+2018-04-24 17:06:19,097 - INFO : 监控数据汇报成功并保存,{'MemTotal': 493952, 'MemUsage': 112856, 'Buffers': 120068, 'MemFree': 47340, 'SwapFree': 2031592, 'Cached': 213688, 'SwapUsage': 20, 'SwapTotal': 2031612, 'SwapUsage_p': 0.0, 'MemUsage_p': 22.85}
+2018-04-24 17:06:49,193 - INFO : 监控数据汇报成功并保存,{'MemTotal': 493952, 'MemUsage': 113660, 'Buffers': 120072, 'MemFree': 46528, 'SwapFree': 2031592, 'Cached': 213692, 'SwapUsage': 20, 'SwapTotal': 2031612, 'SwapUsage_p': 0.0, 'MemUsage_p': 23.01}
+2018-04-24 17:06:49,193 - INFO : 监控数据汇报成功并保存,{'data': {'/boot': {'Used': 33, 'Use': 8, 'Size': 477, 'Avail': 419}, '/': {'Used': 2008, 'Use': 5, 'Size': 47819, 'Avail': 43376}}}
+2018-04-24 17:06:49,196 - INFO : 监控数据汇报成功并保存,{'load15': 0.05, 'load1': 0.01, 'load5': 0.04}
+2018-04-24 17:06:52,208 - INFO : 监控数据汇报成功并保存,{'user': 0.33, 'iowait': 0.0, 'idle': 97.32, 'system': 2.34}
+2018-04-24 17:06:54,189 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_in': 0.0, 't_out': 0.0}, 'eth0': {'t_in': 2.28, 't_out': 3.18}}}
+2018-04-24 17:07:19,212 - INFO : 监控数据汇报成功并保存,{'MemTotal': 493952, 'MemUsage': 112824, 'Buffers': 120088, 'MemFree': 47340, 'SwapFree': 2031592, 'Cached': 213700, 'SwapUsage': 20, 'SwapTotal': 2031612, 'SwapUsage_p': 0.0, 'MemUsage_p': 22.84}
+2018-04-24 17:07:49,331 - INFO : 监控数据汇报成功并保存,{'data': {'/boot': {'Used': 33, 'Use': 8, 'Size': 477, 'Avail': 419}, '/': {'Used': 2008, 'Use': 5, 'Size': 47819, 'Avail': 43376}}}
+2018-04-24 17:07:49,383 - INFO : 监控数据汇报成功并保存,{'load15': 0.05, 'load1': 0.01, 'load5': 0.04}
+2018-04-24 17:07:49,408 - INFO : 监控数据汇报成功并保存,{'MemTotal': 493952, 'MemUsage': 114376, 'Buffers': 120100, 'MemFree': 45776, 'SwapFree': 2031592, 'Cached': 213700, 'SwapUsage': 20, 'SwapTotal': 2031612, 'SwapUsage_p': 0.0, 'MemUsage_p': 23.16}
+2018-04-24 17:07:52,393 - INFO : 监控数据汇报成功并保存,{'user': 0.0, 'iowait': 0.0, 'idle': 98.32, 'system': 1.68}
+2018-04-24 17:07:54,368 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_in': 0.0, 't_out': 0.0}, 'eth0': {'t_in': 2.19, 't_out': 3.35}}}
+2018-04-24 17:08:19,403 - INFO : 监控数据汇报成功并保存,{'MemTotal': 493952, 'MemUsage': 112920, 'Buffers': 120116, 'MemFree': 47216, 'SwapFree': 2031592, 'Cached': 213700, 'SwapUsage': 20, 'SwapTotal': 2031612, 'SwapUsage_p': 0.0, 'MemUsage_p': 22.86}
+2018-04-24 17:08:49,523 - INFO : 监控数据汇报成功并保存,{'MemTotal': 493952, 'MemUsage': 113564, 'Buffers': 120116, 'MemFree': 46568, 'SwapFree': 2031592, 'Cached': 213704, 'SwapUsage': 20, 'SwapTotal': 2031612, 'SwapUsage_p': 0.0, 'MemUsage_p': 22.99}
+2018-04-24 17:08:49,547 - INFO : 监控数据汇报成功并保存,{'data': {'/boot': {'Used': 33, 'Use': 8, 'Size': 477, 'Avail': 419}, '/': {'Used': 2008, 'Use': 5, 'Size': 47819, 'Avail': 43376}}}
+2018-04-24 17:08:49,572 - INFO : 监控数据汇报成功并保存,{'load15': 0.05, 'load1': 0.04, 'load5': 0.04}
+2018-04-24 17:08:52,587 - INFO : 监控数据汇报成功并保存,{'user': 0.67, 'iowait': 0.0, 'idle': 97.32, 'system': 2.01}
+2018-04-24 17:08:54,522 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_in': 0.0, 't_out': 0.0}, 'eth0': {'t_in': 2.35, 't_out': 3.69}}}
+2018-04-24 17:09:19,617 - INFO : 监控数据汇报成功并保存,{'MemTotal': 493952, 'MemUsage': 112912, 'Buffers': 120116, 'MemFree': 47216, 'SwapFree': 2031592, 'Cached': 213708, 'SwapUsage': 20, 'SwapTotal': 2031612, 'SwapUsage_p': 0.0, 'MemUsage_p': 22.86}
+2018-04-24 17:09:49,653 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 17:09:49,743 - INFO : 监控数据汇报成功并保存,{'data': {'/boot': {'Used': 33, 'Use': 8, 'Size': 477, 'Avail': 419}, '/': {'Used': 2008, 'Use': 5, 'Size': 47819, 'Avail': 43376}}}
+2018-04-24 17:09:49,763 - INFO : 监控数据汇报成功并保存,{'MemTotal': 493952, 'MemUsage': 113800, 'Buffers': 120116, 'MemFree': 46328, 'SwapFree': 2031592, 'Cached': 213708, 'SwapUsage': 20, 'SwapTotal': 2031612, 'SwapUsage_p': 0.0, 'MemUsage_p': 23.04}
+2018-04-24 17:09:49,800 - INFO : 监控数据汇报成功并保存,{'load15': 0.05, 'load1': 0.01, 'load5': 0.04}
+2018-04-24 17:09:52,811 - INFO : 监控数据汇报成功并保存,{'user': 0.34, 'iowait': 0.0, 'idle': 96.97, 'system': 2.69}
+2018-04-24 17:09:54,744 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_in': 0.0, 't_out': 0.0}, 'eth0': {'t_in': 2.39, 't_out': 3.76}}}
+2018-04-24 17:10:19,840 - INFO : 监控数据汇报成功并保存,{'MemTotal': 493952, 'MemUsage': 113936, 'Buffers': 120124, 'MemFree': 46168, 'SwapFree': 2031592, 'Cached': 213724, 'SwapUsage': 20, 'SwapTotal': 2031612, 'SwapUsage_p': 0.0, 'MemUsage_p': 23.07}
+2018-04-24 17:10:49,940 - INFO : 监控数据汇报成功并保存,{'data': {'/boot': {'Used': 33, 'Use': 8, 'Size': 477, 'Avail': 419}, '/': {'Used': 2008, 'Use': 5, 'Size': 47819, 'Avail': 43376}}}
+2018-04-24 17:10:49,979 - INFO : 监控数据汇报成功并保存,{'MemTotal': 493952, 'MemUsage': 115372, 'Buffers': 120128, 'MemFree': 44728, 'SwapFree': 2031592, 'Cached': 213724, 'SwapUsage': 20, 'SwapTotal': 2031612, 'SwapUsage_p': 0.0, 'MemUsage_p': 23.36}
+2018-04-24 17:10:50,015 - INFO : 监控数据汇报成功并保存,{'load15': 0.05, 'load1': 0.0, 'load5': 0.03}
+2018-04-24 17:10:52,992 - INFO : 监控数据汇报成功并保存,{'user': 0.67, 'iowait': 0.0, 'idle': 96.64, 'system': 2.68}
+2018-04-24 17:10:54,973 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_in': 0.0, 't_out': 0.0}, 'eth0': {'t_in': 2.67, 't_out': 36.12}}}
+2018-04-24 17:11:19,990 - INFO : 监控数据汇报成功并保存,{'MemTotal': 493952, 'MemUsage': 113912, 'Buffers': 120136, 'MemFree': 46168, 'SwapFree': 2031592, 'Cached': 213736, 'SwapUsage': 20, 'SwapTotal': 2031612, 'SwapUsage_p': 0.0, 'MemUsage_p': 23.06}
+2018-04-24 17:11:50,127 - INFO : 监控数据汇报成功并保存,{'data': {'/boot': {'Used': 33, 'Use': 8, 'Size': 477, 'Avail': 419}, '/': {'Used': 2008, 'Use': 5, 'Size': 47819, 'Avail': 43376}}}
+2018-04-24 17:11:50,127 - INFO : 监控数据汇报成功并保存,{'MemTotal': 493952, 'MemUsage': 115652, 'Buffers': 120152, 'MemFree': 44408, 'SwapFree': 2031592, 'Cached': 213740, 'SwapUsage': 20, 'SwapTotal': 2031612, 'SwapUsage_p': 0.0, 'MemUsage_p': 23.41}
+2018-04-24 17:11:50,152 - INFO : 监控数据汇报成功并保存,{'load15': 0.05, 'load1': 0.0, 'load5': 0.03}
+2018-04-24 17:11:53,132 - INFO : 监控数据汇报成功并保存,{'user': 0.34, 'iowait': 0.0, 'idle': 97.64, 'system': 2.02}
+2018-04-24 17:11:55,169 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_in': 0.0, 't_out': 0.0}, 'eth0': {'t_in': 2.44, 't_out': 7.26}}}
+2018-04-24 17:12:20,156 - INFO : 监控数据汇报成功并保存,{'MemTotal': 493952, 'MemUsage': 113996, 'Buffers': 120168, 'MemFree': 46044, 'SwapFree': 2031592, 'Cached': 213744, 'SwapUsage': 20, 'SwapTotal': 2031612, 'SwapUsage_p': 0.0, 'MemUsage_p': 23.08}
+2018-04-24 17:12:50,347 - INFO : 监控数据汇报成功并保存,{'MemTotal': 493952, 'MemUsage': 115300, 'Buffers': 120172, 'MemFree': 44736, 'SwapFree': 2031592, 'Cached': 213744, 'SwapUsage': 20, 'SwapTotal': 2031612, 'SwapUsage_p': 0.0, 'MemUsage_p': 23.34}
+2018-04-24 17:12:50,347 - INFO : 监控数据汇报成功并保存,{'load15': 0.05, 'load1': 0.0, 'load5': 0.02}
+2018-04-24 17:12:50,387 - INFO : 监控数据汇报成功并保存,{'data': {'/boot': {'Used': 33, 'Use': 8, 'Size': 477, 'Avail': 419}, '/': {'Used': 2008, 'Use': 5, 'Size': 47819, 'Avail': 43376}}}
+2018-04-24 17:12:53,377 - INFO : 监控数据汇报成功并保存,{'user': 0.0, 'iowait': 0.0, 'idle': 96.32, 'system': 3.68}
+2018-04-24 17:12:55,348 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_in': 0.0, 't_out': 0.0}, 'eth0': {'t_in': 2.26, 't_out': 6.71}}}
+2018-04-24 17:13:20,300 - INFO : 监控数据汇报成功并保存,{'MemTotal': 493952, 'MemUsage': 113984, 'Buffers': 120176, 'MemFree': 46044, 'SwapFree': 2031592, 'Cached': 213748, 'SwapUsage': 20, 'SwapTotal': 2031612, 'SwapUsage_p': 0.0, 'MemUsage_p': 23.08}
+2018-04-24 17:13:50,509 - INFO : 监控数据汇报成功并保存,{'data': {'/boot': {'Used': 33, 'Use': 8, 'Size': 477, 'Avail': 419}, '/': {'Used': 2008, 'Use': 5, 'Size': 47819, 'Avail': 43376}}}
+2018-04-24 17:13:50,524 - INFO : 监控数据汇报成功并保存,{'MemTotal': 493952, 'MemUsage': 115300, 'Buffers': 120184, 'MemFree': 44720, 'SwapFree': 2031592, 'Cached': 213748, 'SwapUsage': 20, 'SwapTotal': 2031612, 'SwapUsage_p': 0.0, 'MemUsage_p': 23.34}
+2018-04-24 17:13:50,548 - INFO : 监控数据汇报成功并保存,{'load15': 0.08, 'load1': 0.48, 'load5': 0.11}
+2018-04-24 17:13:53,548 - INFO : 监控数据汇报成功并保存,{'user': 0.67, 'iowait': 0.0, 'idle': 97.64, 'system': 1.68}
+2018-04-24 17:13:55,419 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_in': 0.0, 't_out': 0.0}, 'eth0': {'t_in': 2.4, 't_out': 6.27}}}
+2018-04-24 17:14:20,561 - INFO : 监控数据汇报成功并保存,{'MemTotal': 493952, 'MemUsage': 113968, 'Buffers': 120188, 'MemFree': 46044, 'SwapFree': 2031592, 'Cached': 213752, 'SwapUsage': 20, 'SwapTotal': 2031612, 'SwapUsage_p': 0.0, 'MemUsage_p': 23.07}
+2018-04-24 17:14:50,631 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 17:14:50,744 - INFO : 监控数据汇报成功并保存,{'load15': 0.08, 'load1': 0.25, 'load5': 0.12}
+2018-04-24 17:14:50,745 - INFO : 监控数据汇报成功并保存,{'data': {'/boot': {'Used': 33, 'Use': 8, 'Size': 477, 'Avail': 419}, '/': {'Used': 2008, 'Use': 5, 'Size': 47819, 'Avail': 43376}}}
+2018-04-24 17:14:50,758 - INFO : 监控数据汇报成功并保存,{'MemTotal': 493952, 'MemUsage': 114920, 'Buffers': 120188, 'MemFree': 45092, 'SwapFree': 2031592, 'Cached': 213752, 'SwapUsage': 20, 'SwapTotal': 2031612, 'SwapUsage_p': 0.0, 'MemUsage_p': 23.27}
+2018-04-24 17:14:53,756 - INFO : 监控数据汇报成功并保存,{'user': 0.67, 'iowait': 0.0, 'idle': 97.66, 'system': 1.67}
+2018-04-24 17:14:55,724 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_in': 0.0, 't_out': 0.0}, 'eth0': {'t_in': 2.35, 't_out': 5.81}}}
+2018-04-24 17:15:20,769 - INFO : 监控数据汇报成功并保存,{'MemTotal': 493952, 'MemUsage': 113948, 'Buffers': 120204, 'MemFree': 46044, 'SwapFree': 2031592, 'Cached': 213756, 'SwapUsage': 20, 'SwapTotal': 2031612, 'SwapUsage_p': 0.0, 'MemUsage_p': 23.07}
+2018-04-24 17:15:50,879 - INFO : 监控数据汇报成功并保存,{'MemTotal': 493952, 'MemUsage': 115544, 'Buffers': 120204, 'MemFree': 44448, 'SwapFree': 2031592, 'Cached': 213756, 'SwapUsage': 20, 'SwapTotal': 2031612, 'SwapUsage_p': 0.0, 'MemUsage_p': 23.39}
+2018-04-24 17:15:50,901 - INFO : 监控数据汇报成功并保存,{'load15': 0.08, 'load1': 0.14, 'load5': 0.12}
+2018-04-24 17:15:50,902 - INFO : 监控数据汇报成功并保存,{'data': {'/boot': {'Used': 33, 'Use': 8, 'Size': 477, 'Avail': 419}, '/': {'Used': 2008, 'Use': 5, 'Size': 47819, 'Avail': 43376}}}
+2018-04-24 17:15:53,920 - INFO : 监控数据汇报成功并保存,{'user': 0.67, 'iowait': 0.0, 'idle': 97.32, 'system': 2.01}
+2018-04-24 17:15:55,852 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_in': 0.0, 't_out': 0.0}, 'eth0': {'t_in': 2.4, 't_out': 7.44}}}
+2018-04-24 17:16:20,976 - INFO : 监控数据汇报成功并保存,{'MemTotal': 493952, 'MemUsage': 113940, 'Buffers': 120208, 'MemFree': 46044, 'SwapFree': 2031592, 'Cached': 213760, 'SwapUsage': 20, 'SwapTotal': 2031612, 'SwapUsage_p': 0.0, 'MemUsage_p': 23.07}
+2018-04-24 17:16:51,155 - INFO : 监控数据汇报成功并保存,{'data': {'/boot': {'Used': 33, 'Use': 8, 'Size': 477, 'Avail': 419}, '/': {'Used': 2008, 'Use': 5, 'Size': 47819, 'Avail': 43376}}}
+2018-04-24 17:16:51,187 - INFO : 监控数据汇报成功并保存,{'MemTotal': 493952, 'MemUsage': 117980, 'Buffers': 120208, 'MemFree': 41992, 'SwapFree': 2031592, 'Cached': 213772, 'SwapUsage': 20, 'SwapTotal': 2031612, 'SwapUsage_p': 0.0, 'MemUsage_p': 23.88}
+2018-04-24 17:16:51,205 - INFO : 监控数据汇报成功并保存,{'load15': 0.08, 'load1': 0.08, 'load5': 0.11}
+2018-04-24 17:16:54,187 - INFO : 监控数据汇报成功并保存,{'user': 0.34, 'iowait': 0.0, 'idle': 96.98, 'system': 2.68}
+2018-04-24 17:16:56,102 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_in': 0.0, 't_out': 0.0}, 'eth0': {'t_in': 2.36, 't_out': 6.02}}}
+2018-04-24 17:17:21,165 - INFO : 监控数据汇报成功并保存,{'MemTotal': 493952, 'MemUsage': 113916, 'Buffers': 120220, 'MemFree': 46044, 'SwapFree': 2031592, 'Cached': 213772, 'SwapUsage': 20, 'SwapTotal': 2031612, 'SwapUsage_p': 0.0, 'MemUsage_p': 23.06}
+2018-04-24 17:17:51,272 - INFO : 监控数据汇报成功并保存,{'data': {'/boot': {'Used': 33, 'Use': 8, 'Size': 477, 'Avail': 419}, '/': {'Used': 2008, 'Use': 5, 'Size': 47819, 'Avail': 43376}}}
+2018-04-24 17:17:51,319 - INFO : 监控数据汇报成功并保存,{'load15': 0.08, 'load1': 0.03, 'load5': 0.09}
+2018-04-24 17:17:51,319 - INFO : 监控数据汇报成功并保存,{'MemTotal': 493952, 'MemUsage': 116104, 'Buffers': 120224, 'MemFree': 43852, 'SwapFree': 2031592, 'Cached': 213772, 'SwapUsage': 20, 'SwapTotal': 2031612, 'SwapUsage_p': 0.0, 'MemUsage_p': 23.51}
+2018-04-24 17:17:54,337 - INFO : 监控数据汇报成功并保存,{'user': 0.0, 'iowait': 0.0, 'idle': 97.99, 'system': 2.01}
+2018-04-24 17:17:56,294 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_in': 0.0, 't_out': 0.0}, 'eth0': {'t_in': 2.25, 't_out': 6.95}}}
+2018-04-24 17:18:21,339 - INFO : 监控数据汇报成功并保存,{'MemTotal': 493952, 'MemUsage': 113896, 'Buffers': 120232, 'MemFree': 46044, 'SwapFree': 2031592, 'Cached': 213780, 'SwapUsage': 20, 'SwapTotal': 2031612, 'SwapUsage_p': 0.0, 'MemUsage_p': 23.06}
+2018-04-24 17:18:51,475 - INFO : 监控数据汇报成功并保存,{'MemTotal': 493952, 'MemUsage': 116004, 'Buffers': 120236, 'MemFree': 43932, 'SwapFree': 2031592, 'Cached': 213780, 'SwapUsage': 20, 'SwapTotal': 2031612, 'SwapUsage_p': 0.0, 'MemUsage_p': 23.48}
+2018-04-24 17:18:51,482 - INFO : 监控数据汇报成功并保存,{'load15': 0.07, 'load1': 0.01, 'load5': 0.07}
+2018-04-24 17:18:51,496 - INFO : 监控数据汇报成功并保存,{'data': {'/boot': {'Used': 33, 'Use': 8, 'Size': 477, 'Avail': 419}, '/': {'Used': 2008, 'Use': 5, 'Size': 47819, 'Avail': 43376}}}
+2018-04-24 17:18:54,507 - INFO : 监控数据汇报成功并保存,{'user': 0.67, 'iowait': 0.0, 'idle': 96.64, 'system': 2.68}
+2018-04-24 17:18:56,474 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_in': 0.0, 't_out': 0.0}, 'eth0': {'t_in': 2.32, 't_out': 7.06}}}
+2018-04-24 17:19:21,486 - INFO : 监控数据汇报成功并保存,{'MemTotal': 493952, 'MemUsage': 113992, 'Buffers': 120244, 'MemFree': 45936, 'SwapFree': 2031592, 'Cached': 213780, 'SwapUsage': 20, 'SwapTotal': 2031612, 'SwapUsage_p': 0.0, 'MemUsage_p': 23.08}
+2018-04-24 17:19:51,540 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 17:19:51,648 - INFO : 监控数据汇报成功并保存,{'data': {'/boot': {'Used': 33, 'Use': 8, 'Size': 477, 'Avail': 419}, '/': {'Used': 2008, 'Use': 5, 'Size': 47819, 'Avail': 43376}}}
+2018-04-24 17:19:51,666 - INFO : 监控数据汇报成功并保存,{'load15': 0.06, 'load1': 0.0, 'load5': 0.06}
+2018-04-24 17:19:51,679 - INFO : 监控数据汇报成功并保存,{'MemTotal': 493952, 'MemUsage': 115500, 'Buffers': 120248, 'MemFree': 44424, 'SwapFree': 2031592, 'Cached': 213780, 'SwapUsage': 20, 'SwapTotal': 2031612, 'SwapUsage_p': 0.0, 'MemUsage_p': 23.38}
+2018-04-24 17:19:54,682 - INFO : 监控数据汇报成功并保存,{'user': 0.67, 'iowait': 0.0, 'idle': 97.31, 'system': 2.02}
+2018-04-24 17:19:56,641 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_in': 0.0, 't_out': 0.0}, 'eth0': {'t_in': 2.42, 't_out': 6.97}}}
+2018-04-24 17:20:21,760 - INFO : 监控数据汇报成功并保存,{'MemTotal': 493952, 'MemUsage': 113984, 'Buffers': 120252, 'MemFree': 45920, 'SwapFree': 2031592, 'Cached': 213796, 'SwapUsage': 20, 'SwapTotal': 2031612, 'SwapUsage_p': 0.0, 'MemUsage_p': 23.08}
+2018-04-24 17:20:51,841 - INFO : 监控数据汇报成功并保存,{'data': {'/boot': {'Used': 33, 'Use': 8, 'Size': 477, 'Avail': 419}, '/': {'Used': 2008, 'Use': 5, 'Size': 47819, 'Avail': 43376}}}
+2018-04-24 17:20:51,874 - INFO : 监控数据汇报成功并保存,{'MemTotal': 493952, 'MemUsage': 115864, 'Buffers': 120260, 'MemFree': 44036, 'SwapFree': 2031592, 'Cached': 213792, 'SwapUsage': 20, 'SwapTotal': 2031612, 'SwapUsage_p': 0.0, 'MemUsage_p': 23.46}
+2018-04-24 17:20:51,905 - INFO : 监控数据汇报成功并保存,{'load15': 0.06, 'load1': 0.0, 'load5': 0.05}
+2018-04-24 17:20:54,901 - INFO : 监控数据汇报成功并保存,{'user': 0.34, 'iowait': 0.0, 'idle': 97.98, 'system': 1.68}
+2018-04-24 17:20:56,845 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_in': 0.0, 't_out': 0.0}, 'eth0': {'t_in': 2.65, 't_out': 36.52}}}
+2018-04-24 17:21:21,890 - INFO : 监控数据汇报成功并保存,{'MemTotal': 493952, 'MemUsage': 113952, 'Buffers': 120280, 'MemFree': 45920, 'SwapFree': 2031592, 'Cached': 213800, 'SwapUsage': 20, 'SwapTotal': 2031612, 'SwapUsage_p': 0.0, 'MemUsage_p': 23.07}
+2018-04-24 17:21:52,048 - INFO : 监控数据汇报成功并保存,{'load15': 0.06, 'load1': 0.05, 'load5': 0.05}
+2018-04-24 17:21:52,053 - INFO : 监控数据汇报成功并保存,{'data': {'/boot': {'Used': 33, 'Use': 8, 'Size': 477, 'Avail': 419}, '/': {'Used': 2008, 'Use': 5, 'Size': 47819, 'Avail': 43376}}}
+2018-04-24 17:21:52,057 - INFO : 监控数据汇报成功并保存,{'MemTotal': 493952, 'MemUsage': 115096, 'Buffers': 120292, 'MemFree': 44760, 'SwapFree': 2031592, 'Cached': 213804, 'SwapUsage': 20, 'SwapTotal': 2031612, 'SwapUsage_p': 0.0, 'MemUsage_p': 23.3}
+2018-04-24 17:21:55,062 - INFO : 监控数据汇报成功并保存,{'user': 0.34, 'iowait': 0.0, 'idle': 97.99, 'system': 1.68}
+2018-04-24 17:21:57,036 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_in': 0.0, 't_out': 0.0}, 'eth0': {'t_in': 2.4, 't_out': 7.22}}}
+2018-04-24 17:22:22,118 - INFO : 监控数据汇报成功并保存,{'MemFree': 45920, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213808, 'MemTotal': 493952, 'MemUsage': 113920, 'MemUsage_p': 23.06, 'Buffers': 120304, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:22:52,261 - INFO : 监控数据汇报成功并保存,{'MemFree': 43432, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213808, 'MemTotal': 493952, 'MemUsage': 116408, 'MemUsage_p': 23.57, 'Buffers': 120304, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:22:52,268 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Avail': 43376, 'Used': 2008, 'Size': 47819, 'Use': 5}, '/boot': {'Avail': 419, 'Used': 33, 'Size': 477, 'Use': 8}}}
+2018-04-24 17:22:52,307 - INFO : 监控数据汇报成功并保存,{'load1': 0.07, 'load5': 0.06, 'load15': 0.06}
+2018-04-24 17:22:55,252 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.67, 'system': 3.02, 'idle': 96.31}
+2018-04-24 17:22:57,242 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_out': 0.0, 't_in': 0.0}, 'eth0': {'t_out': 6.92, 't_in': 2.36}}}
+2018-04-24 17:23:22,284 - INFO : 监控数据汇报成功并保存,{'MemFree': 45796, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213812, 'MemTotal': 493952, 'MemUsage': 114016, 'MemUsage_p': 23.08, 'Buffers': 120328, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:23:52,437 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Avail': 43376, 'Used': 2008, 'Size': 47819, 'Use': 5}, '/boot': {'Avail': 419, 'Used': 33, 'Size': 477, 'Use': 8}}}
+2018-04-24 17:23:52,450 - INFO : 监控数据汇报成功并保存,{'MemFree': 45024, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213812, 'MemTotal': 493952, 'MemUsage': 114780, 'MemUsage_p': 23.24, 'Buffers': 120336, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:23:52,487 - INFO : 监控数据汇报成功并保存,{'load1': 0.03, 'load5': 0.05, 'load15': 0.05}
+2018-04-24 17:23:55,454 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.33, 'system': 2.01, 'idle': 97.66}
+2018-04-24 17:23:57,420 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_out': 0.0, 't_in': 0.0}, 'eth0': {'t_out': 7.19, 't_in': 2.36}}}
+2018-04-24 17:24:22,468 - INFO : 监控数据汇报成功并保存,{'MemFree': 45796, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213816, 'MemTotal': 493952, 'MemUsage': 113996, 'MemUsage_p': 23.08, 'Buffers': 120344, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:24:52,528 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 17:24:52,642 - INFO : 监控数据汇报成功并保存,{'MemFree': 43936, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213816, 'MemTotal': 493952, 'MemUsage': 115852, 'MemUsage_p': 23.45, 'Buffers': 120348, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:24:52,652 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Avail': 43376, 'Used': 2008, 'Size': 47819, 'Use': 5}, '/boot': {'Avail': 419, 'Used': 33, 'Size': 477, 'Use': 8}}}
+2018-04-24 17:24:52,668 - INFO : 监控数据汇报成功并保存,{'load1': 0.01, 'load5': 0.04, 'load15': 0.05}
+2018-04-24 17:24:55,656 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.67, 'system': 3.36, 'idle': 95.97}
+2018-04-24 17:24:57,642 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_out': 0.0, 't_in': 0.0}, 'eth0': {'t_out': 7.38, 't_in': 2.46}}}
+2018-04-24 17:25:22,690 - INFO : 监控数据汇报成功并保存,{'MemFree': 45796, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213820, 'MemTotal': 493952, 'MemUsage': 113976, 'MemUsage_p': 23.07, 'Buffers': 120360, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:25:52,801 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Avail': 43376, 'Used': 2008, 'Size': 47819, 'Use': 5}, '/boot': {'Avail': 419, 'Used': 33, 'Size': 477, 'Use': 8}}}
+2018-04-24 17:25:52,823 - INFO : 监控数据汇报成功并保存,{'load1': 0.0, 'load5': 0.03, 'load15': 0.05}
+2018-04-24 17:25:52,823 - INFO : 监控数据汇报成功并保存,{'MemFree': 44464, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213820, 'MemTotal': 493952, 'MemUsage': 115304, 'MemUsage_p': 23.34, 'Buffers': 120364, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:25:55,829 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.33, 'system': 2.01, 'idle': 97.66}
+2018-04-24 17:25:57,802 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_out': 0.0, 't_in': 0.0}, 'eth0': {'t_out': 7.31, 't_in': 2.41}}}
+2018-04-24 17:26:22,862 - INFO : 监控数据汇报成功并保存,{'MemFree': 45796, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213824, 'MemTotal': 493952, 'MemUsage': 113960, 'MemUsage_p': 23.07, 'Buffers': 120372, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:26:52,990 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Avail': 43376, 'Used': 2008, 'Size': 47819, 'Use': 5}, '/boot': {'Avail': 419, 'Used': 33, 'Size': 477, 'Use': 8}}}
+2018-04-24 17:26:53,013 - INFO : 监控数据汇报成功并保存,{'MemFree': 44348, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213828, 'MemTotal': 493952, 'MemUsage': 115396, 'MemUsage_p': 23.36, 'Buffers': 120380, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:26:53,017 - INFO : 监控数据汇报成功并保存,{'load1': 0.0, 'load5': 0.03, 'load15': 0.05}
+2018-04-24 17:26:56,002 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.34, 'system': 2.01, 'idle': 97.65}
+2018-04-24 17:26:57,998 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_out': 0.0, 't_in': 0.0}, 'eth0': {'t_out': 7.11, 't_in': 2.39}}}
+2018-04-24 17:27:23,038 - INFO : 监控数据汇报成功并保存,{'MemFree': 45796, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213832, 'MemTotal': 493952, 'MemUsage': 113936, 'MemUsage_p': 23.07, 'Buffers': 120388, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:27:53,188 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Avail': 43376, 'Used': 2008, 'Size': 47819, 'Use': 5}, '/boot': {'Avail': 419, 'Used': 33, 'Size': 477, 'Use': 8}}}
+2018-04-24 17:27:53,212 - INFO : 监控数据汇报成功并保存,{'load1': 0.04, 'load5': 0.04, 'load15': 0.05}
+2018-04-24 17:27:53,224 - INFO : 监控数据汇报成功并保存,{'MemFree': 44084, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213832, 'MemTotal': 493952, 'MemUsage': 115640, 'MemUsage_p': 23.41, 'Buffers': 120396, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:27:56,203 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.34, 'system': 2.39, 'idle': 97.27}
+2018-04-24 17:27:58,175 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_out': 0.0, 't_in': 0.0}, 'eth0': {'t_out': 7.38, 't_in': 2.42}}}
+2018-04-24 17:28:23,217 - INFO : 监控数据汇报成功并保存,{'MemFree': 45672, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213840, 'MemTotal': 493952, 'MemUsage': 114032, 'MemUsage_p': 23.09, 'Buffers': 120408, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:28:53,330 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Avail': 43376, 'Used': 2008, 'Size': 47819, 'Use': 5}, '/boot': {'Avail': 419, 'Used': 33, 'Size': 477, 'Use': 8}}}
+2018-04-24 17:28:53,357 - INFO : 监控数据汇报成功并保存,{'MemFree': 42792, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213840, 'MemTotal': 493952, 'MemUsage': 116900, 'MemUsage_p': 23.67, 'Buffers': 120420, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:28:53,360 - INFO : 监控数据汇报成功并保存,{'load1': 0.16, 'load5': 0.08, 'load15': 0.06}
+2018-04-24 17:28:56,361 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 1.0, 'system': 2.66, 'idle': 96.35}
+2018-04-24 17:28:58,338 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_out': 0.0, 't_in': 0.0}, 'eth0': {'t_out': 6.84, 't_in': 2.27}}}
+2018-04-24 17:29:23,377 - INFO : 监控数据汇报成功并保存,{'MemFree': 45672, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213844, 'MemTotal': 493952, 'MemUsage': 114008, 'MemUsage_p': 23.08, 'Buffers': 120428, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:29:53,417 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 17:29:53,565 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Avail': 43376, 'Used': 2008, 'Size': 47819, 'Use': 5}, '/boot': {'Avail': 419, 'Used': 33, 'Size': 477, 'Use': 8}}}
+2018-04-24 17:29:53,567 - INFO : 监控数据汇报成功并保存,{'load1': 0.09, 'load5': 0.08, 'load15': 0.06}
+2018-04-24 17:29:53,613 - INFO : 监控数据汇报成功并保存,{'MemFree': 44364, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213848, 'MemTotal': 493952, 'MemUsage': 115304, 'MemUsage_p': 23.34, 'Buffers': 120436, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:29:56,575 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.67, 'system': 3.03, 'idle': 96.3}
+2018-04-24 17:29:58,534 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_out': 0.0, 't_in': 0.0}, 'eth0': {'t_out': 115.73, 't_in': 3.28}}}
+2018-04-24 17:30:23,628 - INFO : 监控数据汇报成功并保存,{'MemFree': 45672, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213852, 'MemTotal': 493952, 'MemUsage': 113984, 'MemUsage_p': 23.08, 'Buffers': 120444, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:30:53,745 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Avail': 43376, 'Used': 2008, 'Size': 47819, 'Use': 5}, '/boot': {'Avail': 419, 'Used': 33, 'Size': 477, 'Use': 8}}}
+2018-04-24 17:30:53,786 - INFO : 监控数据汇报成功并保存,{'MemFree': 43836, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213856, 'MemTotal': 493952, 'MemUsage': 115816, 'MemUsage_p': 23.45, 'Buffers': 120444, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:30:53,812 - INFO : 监控数据汇报成功并保存,{'load1': 0.03, 'load5': 0.06, 'load15': 0.05}
+2018-04-24 17:30:56,828 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.34, 'system': 2.03, 'idle': 97.63}
+2018-04-24 17:30:58,794 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_out': 0.0, 't_in': 0.0}, 'eth0': {'t_out': 148.54, 't_in': 3.84}}}
+2018-04-24 17:31:23,760 - INFO : 监控数据汇报成功并保存,{'MemFree': 45672, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213864, 'MemTotal': 493952, 'MemUsage': 113972, 'MemUsage_p': 23.07, 'Buffers': 120444, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:31:53,873 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Avail': 43376, 'Used': 2008, 'Size': 47819, 'Use': 5}, '/boot': {'Avail': 419, 'Used': 33, 'Size': 477, 'Use': 8}}}
+2018-04-24 17:31:53,919 - INFO : 监控数据汇报成功并保存,{'MemFree': 44908, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213868, 'MemTotal': 493952, 'MemUsage': 114720, 'MemUsage_p': 23.22, 'Buffers': 120456, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:31:53,923 - INFO : 监控数据汇报成功并保存,{'load1': 0.01, 'load5': 0.05, 'load15': 0.05}
+2018-04-24 17:31:56,922 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.34, 'system': 2.02, 'idle': 97.64}
+2018-04-24 17:31:58,876 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_out': 0.0, 't_in': 0.0}, 'eth0': {'t_out': 7.22, 't_in': 2.4}}}
+2018-04-24 17:32:23,966 - INFO : 监控数据汇报成功并保存,{'MemFree': 45548, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213868, 'MemTotal': 493952, 'MemUsage': 114072, 'MemUsage_p': 23.09, 'Buffers': 120464, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:32:54,043 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Avail': 43376, 'Used': 2008, 'Size': 47819, 'Use': 5}, '/boot': {'Avail': 419, 'Used': 33, 'Size': 477, 'Use': 8}}}
+2018-04-24 17:32:54,067 - INFO : 监控数据汇报成功并保存,{'MemFree': 44768, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213872, 'MemTotal': 493952, 'MemUsage': 114844, 'MemUsage_p': 23.25, 'Buffers': 120468, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:32:54,095 - INFO : 监控数据汇报成功并保存,{'load1': 0.0, 'load5': 0.04, 'load15': 0.05}
+2018-04-24 17:32:57,119 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.33, 'system': 1.67, 'idle': 97.99}
+2018-04-24 17:32:59,080 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_out': 0.02, 't_in': 0.02}, 'eth0': {'t_out': 7.01, 't_in': 2.3}}}
+2018-04-24 17:33:24,131 - INFO : 监控数据汇报成功并保存,{'MemFree': 45548, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213876, 'MemTotal': 493952, 'MemUsage': 114060, 'MemUsage_p': 23.09, 'Buffers': 120468, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:33:54,251 - INFO : 监控数据汇报成功并保存,{'load1': 0.04, 'load5': 0.05, 'load15': 0.05}
+2018-04-24 17:33:54,251 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Avail': 43376, 'Used': 2008, 'Size': 47819, 'Use': 5}, '/boot': {'Avail': 419, 'Used': 33, 'Size': 477, 'Use': 8}}}
+2018-04-24 17:33:54,269 - INFO : 监控数据汇报成功并保存,{'MemFree': 44052, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213876, 'MemTotal': 493952, 'MemUsage': 115552, 'MemUsage_p': 23.39, 'Buffers': 120472, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:33:57,279 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.0, 'system': 2.69, 'idle': 97.31}
+2018-04-24 17:33:59,260 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_out': 0.02, 't_in': 0.02}, 'eth0': {'t_out': 6.72, 't_in': 2.28}}}
+2018-04-24 17:34:24,258 - INFO : 监控数据汇报成功并保存,{'MemFree': 45548, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213876, 'MemTotal': 493952, 'MemUsage': 114056, 'MemUsage_p': 23.09, 'Buffers': 120472, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:34:54,313 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 17:34:54,448 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Avail': 43376, 'Used': 2008, 'Size': 47819, 'Use': 5}, '/boot': {'Avail': 419, 'Used': 33, 'Size': 477, 'Use': 8}}}
+2018-04-24 17:34:54,457 - INFO : 监控数据汇报成功并保存,{'MemFree': 44084, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213880, 'MemTotal': 493952, 'MemUsage': 115516, 'MemUsage_p': 23.39, 'Buffers': 120472, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:34:54,502 - INFO : 监控数据汇报成功并保存,{'load1': 0.01, 'load5': 0.04, 'load15': 0.05}
+2018-04-24 17:34:57,508 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.67, 'system': 2.68, 'idle': 96.64}
+2018-04-24 17:34:59,402 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_out': 0.02, 't_in': 0.02}, 'eth0': {'t_out': 6.19, 't_in': 2.42}}}
+2018-04-24 17:35:24,513 - INFO : 监控数据汇报成功并保存,{'MemFree': 45548, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213892, 'MemTotal': 493952, 'MemUsage': 114036, 'MemUsage_p': 23.09, 'Buffers': 120476, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:35:54,656 - INFO : 监控数据汇报成功并保存,{'load1': 0.01, 'load5': 0.03, 'load15': 0.05}
+2018-04-24 17:35:54,663 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Avail': 43376, 'Used': 2008, 'Size': 47819, 'Use': 5}, '/boot': {'Avail': 419, 'Used': 33, 'Size': 477, 'Use': 8}}}
+2018-04-24 17:35:54,673 - INFO : 监控数据汇报成功并保存,{'MemFree': 41620, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213892, 'MemTotal': 493952, 'MemUsage': 117964, 'MemUsage_p': 23.88, 'Buffers': 120476, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:35:57,662 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.34, 'system': 3.69, 'idle': 95.97}
+2018-04-24 17:35:59,615 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_out': 0.02, 't_in': 0.02}, 'eth0': {'t_out': 7.36, 't_in': 2.45}}}
+2018-04-24 17:36:24,670 - INFO : 监控数据汇报成功并保存,{'MemFree': 45548, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213892, 'MemTotal': 493952, 'MemUsage': 114036, 'MemUsage_p': 23.09, 'Buffers': 120476, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:36:54,805 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Avail': 43376, 'Used': 2008, 'Size': 47819, 'Use': 5}, '/boot': {'Avail': 419, 'Used': 33, 'Size': 477, 'Use': 8}}}
+2018-04-24 17:36:54,810 - INFO : 监控数据汇报成功并保存,{'MemFree': 45064, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213900, 'MemTotal': 493952, 'MemUsage': 114500, 'MemUsage_p': 23.18, 'Buffers': 120488, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:36:54,810 - INFO : 监控数据汇报成功并保存,{'load1': 0.0, 'load5': 0.03, 'load15': 0.05}
+2018-04-24 17:36:57,815 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.67, 'system': 3.36, 'idle': 95.97}
+2018-04-24 17:36:59,799 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_out': 0.02, 't_in': 0.02}, 'eth0': {'t_out': 5.93, 't_in': 2.32}}}
+2018-04-24 17:37:24,819 - INFO : 监控数据汇报成功并保存,{'MemFree': 45548, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213904, 'MemTotal': 493952, 'MemUsage': 114000, 'MemUsage_p': 23.08, 'Buffers': 120500, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:37:54,953 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Avail': 43376, 'Used': 2008, 'Size': 47819, 'Use': 5}, '/boot': {'Avail': 419, 'Used': 33, 'Size': 477, 'Use': 8}}}
+2018-04-24 17:37:54,962 - INFO : 监控数据汇报成功并保存,{'MemFree': 44520, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213904, 'MemTotal': 493952, 'MemUsage': 115020, 'MemUsage_p': 23.29, 'Buffers': 120508, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:37:54,995 - INFO : 监控数据汇报成功并保存,{'load1': 0.0, 'load5': 0.02, 'load15': 0.05}
+2018-04-24 17:37:57,987 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.34, 'system': 2.35, 'idle': 97.32}
+2018-04-24 17:37:59,963 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_out': 0.02, 't_in': 0.02}, 'eth0': {'t_out': 6.64, 't_in': 2.14}}}
+2018-04-24 17:38:25,006 - INFO : 监控数据汇报成功并保存,{'MemFree': 45424, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213908, 'MemTotal': 493952, 'MemUsage': 114096, 'MemUsage_p': 23.1, 'Buffers': 120524, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:38:55,128 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Avail': 43376, 'Used': 2008, 'Size': 47819, 'Use': 5}, '/boot': {'Avail': 419, 'Used': 33, 'Size': 477, 'Use': 8}}}
+2018-04-24 17:38:55,143 - INFO : 监控数据汇报成功并保存,{'MemFree': 44536, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213908, 'MemTotal': 493952, 'MemUsage': 114980, 'MemUsage_p': 23.28, 'Buffers': 120528, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:38:55,181 - INFO : 监控数据汇报成功并保存,{'load1': 0.0, 'load5': 0.02, 'load15': 0.05}
+2018-04-24 17:38:58,175 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.67, 'system': 2.35, 'idle': 96.98}
+2018-04-24 17:39:00,125 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_out': 0.02, 't_in': 0.02}, 'eth0': {'t_out': 7.3, 't_in': 2.38}}}
+2018-04-24 17:39:25,201 - INFO : 监控数据汇报成功并保存,{'MemFree': 45424, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213912, 'MemTotal': 493952, 'MemUsage': 114072, 'MemUsage_p': 23.09, 'Buffers': 120544, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:39:55,275 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 17:39:55,368 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Avail': 43376, 'Used': 2008, 'Size': 47819, 'Use': 5}, '/boot': {'Avail': 419, 'Used': 33, 'Size': 477, 'Use': 8}}}
+2018-04-24 17:39:55,406 - INFO : 监控数据汇报成功并保存,{'load1': 0.1, 'load5': 0.04, 'load15': 0.05}
+2018-04-24 17:39:55,410 - INFO : 监控数据汇报成功并保存,{'MemFree': 43952, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213912, 'MemTotal': 493952, 'MemUsage': 115532, 'MemUsage_p': 23.39, 'Buffers': 120556, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:39:58,409 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.33, 'system': 2.33, 'idle': 97.33}
+2018-04-24 17:40:00,391 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_out': 0.02, 't_in': 0.02}, 'eth0': {'t_out': 6.78, 't_in': 2.31}}}
+2018-04-24 17:40:25,459 - INFO : 监控数据汇报成功并保存,{'MemFree': 45424, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213916, 'MemTotal': 493952, 'MemUsage': 114024, 'MemUsage_p': 23.08, 'Buffers': 120588, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:40:55,580 - INFO : 监控数据汇报成功并保存,{'MemFree': 43416, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213920, 'MemTotal': 493952, 'MemUsage': 116024, 'MemUsage_p': 23.49, 'Buffers': 120592, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:40:55,583 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Avail': 43376, 'Used': 2008, 'Size': 47819, 'Use': 5}, '/boot': {'Avail': 419, 'Used': 33, 'Size': 477, 'Use': 8}}}
+2018-04-24 17:40:55,585 - INFO : 监控数据汇报成功并保存,{'load1': 0.07, 'load5': 0.05, 'load15': 0.05}
+2018-04-24 17:40:58,568 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.67, 'system': 2.68, 'idle': 96.64}
+2018-04-24 17:41:00,575 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_out': 0.02, 't_in': 0.02}, 'eth0': {'t_out': 61.84, 't_in': 3.07}}}
+2018-04-24 17:41:25,576 - INFO : 监控数据汇报成功并保存,{'MemFree': 45300, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213920, 'MemTotal': 493952, 'MemUsage': 114136, 'MemUsage_p': 23.11, 'Buffers': 120596, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:41:55,717 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Avail': 43376, 'Used': 2008, 'Size': 47819, 'Use': 5}, '/boot': {'Avail': 419, 'Used': 33, 'Size': 477, 'Use': 8}}}
+2018-04-24 17:41:55,731 - INFO : 监控数据汇报成功并保存,{'load1': 0.03, 'load5': 0.04, 'load15': 0.05}
+2018-04-24 17:41:55,731 - INFO : 监控数据汇报成功并保存,{'MemFree': 44488, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213928, 'MemTotal': 493952, 'MemUsage': 114932, 'MemUsage_p': 23.27, 'Buffers': 120604, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:41:58,729 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.34, 'system': 2.01, 'idle': 97.65}
+2018-04-24 17:42:00,701 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_out': 0.02, 't_in': 0.02}, 'eth0': {'t_out': 7.24, 't_in': 2.4}}}
+2018-04-24 17:42:25,770 - INFO : 监控数据汇报成功并保存,{'MemFree': 45300, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213928, 'MemTotal': 493952, 'MemUsage': 114112, 'MemUsage_p': 23.1, 'Buffers': 120612, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:42:55,949 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Avail': 43376, 'Used': 2008, 'Size': 47819, 'Use': 5}, '/boot': {'Avail': 419, 'Used': 33, 'Size': 477, 'Use': 8}}}
+2018-04-24 17:42:55,968 - INFO : 监控数据汇报成功并保存,{'load1': 0.46, 'load5': 0.2, 'load15': 0.1}
+2018-04-24 17:42:55,982 - INFO : 监控数据汇报成功并保存,{'MemFree': 43852, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213932, 'MemTotal': 493952, 'MemUsage': 115552, 'MemUsage_p': 23.39, 'Buffers': 120616, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:42:58,939 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.34, 'system': 3.03, 'idle': 96.63}
+2018-04-24 17:43:00,844 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_out': 0.02, 't_in': 0.02}, 'eth0': {'t_out': 8.03, 't_in': 2.47}}}
+2018-04-24 17:43:26,017 - INFO : 监控数据汇报成功并保存,{'MemFree': 45300, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213940, 'MemTotal': 493952, 'MemUsage': 114080, 'MemUsage_p': 23.1, 'Buffers': 120632, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:43:56,143 - INFO : 监控数据汇报成功并保存,{'MemFree': 43812, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213940, 'MemTotal': 493952, 'MemUsage': 115564, 'MemUsage_p': 23.4, 'Buffers': 120636, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:43:56,143 - INFO : 监控数据汇报成功并保存,{'load1': 0.17, 'load5': 0.17, 'load15': 0.1}
+2018-04-24 17:43:56,175 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Avail': 43376, 'Used': 2008, 'Size': 47819, 'Use': 5}, '/boot': {'Avail': 419, 'Used': 33, 'Size': 477, 'Use': 8}}}
+2018-04-24 17:43:59,175 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.33, 'system': 2.68, 'idle': 96.99}
+2018-04-24 17:44:01,098 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_out': 0.02, 't_in': 0.02}, 'eth0': {'t_out': 7.97, 't_in': 2.47}}}
+2018-04-24 17:44:26,212 - INFO : 监控数据汇报成功并保存,{'MemFree': 45300, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213944, 'MemTotal': 493952, 'MemUsage': 114056, 'MemUsage_p': 23.09, 'Buffers': 120652, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:44:55,233 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 17:44:55,344 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Avail': 43376, 'Used': 2008, 'Size': 47819, 'Use': 5}, '/boot': {'Avail': 419, 'Used': 33, 'Size': 477, 'Use': 8}}}
+2018-04-24 17:44:55,352 - INFO : 监控数据汇报成功并保存,{'load1': 0.07, 'load5': 0.14, 'load15': 0.09}
+2018-04-24 17:44:55,360 - INFO : 监控数据汇报成功并保存,{'MemFree': 41132, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213944, 'MemTotal': 493952, 'MemUsage': 118220, 'MemUsage_p': 23.93, 'Buffers': 120656, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:44:58,356 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.34, 'system': 2.69, 'idle': 96.97}
+2018-04-24 17:45:00,315 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_out': 0.02, 't_in': 0.02}, 'eth0': {'t_out': 7.67, 't_in': 2.48}}}
+2018-04-24 17:45:25,405 - INFO : 监控数据汇报成功并保存,{'MemFree': 45300, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213948, 'MemTotal': 493952, 'MemUsage': 114036, 'MemUsage_p': 23.09, 'Buffers': 120668, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:45:55,600 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Avail': 43376, 'Used': 2008, 'Size': 47819, 'Use': 5}, '/boot': {'Avail': 419, 'Used': 33, 'Size': 477, 'Use': 8}}}
+2018-04-24 17:45:55,607 - INFO : 监控数据汇报成功并保存,{'load1': 0.03, 'load5': 0.11, 'load15': 0.09}
+2018-04-24 17:45:55,608 - INFO : 监控数据汇报成功并保存,{'MemFree': 43928, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213948, 'MemTotal': 493952, 'MemUsage': 115408, 'MemUsage_p': 23.36, 'Buffers': 120668, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:45:58,674 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.34, 'system': 2.02, 'idle': 97.64}
+2018-04-24 17:46:00,542 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_out': 0.02, 't_in': 0.02}, 'eth0': {'t_out': 7.76, 't_in': 2.45}}}
+2018-04-24 17:46:25,580 - INFO : 监控数据汇报成功并保存,{'MemFree': 45176, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213952, 'MemTotal': 493952, 'MemUsage': 114156, 'MemUsage_p': 23.11, 'Buffers': 120668, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:46:55,718 - INFO : 监控数据汇报成功并保存,{'MemFree': 44412, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213956, 'MemTotal': 493952, 'MemUsage': 114900, 'MemUsage_p': 23.26, 'Buffers': 120684, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:46:55,731 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Avail': 43376, 'Used': 2008, 'Size': 47819, 'Use': 5}, '/boot': {'Avail': 419, 'Used': 33, 'Size': 477, 'Use': 8}}}
+2018-04-24 17:46:55,777 - INFO : 监控数据汇报成功并保存,{'load1': 0.01, 'load5': 0.09, 'load15': 0.08}
+2018-04-24 17:46:58,770 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.67, 'system': 1.68, 'idle': 97.65}
+2018-04-24 17:47:00,706 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_out': 0.02, 't_in': 0.02}, 'eth0': {'t_out': 7.72, 't_in': 2.38}}}
+2018-04-24 17:47:25,811 - INFO : 监控数据汇报成功并保存,{'MemFree': 45176, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213960, 'MemTotal': 493952, 'MemUsage': 114128, 'MemUsage_p': 23.11, 'Buffers': 120688, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:47:55,965 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Avail': 43376, 'Used': 2008, 'Size': 47819, 'Use': 5}, '/boot': {'Avail': 419, 'Used': 33, 'Size': 477, 'Use': 8}}}
+2018-04-24 17:47:55,965 - INFO : 监控数据汇报成功并保存,{'load1': 0.08, 'load5': 0.1, 'load15': 0.09}
+2018-04-24 17:47:55,968 - INFO : 监控数据汇报成功并保存,{'MemFree': 43992, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213960, 'MemTotal': 493952, 'MemUsage': 115304, 'MemUsage_p': 23.34, 'Buffers': 120696, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:47:58,974 - INFO : 监控数据汇报成功并保存,{'iowait': 0.34, 'user': 0.34, 'system': 2.35, 'idle': 96.98}
+2018-04-24 17:48:00,965 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_out': 0.02, 't_in': 0.02}, 'eth0': {'t_out': 7.84, 't_in': 2.45}}}
+2018-04-24 17:48:26,045 - INFO : 监控数据汇报成功并保存,{'MemFree': 45176, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213964, 'MemTotal': 493952, 'MemUsage': 114104, 'MemUsage_p': 23.1, 'Buffers': 120708, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:48:56,197 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Avail': 43376, 'Used': 2008, 'Size': 47819, 'Use': 5}, '/boot': {'Avail': 419, 'Used': 33, 'Size': 477, 'Use': 8}}}
+2018-04-24 17:48:56,209 - INFO : 监控数据汇报成功并保存,{'MemFree': 44420, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213964, 'MemTotal': 493952, 'MemUsage': 114848, 'MemUsage_p': 23.25, 'Buffers': 120720, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:48:56,254 - INFO : 监控数据汇报成功并保存,{'load1': 0.09, 'load5': 0.11, 'load15': 0.09}
+2018-04-24 17:48:59,248 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.67, 'system': 2.34, 'idle': 96.99}
+2018-04-24 17:49:01,218 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_out': 0.02, 't_in': 0.02}, 'eth0': {'t_out': 7.74, 't_in': 2.4}}}
+2018-04-24 17:49:26,254 - INFO : 监控数据汇报成功并保存,{'MemFree': 45176, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213968, 'MemTotal': 493952, 'MemUsage': 114072, 'MemUsage_p': 23.09, 'Buffers': 120736, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:49:56,299 - INFO : 获取监控配置成功,CentOS-02_172.16.99.24
+2018-04-24 17:49:56,411 - INFO : 监控数据汇报成功并保存,{'MemFree': 43232, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213968, 'MemTotal': 493952, 'MemUsage': 116012, 'MemUsage_p': 23.49, 'Buffers': 120740, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:49:56,415 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Avail': 43376, 'Used': 2008, 'Size': 47819, 'Use': 5}, '/boot': {'Avail': 419, 'Used': 33, 'Size': 477, 'Use': 8}}}
+2018-04-24 17:49:56,421 - INFO : 监控数据汇报成功并保存,{'load1': 0.03, 'load5': 0.09, 'load15': 0.08}
+2018-04-24 17:49:59,420 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.34, 'system': 2.69, 'idle': 96.97}
+2018-04-24 17:50:01,411 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_out': 0.02, 't_in': 0.02}, 'eth0': {'t_out': 7.41, 't_in': 2.39}}}
+2018-04-24 17:50:26,479 - INFO : 监控数据汇报成功并保存,{'MemFree': 45052, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213980, 'MemTotal': 493952, 'MemUsage': 114144, 'MemUsage_p': 23.11, 'Buffers': 120776, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:50:56,559 - INFO : 监控数据汇报成功并保存,{'MemFree': 43916, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213980, 'MemTotal': 493952, 'MemUsage': 115268, 'MemUsage_p': 23.34, 'Buffers': 120788, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:50:56,589 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Avail': 43376, 'Used': 2008, 'Size': 47819, 'Use': 5}, '/boot': {'Avail': 419, 'Used': 33, 'Size': 477, 'Use': 8}}}
+2018-04-24 17:50:56,648 - INFO : 监控数据汇报成功并保存,{'load1': 0.01, 'load5': 0.07, 'load15': 0.08}
+2018-04-24 17:50:59,632 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.67, 'system': 3.01, 'idle': 96.32}
+2018-04-24 17:51:01,555 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_out': 0.02, 't_in': 0.02}, 'eth0': {'t_out': 64.44, 't_in': 3.02}}}
+2018-04-24 17:51:26,652 - INFO : 监控数据汇报成功并保存,{'MemFree': 45052, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213988, 'MemTotal': 493952, 'MemUsage': 114108, 'MemUsage_p': 23.1, 'Buffers': 120804, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:51:56,775 - INFO : 监控数据汇报成功并保存,{'data': {'/': {'Avail': 43376, 'Used': 2008, 'Size': 47819, 'Use': 5}, '/boot': {'Avail': 419, 'Used': 33, 'Size': 477, 'Use': 8}}}
+2018-04-24 17:51:56,795 - INFO : 监控数据汇报成功并保存,{'MemFree': 41264, 'SwapFree': 2031592, 'SwapUsage_p': 0.0, 'Cached': 213992, 'MemTotal': 493952, 'MemUsage': 117876, 'MemUsage_p': 23.86, 'Buffers': 120820, 'SwapTotal': 2031612, 'SwapUsage': 20}
+2018-04-24 17:51:56,809 - INFO : 监控数据汇报成功并保存,{'load1': 0.12, 'load5': 0.1, 'load15': 0.09}
+2018-04-24 17:51:59,821 - INFO : 监控数据汇报成功并保存,{'iowait': 0.0, 'user': 0.34, 'system': 2.36, 'idle': 97.31}
+2018-04-24 17:52:01,755 - INFO : 监控数据汇报成功并保存,{'data': {'lo': {'t_out': 0.02, 't_in': 0.02}, 'eth0': {'t_out': 7.61, 't_in': 2.4}}}

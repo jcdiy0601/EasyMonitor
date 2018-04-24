@@ -53,9 +53,11 @@ class DataStore(object):
                     self.redis_obj.lpop(data_key_in_redis)  # 删除最旧的一个点的数据
             self.response['code'] = 200
             self.response['message'] = '监控数据发送成功并保存,%s' % self.data
+            Logger().log(message='监控数据汇报成功并保存,%s' % self.data, mode=True)
         else:  # 汇报数据是无效的
             self.response['code'] = 422
             self.response['message'] = '服务器判定为无效数据,%s' % self.data
+            Logger().log(message='服务器判定为无效数据,%s' % self.data, mode=True)
 
     def get_data_slice(self, lastest_data_key_in_redis, data_optimize_interval):
         """获取redis数据库中一段时间的切片数据"""

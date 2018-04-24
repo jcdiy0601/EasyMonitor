@@ -5,7 +5,7 @@ from monitor_data import models
 
 
 def get_application_trigger(application_name):
-    """获取主机相关应用集的触发器表达式"""
+    """获取主机相关应用集的触发器集合"""
     trigger_list = []
     application_obj = models.Application.objects.filter(name=application_name).first()   # 应用集
     trigger_expression_list = list(models.TriggerExpression.objects.filter(applications=application_obj).all())
