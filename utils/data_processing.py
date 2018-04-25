@@ -31,7 +31,7 @@ class DataHandler(object):
         """
         self.redis = redis_obj
         calc_sub_res_list = []  # 先把每个expression的结果算出来放在这个列表里,最后再统一计算这个列表
-        positive_expressions = []   # 最终表达式列表
+        positive_expressions = []   # 最终表达式结果列表
         expression_res_string = ''  # 表达式结果字符串
         for expression_obj in trigger_obj.triggerexpression_set.all().order_by('id'):  # 循环触发器下所有触发器表达式
             expression_process_obj = ExpressionProcess(self, host_obj, expression_obj)
@@ -42,7 +42,7 @@ class DataHandler(object):
                     expression_res_string += str(single_expression_res['calc_res']) + ' ' + \
                                              single_expression_res['expression_obj'].logic_with_next + ' '
                 else:
-                    expression_res_string += str(single_expression_res['calc_res']) + ' '
+                    expression_res_string += str(single_expression_res['calc_res'])
                 # 把所有结果为True的expression提出来,报警时你得知道是谁出问题导致trigger触发了
                 if single_expression_res['calc_res'] == True:
                     single_expression_res['expression_obj'] = single_expression_res['expression_obj'].id    # 要存到redis里,数据库对象转成id
