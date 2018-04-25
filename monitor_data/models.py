@@ -101,7 +101,7 @@ class Host(models.Model):
         verbose_name_plural = '主机表'
 
     def __str__(self):
-        return '%s<%s>' % (self.hostname, self.ip)
+        return '%s %s' % (self.hostname, self.ip)
 
 
 class HostGroup(models.Model):
@@ -149,7 +149,7 @@ class Item(models.Model):
         verbose_name_plural = '监控项表'
 
     def __str__(self):
-        return '%s<%s>' % (self.name, self.key)
+        return '%s %s' % (self.name, self.key)
 
 
 class Template(models.Model):
@@ -266,3 +266,22 @@ class ActionOperation(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class EventLog(models.Model):
+    """存储报警及其他事件日志"""
+    event_type_choices = (
+        (0, '报警事件'),
+        (1, '维护事件')
+    )
+    event_type = models.IntegerField(verbose_name='事件类型', choices=event_type_choices, default=0)
+    hosts = models.ForeignKey(verbose_name='所属主机', to='Host')
+    triggers = models.ForeignKey(verbose_name='所属触发器', to='Trigger', null=True, blank=True)
+    log = models.TextField(verbose_name='日志', null=True, blank=True)
+    date = models.DateTimeField(verbose_name='日期', auto_now_add=True)
+
+    class Meta:
+        verbose_name_plural = '事件日志表'
+
+    def __str__(self):
+        return '%s %s' % (self.hosts, self.log)

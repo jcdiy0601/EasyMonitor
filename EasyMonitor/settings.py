@@ -180,3 +180,15 @@ DATA_OPTIMIZATION = {
 
 # 所有的触发器被发布到这个通道
 TRIGGER_CHAN = 'trigger_event_channel'
+
+# 允许客户端汇报延迟事件，单位秒
+REPORT_LATE_TOLERANCE_TIME = 10
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_USE_TLS = False
+EMAIL_HOST = 'smtp.qq.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = 'xxx'
+EMAIL_HOST_PASSWORD = 'xxx'
+DEFAULT_FROM_EMAIL = '管理员<xxx@.com>'

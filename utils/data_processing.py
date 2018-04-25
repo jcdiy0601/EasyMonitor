@@ -7,12 +7,14 @@ from utils.redis_conn import redis_conn
 import json
 import operator
 import pickle
+from monitor_data import models
 
 
 class DataHandler(object):
     """"""
 
     def __init__(self, connect_redis=True):
+        self.settings = settings
         self.poll_interval = 3  # 每3秒进行一次全局轮训
         self.config_update_interval = 120  # 每120s重新从数据库加载一次配置数据
         self.config_last_loading_time = time.time()  # 配置最后加载时间
@@ -76,6 +78,143 @@ class DataHandler(object):
         # 同时在redis中纪录这个trigger,前端页面展示时要统计trigger个数
         self.redis.set(trigger_redis_key, json.dumps(msg_dic), 300)  # 一个trigger纪录5分钟后会自动清除,为了在前端统计trigger个数用的
 
+    def looping(self):
+        """检测所有主机需要监控的服务的数据有没有按时汇报上来，只做基本检测"""
+        # get latest report data
+        self.update_or_load_configs()  # 生成全局的监控配置dict
+        count = 0
+        while not self.exit_flag:
+            print("looping %s".center(50, '-') % count)
+            count += 1
+            if time.time() - self.config_last_loading_time >= self.config_update_interval:
+                print("\033[41;1mneed update configs ...\033[0m")
+                self.update_or_load_configs()
+                print("monitor dic", self.global_monitor_dic)
+            if self.global_monitor_dic:
+                for h, config_dic in self.global_monitor_dic.items():
+                    print('handling host:\033[32;1m%s\033[0m' % h)
+                    for service_id, val in config_dic['services'].items():  # 循环所有要监控的服务
+                        # print(service_id,val)
+                        service_obj, last_monitor_time = val
+                        if time.time() - last_monitor_time >= service_obj.interval:  # reached the next monitor interval
+                            print(
+                                "\033[33;1mserivce [%s] has reached the monitor interval...\033[0m" % service_obj.name)
+                            self.global_monitor_dic[h]['services'][service_obj.id][1] = time.time()
+                            # self.load_service_data_and_calulating(h,service_obj)
+                            # only do basic data validataion here, alert if the client didn't report data to server in \
+                            # the configured time interval
+                            self.data_point_validation(h, service_obj)  # 检测此服务最近的汇报数据
+                        else:
+                            next_monitor_time = time.time() - last_monitor_time - service_obj.interval
+                            print("service [%s] next monitor time is %s" % (service_obj.name, next_monitor_time))
+
+                    if time.time() - self.global_monitor_dic[h]['status_last_check'] > 10:
+                        # 检测 有没有这个机器的trigger,如果没有,把机器状态改成ok
+                        trigger_redis_key = "host_%s_trigger*" % (h.id)
+                        trigger_keys = self.redis.keys(trigger_redis_key)
+                        # print('len grigger keys....',trigger_keys)
+                        if len(trigger_keys) == 0:  # 没有trigger被触发,可以把状态改为ok了
+                            h.status = 1
+                            h.save()
+                            # looping triggers 这里是真正根据用户的配置来监控了
+                            # for trigger_id,trigger_obj in config_dic['triggers'].items():
+                            #    #print("triggers expressions:",trigger_obj.triggerexpression_set.select_related())
+                            #    self.load_service_data_and_calulating(h,trigger_obj)
+
+            time.sleep(self.poll_interval)
+
+    def update_or_load_configs(self):
+        '''
+        load monitor configs from Mysql DB
+        :return:
+        '''
+        all_enabled_hosts = models.Host.objects.all()
+        for h in all_enabled_hosts:
+            if h not in self.global_monitor_dic:  # new host
+                self.global_monitor_dic[h] = {'services': {}, 'triggers': {}}
+                '''self.global_monitor_dic ={
+                    'h1':{'services'{'cpu':[cpu_obj,0],
+                                     'mem':[mem_obj,0]
+                                     },
+                          'trigger':{t1:t1_obj,}
+                        }
+                }'''
+            # print(h.host_groups.select_related())
+            service_list = []
+            trigger_list = []
+            for group in h.host_groups.select_related():
+                # print("grouptemplates:", group.templates.select_related())
+
+                for template in group.templates.select_related():
+                    # print("tempalte:",template.services.select_related())
+                    # print("triigers:",template.triggers.select_related())
+                    service_list.extend(template.services.select_related())
+                    trigger_list.extend(template.triggers.select_related())
+                for service in service_list:
+                    if service.id not in self.global_monitor_dic[h]['services']:  # first loop
+                        self.global_monitor_dic[h]['services'][service.id] = [service, 0]
+                    else:
+                        self.global_monitor_dic[h]['services'][service.id][0] = service
+                for trigger in trigger_list:
+                    # if not self.global_monitor_dic['triggers'][trigger.id]:
+                    self.global_monitor_dic[h]['triggers'][trigger.id] = trigger
+
+            # print(h.templates.select_related() )
+            # print('service list:',service_list)
+
+            for template in h.templates.select_related():
+                service_list.extend(template.services.select_related())
+                trigger_list.extend(template.triggers.select_related())
+            for service in service_list:
+                if service.id not in self.global_monitor_dic[h]['services']:  # first loop
+                    self.global_monitor_dic[h]['services'][service.id] = [service, 0]
+                else:
+                    self.global_monitor_dic[h]['services'][service.id][0] = service
+            for trigger in trigger_list:
+                self.global_monitor_dic[h]['triggers'][trigger.id] = trigger
+            # print(self.global_monitor_dic[h])
+            # 通过这个时间来确定是否需要更新主机状态
+            self.global_monitor_dic[h].setdefault('status_last_check', time.time())
+
+        self.config_last_loading_time = time.time()
+        return True
+
+    def data_point_validation(self,host_obj,service_obj):
+        '''
+        only do basic data validation here, alert if the client didn't report data to server in the configured time interval
+        :param h:
+        :param service_obj:
+        :return:
+        '''
+        service_redis_key = "StatusData_%s_%s_latest" %(host_obj.id,service_obj.name) #拼出此服务在redis中存储的对应key
+        latest_data_point = self.redis.lrange(service_redis_key,-1,-1)
+        if latest_data_point: #data list is not empty,
+            latest_data_point = json.loads(latest_data_point[0].decode())
+            #print('laste::::',latest_data_point)
+            print("\033[41;1mlatest data point\033[0m %s" % latest_data_point)
+            latest_service_data,last_report_time = latest_data_point
+            monitor_interval = service_obj.interval + self.settings.REPORT_LATE_TOLERANCE_TIME
+            if time.time() - last_report_time > monitor_interval: #超过监控间隔但数据还没汇报过来,something wrong with client
+                no_data_secs =  time.time() - last_report_time
+                msg = '''Some thing must be wrong with client [%s] , because haven't receive data of service [%s] \
+                for [%s]s (interval is [%s])\033[0m''' %(host_obj.ip_addr, service_obj.name,no_data_secs, monitor_interval)
+                self.trigger_notifier(host_obj=host_obj,trigger_id=None,positive_expressions=None,
+                                      msg=msg)
+                print("\033[41;1m%s\033[0m" %msg )
+                if service_obj.name == 'uptime': #监控主机存活的服务
+                    host_obj.status = 3 #unreachable
+                    host_obj.save()
+                else:
+                    host_obj.status = 5 #problem
+                    host_obj.save()
+
+        else: # no data at all
+            print("\033[41;1m no data for serivce [%s] host[%s] at all..\033[0m" %(service_obj.name,host_obj.name))
+            msg = '''no data for serivce [%s] host[%s] at all..''' %(service_obj.name,host_obj.name)
+            self.trigger_notifier(host_obj=host_obj,trigger_id=None,positive_expressions=None,msg=msg)
+            host_obj.status = 5 #problem
+            host_obj.save()
+        #print("triggers:", self.global_monitor_dic[host_obj]['triggers'])
 
 class ExpressionProcess(object):
     """通过不同的方法加载和计算数据"""

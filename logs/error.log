@@ -1532,3 +1532,707 @@
 2018-04-25 15:15:42,310 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
 2018-04-25 15:15:42,318 - ERROR : the JSON object must be str, not 'NoneType'
 2018-04-25 15:15:45,293 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:16:12,388 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:16:42,437 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:16:42,476 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:16:42,477 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:16:45,464 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:17:12,470 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:17:42,606 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:17:42,631 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:17:42,634 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:17:45,652 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:18:12,684 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:18:42,803 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:18:42,815 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:18:42,819 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:18:45,853 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:19:12,865 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:19:43,010 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:19:43,015 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:19:43,017 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:19:45,983 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:20:13,031 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:20:43,162 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:20:43,168 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:20:43,184 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:20:46,173 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:21:13,248 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:21:43,335 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:21:43,337 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:21:43,340 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:21:46,316 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:22:13,397 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:22:43,442 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:22:43,491 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:22:43,503 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:22:46,498 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:23:13,551 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:23:43,643 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:23:43,684 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:23:43,687 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:23:46,759 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:24:13,760 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:24:43,907 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:24:43,942 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:24:43,954 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:24:46,929 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:25:14,002 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:25:44,098 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:25:44,130 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:25:44,141 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:25:47,122 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:26:14,148 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:26:44,285 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:26:44,291 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:26:44,295 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:26:47,270 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:27:14,343 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:27:44,460 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:27:44,467 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:27:44,482 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:27:47,448 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:28:14,521 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:28:44,763 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:28:44,796 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:28:44,804 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:28:47,749 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:29:14,803 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:29:44,903 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:29:44,915 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:29:44,921 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:29:47,882 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:30:14,932 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:30:45,115 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:30:45,119 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:30:45,134 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:30:48,105 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:31:15,168 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:31:45,294 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:31:45,299 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:31:45,313 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:31:48,302 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:32:15,375 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:32:45,427 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:32:45,458 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:32:45,464 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:32:48,451 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:33:15,570 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:33:45,720 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:33:45,746 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:33:45,746 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:33:48,734 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:34:15,799 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:34:45,907 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:34:45,941 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:34:45,968 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:34:48,974 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:35:16,007 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:35:46,229 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:35:46,319 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:35:46,322 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:35:49,294 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:36:16,557 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:36:46,577 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:36:46,585 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:36:46,596 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:36:49,577 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:37:16,657 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:37:46,744 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:37:46,798 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:37:46,803 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:37:49,787 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:38:16,857 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:38:46,018 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:38:46,018 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:38:46,039 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:38:49,043 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:39:16,125 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:39:46,252 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:39:46,265 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:39:46,265 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:39:49,254 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:40:16,266 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:40:46,426 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:40:46,431 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:40:46,444 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:40:49,408 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:41:16,470 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:41:46,569 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:41:46,587 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:41:46,591 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:41:49,602 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:42:16,689 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:42:46,766 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:42:46,772 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:42:46,782 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:42:49,747 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:43:16,853 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:43:46,942 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:43:46,998 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:43:47,001 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:43:50,014 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:44:17,031 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:44:47,127 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:44:47,160 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:44:47,171 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:44:50,189 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:45:17,257 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:45:47,361 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:45:47,370 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:45:47,387 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:45:50,369 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:46:17,430 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:46:47,569 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:46:47,572 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:46:47,577 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:46:50,567 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:47:17,629 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:47:47,707 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:47:47,733 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:47:47,746 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:47:51,726 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:48:17,805 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:48:48,006 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:48:48,006 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:48:48,011 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:48:50,999 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:49:18,109 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:49:48,183 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:49:48,194 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:49:48,203 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:49:51,204 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:50:18,207 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:50:48,354 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:50:48,358 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:50:48,388 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:50:51,355 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:51:18,439 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:51:48,588 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:51:48,592 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:51:48,612 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:51:51,586 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:52:18,652 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:52:48,762 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:52:48,775 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:52:48,787 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:52:51,771 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:53:18,807 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:53:48,980 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:53:48,999 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:53:49,004 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:53:52,001 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:54:19,006 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:54:49,084 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:54:49,138 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:54:49,159 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:54:52,174 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:55:19,216 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:55:49,369 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:55:49,374 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:55:49,387 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:55:52,393 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:56:19,477 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:56:49,611 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:56:49,657 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:56:49,667 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:56:52,643 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:57:19,719 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:57:49,860 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:57:49,905 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:57:49,914 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:57:52,887 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:58:19,921 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:58:49,094 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:58:49,118 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:58:49,133 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:58:52,113 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:59:19,168 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:59:49,310 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:59:49,315 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 15:59:49,324 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 15:59:52,319 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:00:19,357 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:00:49,479 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:00:49,507 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:00:49,508 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:00:52,491 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:01:19,534 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:01:49,661 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:01:49,703 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:01:49,705 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:01:52,695 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:02:19,746 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:02:49,878 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:02:49,882 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:02:49,896 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:02:52,940 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:03:19,978 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:03:49,311 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:03:49,315 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:03:49,354 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:03:52,338 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:04:19,393 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:04:49,439 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:04:49,477 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:04:49,507 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:04:52,482 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:05:19,610 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:05:49,897 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:05:49,903 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:05:49,927 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:05:52,999 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:06:19,916 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:06:50,025 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:06:50,026 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:06:50,030 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:06:53,045 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:07:20,079 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:07:50,195 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:07:50,200 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:07:50,221 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:07:53,211 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:08:20,280 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:08:49,414 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:08:49,427 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:08:49,439 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:08:52,469 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:09:19,530 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:09:49,632 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:09:49,667 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:09:49,671 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:09:52,622 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:10:49,902 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:10:49,905 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:10:49,918 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:10:52,886 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:11:19,947 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:11:50,062 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:11:50,066 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:11:50,079 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:11:53,076 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:12:20,144 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:12:50,226 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:12:50,242 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:12:50,244 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:12:53,258 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:13:20,294 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:13:50,391 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:13:50,439 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:13:50,455 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:13:53,449 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:14:20,514 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:14:50,648 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:14:50,655 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:14:50,661 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:14:53,668 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:15:20,682 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:15:50,809 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:15:50,809 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:15:50,830 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:15:53,787 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:16:20,880 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:16:51,024 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:16:51,027 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:16:51,036 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:16:54,001 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:17:21,066 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:17:51,156 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:17:51,160 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:17:51,179 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:17:54,187 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:18:21,194 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:18:51,349 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:18:51,386 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:18:51,398 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:18:54,426 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:19:21,442 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:19:51,649 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:19:51,655 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:19:51,662 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:19:54,650 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:20:21,621 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:20:51,754 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:20:51,769 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:20:51,785 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:20:54,801 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:21:21,809 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:21:51,965 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:21:51,968 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:21:51,970 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:21:54,952 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:22:22,009 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:22:52,094 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:22:52,128 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:22:52,140 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:22:55,169 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:23:22,173 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:23:52,326 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:23:52,333 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:23:52,345 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:23:55,308 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:24:22,434 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:24:52,569 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:24:52,571 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:24:52,574 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:24:55,563 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:25:22,642 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:25:52,722 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:25:52,774 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:25:52,791 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:25:55,748 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:26:22,806 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:26:52,889 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:26:52,928 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:26:52,933 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:26:55,955 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:27:23,019 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:27:53,095 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:27:53,098 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:27:53,110 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:27:56,113 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:28:23,212 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:28:53,394 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:28:53,420 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:28:53,432 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:28:56,360 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:29:23,374 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:29:53,521 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:29:53,524 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:29:53,530 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:29:56,478 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:30:23,564 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:30:53,628 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:30:53,685 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:30:53,700 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:30:56,721 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:31:23,725 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:31:53,862 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:31:53,892 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:31:53,907 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:31:56,891 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:32:23,965 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:32:54,163 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:32:54,168 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:32:54,177 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:32:57,143 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:33:24,213 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:33:54,383 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:33:54,386 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:33:54,395 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:33:57,377 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:34:24,483 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:34:54,562 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:34:54,577 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:34:54,591 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:34:57,601 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:35:24,627 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:35:54,718 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:35:54,722 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:35:54,736 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:35:57,728 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:36:24,753 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:36:54,902 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:36:54,915 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:36:54,917 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:36:57,953 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:37:24,997 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:37:55,102 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:37:55,113 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:37:55,117 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:37:58,136 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:38:25,161 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:38:55,285 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:38:55,288 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:38:55,292 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:38:58,331 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:39:25,359 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:39:55,541 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:39:55,547 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:39:55,550 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:39:58,526 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:40:25,592 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:40:55,703 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:40:55,736 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:40:55,738 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:40:58,765 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:41:25,812 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:41:55,898 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:41:55,901 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:41:55,924 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:41:58,902 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:42:25,973 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:42:56,082 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:42:56,116 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:42:56,124 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:42:59,140 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:43:26,197 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:43:56,332 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:43:56,351 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:43:56,367 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:43:59,358 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:44:26,475 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:44:56,583 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:44:56,591 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:44:56,603 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:44:59,571 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:45:26,600 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:45:56,814 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:45:56,820 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:45:56,832 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:45:59,799 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:46:26,857 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:46:57,001 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:46:57,013 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:46:57,015 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:46:59,992 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:47:27,042 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:47:57,187 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:47:57,217 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:47:57,224 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:48:00,195 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:48:27,247 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:48:56,436 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:48:56,438 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:48:56,445 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:48:59,471 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:49:26,508 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:49:56,643 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:49:56,659 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:49:56,669 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:49:59,597 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:50:26,664 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:50:56,782 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:50:56,788 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:50:56,821 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:50:59,795 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:51:26,851 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:51:57,023 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:51:57,058 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:51:57,061 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:52:00,041 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:52:27,061 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:52:57,195 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:52:57,253 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:52:57,283 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:53:00,257 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:53:27,334 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:53:56,471 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:53:56,507 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:53:56,520 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:53:59,480 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:54:26,564 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:54:56,667 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:54:56,670 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:54:56,674 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:54:59,653 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:55:26,728 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:55:56,881 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:55:56,890 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:55:56,905 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:55:59,877 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:56:26,942 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:56:57,095 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:56:57,100 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:56:57,105 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:57:00,096 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:57:27,156 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:57:57,283 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:57:57,340 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:57:57,351 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:58:00,360 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:58:27,369 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:58:57,626 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:58:57,652 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:58:57,662 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:59:00,657 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:59:27,635 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:59:57,918 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 16:59:57,921 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 16:59:57,929 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:00:00,878 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:00:27,948 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:00:58,079 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:00:58,087 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:00:58,107 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:01:01,080 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:01:28,113 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:01:58,240 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:01:58,243 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:01:58,259 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:02:01,222 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:02:28,266 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:02:58,381 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:02:58,386 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:02:58,409 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:03:01,435 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:03:28,466 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:03:57,640 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:03:57,644 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:03:57,650 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:04:00,629 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:04:28,175 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:04:57,792 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:04:57,798 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:04:57,812 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:05:00,784 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:05:27,904 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:05:58,079 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:05:58,094 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:05:58,104 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:06:01,096 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:06:28,191 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:06:58,291 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:06:58,305 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:06:58,305 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:07:01,345 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:07:28,348 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:07:58,481 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:07:58,505 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:07:58,522 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:08:01,559 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:08:28,575 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:08:57,781 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:08:57,800 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:08:57,804 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:09:00,877 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:09:27,914 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:09:58,011 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:09:58,014 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:09:58,016 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:10:01,016 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:10:28,027 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:10:58,189 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:10:58,194 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:10:58,201 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:11:01,207 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:11:28,238 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:11:58,374 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:11:58,434 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:11:58,456 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:12:01,420 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:12:28,433 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:12:58,580 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:12:58,586 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:12:58,599 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:13:01,582 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:13:28,598 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:13:58,728 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:13:58,771 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:13:58,774 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:14:01,759 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:14:28,835 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:14:58,976 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:14:58,980 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:14:58,984 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:15:01,965 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:15:29,006 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:15:59,132 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:15:59,146 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:15:59,157 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:16:02,169 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:16:29,185 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:16:59,266 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:16:59,276 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:16:59,297 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:17:02,308 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:17:29,351 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:17:59,454 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:17:59,500 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:17:59,502 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:18:02,474 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:18:29,513 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:18:59,642 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:18:59,647 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:18:59,667 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:19:02,689 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:19:29,738 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:19:59,926 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:19:59,930 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:19:59,941 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:20:02,923 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:20:30,014 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:21:00,133 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:21:00,137 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:21:00,145 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:21:03,152 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:21:30,238 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:22:00,360 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:22:00,381 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:22:00,395 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:22:03,431 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:22:30,421 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:23:00,566 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:23:00,576 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:23:00,583 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:23:03,559 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:23:30,790 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:23:59,941 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:23:59,949 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:23:59,969 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:24:02,938 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:24:30,002 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:25:00,128 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:25:00,129 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:25:00,142 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:25:03,162 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:25:30,176 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:26:00,290 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:26:00,295 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:26:00,304 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:26:03,279 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:26:30,373 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:27:00,452 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:27:00,460 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:27:00,479 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:27:03,451 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:27:30,529 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:28:00,658 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:28:00,665 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:28:00,667 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:28:03,655 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:28:30,663 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:29:01,016 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:29:01,018 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:29:01,028 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:29:03,948 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:29:31,020 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:30:01,129 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:30:01,136 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:30:01,142 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:30:04,088 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:30:31,206 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:31:01,286 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:31:01,305 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:31:01,325 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:31:04,325 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:31:31,324 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:32:01,413 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:32:01,462 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:32:01,474 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:32:04,454 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:32:31,499 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:33:01,555 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:33:01,617 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:33:01,627 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:33:04,631 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:33:31,642 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:34:01,800 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:34:01,821 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:34:01,824 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:34:04,804 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:34:31,854 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:35:02,072 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:35:02,076 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:35:02,086 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:35:05,056 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:35:32,107 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:36:02,804 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:36:02,804 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:36:02,829 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:36:05,279 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:36:32,331 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:37:02,461 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:37:02,467 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-04-25 17:37:02,490 - ERROR : the JSON object must be str, not 'NoneType'
+2018-04-25 17:37:05,492 - ERROR : Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
