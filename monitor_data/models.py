@@ -37,8 +37,8 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     weixin = models.CharField(verbose_name='微信号', max_length=64, blank=True, null=True)
     is_active = models.BooleanField(verbose_name='是否可登录', default=True)
     is_admin = models.BooleanField(verbose_name='是否为管理员', default=False)
-    memo = models.TextField(verbose_name='备注', blank=True, null=True, default=None)
-    date_joined = models.DateTimeField(verbose_name='创建时间', blank=True, null=True, auto_now_add=True)
+    memo = models.TextField(verbose_name='备注', blank=True, null=True)
+    date_joined = models.DateTimeField(verbose_name='创建时间', auto_now_add=True)
 
     class Meta:
         verbose_name_plural = '用户表'
@@ -77,7 +77,7 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
 class Host(models.Model):
     """主机表"""
     hostname = models.CharField(verbose_name='主机名称', max_length=64, unique=True,
-                                help_text='agen输入cmdb客户端配置文件中hostname，snmp输入管理IP')
+                                help_text='agent方式要与cmdb客户端配置文件中hostname一致，snmp输入管理IP')
     ip = models.GenericIPAddressField(verbose_name='IP')
     host_groups = models.ManyToManyField(verbose_name='所属主机组', to='HostGroup', blank=True)
     templates = models.ManyToManyField(verbose_name='所属模板', to='Template', blank=True)
@@ -85,7 +85,7 @@ class Host(models.Model):
         ('agent', '客户端'),
         ('snmp', 'SNMP')
     )
-    monitor_by = models.CharField(verbose_name='监控方式', max_length=64, choices=monitor_by_choices)
+    monitor_by = models.CharField(verbose_name='监控方式', max_length=64, choices=monitor_by_choices, default='agent')
     status_choices = (
         (1, '在线'),
         (2, '宕机'),
@@ -94,7 +94,7 @@ class Host(models.Model):
         (5, '问题')
     )
     status = models.IntegerField(verbose_name='主机状态', choices=status_choices, default=3)
-    host_alive_check_interval = models.IntegerField(verbose_name='主机存活状态检测间隔', default=30)
+    host_alive_check_interval = models.IntegerField(verbose_name='主机存活状态检测间隔(s)', default=30)
     memo = models.TextField(verbose_name='备注', null=True, blank=True)
 
     class Meta:
