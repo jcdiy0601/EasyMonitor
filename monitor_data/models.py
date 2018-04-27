@@ -85,7 +85,7 @@ class Host(models.Model):
         ('agent', '客户端'),
         ('snmp', 'SNMP')
     )
-    monitor_by = models.CharField(verbose_name='监控方式', max_length=64, choices=monitor_by_choices, default='agent')
+    monitor_by = models.CharField(verbose_name='监控方式', max_length=64, choices=monitor_by_choices)
     status_choices = (
         (1, '在线'),
         (2, '宕机'),
@@ -142,7 +142,7 @@ class Item(models.Model):
         ('str', '字符串'),
     )
     data_type = models.CharField(verbose_name='数据类型', max_length=64, choices=data_type_choices)
-    unit = models.CharField(verbose_name='数据单位', max_length=64, null=True, blank=True)
+    data_unit = models.CharField(verbose_name='数据单位', max_length=64, null=True, blank=True)
     memo = models.TextField(verbose_name='备注', null=True, blank=True)
 
     class Meta:
@@ -167,7 +167,7 @@ class Template(models.Model):
 
 class Trigger(models.Model):
     """触发器表"""
-    name = models.CharField(verbose_name='触发器名称', max_length=64, null=True, blank=True)
+    name = models.CharField(verbose_name='触发器名称', max_length=64)
     templates = models.ForeignKey(verbose_name='所属模板', to='Template')
     severity_choices = (
         ('information', '信息'),
@@ -200,12 +200,11 @@ class TriggerExpression(models.Model):
     )
     operator = models.CharField(verbose_name='运算符', max_length=64, choices=operator_choices)
     threshold = models.IntegerField(verbose_name='阈值')  # 字符串判断时可规定0或1来判断
-    logic_choices = (
+    logic_with_next_choices = (
         ('or', 'OR'),
         ('and', 'AND')
     )
-    logic_with_next = models.CharField(verbose_name='与一个条件的逻辑关系', max_length=64, choices=logic_choices, null=True,
-                                       blank=True)
+    logic_with_next = models.CharField(verbose_name='与一个条件的逻辑关系', max_length=64, choices=logic_with_next_choices, null=True, blank=True)
     data_calc_func_choices = (
         ('avg', '平均值'),
         ('max', '最大值'),
@@ -213,9 +212,8 @@ class TriggerExpression(models.Model):
         ('hit', 'HIT'),
         ('last', '最近的值'),
     )
-    data_calc_func = models.CharField(verbose_name='数据运算函数', max_length=64, choices=data_calc_func_choices,
-                                      default='last')
-    data_calc_func_args = models.CharField(verbose_name='数据运算函数的非固定参数,json格式', max_length=64, null=True, blank=True)
+    data_calc_func = models.CharField(verbose_name='数据运算函数', max_length=64, choices=data_calc_func_choices)
+    data_calc_func_args = models.CharField(verbose_name='数据运算函数的非固定参数,json格式', max_length=64, help_text='如：{"time": 5}，表示5分钟', null=True, blank=True)
     memo = models.TextField(verbose_name='备注', null=True, blank=True)
 
     class Meta:
@@ -253,7 +251,7 @@ class ActionOperation(models.Model):
         ('weixin', '微信'),
         ('script', '脚本')
     )
-    action_type = models.CharField(verbose_name='动作类型', max_length=64, choices=action_type_choices, default='email')
+    action_type = models.CharField(verbose_name='动作类型', max_length=64, choices=action_type_choices)
     step = models.IntegerField(verbose_name='报警升级阈值')
     user_profiles = models.ManyToManyField(verbose_name='所属用户', to='UserProfile', blank=True)
     script_name = models.CharField(verbose_name='脚本名称', max_length=64, null=True, blank=True)
@@ -274,7 +272,7 @@ class EventLog(models.Model):
         (0, '报警事件'),
         (1, '维护事件')
     )
-    event_type = models.IntegerField(verbose_name='事件类型', choices=event_type_choices, default=0)
+    event_type = models.IntegerField(verbose_name='事件类型', choices=event_type_choices)
     hosts = models.ForeignKey(verbose_name='所属主机', to='Host')
     triggers = models.ForeignKey(verbose_name='所属触发器', to='Trigger', null=True, blank=True)
     log = models.TextField(verbose_name='日志', null=True, blank=True)
