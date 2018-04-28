@@ -6,13 +6,13 @@ import json
 from utils.get_client_config import GetClientConfigHandle
 from utils.redis_conn import redis_conn
 from django.conf import settings
-from utils.data_optimization import DataStore
+from utils.data_store_optimization import DataStoreOptimizationHandle
 from monitor_data import models
 from utils.serializer import get_application_trigger
 from utils.data_processing import DataHandler
 from utils.log import Logger
 from utils.data_verification import DataVerificationHandle
-from utils.response_client import ResponseClient
+from utils.api_response import ApiResponse
 
 REDIS_OBJ = redis_conn(settings)
 
@@ -36,7 +36,7 @@ def client_config(request):
 @monitor_api_auth
 def client_data(request):
     """客户端向api提交监控数据"""
-    response = ResponseClient().response
+    response = ApiResponse().response
     if request.method == 'POST':
         try:
             client_report_data_dict = json.loads(request.body.decode('utf-8'))  # 获取客户端汇报数据字典
@@ -48,16 +48,13 @@ def client_data(request):
             if not data:    # 无效数据或基础信息有误
                 return JsonResponse(response)
             else:   # 有效数据
-                pass
-            # host_obj = models.Host.objects.filter(hostname=hostname).first()
-            # if not host_obj:
-            #     response['code'] = 404
-            #     response['message'] = '资源不存在,%s' % hostname
-            #     Logger().log(message='资源不存在,%s' % hostname, mode=False)
-            #
-            #
-            # data_save_obj = DataStore(hostname, application_name, data, REDIS_OBJ, response)  # 对客户端汇报上来的数据进行优化存储
-            # response = data_save_obj.response  # 回复客户端，至此与客户端交互操作完成
+                print(data)
+                data_store_optimization_obj = DataStoreOptimizationHandle(hostname=hostname,
+                                                                          application_name=application_name,
+                                                                          data=data,
+                                                                          redis_obj=REDIS_OBJ)  # 对客户端汇报上来的数据进行优化存储
+
+
             # 触发器检测
             # application_trigger_list = get_application_trigger(application_name)    # 获取应用集对应触发器列表
             # trigger_handler = DataHandler(connect_redis=False)
