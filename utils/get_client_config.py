@@ -30,9 +30,9 @@ class GetClientConfigHandle(object):
                     self.client_config_dict['application'][application.name] = [application.plugin_name, application.interval]
             self.client_config_dict['code'] = 200
             self.client_config_dict['message'] = '获取监控配置成功'
-            Logger().log(message='[%s]获取监控配置成功' % self.hostname, mode=True)
+            Logger().log(message='%s,获取监控配置成功' % self.hostname, mode=True)
         except ObjectDoesNotExist as e:
             self.client_config_dict['code'] = 404
             self.client_config_dict['message'] = '客户端主机名不存在'
-            Logger().log(message='[%s]客户端主机名不存在' % self.hostname, mode=False)
+            Logger().log(message='%s,客户端主机名不存在' % self.hostname, mode=False)
         return self.client_config_dict

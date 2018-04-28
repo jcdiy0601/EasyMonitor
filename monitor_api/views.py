@@ -11,6 +11,8 @@ from monitor_data import models
 from utils.serializer import get_application_trigger
 from utils.data_processing import DataHandler
 from utils.log import Logger
+from utils.data_verification import DataVerificationHandle
+from utils.response_client import ResponseClient
 
 REDIS_OBJ = redis_conn(settings)
 
@@ -34,24 +36,28 @@ def client_config(request):
 @monitor_api_auth
 def client_data(request):
     """客户端向api提交监控数据"""
-    response = {'code': None, 'message': None}
+    response = ResponseClient().response
     if request.method == 'POST':
         try:
             client_report_data_dict = json.loads(request.body.decode('utf-8'))  # 获取客户端汇报数据字典
             hostname = client_report_data_dict.get('hostname', None)  # 获取主机名
             application_name = client_report_data_dict.get('application_name', None)  # 获取应用集名称
             data = client_report_data_dict.get('data', None)  # 获取监控数据
-
-
-            host_obj = models.Host.objects.filter(hostname=hostname).first()
-            if not host_obj:
-                response['code'] = 404
-                response['message'] = '资源不存在,%s' % hostname
-                Logger().log(message='资源不存在,%s' % hostname, mode=False)
-
-
-            data_save_obj = DataStore(hostname, application_name, data, REDIS_OBJ, response)  # 对客户端汇报上来的数据进行优化存储
-            response = data_save_obj.response  # 回复客户端，至此与客户端交互操作完成
+            data_verification_obj = DataVerificationHandle(response=response, hostname=hostname, application_name=application_name, data=data)
+            response, data = data_verification_obj.check_data()
+            if not data:    # 无效数据或基础信息有误
+                return JsonResponse(response)
+            else:   # 有效数据
+                pass
+            # host_obj = models.Host.objects.filter(hostname=hostname).first()
+            # if not host_obj:
+            #     response['code'] = 404
+            #     response['message'] = '资源不存在,%s' % hostname
+            #     Logger().log(message='资源不存在,%s' % hostname, mode=False)
+            #
+            #
+            # data_save_obj = DataStore(hostname, application_name, data, REDIS_OBJ, response)  # 对客户端汇报上来的数据进行优化存储
+            # response = data_save_obj.response  # 回复客户端，至此与客户端交互操作完成
             # 触发器检测
             # application_trigger_list = get_application_trigger(application_name)    # 获取应用集对应触发器列表
             # trigger_handler = DataHandler(connect_redis=False)
@@ -60,5 +66,5 @@ def client_data(request):
         except Exception as e:
             response['code'] = 500
             response['message'] = '服务器错误,%s' % str(e)
-            Logger().log(message='%s' % str(e), mode=False)
+            Logger().log(message='服务器错误,%s' % str(e), mode=False)
         return JsonResponse(response)
