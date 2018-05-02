@@ -48,13 +48,11 @@ def client_data(request):
             if not data:    # 无效数据或基础信息有误
                 return JsonResponse(response)
             else:   # 有效数据
-                print(data)
                 data_store_optimization_obj = DataStoreOptimizationHandle(hostname=hostname,
                                                                           application_name=application_name,
                                                                           data=data,
                                                                           redis_obj=REDIS_OBJ)  # 对客户端汇报上来的数据进行优化存储
                 data_store_optimization_obj.process_and_save()  # 数据处理及存储
-
             # 触发器检测
             # application_trigger_list = get_application_trigger(application_name)    # 获取应用集对应触发器列表
             # trigger_handler = DataHandler(connect_redis=False)

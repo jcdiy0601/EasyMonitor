@@ -28,59 +28,49 @@ class DataStoreOptimizationHandle(object):
             if not last_point_from_redis:  # 这个key在redis中不存在
                 # 所以初始化一个新键，数据集中的第一个数据点只会被用来识别上次数据被保存的时候
                 self.redis_obj.rpush(data_key_in_redis, json.dumps([None, time.time()]))
-    #             if data_optimize_interval == 0:  # 这个数据集用于未优化的数据，只有最新的数据不需要优化
-    #                 self.redis_obj.rpush(data_key_in_redis, json.dumps([self.data, time.time()]))
-    #             else:  # 需要优化的数据
-    #                 last_point_data, last_point_save_time = json.loads(
-    #                     self.redis_obj.lrange(name=data_key_in_redis, start=-1, end=-1)[0].decode()
-    #                 )  # 最后一个点的数据和最后一个点的存储时间
-    #                 if time.time() - last_point_save_time >= data_optimize_interval:  # 到达数据点更新间隔
-    #                     lastest_data_key_in_redis = 'StatusData_%s_%s_latest' % (
-    #                         self.hostname, self.application_name
-    #                     )
-    #                     # 取最近n分钟的数据,放到了data_set里
-    #                     data_set = self.get_data_slice(lastest_data_key_in_redis, data_optimize_interval)
-    #                     if len(data_set) > 0:
-    #                         # 接下来拿这个data_set交给下面的方法，算出优化结果
-    #                         optimized_data = self.get_optimized_data(data_set)
+            if data_optimize_interval == 0:  # 这个数据集用于未优化的数据，只有最新的数据不需要优化
+                self.redis_obj.rpush(data_key_in_redis, json.dumps([self.data, time.time()]))
+            else:  # 需要优化的数据
+                # 最后一个点的数据和最后一个点的存储时间
+                last_point_data, last_point_save_time = json.loads(self.redis_obj.lrange(name=data_key_in_redis, start=-1, end=-1)[0].decode())
+                if time.time() - last_point_save_time >= data_optimize_interval:  # 到达数据点更新间隔
+                    latest_data_key_in_redis = 'Data_%s_%s_latest' % (self.hostname, self.application_name)
+                    # 取最近n分钟的数据，放到了data_set里
+                    data_set = self.get_data_slice(latest_data_key_in_redis, data_optimize_interval)
+                    if len(data_set) > 0:
+                        # 接下来拿这个data_set交给下面的方法，算出优化结果
+                        optimized_data = self.get_optimized_data(data_set)
     #                         if optimized_data:  # 如果优化数据存在
     #                             self.save_optimized_data(data_key_in_redis, optimized_data)  # 保存优化数据
     #             if self.redis_obj.llen(data_key_in_redis) >= max_data_point:  # 如果数据列表点数大于最大数据点数
     #                 self.redis_obj.lpop(data_key_in_redis)  # 删除最旧的一个点的数据
-    #         self.response['code'] = 200
-    #         self.response['message'] = '监控数据发送成功并保存,%s' % self.data
-    #         Logger().log(message='监控数据汇报成功并保存,%s' % self.data, mode=True)
-    #     else:  # 汇报数据是无效的
-    #         self.response['code'] = 422
-    #         self.response['message'] = '服务器判定为无效数据,%s' % self.data
-    #         Logger().log(message='服务器判定为无效数据,%s' % self.data, mode=True)
-    #
-    # def get_data_slice(self, lastest_data_key_in_redis, data_optimize_interval):
-    #     """获取redis数据库中一段时间的切片数据"""
-    #     all_real_data = self.redis_obj.lrange(name=lastest_data_key_in_redis, start=1, end=-1)
-    #     data_set = []
-    #     for item in all_real_data:
-    #         data = json.loads(item.decode())
-    #         if len(data) == 2:
-    #             application_data, last_save_time = data
-    #             if time.time() - last_save_time <= data_optimize_interval:  # 在优化时间内
-    #                 data_set.append(data)
-    #     return data_set
-    #
-    # def get_optimized_data(self, data_set):
-    #     """获取优化数据"""
-    #     '''
-    #      data_set = [
-    #         [{\"user\": 0.33, \"system\": 1.34, \"idle\": 98.33, \"iowait\": 0.0}, 1523868963.8312852],
-    #         [{\"user\": 1.0, \"system\": 3.68, \"idle\": 95.32, \"iowait\": 0.0}, 1523868993.89751],
-    #         [{\"user\": 0.0, \"system\": 1.68, \"idle\": 98.32, \"iowait\": 0.0}, 1523869024.0294662],
-    #     ]
-    #      data_set = [
-    #         [{\"data\": {\"lo\": {\"t_out\": 0.0, \"t_in\": 0.0}, \"eth0\": {\"t_out\": 2.03, \"t_in\": 65.82}}}, 1523869898.9049253],
-    #         [{\"data\": {\"lo\": {\"t_out\": 0.0, \"t_in\": 0.0}, \"eth0\": {\"t_out\": 1.87, \"t_in\": 65.46}}}, 1523869959.0638402],
-    #         [{\"data\": {\"lo\": {\"t_out\": 0.0, \"t_in\": 0.0}, \"eth0\": {\"t_out\": 2.0, \"t_in\": 65.86}}}, 1523870019.2523856],
-    #     ]
-    #    '''
+
+    def get_data_slice(self, lastest_data_key_in_redis, data_optimize_interval):
+        """获取redis数据库中一段时间的切片数据"""
+        all_real_data = self.redis_obj.lrange(name=lastest_data_key_in_redis, start=1, end=-1)  # 获取key中全部数据
+        data_set = []
+        for item in all_real_data:  # 循环每个数据，b'[{"data": {"eth0": {"t_out": 0.58, "t_in": 0.27}, "lo": {"t_out": 0.0, "t_in": 0.0}}}, 1525239928.1139016]'
+            data = json.loads(item.decode())
+            if len(data) == 2:
+                application_data, save_time = data     # 获取数据和存储时间
+                if time.time() - save_time <= data_optimize_interval:  # 在优化时间内
+                    data_set.append(data)
+        return data_set
+
+    def get_optimized_data(self, data_set):
+        """获取优化数据"""
+        '''
+         data_set = [
+            [{\"user\": 0.33, \"system\": 1.34, \"idle\": 98.33, \"iowait\": 0.0}, 1523868963.8312852],
+            [{\"user\": 1.0, \"system\": 3.68, \"idle\": 95.32, \"iowait\": 0.0}, 1523868993.89751],
+            [{\"user\": 0.0, \"system\": 1.68, \"idle\": 98.32, \"iowait\": 0.0}, 1523869024.0294662],
+        ]
+         data_set = [
+            [{\"data\": {\"lo\": {\"t_out\": 0.0, \"t_in\": 0.0}, \"eth0\": {\"t_out\": 2.03, \"t_in\": 65.82}}}, 1523869898.9049253],
+            [{\"data\": {\"lo\": {\"t_out\": 0.0, \"t_in\": 0.0}, \"eth0\": {\"t_out\": 1.87, \"t_in\": 65.46}}}, 1523869959.0638402],
+            [{\"data\": {\"lo\": {\"t_out\": 0.0, \"t_in\": 0.0}, \"eth0\": {\"t_out\": 2.0, \"t_in\": 65.86}}}, 1523870019.2523856],
+        ]
+       '''
     #     application_data_keys = data_set[0][0].keys()  # ['user', 'idle'] or ['data']
     #     first_application_data_point = data_set[0][
     #         0]  # 用这个来构建一个新的空字典,{\"user\": 0.33, \"system\": 1.34, \"idle\": 98.33, \"iowait\": 0.0}
