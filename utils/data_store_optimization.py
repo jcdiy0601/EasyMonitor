@@ -37,10 +37,10 @@ class DataStoreOptimizationHandle(object):
                     if time.time() - last_point_save_time >= data_optimize_interval:  # 到达数据点更新间隔
                         latest_data_key_in_redis = 'Data_%s_%s_latest' % (self.hostname, self.application_name)
                         # 取最近n分钟的数据，放到了data_set里
-                        data_set = self.get_data_slice(latest_data_key_in_redis, data_optimize_interval)
-                        if len(data_set) > 0:
-                            # 接下来拿这个data_set交给下面的方法，算出优化结果
-                            optimized_data = self.get_optimized_data(data_set)
+                        data_list = self.get_data_slice(latest_data_key_in_redis, data_optimize_interval)
+                        if len(data_list) > 0:
+                            # 接下来拿这个data_list交给下面的方法，算出优化结果
+                            optimized_data = self.get_optimized_data(data_list)
                             self.save_optimized_data(data_key_in_redis, optimized_data)  # 保存优化数据
                 if self.redis_obj.llen(data_key_in_redis) >= max_data_point:  # 如果数据列表点数大于最大数据点数
                     self.redis_obj.lpop(data_key_in_redis)  # 删除最旧的一个点的数据
@@ -48,19 +48,19 @@ class DataStoreOptimizationHandle(object):
         except Exception as e:
             Logger().log(message='监控数据优化、存储失败,%s' % str(e), mode=False)
 
-    def get_data_slice(self, lastest_data_key_in_redis, data_optimize_interval):
+    def get_data_slice(self, latest_data_key_in_redis, data_optimize_interval):
         """获取redis数据库中一段时间的切片数据"""
-        all_real_data = self.redis_obj.lrange(name=lastest_data_key_in_redis, start=1, end=-1)  # 获取key中全部数据
-        data_set = []
-        for item in all_real_data:  # 循环每个数据，b'[{"data": {"eth0": {"t_out": 0.58, "t_in": 0.27}, "lo": {"t_out": 0.0, "t_in": 0.0}}}, 1525239928.1139016]'
+        all_real_data_list = self.redis_obj.lrange(name=latest_data_key_in_redis, start=1, end=-1)  # 获取key中全部数据
+        data_list = []
+        for item in all_real_data_list:  # 循环每个数据，b'[{"data": {"eth0": {"t_out": 0.58, "t_in": 0.27}, "lo": {"t_out": 0.0, "t_in": 0.0}}}, 1525239928.1139016]'
             data = json.loads(item.decode())
             if len(data) == 2:
-                application_data, save_time = data     # 获取数据和存储时间
+                application_data_dict, save_time = data     # 获取数据和存储时间
                 if time.time() - save_time <= data_optimize_interval:  # 在优化时间内
-                    data_set.append(data)
-        return data_set
+                    data_list.append(data)
+        return data_list
 
-    def get_optimized_data(self, data_set):
+    def get_optimized_data(self, data_list):
         """获取优化数据"""
         '''
          data_set = [
@@ -74,14 +74,14 @@ class DataStoreOptimizationHandle(object):
             [{\"data\": {\"lo\": {\"t_out\": 0.0, \"t_in\": 0.0}, \"eth0\": {\"t_out\": 2.0, \"t_in\": 65.86}}}, 1523870019.2523856],
         ]
        '''
-        optimized_data = {}  # 设置一个空字典，用来保存最终优化数据
-        application_data_keys = data_set[0][0].keys()  # ['user', 'idle'] or ['data']
-        first_application_data_point = data_set[0][0]  # 用这个来构建一个新的空字典,{\"user\": 0.33, \"system\": 1.34, \"idle\": 98.33, \"iowait\": 0.0}
-        if 'data' not in application_data_keys:  # 意味着这个字典没有子字典，用于像cpu、内存这样的服务
-            for key in application_data_keys:
-                optimized_data[key] = []  # {'user': [], 'idle': []}
-            temp_data_dict = copy.deepcopy(optimized_data)  # 为了临时存最近n分钟的数据,把它们按照每个指标都搞成一个一个列表 ,来存最近N分钟的数据
-            for application_data, save_time in data_set:    # 循环最近n分钟的数据
+        optimized_data_dict = {}  # 设置一个空字典，用来保存最终优化数据
+        application_data_key_list = data_list[0][0].keys()  # ['user', 'idle'] or ['data']
+        first_application_data_point_dict = data_list[0][0]  # 用这个来构建一个新的空字典,{\"user\": 0.33, \"system\": 1.34, \"idle\": 98.33, \"iowait\": 0.0}
+        if 'data' not in application_data_key_list:  # 意味着这个字典没有子字典，用于像cpu、内存这样的服务
+            for key in application_data_key_list:
+                optimized_data_dict[key] = []  # {'user': [], 'idle': []}
+            temp_data_dict = copy.deepcopy(optimized_data_dict)  # 为了临时存最近n分钟的数据,把它们按照每个指标都搞成一个一个列表 ,来存最近N分钟的数据
+            for application_data, save_time in data_list:    # 循环最近n分钟的数据
                 for item_name, value in application_data.items():   # 循环每个数据点的指标，item_name监控项名如idle,value为监控的值
                     temp_data_dict[item_name].append(value)
             for item_name, value_list in temp_data_dict.items():    # item_name->idle,value_list->[98.33, 99.22, 93.55]
@@ -89,14 +89,14 @@ class DataStoreOptimizationHandle(object):
                 max_res = self.get_max(value_list)  # 取最大值
                 min_res = self.get_min(value_list)  # 取最小值
                 mid_res = self.get_mid(value_list)  # 取中间值
-                optimized_data[item_name] = [avg_res, max_res, min_res, mid_res]    # 将计算结果保存到最终的优化数据字典中
+                optimized_data_dict[item_name] = [avg_res, max_res, min_res, mid_res]    # 将计算结果保存到最终的优化数据字典中
         else:  # 意味着这个字典有子字典，用于像硬盘、网卡这样的服务
-            for name, value_dict in first_application_data_point['data'].items():   # name -> eth0,v_dict -> {'t_in': 65.82, 't_out': 2.03}
-                optimized_data[name] = {}
+            for name, value_dict in first_application_data_point_dict['data'].items():   # name -> eth0,v_dict -> {'t_in': 65.82, 't_out': 2.03}
+                optimized_data_dict[name] = {}
                 for item_name, value in value_dict.items():
-                    optimized_data[name][item_name] = []  # {'eth0': {'t_in': [], 't_out': []}, 'lo': {'t_in': [], 't_out': []}}
-            temp_data_dict = copy.deepcopy(optimized_data)  # {'eth0': {'t_in': [], 't_out': []}, 'lo': {'t_in': [], 't_out': []}}
-            for application_data, save_time in data_set:    # 循环最近n分钟数据
+                    optimized_data_dict[name][item_name] = []  # {'eth0': {'t_in': [], 't_out': []}, 'lo': {'t_in': [], 't_out': []}}
+            temp_data_dict = copy.deepcopy(optimized_data_dict)  # {'eth0': {'t_in': [], 't_out': []}, 'lo': {'t_in': [], 't_out': []}}
+            for application_data, save_time in data_list:    # 循环最近n分钟数据
                 for name, value_dict in application_data['data'].items():   # name->eth0,value_dict -> {'t_in': 65.82, 't_out': 2.03}
                     for item_name, value in value_dict.items():     # 循环每个数据点的指标，items_name监控项名如in_t,value为监控的值
                         temp_data_dict[name][item_name].append(value)
@@ -106,8 +106,8 @@ class DataStoreOptimizationHandle(object):
                     max_res = self.get_max(value_list)  # 取最大值
                     min_res = self.get_min(value_list)  # 取最小值
                     mid_res = self.get_mid(value_list)  # 取中间值
-                    optimized_data[name][item_name] = [avg_res, max_res, min_res, mid_res]
-        return optimized_data
+                    optimized_data_dict[name][item_name] = [avg_res, max_res, min_res, mid_res]
+        return optimized_data_dict
 
     @staticmethod
     def get_avg(value_list):
