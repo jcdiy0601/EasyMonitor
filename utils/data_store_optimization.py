@@ -21,14 +21,13 @@ class DataStoreOptimizationHandle(object):
         """处理并保存数据到redis中"""
         # self.data -> {'iowait': 0.33, 'idle': 98.33, 'system': 1.0, 'user': 0.33}
         # self.data -> {'data': {'eth0': {'t_out': 1.38, 't_in': 0.78}, 'lo': {'t_out': 0.0, 't_in': 0.0}}}
-    #         for key, value in settings.DATA_OPTIMIZATION.items():  # key -> latest,value -> [0, 10080]
-    #             data_optimize_interval, max_data_point = value  # 获取数据优化间隔和最大存储点
-    #             data_key_in_redis = 'StatusData_%s_%s_%s' % (
-    #                 self.hostname, self.application_name, key)  # 获取对应主机应用集下的key名称
-    #             last_point_from_redis = self.redis_obj.lrange(name=data_key_in_redis, start=-1, end=-1)  # 取key最后一个点的值
-    #             if not last_point_from_redis:  # 这个key在redis中不存在
-    #                 # 所以初始化一个新键，数据集中的第一个数据点只会被用来识别上次数据被保存的时候
-    #                 self.redis_obj.rpush(data_key_in_redis, json.dumps([None, time.time()]))
+        for key, value in settings.DATA_OPTIMIZATION.items():  # key -> latest、10min,value -> [0, 10080]、[600, 4320]
+            data_optimize_interval, max_data_point = value  # 获取数据优化间隔和最大存储点
+            data_key_in_redis = 'Data_%s_%s_%s' % (self.hostname, self.application_name, key)  # 获取对应主机应用集下的key名称
+            last_point_from_redis = self.redis_obj.lrange(name=data_key_in_redis, start=-1, end=-1)  # 取key最后一个点的值
+            if not last_point_from_redis:  # 这个key在redis中不存在
+                # 所以初始化一个新键，数据集中的第一个数据点只会被用来识别上次数据被保存的时候
+                self.redis_obj.rpush(data_key_in_redis, json.dumps([None, time.time()]))
     #             if data_optimize_interval == 0:  # 这个数据集用于未优化的数据，只有最新的数据不需要优化
     #                 self.redis_obj.rpush(data_key_in_redis, json.dumps([self.data, time.time()]))
     #             else:  # 需要优化的数据

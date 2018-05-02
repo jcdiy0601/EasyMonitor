@@ -44,7 +44,7 @@ def client_data(request):
             application_name = client_report_data_dict.get('application_name', None)  # 获取应用集名称
             data = client_report_data_dict.get('data', None)  # 获取监控数据
             data_verification_obj = DataVerificationHandle(response=response, hostname=hostname, application_name=application_name, data=data)
-            response, data = data_verification_obj.check_data()
+            response, data = data_verification_obj.check_data()     # 检查数据返回响应及数据，检查成功data有数据，失败data为None
             if not data:    # 无效数据或基础信息有误
                 return JsonResponse(response)
             else:   # 有效数据
@@ -53,7 +53,7 @@ def client_data(request):
                                                                           application_name=application_name,
                                                                           data=data,
                                                                           redis_obj=REDIS_OBJ)  # 对客户端汇报上来的数据进行优化存储
-
+                data_store_optimization_obj.process_and_save()  # 数据处理及存储
 
             # 触发器检测
             # application_trigger_list = get_application_trigger(application_name)    # 获取应用集对应触发器列表
