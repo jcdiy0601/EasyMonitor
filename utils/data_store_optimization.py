@@ -81,8 +81,8 @@ class DataStoreOptimizationHandle(object):
             for key in application_data_key_list:
                 optimized_data_dict[key] = []  # {'user': [], 'idle': []}
             temp_data_dict = copy.deepcopy(optimized_data_dict)  # 为了临时存最近n分钟的数据,把它们按照每个指标都搞成一个一个列表 ,来存最近N分钟的数据
-            for application_data, save_time in data_list:    # 循环最近n分钟的数据
-                for item_name, value in application_data.items():   # 循环每个数据点的指标，item_name监控项名如idle,value为监控的值
+            for application_data_dict, save_time in data_list:    # 循环最近n分钟的数据
+                for item_name, value in application_data_dict.items():   # 循环每个数据点的指标，item_name监控项名如idle,value为监控的值
                     temp_data_dict[item_name].append(value)
             for item_name, value_list in temp_data_dict.items():    # item_name->idle,value_list->[98.33, 99.22, 93.55]
                 avg_res = self.get_avg(value_list)  # 取平均值
@@ -91,7 +91,7 @@ class DataStoreOptimizationHandle(object):
                 mid_res = self.get_mid(value_list)  # 取中间值
                 optimized_data_dict[item_name] = [avg_res, max_res, min_res, mid_res]    # 将计算结果保存到最终的优化数据字典中
         else:  # 意味着这个字典有子字典，用于像硬盘、网卡这样的服务
-            for name, value_dict in first_application_data_point_dict['data'].items():   # name -> eth0,v_dict -> {'t_in': 65.82, 't_out': 2.03}
+            for name, value_dict in first_application_data_point_dict['data'].items():   # name -> eth0,value_dict -> {'t_in': 65.82, 't_out': 2.03}
                 optimized_data_dict[name] = {}
                 for item_name, value in value_dict.items():
                     optimized_data_dict[name][item_name] = []  # {'eth0': {'t_in': [], 't_out': []}, 'lo': {'t_in': [], 't_out': []}}
