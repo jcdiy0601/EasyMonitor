@@ -8,8 +8,8 @@ from utils.redis_conn import redis_conn
 from django.conf import settings
 from utils.data_store_optimization import DataStoreOptimizationHandle
 from monitor_data import models
-from utils.serializer import get_application_trigger
-from utils.data_processing import DataHandler
+from utils.serializer import get_application_trigger_obj_set
+from utils.data_processing import DataHandle
 from utils.log import Logger
 from utils.data_verification import DataVerificationHandle
 from utils.api_response import ApiResponse
@@ -54,10 +54,16 @@ def client_data(request):
                                                                           redis_obj=REDIS_OBJ)  # 对客户端汇报上来的数据进行优化存储
                 data_store_optimization_obj.process_and_save()  # 数据处理及存储
             # 触发器检测
-            # application_trigger_list = get_application_trigger(application_name)    # 获取应用集对应触发器列表
-            # trigger_handler = DataHandler(connect_redis=False)
-            # for application_trigger_obj in application_trigger_list:    # 循环每个触发器
-            #     trigger_handler.load_application_data_and_calulating(host_obj, application_trigger_obj, REDIS_OBJ)  # 加载应用集数据并计算
+            trigger_obj_set = get_application_trigger_obj_set(application_name=application_name)   # 获取应用集对应触发器集合
+            '''
+            {<Trigger: 磁盘IO过高>, <Trigger: cpu使用率过高>}
+            '''
+            data_handle_obj = DataHandle(connect_redis=False)   # 实例化数据处理
+            host_obj = models.Host.objects.filter(hostname=hostname).first()
+            for trigger_obj in trigger_obj_set:    # 循环每个触发器
+                data_handle_obj.load_application_data_and_calculating(host_obj=host_obj,
+                                                                      trigger_obj=trigger_obj,
+                                                                      redis_obj=REDIS_OBJ)  # 加载应用集数据并计算
         except Exception as e:
             response['code'] = 500
             response['message'] = '服务器错误,%s' % str(e)

@@ -207,9 +207,6 @@ class TriggerExpression(models.Model):
     logic_with_next = models.CharField(verbose_name='与一个条件的逻辑关系', max_length=64, choices=logic_with_next_choices, null=True, blank=True)
     data_calc_func_choices = (
         ('avg', '平均值'),
-        ('max', '最大值'),
-        ('min', '最小值'),
-        ('hit', 'HIT'),
         ('last', '最近的值'),
     )
     data_calc_func = models.CharField(verbose_name='数据运算函数', max_length=64, choices=data_calc_func_choices)

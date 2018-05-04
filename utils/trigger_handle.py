@@ -9,7 +9,7 @@ from django.conf import settings
 import time
 
 
-class TriggerHandler(object):
+class TriggerHandle(object):
     """触发器处理"""
     def __init__(self, settings):
         self.settings = settings
