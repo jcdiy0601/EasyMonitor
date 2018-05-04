@@ -83,7 +83,8 @@ class Host(models.Model):
     templates = models.ManyToManyField(verbose_name='所属模板', to='Template', blank=True)
     monitor_by_choices = (
         ('agent', '客户端'),
-        ('snmp', 'SNMP')
+        ('snmp', 'SNMP'),
+        ('api', 'API')
     )
     monitor_by = models.CharField(verbose_name='监控方式', max_length=64, choices=monitor_by_choices)
     status_choices = (
