@@ -34,14 +34,14 @@ class DataHandle(object):
         self.redis_obj = redis_obj  # 加载redis实例
         temp_expression_list = []   # 先把每个expression的结果算出来放在这个列表里,最后再统一计算这个列表
         expression_result_list = []     # 最终表达式结果列表
-        expression_result_str = ''  # # 表达式结果字符串
+        expression_result_str = ''  # 表达式结果字符串
         for expression_obj in trigger_obj.triggerexpression_set.all().order_by('id'):   # 根据id排序循环触发器下所有触发器表达式
             expression_process_obj = ExpressionProcess(data_handle_obj=self,
                                                        host_obj=host_obj,
                                                        expression_obj=expression_obj)   # 获得表达式处理实例，将data_headle实例、主机实例、表达式实例传入其中
             single_expression_result = expression_process_obj.process()     # 得到单条expression表达式的结果
-            if single_expression_result:    # 结果为[]，不为False
-                temp_expression_list.append(single_expression_result)
+            if single_expression_result:    # 单条expression表达式的结果为[]，不为False
+                temp_expression_list.append(single_expression_result)   # 将单条expression表达式的结果添加到临时表达式列表中
                 if single_expression_result['expression_obj'].logic_with_next:  # 有and or表示并不是最后一条
                     expression_result_str += str(single_expression_result['calc_res']) + ' ' + \
                         single_expression_result['expression_obj'].logic_with_next + ' '
@@ -50,39 +50,67 @@ class DataHandle(object):
                 # 把所有结果为True的expression提出来,报警时你得知道是谁出问题导致trigger触发了
                 if single_expression_result['calc_res'] is True:
                     single_expression_result['expression_obj'] = single_expression_result['expression_obj'].id  # 要存到redis里，数据库对象转成id
-                    expression_result_list.append(single_expression_result)
+                    expression_result_list.append(single_expression_result)     # 将单条表达式结果添加到最终表达式结果列表中
         if expression_result_str:
-            trigger_result = eval(expression_result_str)
+            trigger_result = eval(expression_result_str)    # 计算触发器结果
             if trigger_result:  # 终于走到这一步,该触发报警了
+                '''
+                host_obj->CentOS-03_172.16.99.25 192.168.222.53
+                trigger_obj->内存不足
+                expression_result_list->[{'specified_item_key': None, 'calc_res': True, 'expression_obj': 4, 'calc_res_val': 93.98}]
+                '''
+                msg = self.joint_msg(trigger_obj, expression_result_list)
                 self.trigger_notifier(host_obj=host_obj,
                                       trigger_obj=trigger_obj,
-                                      expression_result_list=expression_result_list)
+                                      expression_result_list=expression_result_list,
+                                      msg=msg)
+
+    def joint_msg(self, trigger_obj, expression_result_list):
+        """拼接报警消息"""
+        trigger_name = trigger_obj.name     # 获取触发器名称，如内存不足
+        msg = '%s,' % trigger_name
+        count = 0   # 设置一个计数器
+        for expression_result in expression_result_list:
+            count += 1
+            specified_item_key = expression_result['specified_item_key']    # 获取特殊的key
+            if specified_item_key is None:  # 判断是否为None，如果为None建重置为空字符串
+                specified_item_key = ''
+            calc_res_val = expression_result['calc_res_val']        # 获取计算结果
+            expression_id = expression_result['expression_obj']     # 获取表达式id
+            expression_obj = models.TriggerExpression.objects.filter(id=expression_id).first()  # 取表达式实例
+            for item in expression_obj.operator_choices:    # 循环获取表达式运算符
+                if item[0] == expression_obj.operator:
+                    operator = item[1]
+            if count == len(expression_result_list):    # 判断是否为最后一个表达式结果
+                msg += '%s[%s %s%s%s]' % (specified_item_key, expression_obj.items.key, calc_res_val, operator, expression_obj.threshold)
+            else:
+                msg += '%s[%s %s%s%s]、' % (specified_item_key, expression_obj.items.key, calc_res_val, operator, expression_obj.threshold)
+        return msg
 
     def trigger_notifier(self, host_obj, trigger_obj, expression_result_list, redis_obj=None, msg=None):
         """所有触发报警都需要在这里发布"""
-        pass
-    #     if redis_obj:   # 从外部调用 时才用的到,为了避免重复调用redis连接
-    #         self.redis = redis_obj
-    #     msg_dic = {'hostname': host_obj.hostname,
-    #                'trigger_id': trigger_id,
-    #                'positive_expressions': positive_expressions,
-    #                'msg': msg,
-    #                'time': time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()),
-    #                'start_time': time.time(),
-    #                'duration': None
-    #                }
-    #     self.redis.publish(settings.TRIGGER_CHAN, pickle.dumps(msg_dic))
-    #     # 先把之前的trigger加载回来,获取上次报警的时间,以统计故障持续时间
-    #     trigger_redis_key = 'host_%s_trigger_%s' % (host_obj.hostname, trigger_id)
-    #     old_trigger_data = self.redis.get(trigger_redis_key)
-    #     if old_trigger_data:
-    #         old_trigger_data = old_trigger_data.decode()
-    #         trigger_startime = json.loads(old_trigger_data)['start_time']
-    #         msg_dic['start_time'] = trigger_startime
-    #         msg_dic['duration'] = round(time.time() - trigger_startime)
-    #     # 同时在redis中纪录这个trigger,前端页面展示时要统计trigger个数
-    #     self.redis.set(trigger_redis_key, json.dumps(msg_dic), 300)  # 一个trigger纪录5分钟后会自动清除,为了在前端统计trigger个数用的
-    #
+        if redis_obj:   # 从外部调用时才用的到,为了避免重复调用redis连接
+            self.redis_obj = redis_obj
+        msg_dict = {
+            'hostname': host_obj.hostname,  # 主机名
+            'trigger_id': trigger_obj.id,   # 触发器id
+            'expression_result_list': expression_result_list,   # 表达式结果列表
+            'msg': msg,     # 信息
+            'start_time': time.time(),  # 开始时间
+            'duration': None    # 持续时间
+        }
+        self.redis_obj.publish(settings.TRIGGER_CHAN, pickle.dumps(msg_dict))
+        # 先把之前的trigger加载回来,获取上次报警的时间,以统计故障持续时间
+        trigger_redis_key = 'host_%s_trigger_%s' % (host_obj.hostname, trigger_obj.id)
+        old_trigger_data = self.redis_obj.get(trigger_redis_key)    # 获取旧的触发器数据
+        if old_trigger_data:    # 不是第一次触发
+            old_trigger_data = old_trigger_data.decode()
+            trigger_start_time = json.loads(old_trigger_data)['start_time']
+            msg_dict['start_time'] = trigger_start_time
+            msg_dict['duration'] = round(time.time() - trigger_start_time)
+        # 同时在redis中纪录这个trigger,前端页面展示时要统计trigger个数
+        self.redis_obj.set(trigger_redis_key, json.dumps(msg_dict), 300)
+
     # def looping(self):
     #     """检测所有主机需要监控的服务的数据有没有按时汇报上来，只做基本检测"""
     #     # get latest report data
