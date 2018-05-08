@@ -114,7 +114,6 @@ class DataHandle(object):
             'start_time': time.time(),  # 开始时间
             'duration': None    # 持续时间
         }
-
         # 先把之前的trigger加载回来,获取上次报警的时间,以统计故障持续时间
         trigger_redis_key = 'host_%s_trigger_%s' % (host_obj.hostname, trigger_obj.id)
         old_trigger_data = self.redis_obj.get(trigger_redis_key)    # 获取旧的触发器数据
