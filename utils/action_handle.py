@@ -43,7 +43,6 @@ class ActionHandle(object):
             duration = '%s秒'
         else:   # 换算成小时
             duration = '%s小时' % int(duration/60/60)
-
         message = action_operation_obj.msg_format.format(hostname=hostname,
                                                          ip=host_obj.ip,
                                                          name=application_name,
