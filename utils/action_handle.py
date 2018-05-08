@@ -22,9 +22,8 @@ class ActionHandle(object):
             log=trigger_data
         )
 
-    def action_email(self, action_obj, action_operation_obj, hostname, trigger_data):
+    def action_email(self, action_operation_obj, hostname, trigger_data):
         """发送报警邮件"""
-        print('发送报警邮件')
         notifier_mail_list = [user_obj.email for user_obj in action_operation_obj.user_profiles.all()]    # 获取通知邮件列表
         trigger_obj = models.Trigger.objects.filter(id=trigger_data.get('trigger_id')).first()
         application_name = trigger_obj.triggerexpression_set.all()[0].applications.name
@@ -36,20 +35,28 @@ class ActionHandle(object):
                                                 trigger_data.get('hostname'),
                                                 application_name)
         host_obj = models.Host.objects.filter(hostname=hostname).first()
-        start_time = time.strftime('%Y-%m-%d %H:%M:%S', time.gmtime(trigger_data['start_time']))
-        print(start_time)
+        start_time = time.strftime('%Y-%m-%d %H:%M:%S', time.gmtime(trigger_data['start_time'] + 28800))
+        duration = trigger_data['duration']
+        if 60 <= duration < 3600:    # 换算成分钟
+            duration = '%s分钟' % int(duration/60)
+        elif duration < 60:     # 保留整数为秒
+            duration = '%s秒'
+        else:   # 换算成小时
+            duration = '%s小时' % int(duration/60/60)
+
         message = action_operation_obj.msg_format.format(hostname=hostname,
                                                          ip=host_obj.ip,
                                                          name=application_name,
                                                          msg=trigger_data['msg'],
-                                                         start_time=trigger_data['start_time'])
+                                                         start_time=start_time,
+                                                         duration=duration)
         # 发送邮件
-        # send_mail(
-        #     subject=subject,    # 主题
-        #     message=message,    # 内容
-        #     from_email=settings.DEFAULT_FROM_EMAIL,     # 发送邮箱
-        #     recipient_list=notifier_mail_list,          # 接收邮箱列表
-        # )
+        send_mail(
+            subject=subject,    # 主题
+            message=message,    # 内容
+            from_email=settings.DEFAULT_FROM_EMAIL,     # 发送邮箱
+            recipient_list=notifier_mail_list,          # 接收邮箱列表
+        )
 
     def trigger_process(self):
         """分析触发器并报警"""
@@ -88,7 +95,7 @@ class ActionHandle(object):
                     for action_operation_obj in action_obj.action_operations.all().order_by('-step'):
                         if self.alert_counter_dict[action_obj.id][hostname]['counter'] >= action_operation_obj.step:     # 报警计数大于报警升级阈值
                             action_func = getattr(self, 'action_%s' % action_operation_obj.action_type)
-                            action_func(action_obj, action_operation_obj, hostname, self.trigger_data)
+                            action_func(action_operation_obj, hostname, self.trigger_data)
                             self.alert_counter_dict[action_obj.id][hostname]['last_alert'] = time.time()    # 报完警后更新一下报警时间，这样就又重新计算报警间隔了
                             self.record_log(hostname, self.trigger_data)  # 记录日志
                 else:
@@ -98,6 +105,6 @@ class ActionHandle(object):
                         for action_operation_obj in action_obj.action_operations.all().order_by('-step'):
                             if self.alert_counter_dict[action_obj.id][hostname]['counter'] >= action_operation_obj.step:  # 报警计数大于报警升级阈值
                                 action_func = getattr(self, 'action_%s' % action_operation_obj.action_type)
-                                action_func(action_obj, action_operation_obj, hostname, self.trigger_data)
+                                action_func(action_operation_obj, hostname, self.trigger_data)
                                 self.alert_counter_dict[action_obj.id][hostname]['last_alert'] = time.time()  # 报完警后更新一下报警时间，这样就又重新计算报警间隔了
                                 self.record_log(hostname, self.trigger_data)  # 记录日志
