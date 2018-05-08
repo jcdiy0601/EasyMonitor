@@ -227,8 +227,14 @@ class Action(models.Model):
     triggers = models.ManyToManyField(verbose_name='所属触发器', to='Trigger')
     interval = models.IntegerField(verbose_name='报警间隔(s)', default=300)
     recover_notice = models.BooleanField(verbose_name='故障恢复后是否发送通知', default=True)
-    recover_subject = models.CharField(verbose_name='恢复通知主题', max_length=128, null=True, blank=True)
-    recover_message = models.TextField(verbose_name='恢复通知内容', null=True, blank=True)
+    _recover_msg_format = '''主机:{hostname}
+IP:{ip}
+应用集:{name},问题恢复
+内容:{msg}
+开始时间:{start_time}
+持续时间:{duration}
+恢复时间:{recover_time}'''
+    recover_msg_format = models.TextField(verbose_name='恢复通知格式', default=_recover_msg_format)
     action_operations = models.ManyToManyField(verbose_name='所属报警动作', to='ActionOperation')
     enabled = models.BooleanField(verbose_name='是否启用', default=True)
     memo = models.TextField(verbose_name='备注', null=True, blank=True)

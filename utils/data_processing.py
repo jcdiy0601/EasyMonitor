@@ -59,13 +59,16 @@ class DataHandle(object):
                 trigger_obj->内存不足
                 expression_result_list->[{'specified_item_key': None, 'calc_res': True, 'expression_obj': 4, 'calc_res_val': 93.98}]
                 '''
-                msg = self.joint_msg(trigger_obj, expression_result_list)
+                msg = self.alert_joint_msg(trigger_obj, expression_result_list)
                 self.trigger_notifier(host_obj=host_obj,
                                       trigger_obj=trigger_obj,
                                       expression_result_list=expression_result_list,
                                       msg=msg)
+            else:
+                # 执行报警恢复，拼接redis key，如果存在删除，并判断是否需要发送恢复邮件，发送恢复邮件
+                pass
 
-    def joint_msg(self, trigger_obj, expression_result_list):
+    def alert_joint_msg(self, trigger_obj, expression_result_list):
         """拼接报警消息"""
         trigger_name = trigger_obj.name     # 获取触发器名称，如内存不足
         msg = '%s,' % trigger_name
