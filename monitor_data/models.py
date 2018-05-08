@@ -253,7 +253,12 @@ class ActionOperation(models.Model):
     step = models.IntegerField(verbose_name='报警升级阈值')
     user_profiles = models.ManyToManyField(verbose_name='所属用户', to='UserProfile', blank=True)
     script_name = models.CharField(verbose_name='脚本名称', max_length=64, null=True, blank=True)
-    _msg_format = '''主机({hostname},{ip}) 应用集({name})存在问题,内容:{msg}'''
+    _msg_format = '''主机:{hostname}
+IP:{ip}
+应用集:{name},存在问题
+内容:{msg}
+开始时间:{start_time}
+持续时间:{duration}'''
     msg_format = models.TextField(verbose_name='消息格式', default=_msg_format)
     memo = models.TextField(verbose_name='备注', null=True, blank=True)
 

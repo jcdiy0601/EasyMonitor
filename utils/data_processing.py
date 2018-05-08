@@ -81,10 +81,25 @@ class DataHandle(object):
             for item in expression_obj.operator_choices:    # 循环获取表达式运算符
                 if item[0] == expression_obj.operator:
                     operator = item[1]
+            data_unit = expression_obj.items.data_unit
+            if not data_unit:
+                data_unit = ''
             if count == len(expression_result_list):    # 判断是否为最后一个表达式结果
-                msg += '%s[%s %s%s%s]' % (specified_item_key, expression_obj.items.key, calc_res_val, operator, expression_obj.threshold)
+                msg += '%s[%s %s%s%s%s%s]' % (specified_item_key,
+                                              expression_obj.items.key,
+                                              calc_res_val,
+                                              data_unit,
+                                              operator,
+                                              expression_obj.threshold,
+                                              data_unit)
             else:
-                msg += '%s[%s %s%s%s]、' % (specified_item_key, expression_obj.items.key, calc_res_val, operator, expression_obj.threshold)
+                msg += '%s[%s %s%s%s%s%s]、' % (specified_item_key,
+                                               expression_obj.items.key,
+                                               calc_res_val,
+                                               data_unit,
+                                               operator,
+                                               expression_obj.threshold,
+                                               data_unit)
         return msg
 
     def trigger_notifier(self, host_obj, trigger_obj, expression_result_list, redis_obj=None, msg=None):
@@ -99,7 +114,7 @@ class DataHandle(object):
             'start_time': time.time(),  # 开始时间
             'duration': None    # 持续时间
         }
-        self.redis_obj.publish(settings.TRIGGER_CHAN, pickle.dumps(msg_dict))
+
         # 先把之前的trigger加载回来,获取上次报警的时间,以统计故障持续时间
         trigger_redis_key = 'host_%s_trigger_%s' % (host_obj.hostname, trigger_obj.id)
         old_trigger_data = self.redis_obj.get(trigger_redis_key)    # 获取旧的触发器数据
@@ -107,7 +122,9 @@ class DataHandle(object):
             old_trigger_data = old_trigger_data.decode()
             trigger_start_time = json.loads(old_trigger_data)['start_time']
             msg_dict['start_time'] = trigger_start_time
-            msg_dict['duration'] = round(time.time() - trigger_start_time)
+            msg_dict['duration'] = time.time() - trigger_start_time
+        # 发送到队列中
+        self.redis_obj.publish(settings.TRIGGER_CHAN, pickle.dumps(msg_dict))
         # 同时在redis中纪录这个trigger,前端页面展示时要统计trigger个数
         self.redis_obj.set(trigger_redis_key, json.dumps(msg_dict), 300)
 
