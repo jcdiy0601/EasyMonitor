@@ -181,14 +181,21 @@ DATA_OPTIMIZATION = {
 # 所有的触发器被发布到这个通道
 TRIGGER_CHAN = 'trigger_event_channel'
 
+# Trigger Watch PID文件存放路径
+TRIGGER_WATCH_PID_FILE = os.path.join(BASE_DIR, 'logs', 'trigger_watch.pid')
+
+# 报警计数redis key
+ALERT_COUNTER_REDIS_KEY = 'alert_counter'
+
 # 允许客户端汇报延迟事件，单位秒
 REPORT_LATE_TOLERANCE_TIME = 10
 
+# 邮件报警配置
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 EMAIL_USE_TLS = False
-EMAIL_HOST = 'smtp.qq.com'
+EMAIL_HOST = 'smtp.163.com'
 EMAIL_PORT = 25
 EMAIL_HOST_USER = 'xxx'
 EMAIL_HOST_PASSWORD = 'xxx'
-DEFAULT_FROM_EMAIL = '管理员<xxx@.com>'
+DEFAULT_FROM_EMAIL = 'EasyMonitor<xxx.com>'
