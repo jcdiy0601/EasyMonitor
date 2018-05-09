@@ -8,6 +8,8 @@ import json
 import operator
 import pickle
 from monitor_data import models
+from django.core.mail import send_mail
+from copy import deepcopy
 
 
 class DataHandle(object):
@@ -59,16 +61,83 @@ class DataHandle(object):
                 trigger_obj->内存不足
                 expression_result_list->[{'specified_item_key': None, 'calc_res': True, 'expression_obj': 4, 'calc_res_val': 93.98}]
                 '''
-                msg = self.alert_joint_msg(trigger_obj, expression_result_list)
+                msg = self.joint_msg(trigger_obj, expression_result_list)
                 self.trigger_notifier(host_obj=host_obj,
                                       trigger_obj=trigger_obj,
                                       expression_result_list=expression_result_list,
                                       msg=msg)
             else:
                 # 执行报警恢复，拼接redis key，如果存在删除，并判断是否需要发送恢复邮件，发送恢复邮件
-                pass
+                self.check_alert_recover(host_obj=host_obj, trigger_obj=trigger_obj)
 
-    def alert_joint_msg(self, trigger_obj, expression_result_list):
+    def check_alert_recover(self, host_obj, trigger_obj, redis_obj=None, msg=None):
+        """检查报警恢复"""
+        if redis_obj:   # 从外部调用时才用的到,为了避免重复调用redis连接
+            self.redis_obj = redis_obj
+        trigger_redis_key = 'host_%s_trigger_%s' % (host_obj.hostname, trigger_obj.id)
+        trigger_data = json.loads(self.redis_obj.get(trigger_redis_key).decode())
+        if trigger_data:
+            alert_counter_dict_key = settings.ALERT_COUNTER_REDIS_KEY
+            alert_counter_dict_dict = json.loads(self.redis_obj.get(alert_counter_dict_key).decode())
+            old_alert_counter_dict_dict = deepcopy(alert_counter_dict_dict)
+            trigger_obj = models.Trigger.objects.filter(id=trigger_data['trigger_id']).first()
+            action_set = trigger_obj.action_set.all()   # 获取报警策略集合
+            for action_obj in action_set:   # 循环每个报警策略
+                if str(action_obj.id) in alert_counter_dict_dict:   # 如果报警计数字典中存在报警策略id
+                    for hostname in alert_counter_dict_dict[str(action_obj.id)]:
+                        if host_obj.hostname == hostname:   # 主机也对上了
+                            del alert_counter_dict_dict[str(action_obj.id)][hostname]
+                            self.redis_obj.set(alert_counter_dict_key, json.dumps(alert_counter_dict_dict))
+                            # 删除redis上触发器报警的key
+                            self.redis_obj.delete(trigger_redis_key)
+                            # 发送报警通知
+                            action_operation_obj_list = action_obj.action_operations.all()
+                            for action_operation_obj in action_operation_obj_list:
+                                if old_alert_counter_dict_dict[str(action_obj.id)][hostname]['counter'] >= action_operation_obj.step:
+                                    action_func = getattr(self, 'action_%s' % action_operation_obj.action_type)
+                                    action_func(action_obj, action_operation_obj, hostname, trigger_data)
+
+    def action_email(self, action_obj, action_operation_obj, hostname, trigger_data):
+        notifier_mail_list = [user_obj.email for user_obj in action_operation_obj.user_profiles.all()]  # 获取通知邮件列表
+        trigger_obj = models.Trigger.objects.filter(id=trigger_data.get('trigger_id')).first()
+        application_name = trigger_obj.triggerexpression_set.all()[0].applications.name
+        severity_id = trigger_obj.severity
+        for severity_list in trigger_obj.severity_choices:
+            if severity_id == severity_list[0]:
+                severity = severity_list[1]
+        subject = '级别:%s -- 主机:%s -- 应用集:%s' % (severity,
+                                                trigger_data.get('hostname'),
+                                                application_name)
+        host_obj = models.Host.objects.filter(hostname=hostname).first()
+        start_time = time.strftime('%Y-%m-%d %H:%M:%S', time.gmtime(trigger_data['start_time'] + 28800))
+        duration = trigger_data['duration']
+        if duration is not None:
+            if 60 <= duration < 3600:  # 换算成分钟
+                duration = '%s分钟' % int(duration / 60)
+            elif duration < 60:  # 保留整数为秒
+                duration = '%s秒' % int(duration)
+            else:  # 换算成小时
+                duration = '%s小时' % int(duration / 60 / 60)
+        else:
+            duration = ''
+        msg = trigger_obj.name
+        recover_time = time.strftime('%Y-%m-%d %H:%M:%S', time.gmtime(time.time() + 28800))
+        message = action_obj.recover_msg_format.format(hostname=hostname,
+                                                                 ip=host_obj.ip,
+                                                                 name=application_name,
+                                                                 msg=msg,
+                                                                 start_time=start_time,
+                                                                 duration=duration,
+                                                                 recover_time=recover_time)
+        # 发送邮件
+        send_mail(
+            subject=subject,  # 主题
+            message=message,  # 内容
+            from_email=settings.DEFAULT_FROM_EMAIL,  # 发送邮箱
+            recipient_list=notifier_mail_list,  # 接收邮箱列表
+        )
+
+    def joint_msg(self, trigger_obj, expression_result_list):
         """拼接报警消息"""
         trigger_name = trigger_obj.name     # 获取触发器名称，如内存不足
         msg = '%s,' % trigger_name
@@ -316,7 +385,6 @@ class ExpressionProcess(object):
         data_list = self.load_data_from_redis()     # 已经按照用户的配置把数据从redis里取出来了, 比如最近5分钟,或10分钟的数据
         data_calc_func = getattr(self, 'get_%s' % self.expression_obj.data_calc_func)   # 反射计算方法
         single_expression_calc_result_list = data_calc_func(data_list)   # 一个表达式计算结果列表
-        # print(self.expression_obj, self.expression_obj.items.key, single_expression_calc_result_list)
         if single_expression_calc_result_list:  # 确保上面的条件有正确的返回
             result_dict = {
                 'calc_res': single_expression_calc_result_list[0],  # 计算结果True或False

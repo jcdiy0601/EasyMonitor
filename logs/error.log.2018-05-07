@@ -1,0 +1,126 @@
+2018-05-07 09:40:43,086 - ERROR : API认证未通过
+2018-05-07 09:41:10,474 - ERROR : API认证未通过
+2018-05-07 09:41:10,583 - ERROR : API认证未通过
+2018-05-07 09:41:10,609 - ERROR : API认证未通过
+2018-05-07 09:41:10,620 - ERROR : API认证未通过
+2018-05-07 09:41:13,563 - ERROR : API认证未通过
+2018-05-07 09:41:15,586 - ERROR : API认证未通过
+2018-05-07 09:41:40,660 - ERROR : API认证未通过
+2018-05-07 09:41:43,663 - ERROR : API认证未通过
+2018-05-07 09:42:10,617 - ERROR : API认证未通过
+2018-05-07 09:42:10,618 - ERROR : API认证未通过
+2018-05-07 09:42:10,620 - ERROR : API认证未通过
+2018-05-07 09:42:10,738 - ERROR : API认证未通过
+2018-05-07 09:42:10,766 - ERROR : API认证未通过
+2018-05-07 09:42:10,767 - ERROR : API认证未通过
+2018-05-07 09:42:11,606 - ERROR : API认证未通过
+2018-05-07 09:42:13,609 - ERROR : API认证未通过
+2018-05-07 09:42:13,746 - ERROR : API认证未通过
+2018-05-07 09:42:15,593 - ERROR : API认证未通过
+2018-05-07 09:42:15,728 - ERROR : API认证未通过
+2018-05-07 09:42:40,817 - ERROR : API认证未通过
+2018-05-07 09:42:43,994 - ERROR : API认证未通过
+2018-05-07 09:43:11,338 - ERROR : API认证未通过
+2018-05-07 09:43:11,338 - ERROR : API认证未通过
+2018-05-07 09:43:11,343 - ERROR : API认证未通过
+2018-05-07 09:43:11,743 - ERROR : API认证未通过
+2018-05-07 09:43:11,745 - ERROR : API认证未通过
+2018-05-07 09:43:11,747 - ERROR : API认证未通过
+2018-05-07 09:43:12,722 - ERROR : API认证未通过
+2018-05-07 09:43:14,332 - ERROR : API认证未通过
+2018-05-07 09:43:14,735 - ERROR : API认证未通过
+2018-05-07 09:43:16,300 - ERROR : API认证未通过
+2018-05-07 09:43:16,762 - ERROR : API认证未通过
+2018-05-07 15:02:54,043 - ERROR : 服务器错误,name 'msg' is not defined
+2018-05-07 15:03:24,195 - ERROR : 服务器错误,name 'msg' is not defined
+2018-05-07 15:03:54,341 - ERROR : 服务器错误,name 'msg' is not defined
+2018-05-07 15:04:23,643 - ERROR : 服务器错误,name 'msg' is not defined
+2018-05-07 15:04:53,710 - ERROR : 服务器错误,name 'msg' is not defined
+2018-05-07 15:05:23,850 - ERROR : 服务器错误,name 'msg' is not defined
+2018-05-07 15:05:53,892 - ERROR : 服务器错误,name 'msg' is not defined
+2018-05-07 15:06:24,013 - ERROR : 服务器错误,name 'msg' is not defined
+2018-05-07 15:06:54,345 - ERROR : 服务器错误,name 'msg' is not defined
+2018-05-07 15:07:24,483 - ERROR : 服务器错误,name 'msg' is not defined
+2018-05-07 15:07:54,572 - ERROR : 服务器错误,name 'msg' is not defined
+2018-05-07 15:08:24,690 - ERROR : 服务器错误,name 'msg' is not defined
+2018-05-07 15:08:54,756 - ERROR : 服务器错误,name 'msg' is not defined
+2018-05-07 15:09:24,006 - ERROR : 服务器错误,name 'msg' is not defined
+2018-05-07 15:09:54,011 - ERROR : 服务器错误,name 'msg' is not defined
+2018-05-07 15:10:24,193 - ERROR : 服务器错误,name 'msg' is not defined
+2018-05-07 15:10:54,209 - ERROR : 服务器错误,name 'msg' is not defined
+2018-05-07 15:11:24,412 - ERROR : 服务器错误,name 'msg' is not defined
+2018-05-07 15:11:54,406 - ERROR : 服务器错误,name 'msg' is not defined
+2018-05-07 15:12:24,635 - ERROR : 服务器错误,name 'msg' is not defined
+2018-05-07 15:21:25,362 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:21:55,441 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:22:25,573 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:22:55,627 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:23:25,801 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:23:55,787 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:24:26,144 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:24:56,086 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:25:26,304 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:25:56,320 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:26:26,506 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:26:56,528 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:27:26,670 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:27:56,714 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:28:26,955 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:28:56,947 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:29:26,299 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:29:56,222 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:30:26,382 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:30:56,424 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:31:26,588 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:31:56,629 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:32:26,800 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:32:56,818 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:33:26,975 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:33:57,034 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:34:26,262 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:34:56,257 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:35:26,393 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:35:56,399 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:36:26,608 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:36:56,646 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:37:26,790 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:37:56,835 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:38:26,961 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:38:57,060 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:39:27,230 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:39:57,276 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:40:30,439 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:40:57,453 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:41:27,576 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:41:57,634 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:42:27,746 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:42:57,742 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:43:27,893 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:43:57,951 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:44:28,214 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:44:58,147 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:45:28,305 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:45:58,347 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:46:28,515 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:46:58,528 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:47:28,776 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:47:58,768 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:48:28,929 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:48:59,259 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:49:28,440 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:49:58,527 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:50:28,704 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:51:28,846 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:51:58,890 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:52:29,035 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:52:59,104 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:53:29,275 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:53:59,266 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:55:30,759 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:55:31,680 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:55:31,945 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:56:01,736 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:56:31,851 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:56:32,143 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 15:57:01,885 - ERROR : 服务器错误,list indices must be integers or slices, not str
+2018-05-07 17:52:36,628 - ERROR : 监控数据优化、存储失败,Error 10060 connecting to 192.168.222.52:6379. 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。.

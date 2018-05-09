@@ -229,8 +229,8 @@ class Action(models.Model):
     recover_notice = models.BooleanField(verbose_name='故障恢复后是否发送通知', default=True)
     _recover_msg_format = '''主机:{hostname}
 IP:{ip}
-应用集:{name},问题恢复
-内容:{msg}
+应用集:{name}
+内容:{msg},问题恢复
 开始时间:{start_time}
 持续时间:{duration}
 恢复时间:{recover_time}'''
@@ -261,8 +261,8 @@ class ActionOperation(models.Model):
     script_name = models.CharField(verbose_name='脚本名称', max_length=64, null=True, blank=True)
     _msg_format = '''主机:{hostname}
 IP:{ip}
-应用集:{name},存在问题
-内容:{msg}
+应用集:{name}
+内容:{msg},存在问题
 开始时间:{start_time}
 持续时间:{duration}'''
     msg_format = models.TextField(verbose_name='消息格式', default=_msg_format)

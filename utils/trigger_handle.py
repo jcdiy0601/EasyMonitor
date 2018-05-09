@@ -8,6 +8,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 import time
 from utils.action_handle import ActionHandle
+import json
 
 
 class TriggerHandle(object):
@@ -15,11 +16,11 @@ class TriggerHandle(object):
     def __init__(self):
         self.settings = settings    # 加载设置
         self.redis_obj = redis_conn(self.settings)  # 获取redis连接实例
-        self.alert_counter_dict = {}    # 纪录每个action的触发报警次数
+        self.alert_counter_dict_key = settings.ALERT_COUNTER_REDIS_KEY  # 报警计数字典key name
+        self.redis_obj.set(self.alert_counter_dict_key, '{}')
         '''alert_counter_dict = {
-            'CentOS-01': {2:{'counter':0,'last_alert':None}, #k CentOS-01是主机名, {2:{'counter'}} 2是trigger id
+            1: {'CentOS-02_172.16.99.24': {'last_alert': 1525837186.268634, 'counter': 1}}
         }'''
-        self.trigger_count = 0  # 触发器计数
 
     def start_watching(self):
         """开始监听"""
@@ -32,7 +33,6 @@ class TriggerHandle(object):
 
     def trigger_consume(self, data):
         """消费订阅到的消息"""
-        self.trigger_count += 1
         trigger_data = pickle.loads(data)
-        action_handle_obj = ActionHandle(trigger_data, self.alert_counter_dict)
+        action_handle_obj = ActionHandle(trigger_data, self.alert_counter_dict_key, self.redis_obj)
         action_handle_obj.trigger_process()
