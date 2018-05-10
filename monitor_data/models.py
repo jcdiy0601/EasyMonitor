@@ -140,7 +140,6 @@ class Item(models.Model):
     data_type_choices = (
         ('int', '整数'),
         ('float', '小数'),
-        ('str', '字符串'),
     )
     data_type = models.CharField(verbose_name='数据类型', max_length=64, choices=data_type_choices)
     data_unit = models.CharField(verbose_name='数据单位', max_length=64, null=True, blank=True)

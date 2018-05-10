@@ -13,6 +13,7 @@ from utils.data_processing import DataHandle
 from utils.log import Logger
 from utils.data_verification import DataVerificationHandle
 from utils.api_response import ApiResponse
+import traceback
 
 REDIS_OBJ = redis_conn(settings)
 
