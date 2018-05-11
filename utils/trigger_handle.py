@@ -1,14 +1,15 @@
 #!/usr/bin/env python
 # Author: 'JiaChen'
 
-from utils.redis_conn import redis_conn
+import json
+import time
 import pickle
-from monitor_data import models
 from django.core.mail import send_mail
 from django.conf import settings
-import time
+from monitor_data import models
+from utils.redis_conn import redis_conn
 from utils.action_handle import ActionHandle
-import json
+
 
 
 class TriggerHandle(object):

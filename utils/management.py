@@ -6,8 +6,8 @@ import sys
 import django
 import time
 import atexit
-from signal import SIGTERM
 import subprocess
+from signal import SIGTERM
 from django.conf import settings
 django.setup()
 from utils.data_processing import DataHandle

@@ -1,12 +1,12 @@
-from django.http import JsonResponse
-from utils.monitor_api_auth import monitor_api_auth
-from django.views.decorators.csrf import csrf_exempt
 import json
+from django.http import JsonResponse
+from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
+from monitor_data import models
 from utils.get_client_config import GetClientConfigHandle
 from utils.redis_conn import redis_conn
-from django.conf import settings
+from utils.monitor_api_auth import monitor_api_auth
 from utils.data_store_optimization import DataStoreOptimizationHandle
-from monitor_data import models
 from utils.serializer import get_application_trigger_obj_set
 from utils.data_processing import DataHandle
 from utils.log import Logger

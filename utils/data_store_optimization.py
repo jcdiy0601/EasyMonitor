@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # Author: 'JiaChen'
 
-from django.conf import settings
 import json
 import time
 import copy
+from django.conf import settings
 from utils.log import Logger
 
 

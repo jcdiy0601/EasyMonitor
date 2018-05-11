@@ -284,6 +284,7 @@ class EventLog(models.Model):
     triggers = models.ForeignKey(verbose_name='所属触发器', to='Trigger', null=True, blank=True)
     log = models.TextField(verbose_name='日志', null=True, blank=True)
     date = models.DateTimeField(verbose_name='日期', auto_now_add=True)
+    memo = models.TextField(verbose_name='备注', null=True, blank=True)
 
     class Meta:
         verbose_name_plural = '事件日志表'

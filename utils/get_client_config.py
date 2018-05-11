@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # Author: 'JiaChen'
 
-from monitor_data import models
 from django.core.exceptions import ObjectDoesNotExist
+from monitor_data import models
 from utils.log import Logger
 
 

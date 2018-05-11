@@ -1,15 +1,15 @@
 #!/usr/bin/env python
 # Author: 'JiaChen'
 
-from django.conf import settings
-import time
-from utils.redis_conn import redis_conn
 import json
 import operator
 import pickle
-from monitor_data import models
-from django.core.mail import send_mail
+import time
 from copy import deepcopy
+from django.conf import settings
+from django.core.mail import send_mail
+from monitor_data import models
+from utils.redis_conn import redis_conn
 
 
 class DataHandle(object):
