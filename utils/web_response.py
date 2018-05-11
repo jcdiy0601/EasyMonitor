@@ -2,7 +2,7 @@
 # Author: 'JiaChen'
 
 
-class BaseResponse(object):
+class WebResponse(object):
     """响应基类"""
 
     def __init__(self):

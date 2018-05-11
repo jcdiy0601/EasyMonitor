@@ -11,3 +11,4 @@
 2018-05-11 10:22:00,137 - ERROR : 服务器错误,(2003, "Can't connect to MySQL server on '127.0.0.1' (timed out)")
 2018-05-11 10:22:29,249 - ERROR : 服务器错误,(2003, "Can't connect to MySQL server on '127.0.0.1' (timed out)")
 2018-05-11 10:22:36,125 - ERROR : 服务器错误,(2003, "Can't connect to MySQL server on '127.0.0.1' (timed out)")
+2018-05-11 11:27:12,605 - ERROR : API认证未通过

@@ -1,4 +1,3 @@
-from django.shortcuts import render, HttpResponse
 from django.http import JsonResponse
 from utils.monitor_api_auth import monitor_api_auth
 from django.views.decorators.csrf import csrf_exempt
@@ -13,7 +12,6 @@ from utils.data_processing import DataHandle
 from utils.log import Logger
 from utils.data_verification import DataVerificationHandle
 from utils.api_response import ApiResponse
-import traceback
 
 REDIS_OBJ = redis_conn(settings)
 
@@ -22,14 +20,9 @@ REDIS_OBJ = redis_conn(settings)
 def client_config(request):
     """客户端向api提交申请并返回配置数据"""
     hostname = request.GET.get('hostname')
-    get_client_config_handle_ojb = GetClientConfigHandle(hostname)
-    client_config_dict = get_client_config_handle_ojb.fetch_config()
-    '''
-    {'application': {'LinuxLoad': ['LinuxLoadPlugin', 60], 'LinuxDisk': ['LinuxDiskP
-    lugin', 60], 'LinuxNetwork': ['LinuxNetworkPlugin', 60], 'LinuxMemory': ['LinuxM
-    emoryPlugin', 30], 'LinuxCpu': ['LinuxCpuPlugin', 30]}, 'code': 200, 'message':
-    '获取监控配置成功'}
-    '''
+    response = ApiResponse()
+    get_client_config_handle_obj = GetClientConfigHandle(hostname, response.__dict__)
+    client_config_dict = get_client_config_handle_obj.fetch_config()
     return JsonResponse(client_config_dict)
 
 
@@ -37,14 +30,14 @@ def client_config(request):
 @monitor_api_auth
 def client_data(request):
     """客户端向api提交监控数据"""
-    response = ApiResponse().response
+    response = ApiResponse()
     if request.method == 'POST':
         try:
             client_report_data_dict = json.loads(request.body.decode('utf-8'))  # 获取客户端汇报数据字典
             hostname = client_report_data_dict.get('hostname', None)  # 获取主机名
             application_name = client_report_data_dict.get('application_name', None)  # 获取应用集名称
             data = client_report_data_dict.get('data', None)  # 获取监控数据
-            data_verification_obj = DataVerificationHandle(response=response, hostname=hostname, application_name=application_name, data=data)
+            data_verification_obj = DataVerificationHandle(response=response.__dict__, hostname=hostname, application_name=application_name, data=data)
             response, data = data_verification_obj.check_data()     # 检查数据返回响应及数据，检查成功data有数据，失败data为None
             if not data:    # 无效数据或基础信息有误
                 return JsonResponse(response)

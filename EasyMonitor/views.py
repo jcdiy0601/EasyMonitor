@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from EasyMonitor import forms
 from django.http import JsonResponse
-from utils.response import BaseResponse
+from utils.web_response import WebResponse
 
 
 def acclogin(request):
@@ -43,7 +43,7 @@ def index(request):
 def user_info(request):
     """用户信息视图"""
     if request.method == 'POST':
-        response = BaseResponse()
+        response = WebResponse()
         form_obj = forms.UserInfoForm(request.POST)
         if form_obj.is_valid():
             password = form_obj.cleaned_data['password1']

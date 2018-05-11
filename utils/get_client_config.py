@@ -9,25 +9,21 @@ from utils.log import Logger
 class GetClientConfigHandle(object):
     """获取客户端监控配置"""
 
-    def __init__(self, hostname):
+    def __init__(self, hostname, client_config_dict):
         self.hostname = hostname
-        self.client_config_dict = {
-            'application': {},
-            # {'application': {'LinuxCpu': ['LinuxCpuPlugin', 30], 'LinuxNetwork': ['LinuxNetworkPlugin', 60], 'LinuxLoad': ['LinuxLoadPlugin', 60], 'LinuxMemory': ['LinuxMemoryPlugin', 60]}}
-            'code': None,  # 状态码
-            'message': None  # 信息
-        }
+        self.client_config_dict = client_config_dict
 
     def fetch_config(self):
         """获取监控配置"""
         try:
             host_obj = models.Host.objects.filter(hostname=self.hostname).first()
-            template_list = list(host_obj.templates.all())  # 获取主机模板列表
-            for host_group in host_obj.host_groups.all():   # 主机对应多个模板、主机对应组也对应多个模板，通过这些模板去重才能获取到主机全部的应用集
-                template_list.extend(host_group.templates.all())  # 主机模板中添加主机组模板
-            for template in template_list:
-                for application in template.applications.all():  # 循环每个模板下的应用集
-                    self.client_config_dict['application'][application.name] = [application.plugin_name, application.interval]
+            template_obj_list = list(host_obj.templates.all())  # 获取主机模板列表
+            for host_group_obj in host_obj.host_groups.all():   # 主机对应多个模板、主机对应组也对应多个模板，通过这些模板去重才能获取到主机全部的应用集
+                template_obj_list.extend(host_group_obj.templates.all())  # 主机模板中添加主机组模板
+            template_obj_set = set(template_obj_list)
+            for template_obj in template_obj_set:
+                for application_obj in template_obj.applications.all():  # 循环每个模板下的应用集
+                    self.client_config_dict['data'][application_obj.name] = [application_obj.plugin_name, application_obj.interval]
             self.client_config_dict['code'] = 200
             self.client_config_dict['message'] = '获取监控配置成功'
             Logger().log(message='获取监控配置成功,%s' % self.hostname, mode=True)

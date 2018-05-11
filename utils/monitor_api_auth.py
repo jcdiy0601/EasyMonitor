@@ -6,6 +6,7 @@ import hashlib
 from django.http import JsonResponse
 from django.conf import settings
 from utils.log import Logger
+from utils.api_response import ApiResponse
 
 ENCRYPT_LIST = []  # {'encrypt': encrypt, 'time': timestamp}
 
@@ -53,7 +54,10 @@ def monitor_api_auth(func):
     def wrapper(request, *args, **kwargs):
         if not monitor_api_auth_method(request):
             Logger().log(message='API认证未通过', mode=False)
-            return JsonResponse(data={'code': 401, 'message': 'API认证未通过'}, json_dumps_params={'ensure_ascii': False})
+            response = ApiResponse()
+            response.code = 401
+            response.message = 'API认证未通过'
+            return JsonResponse(data=response.__dict__, json_dumps_params={'ensure_ascii': False})
         return func(request, *args, **kwargs)
 
     return wrapper
