@@ -40,8 +40,8 @@ class DataStoreOptimizationHandle(object):
                         data_list = self.get_data_slice(latest_data_key_in_redis, data_optimize_interval)
                         if len(data_list) > 0:
                             # 接下来拿这个data_list交给下面的方法，算出优化结果
-                            optimized_data = self.get_optimized_data(data_list)
-                            self.save_optimized_data(data_key_in_redis, optimized_data)  # 保存优化数据
+                            optimized_data_dict = self.get_optimized_data(data_list)
+                            self.save_optimized_data(data_key_in_redis, optimized_data_dict)  # 保存优化数据
                 if self.redis_obj.llen(data_key_in_redis) >= max_data_point:  # 如果数据列表点数大于最大数据点数
                     self.redis_obj.lpop(data_key_in_redis)  # 删除最旧的一个点的数据
                 Logger().log(message='监控数据优化、存储成功,%s' % data_key_in_redis, mode=True)
@@ -63,12 +63,12 @@ class DataStoreOptimizationHandle(object):
     def get_optimized_data(self, data_list):
         """获取优化数据"""
         '''
-         data_set = [
+         data_list = [
             [{\"user\": 0.33, \"system\": 1.34, \"idle\": 98.33, \"iowait\": 0.0}, 1523868963.8312852],
             [{\"user\": 1.0, \"system\": 3.68, \"idle\": 95.32, \"iowait\": 0.0}, 1523868993.89751],
             [{\"user\": 0.0, \"system\": 1.68, \"idle\": 98.32, \"iowait\": 0.0}, 1523869024.0294662],
         ]
-         data_set = [
+         data_list = [
             [{\"data\": {\"lo\": {\"t_out\": 0.0, \"t_in\": 0.0}, \"eth0\": {\"t_out\": 2.03, \"t_in\": 65.82}}}, 1523869898.9049253],
             [{\"data\": {\"lo\": {\"t_out\": 0.0, \"t_in\": 0.0}, \"eth0\": {\"t_out\": 1.87, \"t_in\": 65.46}}}, 1523869959.0638402],
             [{\"data\": {\"lo\": {\"t_out\": 0.0, \"t_in\": 0.0}, \"eth0\": {\"t_out\": 2.0, \"t_in\": 65.86}}}, 1523870019.2523856],
@@ -142,6 +142,6 @@ class DataStoreOptimizationHandle(object):
         else:
             return 0
 
-    def save_optimized_data(self, data_key_in_redis, optimized_data):
+    def save_optimized_data(self, data_key_in_redis, optimized_data_dict):
         """保存优化后的数据"""
-        self.redis_obj.rpush(data_key_in_redis, json.dumps([optimized_data, time.time()]))
+        self.redis_obj.rpush(data_key_in_redis, json.dumps([optimized_data_dict, time.time()]))
