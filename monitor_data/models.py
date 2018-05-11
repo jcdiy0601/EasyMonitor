@@ -76,8 +76,7 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
 
 class Host(models.Model):
     """主机表"""
-    hostname = models.CharField(verbose_name='主机名称', max_length=64, unique=True,
-                                help_text='agent方式要与cmdb客户端配置文件中hostname一致，snmp输入管理IP')
+    hostname = models.CharField(verbose_name='主机名称', max_length=64, unique=True, help_text='Agent方式要与cmdb客户端配置文件中hostname一致，SNMP、API输入管理IP')
     ip = models.GenericIPAddressField(verbose_name='IP')
     host_groups = models.ManyToManyField(verbose_name='所属主机组', to='HostGroup', blank=True)
     templates = models.ManyToManyField(verbose_name='所属模板', to='Template', blank=True)
@@ -108,7 +107,7 @@ class Host(models.Model):
 class HostGroup(models.Model):
     """主机组表"""
     name = models.CharField(verbose_name='主机组名称', max_length=64, unique=True)
-    templates = models.ManyToManyField(verbose_name='所属模板', to='Template')
+    templates = models.ManyToManyField(verbose_name='所属模板', to='Template', blank=True)
     memo = models.TextField(verbose_name='备注', null=True, blank=True)
 
     class Meta:
@@ -225,6 +224,13 @@ class Action(models.Model):
     name = models.CharField(verbose_name='报警策略名称', max_length=64, unique=True)
     triggers = models.ManyToManyField(verbose_name='所属触发器', to='Trigger')
     interval = models.IntegerField(verbose_name='报警间隔(s)', default=300)
+    _alert_msg_format = '''主机:{hostname}
+IP:{ip}
+应用集:{name}
+内容:{msg},存在问题
+开始时间:{start_time}
+持续时间:{duration}'''
+    alert_msg_format = models.TextField(verbose_name='报警通知格式', default=_alert_msg_format)
     recover_notice = models.BooleanField(verbose_name='故障恢复后是否发送通知', default=True)
     _recover_msg_format = '''主机:{hostname}
 IP:{ip}
@@ -258,13 +264,6 @@ class ActionOperation(models.Model):
     step = models.IntegerField(verbose_name='报警升级阈值')
     user_profiles = models.ManyToManyField(verbose_name='所属用户', to='UserProfile', blank=True)
     script_name = models.CharField(verbose_name='脚本名称', max_length=64, null=True, blank=True)
-    _msg_format = '''主机:{hostname}
-IP:{ip}
-应用集:{name}
-内容:{msg},存在问题
-开始时间:{start_time}
-持续时间:{duration}'''
-    msg_format = models.TextField(verbose_name='消息格式', default=_msg_format)
     memo = models.TextField(verbose_name='备注', null=True, blank=True)
 
     class Meta:

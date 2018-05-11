@@ -28,8 +28,7 @@ class Logger(object):
     def initialize_run_log(self):
         """初始化运行日志"""
         self.check_path_exist(self.run_log_file)
-        file_1_1 = handlers.TimedRotatingFileHandler(filename=self.run_log_file, when='D', interval=1, backupCount=0,
-                                                     encoding='utf-8')
+        file_1_1 = handlers.TimedRotatingFileHandler(filename=self.run_log_file, when='midnight', interval=1, backupCount=0, encoding='utf-8')
         fmt = logging.Formatter(fmt='%(asctime)s - %(levelname)s : %(message)s')
         file_1_1.setFormatter(fmt=fmt)
         logger1 = logging.Logger(name='run_log', level=logging.INFO)
@@ -39,8 +38,7 @@ class Logger(object):
     def initialize_error_log(self):
         """初始化错误日志"""
         self.check_path_exist(self.error_log_file)
-        file_1_1 = handlers.TimedRotatingFileHandler(filename=self.error_log_file, when='D', interval=1, backupCount=0,
-                                                     encoding='utf-8')
+        file_1_1 = handlers.TimedRotatingFileHandler(filename=self.error_log_file, when='midnight', interval=1, backupCount=0, encoding='utf-8')
         fmt = logging.Formatter(fmt='%(asctime)s - %(levelname)s : %(message)s')
         file_1_1.setFormatter(fmt=fmt)
         logger1 = logging.Logger(name='error_log', level=logging.ERROR)
