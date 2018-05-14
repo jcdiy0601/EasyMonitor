@@ -11,7 +11,6 @@ from utils.redis_conn import redis_conn
 from utils.action_handle import ActionHandle
 
 
-
 class TriggerHandle(object):
     """触发器处理"""
     def __init__(self):

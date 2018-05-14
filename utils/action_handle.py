@@ -25,7 +25,7 @@ class ActionHandle(object):
             log=trigger_data
         )
 
-    def action_email(self, action_operation_obj, hostname, trigger_data):
+    def action_email(self, action_operation_obj, hostname, trigger_data, action_obj):
         """发送报警邮件"""
         notifier_mail_list = [user_obj.email for user_obj in action_operation_obj.user_profiles.all()]    # 获取通知邮件列表
         trigger_obj = models.Trigger.objects.filter(id=trigger_data.get('trigger_id')).first()
@@ -49,12 +49,12 @@ class ActionHandle(object):
                 duration = '%s小时' % int(duration/60/60)
         else:
             duration = ''
-        message = action_operation_obj.msg_format.format(hostname=hostname,
-                                                         ip=host_obj.ip,
-                                                         name=application_name,
-                                                         msg=trigger_data['msg'],
-                                                         start_time=start_time,
-                                                         duration=duration)
+        message = action_obj.alert_msg_format.format(hostname=hostname,
+                                                 ip=host_obj.ip,
+                                                 name=application_name,
+                                                 msg=trigger_data['msg'],
+                                                 start_time=start_time,
+                                                 duration=duration)
         # 发送邮件
         send_mail(
             subject=subject,    # 主题
@@ -100,7 +100,7 @@ class ActionHandle(object):
                     for action_operation_obj in action_obj.action_operations.all().order_by('-step'):
                         if self.alert_counter_dict[str(action_obj.id)][hostname]["counter"] >= action_operation_obj.step:     # 报警计数大于报警升级阈值
                             action_func = getattr(self, 'action_%s' % action_operation_obj.action_type)
-                            action_func(action_operation_obj, hostname, self.trigger_data)
+                            action_func(action_operation_obj, hostname, self.trigger_data, action_obj)
                             self.alert_counter_dict[str(action_obj.id)][hostname]["last_alert"] = time.time()    # 报完警后更新一下报警时间，这样就又重新计算报警间隔了
                             self.redis_obj.set(self.alert_counter_dict_key, json.dumps(self.alert_counter_dict))
                             self.record_log(hostname, self.trigger_data)  # 记录日志
@@ -111,7 +111,7 @@ class ActionHandle(object):
                         for action_operation_obj in action_obj.action_operations.all().order_by('-step'):
                             if self.alert_counter_dict[str(action_obj.id)][hostname]["counter"] >= action_operation_obj.step:  # 报警计数大于报警升级阈值
                                 action_func = getattr(self, 'action_%s' % action_operation_obj.action_type)
-                                action_func(action_operation_obj, hostname, self.trigger_data)
+                                action_func(action_operation_obj, hostname, self.trigger_data, trigger_obj)
                                 self.alert_counter_dict[str(action_obj.id)][hostname]["last_alert"] = time.time()  # 报完警后更新一下报警时间，这样就又重新计算报警间隔了
                                 self.redis_obj.set(self.alert_counter_dict_key, json.dumps(self.alert_counter_dict))
                                 self.record_log(hostname, self.trigger_data)  # 记录日志
