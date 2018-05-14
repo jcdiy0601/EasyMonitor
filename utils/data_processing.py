@@ -128,18 +128,14 @@ class DataHandle(object):
             trigger_start_time = json.loads(old_trigger_data)['start_time']
             msg_dict['start_time'] = trigger_start_time
             msg_dict['duration'] = time.time() - trigger_start_time
-        # 发送到队列中
-        self.redis_obj.publish(settings.TRIGGER_CHAN, pickle.dumps(msg_dict))
-        # 同时在redis中纪录这个trigger,前端页面展示时要统计trigger个数
-        self.redis_obj.set(trigger_redis_key, json.dumps(msg_dict))
         if host_obj.status != 5:
             host_obj.status = 5  # 将主机状态改为问题
             host_obj.save()
             Logger().log(message='服务器状态改变,%s' % host_obj.hostname, mode=True)
-
-    @staticmethod
-    def joint_recover_msg(self):
-        pass
+        # 发送到队列中
+        self.redis_obj.publish(settings.TRIGGER_CHAN, pickle.dumps(msg_dict))
+        # 同时在redis中纪录这个trigger,前端页面展示时要统计trigger个数
+        self.redis_obj.set(trigger_redis_key, json.dumps(msg_dict))
 
     def check_and_alert_recover_notifier(self, host_obj, trigger_obj):
         """检查报警恢复并通知"""
@@ -164,14 +160,15 @@ class DataHandle(object):
                             host_obj.save()
                             Logger().log(message='服务器状态改变,%s' % host_obj.hostname, mode=True)
                             # 发送恢复通知
-                            action_operation_obj_list = action_obj.action_operations.all()
-                            for action_operation_obj in action_operation_obj_list:
-                                if old_alert_counter_dict[str(action_obj.id)][hostname]['counter'] >= action_operation_obj.step:
-                                    action_func = getattr(action, '%s' % action_operation_obj.action_type)
-                                    action_func(action_operation_obj=action_operation_obj,
-                                                hostname=hostname,
-                                                trigger_data=trigger_data,
-                                                action_obj=action_obj)  # 通过反射发送相关恢复通知
+                            if action_obj.recover_notice:   # 开启了恢复通知功能
+                                action_operation_obj_list = action_obj.action_operations.all()
+                                for action_operation_obj in action_operation_obj_list:
+                                    if old_alert_counter_dict[str(action_obj.id)][hostname]['counter'] >= action_operation_obj.step:
+                                        action_func = getattr(action, '%s' % action_operation_obj.action_type)
+                                        action_func(action_operation_obj=action_operation_obj,
+                                                    hostname=hostname,
+                                                    trigger_data=trigger_data,
+                                                    action_obj=action_obj)  # 通过反射发送相关恢复通知
 
     def looping(self):
         """检测所有主机需要监控的服务的数据有没有按时汇报上来，只做基本检测"""

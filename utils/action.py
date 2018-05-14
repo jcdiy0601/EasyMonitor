@@ -8,7 +8,7 @@ from monitor_data import models
 from utils.log import Logger
 
 
-def email(action_operation_obj, hostname, trigger_data, action_obj):
+def email(action_operation_obj, hostname, trigger_data, action_obj, status=True):
     """邮件通知"""
     trigger_id = trigger_data.get('trigger_id')
     trigger_obj = models.Trigger.objects.filter(id=trigger_id).first()  # 获取触发器实例
@@ -30,7 +30,7 @@ def email(action_operation_obj, hostname, trigger_data, action_obj):
             duration = '%s小时' % int(duration / 60 / 60)
     else:
         duration = ''
-    if action_obj:  # 恢复邮件
+    if status is True:  # 恢复邮件
         msg = trigger_obj.name
         recover_time = time.strftime('%Y-%m-%d %H:%M:%S', time.gmtime(time.time() + 28800))
         message = action_obj.recover_msg_format.format(hostname=hostname,
@@ -53,4 +53,22 @@ def email(action_operation_obj, hostname, trigger_data, action_obj):
                                                        notifier_mail_list),
                      mode=True)
     else:   # 报警邮件
-        pass
+        msg = trigger_data.get('msg')
+        message = action_obj.alert_msg_format.format(hostname=hostname,
+                                                     ip=host_obj.ip,
+                                                     name=application_name,
+                                                     msg=msg,
+                                                     start_time=start_time,
+                                                     duration=duration)
+        # 使用django send_mail发送邮件
+        notifier_mail_list = [user_obj.email for user_obj in action_operation_obj.user_profiles.all()]  # 获取通知邮件列表
+        send_mail(
+            subject=subject,  # 主题
+            message=message,  # 内容
+            from_email=settings.DEFAULT_FROM_EMAIL,  # 发送邮箱
+            recipient_list=notifier_mail_list,  # 接收邮箱列表
+        )
+        Logger().log(message='发送报警邮件通知,%s,%s,%s,%s' % (subject, message,
+                                                       settings.DEFAULT_FROM_EMAIL,
+                                                       notifier_mail_list),
+                     mode=True)
