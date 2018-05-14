@@ -5,6 +5,7 @@ import time
 from django.core.mail import send_mail
 from django.conf import settings
 from monitor_data import models
+from utils.log import Logger
 
 
 def email(action_operation_obj, hostname, trigger_data, action_obj):
@@ -47,5 +48,9 @@ def email(action_operation_obj, hostname, trigger_data, action_obj):
             from_email=settings.DEFAULT_FROM_EMAIL,  # 发送邮箱
             recipient_list=notifier_mail_list,  # 接收邮箱列表
         )
+        Logger().log(message='发送恢复邮件通知,%s,%s,%s,%s' % (subject, message,
+                                                       settings.DEFAULT_FROM_EMAIL,
+                                                       notifier_mail_list),
+                     mode=True)
     else:   # 报警邮件
         pass
