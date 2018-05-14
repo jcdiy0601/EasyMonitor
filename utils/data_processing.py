@@ -8,8 +8,9 @@ import time
 from copy import deepcopy
 from django.conf import settings
 from monitor_data import models
-from utils.redis_conn import redis_conn
 from utils import action
+from utils.redis_conn import redis_conn
+from utils.log import Logger
 
 
 class DataHandle(object):
@@ -134,6 +135,7 @@ class DataHandle(object):
         if host_obj.status != 5:
             host_obj.status = 5  # 将主机状态改为问题
             host_obj.save()
+            Logger().log(message='服务器状态改变,%s' % host_obj.hostname, mode=True)
 
     @staticmethod
     def joint_recover_msg(self):
@@ -160,6 +162,7 @@ class DataHandle(object):
                             # 将主机状态改为正常在线
                             host_obj.status = 1
                             host_obj.save()
+                            Logger().log(message='服务器状态改变,%s' % host_obj.hostname, mode=True)
                             # 发送恢复通知
                             action_operation_obj_list = action_obj.action_operations.all()
                             for action_operation_obj in action_operation_obj_list:

@@ -24608,3 +24608,103 @@ IP:192.168.222.53
 2018-05-14 16:54:32,127 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxCpu_30min
 2018-05-14 16:54:32,131 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxCpu_latest
 2018-05-14 16:54:32,135 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxCpu_10min
+2018-05-14 16:54:39,263 - INFO : 汇报监控数据成功,CentOS-03_172.16.99.25,{'MemUsage': 92588, 'Cached': 84676, 'SwapUsage_p': 0.24, 'SwapTotal': 2031612, 'MemFree': 233844, 'SwapUsage': 4860, 'MemUsage_p': 18.74, 'Buffers': 82844, 'MemTotal': 493952, 'SwapFree': 2026752}
+2018-05-14 16:54:39,273 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxMemory_1hour
+2018-05-14 16:54:39,279 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxMemory_30min
+2018-05-14 16:54:39,286 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxMemory_latest
+2018-05-14 16:54:39,292 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxMemory_10min
+2018-05-14 16:54:42,056 - INFO : 汇报监控数据成功,CentOS-02_172.16.99.24,{'MemUsage': 123408, 'Buffers': 138516, 'SwapUsage_p': 0.0, 'SwapTotal': 2031612, 'MemFree': 16476, 'SwapUsage': 68, 'MemUsage_p': 24.98, 'Cached': 215552, 'MemTotal': 493952, 'SwapFree': 2031544}
+2018-05-14 16:54:42,056 - INFO : 汇报监控数据成功,CentOS-02_172.16.99.24,{'uptime': 0}
+2018-05-14 16:54:42,061 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxMemory_1hour
+2018-05-14 16:54:42,061 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxHostAlive_1hour
+2018-05-14 16:54:42,066 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxMemory_30min
+2018-05-14 16:54:42,067 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxHostAlive_30min
+2018-05-14 16:54:42,071 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxMemory_latest
+2018-05-14 16:54:42,073 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxHostAlive_latest
+2018-05-14 16:54:42,076 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxMemory_10min
+2018-05-14 16:54:42,081 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxHostAlive_10min
+2018-05-14 16:54:45,064 - INFO : 汇报监控数据成功,CentOS-02_172.16.99.24,{'idle': 98.32, 'user': 0.0, 'system': 1.68, 'iowait': 0.0}
+2018-05-14 16:54:45,067 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxCpu_1hour
+2018-05-14 16:54:45,071 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxCpu_30min
+2018-05-14 16:54:45,074 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxCpu_latest
+2018-05-14 16:54:45,078 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxCpu_10min
+2018-05-14 16:54:49,193 - INFO : 汇报监控数据成功,CentOS-03_172.16.99.25,{'MemUsage': 92440, 'Cached': 84676, 'SwapUsage_p': 0.24, 'SwapTotal': 2031612, 'MemFree': 233992, 'SwapUsage': 4860, 'MemUsage_p': 18.71, 'Buffers': 82844, 'MemTotal': 493952, 'SwapFree': 2026752}
+2018-05-14 16:54:49,198 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxMemory_1hour
+2018-05-14 16:54:49,204 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxMemory_30min
+2018-05-14 16:54:49,215 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxMemory_latest
+2018-05-14 16:54:49,219 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxMemory_10min
+2018-05-14 16:54:52,097 - INFO : 汇报监控数据成功,CentOS-02_172.16.99.24,{'MemUsage': 122968, 'Buffers': 138516, 'SwapUsage_p': 0.0, 'SwapTotal': 2031612, 'MemFree': 16912, 'SwapUsage': 68, 'MemUsage_p': 24.89, 'Cached': 215556, 'MemTotal': 493952, 'SwapFree': 2031544}
+2018-05-14 16:54:52,102 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxMemory_1hour
+2018-05-14 16:54:52,107 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxMemory_30min
+2018-05-14 16:54:52,114 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxMemory_latest
+2018-05-14 16:54:52,119 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxMemory_10min
+2018-05-14 16:54:59,267 - INFO : 汇报监控数据成功,CentOS-03_172.16.99.25,{'uptime': 0}
+2018-05-14 16:54:59,271 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxHostAlive_1hour
+2018-05-14 16:54:59,279 - INFO : 汇报监控数据成功,CentOS-03_172.16.99.25,{'data': {'/boot': {'Size': 477, 'Use': 8, 'Avail': 419, 'Used': 33}, '/': {'Size': 47819, 'Use': 5, 'Avail': 43132, 'Used': 2253}}}
+2018-05-14 16:54:59,281 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxHostAlive_30min
+2018-05-14 16:54:59,286 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxDisk_1hour
+2018-05-14 16:54:59,293 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxHostAlive_latest
+2018-05-14 16:54:59,300 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxDisk_30min
+2018-05-14 16:54:59,309 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxHostAlive_10min
+2018-05-14 16:54:59,311 - INFO : 汇报监控数据成功,CentOS-03_172.16.99.25,{'MemUsage': 94816, 'Cached': 84676, 'SwapUsage_p': 0.24, 'SwapTotal': 2031612, 'MemFree': 231612, 'SwapUsage': 4860, 'MemUsage_p': 19.2, 'Buffers': 82848, 'MemTotal': 493952, 'SwapFree': 2026752}
+2018-05-14 16:54:59,311 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxDisk_latest
+2018-05-14 16:54:59,311 - INFO : 汇报监控数据成功,CentOS-03_172.16.99.25,{'load1': 0.0, 'load15': 0.12, 'load5': 0.05}
+2018-05-14 16:54:59,321 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxMemory_1hour
+2018-05-14 16:54:59,323 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxDisk_10min
+2018-05-14 16:54:59,327 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxLoad_1hour
+2018-05-14 16:54:59,329 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxMemory_30min
+2018-05-14 16:54:59,341 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxLoad_30min
+2018-05-14 16:54:59,343 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxMemory_latest
+2018-05-14 16:54:59,347 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxLoad_latest
+2018-05-14 16:54:59,349 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxMemory_10min
+2018-05-14 16:54:59,356 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxLoad_10min
+2018-05-14 16:55:02,089 - INFO : 汇报监控数据成功,CentOS-02_172.16.99.24,{'MemUsage': 122964, 'Buffers': 138516, 'SwapUsage_p': 0.0, 'SwapTotal': 2031612, 'MemFree': 16912, 'SwapUsage': 68, 'MemUsage_p': 24.89, 'Cached': 215560, 'MemTotal': 493952, 'SwapFree': 2031544}
+2018-05-14 16:55:02,094 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxMemory_1hour
+2018-05-14 16:55:02,101 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxMemory_30min
+2018-05-14 16:55:02,107 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxMemory_latest
+2018-05-14 16:55:02,113 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxMemory_10min
+2018-05-14 16:55:02,207 - INFO : 汇报监控数据成功,CentOS-03_172.16.99.25,{'idle': 95.29, 'user': 1.35, 'system': 3.37, 'iowait': 0.0}
+2018-05-14 16:55:02,210 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxCpu_1hour
+2018-05-14 16:55:02,214 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxCpu_30min
+2018-05-14 16:55:02,217 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxCpu_latest
+2018-05-14 16:55:02,221 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxCpu_10min
+2018-05-14 16:55:04,280 - INFO : 汇报监控数据成功,CentOS-03_172.16.99.25,{'data': {'lo': {'t_out': 0.0, 't_in': 0.0}, 'eth0': {'t_out': 0.91, 't_in': 0.84}}}
+2018-05-14 16:55:04,284 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxNetwork_1hour
+2018-05-14 16:55:04,288 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxNetwork_30min
+2018-05-14 16:55:04,293 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxNetwork_latest
+2018-05-14 16:55:04,297 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxNetwork_10min
+2018-05-14 16:55:09,820 - INFO : 汇报监控数据成功,CentOS-03_172.16.99.25,{'SwapFree': 2026752, 'SwapUsage_p': 0.24, 'MemUsage_p': 18.74, 'MemTotal': 493952, 'MemUsage': 92584, 'MemFree': 233836, 'Cached': 84680, 'SwapTotal': 2031612, 'SwapUsage': 4860, 'Buffers': 82852}
+2018-05-14 16:55:09,829 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxMemory_1hour
+2018-05-14 16:55:09,833 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxMemory_10min
+2018-05-14 16:55:09,838 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxMemory_latest
+2018-05-14 16:55:09,841 - INFO : 监控数据优化、存储成功,Data_CentOS-03_172.16.99.25_LinuxMemory_30min
+2018-05-14 16:55:12,153 - INFO : 汇报监控数据成功,CentOS-02_172.16.99.24,{'SwapFree': 2031544, 'MemTotal': 493952, 'MemUsage_p': 24.96, 'MemUsage': 123288, 'SwapUsage_p': 0.0, 'MemFree': 16584, 'Cached': 215560, 'SwapTotal': 2031612, 'Buffers': 138520, 'SwapUsage': 68}
+2018-05-14 16:55:12,153 - INFO : 汇报监控数据成功,CentOS-02_172.16.99.24,{'uptime': 0}
+2018-05-14 16:55:12,157 - INFO : 汇报监控数据成功,CentOS-02_172.16.99.24,{'load5': 0.04, 'load1': 0.01, 'load15': 0.1}
+2018-05-14 16:55:12,162 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxMemory_1hour
+2018-05-14 16:55:12,162 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxHostAlive_1hour
+2018-05-14 16:55:12,166 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxLoad_1hour
+2018-05-14 16:55:12,169 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxMemory_10min
+2018-05-14 16:55:12,172 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxHostAlive_10min
+2018-05-14 16:55:12,176 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxLoad_10min
+2018-05-14 16:55:12,179 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxHostAlive_latest
+2018-05-14 16:55:12,179 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxMemory_latest
+2018-05-14 16:55:12,188 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxLoad_latest
+2018-05-14 16:55:12,188 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxHostAlive_30min
+2018-05-14 16:55:12,188 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxMemory_30min
+2018-05-14 16:55:12,207 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxLoad_30min
+2018-05-14 16:55:12,251 - INFO : 汇报监控数据成功,CentOS-02_172.16.99.24,{'data': {'/': {'Size': 47819, 'Use': 5, 'Used': 2124, 'Avail': 43260}, '/boot': {'Size': 477, 'Use': 8, 'Used': 33, 'Avail': 419}}}
+2018-05-14 16:55:12,259 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxDisk_1hour
+2018-05-14 16:55:12,262 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxDisk_10min
+2018-05-14 16:55:12,266 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxDisk_latest
+2018-05-14 16:55:12,270 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxDisk_30min
+2018-05-14 16:55:15,234 - INFO : 汇报监控数据成功,CentOS-02_172.16.99.24,{'iowait': 0.0, 'user': 0.67, 'system': 2.68, 'idle': 96.64}
+2018-05-14 16:55:15,244 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxCpu_1hour
+2018-05-14 16:55:15,248 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxCpu_10min
+2018-05-14 16:55:15,253 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxCpu_latest
+2018-05-14 16:55:15,259 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxCpu_30min
+2018-05-14 16:55:17,202 - INFO : 汇报监控数据成功,CentOS-02_172.16.99.24,{'data': {'lo': {'t_out': 0.02, 't_in': 0.02}, 'eth0': {'t_out': 3.4, 't_in': 2.27}}}
+2018-05-14 16:55:17,211 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxNetwork_1hour
+2018-05-14 16:55:17,220 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxNetwork_10min
+2018-05-14 16:55:17,225 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxNetwork_latest
+2018-05-14 16:55:17,233 - INFO : 监控数据优化、存储成功,Data_CentOS-02_172.16.99.24_LinuxNetwork_30min
