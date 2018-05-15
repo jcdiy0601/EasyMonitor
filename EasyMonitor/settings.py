@@ -134,6 +134,13 @@ AUTH_USER_MODEL = 'monitor_data.UserProfile'
 
 LOGIN_URL = '/login.html'
 
+# 提交数据API
+DATA_API = 'http://10.10.30.93:8000/monitor_api/v1/data'
+# 用于API认证的KEY
+KEY = '299095cc-1330-11e5-b06a-a45e60bec08b'
+# 用于API认证的请求头
+AUTH_KEY_NAME = 'monitor-api-auth-key'
+
 # 接收头信息的标识
 MONITOR_AUTH_HEADER_NAME = 'HTTP_MONITOR_API_AUTH_KEY'
 MONITOR_AUTH_KEY = '299095cc-1330-11e5-b06a-a45e60bec08b'
@@ -190,14 +197,11 @@ TRIGGER_WATCH_PID_FILE = os.path.join(BASE_DIR, 'logs', 'trigger_watch.pid')
 # Host Alive PID文件存放路径
 HOST_ALIVE_PID_FILE = os.path.join(BASE_DIR, 'logs', 'host_alive.pid')
 
-# 允许客户端汇报延迟事件，单位秒
-REPORT_LATE_TOLERANCE_TIME = 10
-
 # 邮件报警配置
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = False
-EMAIL_HOST = 'xxx'
+EMAIL_HOST = 'smtp.xxx.cn'
 EMAIL_PORT = 25
-EMAIL_HOST_USER = 'xxx@xxx.cn'
+EMAIL_HOST_USER = 'xxx'
 EMAIL_HOST_PASSWORD = 'xxx'
-DEFAULT_FROM_EMAIL = 'EasyMonitor<xxx@xxx.cn>'
+DEFAULT_FROM_EMAIL = 'EasyMonitor<warning@xxx.cn>'

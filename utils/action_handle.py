@@ -45,6 +45,7 @@ class ActionHandle(object):
         if self.trigger_data.get('trigger_id') is None:
             if self.trigger_data.get('msg'):
                 pass    # 既然没有trigger id直接报警给管理员
+
         else:   # 正经的trigger报警要触发了
             trigger_id = self.trigger_data.get('trigger_id')    # 获取触发器id
             hostname = self.trigger_data.get('hostname')    # 获取主机名

@@ -5,7 +5,11 @@ import json
 import operator
 import pickle
 import time
+import subprocess
+import hashlib
+import requests
 from copy import deepcopy
+from concurrent.futures import ThreadPoolExecutor
 from django.conf import settings
 from monitor_data import models
 from utils import action
@@ -18,11 +22,12 @@ class DataHandle(object):
 
     def __init__(self, redis_obj=None):
         self.settings = settings    # 加载配置文件
-        self.poll_interval = 3  # 每3秒进行一次全局轮训
         self.config_update_interval = 120  # 每120s重新从数据库加载一次配置数据
         self.config_last_loading_time = time.time()  # 配置最后加载时间
-        self.global_monitor_dict = {}
-        self.exit_flag = False
+        self.host_alive_application_name = 'AgentPing'
+        self.data_api = settings.DATA_API  # 获取提交监控数据api
+        self.key = settings.KEY  # key
+        self.key_name = settings.AUTH_KEY_NAME  # key_name
         if redis_obj:   # 没有传入redis连接就重新连接redis
             self.redis_obj = redis_obj
         else:
@@ -71,9 +76,7 @@ class DataHandle(object):
             else:   # 没有触发报警，这是存在两种情况，要通过检查redis中的trigger key来判断是否需要发送恢复邮件
                 self.check_and_alert_recover_notifier(host_obj=host_obj, trigger_obj=trigger_obj)    # 检查报警恢复并通知
 
-
-    @staticmethod
-    def joint_alert_msg(trigger_obj, expression_result_list):
+    def joint_alert_msg(self, trigger_obj, expression_result_list):
         """拼接报警消息"""
         trigger_name = trigger_obj.name     # 获取触发器名称，如内存不足
         msg = '%s,' % trigger_name
@@ -93,13 +96,16 @@ class DataHandle(object):
             if not data_unit:
                 data_unit = ''
             if count == len(expression_result_list):    # 判断是否为最后一个表达式结果
-                msg += '%s[%s (%s%s %s %s%s)]' % (specified_item_key,
-                                                  expression_obj.items.key,
-                                                  calc_res_val,
-                                                  data_unit,
-                                                  expression_operator,
-                                                  expression_obj.threshold,
-                                                  data_unit)
+                if expression_obj.applications.name == self.host_alive_application_name:
+                    msg = trigger_name
+                else:
+                    msg += '%s[%s (%s%s %s %s%s)]' % (specified_item_key,
+                                                      expression_obj.items.key,
+                                                      calc_res_val,
+                                                      data_unit,
+                                                      expression_operator,
+                                                      expression_obj.threshold,
+                                                      data_unit)
             else:
                 msg += '%s[%s (%s%s %s %s%s)],' % (specified_item_key,
                                                    expression_obj.items.key,
@@ -112,30 +118,48 @@ class DataHandle(object):
 
     def alert_notifier(self, host_obj, trigger_obj, expression_result_list, msg):
         """所有触发报警都需要在这里发布通知"""
-        msg_dict = {
-            'hostname': host_obj.hostname,  # 主机名
-            'trigger_id': trigger_obj.id,   # 触发器id
-            'expression_result_list': expression_result_list,   # 表达式结果列表
-            'msg': msg,     # 信息
-            'start_time': time.time(),  # 开始时间
-            'duration': None    # 持续时间
-        }
-        # 先把之前的trigger加载回来,获取上次报警的时间,以统计故障持续时间
-        trigger_redis_key = 'host_%s_trigger_%s' % (host_obj.hostname, trigger_obj.id)
-        old_trigger_data = self.redis_obj.get(trigger_redis_key)    # 获取旧的触发器数据
-        if old_trigger_data:    # 不是第一次触发
-            old_trigger_data = old_trigger_data.decode()
-            trigger_start_time = json.loads(old_trigger_data)['start_time']
-            msg_dict['start_time'] = trigger_start_time
-            msg_dict['duration'] = time.time() - trigger_start_time
-        if host_obj.status != 5:
-            host_obj.status = 5  # 将主机状态改为问题
-            host_obj.save()
-            Logger().log(message='服务器状态改变,%s' % host_obj.hostname, mode=True)
+        if trigger_obj:
+            msg_dict = {
+                'hostname': host_obj.hostname,  # 主机名
+                'trigger_id': trigger_obj.id,  # 触发器id
+                'expression_result_list': expression_result_list,  # 表达式结果列表
+                'msg': msg,  # 信息
+                'start_time': time.time(),  # 开始时间
+                'duration': None  # 持续时间
+            }
+            # 先把之前的trigger加载回来,获取上次报警的时间,以统计故障持续时间
+            trigger_redis_key = 'host_%s_trigger_%s' % (host_obj.hostname, trigger_obj.id)
+            old_trigger_data = self.redis_obj.get(trigger_redis_key)  # 获取旧的触发器数据
+            if old_trigger_data:  # 不是第一次触发
+                old_trigger_data = old_trigger_data.decode()
+                trigger_start_time = json.loads(old_trigger_data)['start_time']
+                msg_dict['start_time'] = trigger_start_time
+                msg_dict['duration'] = time.time() - trigger_start_time
+            if host_obj.status != 5:
+                host_obj.status = 5  # 将主机状态改为问题
+                host_obj.save()
+                Logger().log(message='服务器状态改变,%s' % host_obj.hostname, mode=True)
+            # 同时在redis中纪录这个trigger,前端页面展示时要统计trigger个数
+            self.redis_obj.set(trigger_redis_key, json.dumps(msg_dict))
+        else:
+            msg_dict = {
+                'hostname': host_obj.hostname,  # 主机名
+                'trigger_id': trigger_obj,   # 触发器id
+                'expression_result_list': expression_result_list,   # 表达式结果列表
+                'msg': msg,     # 信息
+                'start_time': time.time(),  # 开始时间
+                'duration': None    # 持续时间
+            }
+            host_alive_redis_key = 'host_%s_host_alive' % host_obj.hostname
+            old_host_alive_data = self.redis_obj.get(host_alive_redis_key)  # 获取旧的主机检测数据
+            if old_host_alive_data:     # 不是第一次触发
+                old_host_alive_data = old_host_alive_data.decode()
+                host_alive_start_time = json.loads(old_host_alive_data)['start_time']
+                msg_dict['start_time'] = host_alive_start_time
+                msg_dict['duration'] = time.time() - host_alive_start_time
+            self.redis_obj.set(host_alive_redis_key, json.dumps(msg_dict))
         # 发送到队列中
         self.redis_obj.publish(settings.TRIGGER_CHAN, pickle.dumps(msg_dict))
-        # 同时在redis中纪录这个trigger,前端页面展示时要统计trigger个数
-        self.redis_obj.set(trigger_redis_key, json.dumps(msg_dict))
 
     def check_and_alert_recover_notifier(self, host_obj, trigger_obj):
         """检查报警恢复并通知"""
@@ -171,103 +195,51 @@ class DataHandle(object):
                                                     action_obj=action_obj)  # 通过反射发送相关恢复通知
 
     def looping(self):
-        """检测所有主机需要监控的服务的数据有没有按时汇报上来，只做基本检测"""
-        self.update_or_load_configs()   # 生成全局的监控配置dict
-        count = 0
-        while not self.exit_flag:
-            count += 1
-            if time.time() - self.config_last_loading_time > self.config_update_interval:   # 该重新获取配置了
-                self.update_or_load_configs()
-            if self.global_monitor_dict:
-                for hostname, config_dict in self.global_monitor_dict.items():
-                    '''
-                    config_dict = {
-                                    'triggers': {
-                                        1: <Trigger: 磁盘IO过高>, 
-                                        2: <Trigger: /分区硬盘空间使用率大于80%>
-                                    }, 
-                                    'status_last_check': 1525936753.02014, 
-                                    'applications': {
-                                        1: [<Application: LinuxCpu>, 0], 
-                                        2: [<Application: LinuxLoad>, 0]
-                                    }
-                    }
-                    '''
-                    host_obj = models.Host.objects.filter(hostname=hostname).first()
-                    for application_id, value_list in config_dict['applications'].items():  # 循环所有要监控的应用集
-                        application_obj, last_monitor_time = value_list
-                        if time.time() - last_monitor_time > application_obj.interval:  # 到达了下一个监控间隔
-                            self.global_monitor_dict[hostname]['applications'][application_obj.id][1] = time.time()
-                            self.data_point_validation(host_obj=host_obj, application_obj=application_obj)  # 检测此服务最近的汇报数据
-                    if time.time() - self.global_monitor_dict[hostname]['status_last_check'] > 10:
-                        # 检测有没有这个机器的trigger,如果没有,把机器状态改成ok
-                        trigger_redis_key = 'host_%s_trigger*' % hostname
-                        trigger_keys = self.redis_obj.keys(trigger_redis_key)
-                        if len(trigger_keys) == 0:  # 没有trigger被触发,可以把状态改为ok了
-                            host_obj.status = 1
-                            host_obj.save()
-            time.sleep(self.poll_interval)
+        """检测所有主机状态，Agent ping"""
+        interval = self.update_interval()
+        while True:
+            host_obj_list = []
+            if time.time() - self.config_last_loading_time > self.config_update_interval:   # 重新加载应用集的监控间隔
+                interval = self.update_interval()
+            application_obj = models.Application.objects.filter(name=self.host_alive_application_name).first()
+            template_obj_list = application_obj.template_set.all()
+            for template_obj in template_obj_list:
+                host_obj_list.extend(template_obj.host_set.all())
+            host_obj_set = set(host_obj_list)
+            self.process(host_obj_set)
+            time.sleep(interval)
 
-    def update_or_load_configs(self):
-        """从数据库中获取监控配置"""
-        host_obj_list = models.Host.objects.all()
-        for host_obj in host_obj_list:
-            if host_obj.hostname not in self.global_monitor_dict:
-                self.global_monitor_dict[host_obj.hostname] = {'applications': {}, 'triggers': {}}
-            application_obj_list = []
-            trigger_obj_list = []
-            for host_group_obj in host_obj.host_groups.all():
-                for template_obj in host_group_obj.templates.all():
-                    application_obj_list.extend(template_obj.applications.all())
-                    trigger_obj_list.extend(template_obj.trigger_set.all())
-                for application_obj in application_obj_list:
-                    if application_obj.id not in self.global_monitor_dict[host_obj.hostname]['applications']:
-                        self.global_monitor_dict[host_obj.hostname]['applications'][application_obj.id] = [application_obj, 0]
-                    else:
-                        self.global_monitor_dict[host_obj.hostname]['applications'][application_obj.id][0] = application_obj
-                for trigger_obj in trigger_obj_list:
-                    self.global_monitor_dict[host_obj.hostname]['triggers'][trigger_obj.id] = trigger_obj
-            for template_obj in host_obj.templates.all():
-                application_obj_list.extend(template_obj.applications.all())
-                trigger_obj_list.extend(template_obj.trigger_set.all())
-            for application_obj in application_obj_list:
-                if application_obj.id not in self.global_monitor_dict[host_obj.hostname]['applications']:
-                    self.global_monitor_dict[host_obj.hostname]['applications'][application_obj.id] = [application_obj, 0]
-                else:
-                    self.global_monitor_dict[host_obj.hostname]['applications'][application_obj.id][0] = application_obj
-            for trigger_obj in trigger_obj_list:
-                self.global_monitor_dict[host_obj.hostname]['triggers'][trigger_obj.id] = trigger_obj
-            # 通过这个时间来确定是否需要更新主机状态
-            self.global_monitor_dict[host_obj.hostname].setdefault('status_last_check', time.time())
-        self.config_last_loading_time = time.time()
-        return True
+    def update_interval(self):
+        """从数据库中监控间隔"""
+        application_obj = models.Application.objects.filter(name=self.host_alive_application_name).first()
+        interval = application_obj.interval
+        return interval
 
-    def data_point_validation(self, host_obj, application_obj):
-        """只在这里执行基本的数据验证，如果客户端没有在配置的时间间隔内向服务器报告数据，请保持警惕"""
-        latest_data_key_in_redis = 'Data_%s_%s_latest' % (host_obj.hostname, application_obj.name)
-        latest_data_point = self.redis_obj.lrange(latest_data_key_in_redis, -1, -1)     # 取最后一个点数据
-        if latest_data_point:   # 有数据
-            latest_data_point = json.loads(latest_data_point[0].decode())
-            latest_application_data, last_report_time = latest_data_point   # 获取应用集数据和最新的汇报时间
-            monitor_interval = settings.REPORT_LATE_TOLERANCE_TIME + application_obj.interval   # 容忍时间+应用监控间隔
-            if time.time() - last_report_time > monitor_interval:   # 超过监控间隔但数据还没汇报过来，忍无可忍了
-                no_data_sec = time.time() - last_report_time
-                msg = '客户端发生了一些问题[%s]，因为没有收到应用集[%s]数据，已经[%s]秒没有汇报数据了，监控间隔为[%s]秒' % (host_obj.hostname,
-                                                                              application_obj.name,
-                                                                              no_data_sec,
-                                                                              application_obj.interval)
-                self.trigger_notifier(host_obj=host_obj, trigger_obj=None, expression_result_list=None, msg=msg)
-                if application_obj.name == 'LinuxHostAlive':    # 监控主机存活的服务
-                    host_obj.status = 3     # 未知
-                    host_obj.save()
-                else:
-                    host_obj.status = 5     # 有问题
-                    host_obj.save()
-        else:   # 没有数据
-            msg = '没有关于主机[%s]应用集[%s]的数据' % (host_obj.hostname, application_obj.name)
-            self.trigger_notifier(host_obj=host_obj, trigger_obj=None, expression_result_list=None, msg=msg)
-            host_obj.status = 5     # 有问题
-            host_obj.save()
+    def process(self, host_obj_set):
+        """"""
+        pool = ThreadPoolExecutor(20)  # 线程池启动20个线程
+        for host_obj in host_obj_set:
+            pool.submit(self.run, host_obj)
+        pool.shutdown(wait=True)
+
+    def run(self, host_obj):
+        # res = subprocess.call('ping %s' % host_obj.ip, shell=True)
+        res = subprocess.call('/bin/ping %s -c 1 > /dev/null' % host_obj.ip, shell=True)
+        data = {'hostname': host_obj.hostname,
+                'data': {'ping': res, 'status': 0},
+                'application_name': self.host_alive_application_name}
+        headers = {}
+        headers.update(self.auth_key())  # 生成api认证的主机头信息
+        requests.post(url=self.data_api, json=data, headers=headers)
+
+    def auth_key(self):
+        """生成认证串"""
+        ha = hashlib.md5(self.key.encode('utf-8'))
+        timestamp = time.time()
+        ha.update(bytes('%s|%f' % (self.key, timestamp), encoding='utf-8'))
+        encrypt = ha.hexdigest()
+        result = '%s|%f' % (encrypt, timestamp)
+        return {self.key_name: result}
 
 
 class ExpressionProcess(object):
