@@ -1,0 +1,79 @@
+{% extends 'index.html' %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block page-title %}主机组{% endblock %}
+
+{% block page-path %}
+    <li><a href="{% url 'index' %}">首页</a></li>
+    <li><a href="{% url 'host_group' %}">主机组</a></li>
+{% endblock %}
+
+{% block page-content %}
+    <div class="panel">
+        <!--Panel heading-->
+        <div class="panel-heading">
+            <div class="panel-control">
+                <a href="{% url 'host_group_add' %}" class="btn btn-success">创建主机组</a>
+            </div>
+            <h3 class="panel-title">主机组</h3>
+        </div>
+        <!--Default panel contents-->
+        <div class="panel-body">
+            <!--Table-->
+            <table class="table">
+                <thead>
+                <tr>
+                    <th><label class="form-checkbox form-icon form-text"><input
+                            type="checkbox"></label></th>
+                    <th>名称</th>
+                    <th>主机</th>
+                    <th>模板</th>
+                    <th>成员</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for host_group_obj in host_group_obj_list %}
+                    <tr>
+                        <td>
+                            <label class="form-checkbox form-icon form-text"><input type="checkbox"></label>
+                        </td>
+                        <td>{{ host_group_obj.name }}</td>
+                        <td><a href="#" style="">主机</a>{{ host_group_obj.host_set.all.count }}</td>
+                        <td><a href="#" style="">模板</a>{{ host_group_obj.templates.all.count }}</td>
+                        <td>
+                            {% for host_obj in host_group_obj.host_set.all %}
+                                {% if forloop.last %}
+                                    <a href="#">{{ host_obj.ip }}</a>
+                                {% else %}
+                                    <a href="#">{{ host_obj.ip }},</a>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><span class="pull-right">已查询到{{ host_group_obj_list.count }}个主机群组</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="action_buttons">
+                            <span id="selected_count" style="font-weight: bold">
+                                <span>0</span> 选择
+                            </span>
+        <button class="btn btn-danger btn-icon icon-1x fa fa-trash">删除</button>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript" src="/static/js/user_group.js"></script>
+{% endblock %}
