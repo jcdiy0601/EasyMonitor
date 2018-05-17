@@ -1,7 +1,8 @@
 from django.conf.urls import url
-from monitor_web import views
+from monitor_web.views import host_group_view
 
 urlpatterns = [
-    url(r'^host_group.html$', views.host_group, name='host_group'),
-    url(r'^host_group_add.html$', views.host_group_add, name='host_group_add'),
+    url(r'^host_group.html$', host_group_view.host_group, name='host_group'),
+    url(r'^add_host_group.html$', host_group_view.add_host_group, name='add_host_group'),
+    url(r'^edit_host_group_(?P<hid>\d+).html$', host_group_view.edit_host_group, name='edit_host_group'),
 ]

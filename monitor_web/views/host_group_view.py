@@ -1,0 +1,61 @@
+#!/usr/bin/env python
+# Author: 'JiaChen'
+
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.db import transaction
+from django.core.exceptions import ValidationError
+from django.utils.translation import ugettext as _
+from monitor_data import models
+from monitor_web.forms import host_group_form
+from utils.pagination import Page
+
+
+@login_required
+def host_group(request):
+    """主机组视图"""
+    current_page = request.GET.get("p", 1)
+    current_page = int(current_page)
+    host_group_obj_list = models.HostGroup.objects.all()
+    host_group_obj_count = host_group_obj_list.count()
+    page_obj = Page(current_page, host_group_obj_count)
+    host_group_obj_list = host_group_obj_list[page_obj.start:page_obj.end]
+    page_str = page_obj.pager('host_group.html')
+    return render(request, 'host_group.html', {'host_group_obj_list': host_group_obj_list, 'page_str': page_str})
+
+
+@login_required
+def add_host_group(request):
+    """主机组添加视图"""
+    if request.method == 'GET':
+        form_obj = host_group_form.AddHostGroupForm()
+        return render(request, 'add_host_group.html', {'form_obj': form_obj})
+    elif request.method == 'POST':
+        form_obj = host_group_form.AddHostGroupForm(request.POST)
+        if form_obj.is_valid():
+            template_id_list = form_obj.cleaned_data.pop('template_id')
+            data = form_obj.cleaned_data
+            try:
+                with transaction.atomic():
+                    host_group_obj = models.HostGroup.objects.create(**data)
+                    host_group_obj.templates.add(*template_id_list)
+                    # 打印日志
+                return redirect('/monitor_web/host_group.html')
+            except Exception as e:
+                raise ValidationError(_('添加资产失败'), code='invalid')
+        else:
+            return render(request, 'add_host_group.html', {'form_obj': form_obj})
+
+
+@login_required
+def edit_host_group(request, *args, **kwargs):
+    """主机组删除视图"""
+    print(kwargs['hid'])
+
+
+@login_required
+def del_host_group(request):
+    """主机组删除视图"""
+    pass
+
+
