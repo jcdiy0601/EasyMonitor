@@ -6,10 +6,12 @@ from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext as _
+from django.http import JsonResponse
 from monitor_data import models
 from monitor_web.forms import host_group_form
 from utils.pagination import Page
 from utils.log import Logger
+from utils.web_response import WebResponse
 
 
 @login_required
@@ -78,6 +80,18 @@ def edit_host_group(request, *args, **kwargs):
 @login_required
 def del_host_group(request):
     """主机组删除视图"""
-    pass
-
-
+    if request.method == 'POST':
+        response = WebResponse()
+        host_group_list = request.POST.get('host_group_list')
+        try:
+            with transaction.atomic():
+                for host_group_id in host_group_list:
+                    host_group_id = int(host_group_id)
+                    host_group_obj = models.HostGroup.objects.filter(id=host_group_id).delete()
+                    Logger().log(message='删除主机组成功,%s' % host_group_obj.name, mode=True)
+            response.message = '删除主机组成功'
+        except Exception as e:
+            response.status = False
+            response.error = str(e)
+            Logger().log(message='删除主机组失败,%s' % str(e), mode=False)
+        return JsonResponse(response.__dict__)

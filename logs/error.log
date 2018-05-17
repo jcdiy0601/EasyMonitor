@@ -39,3 +39,5 @@
 2018-05-17 09:41:43,597 - ERROR : API认证未通过
 2018-05-17 16:03:53,159 - ERROR : 修改主机组失败,'HostGroup' object has no attribute 'update'
 2018-05-17 16:04:51,703 - ERROR : 修改主机组失败,'HostGroup' object has no attribute 'update'
+2018-05-17 17:57:14,078 - ERROR : 删除主机组失败,'tuple' object has no attribute 'name'
+2018-05-17 17:57:25,798 - ERROR : 删除主机组失败,'tuple' object has no attribute 'name'
