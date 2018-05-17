@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'EasyMonitor',
     'monitor_data',
+    'monitor_web',
 ]
 
 MIDDLEWARE = [
@@ -200,8 +201,8 @@ HOST_ALIVE_PID_FILE = os.path.join(BASE_DIR, 'logs', 'host_alive.pid')
 # 邮件报警配置
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = False
-EMAIL_HOST = 'smtp.xxx.cn'
+EMAIL_HOST = 'smtp.secflower.cn'
 EMAIL_PORT = 25
-EMAIL_HOST_USER = 'xxx'
+EMAIL_HOST_USER = 'xxx@xxx.cn'
 EMAIL_HOST_PASSWORD = 'xxx'
-DEFAULT_FROM_EMAIL = 'EasyMonitor<warning@xxx.cn>'
+DEFAULT_FROM_EMAIL = 'EasyMonitor<xxx@xxx.cn>'
