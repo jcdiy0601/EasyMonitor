@@ -9,6 +9,7 @@ from django.utils.translation import ugettext as _
 from monitor_data import models
 from monitor_web.forms import host_group_form
 from utils.pagination import Page
+from utils.log import Logger
 
 
 @login_required
@@ -38,11 +39,12 @@ def add_host_group(request):
             try:
                 with transaction.atomic():
                     host_group_obj = models.HostGroup.objects.create(**data)
-                    host_group_obj.templates.add(*template_id_list)
-                    # 打印日志
+                    host_group_obj.templates.add(template_id_list)
+                Logger().log(message='创建主机组成功,%s' % host_group_obj.name, mode=True)
                 return redirect('/monitor_web/host_group.html')
             except Exception as e:
-                raise ValidationError(_('添加资产失败'), code='invalid')
+                Logger().log(message='创建主机组失败,%s' % str(e), mode=False)
+                raise ValidationError(_('添加主机组失败'), code='invalid')
         else:
             return render(request, 'add_host_group.html', {'form_obj': form_obj})
 
@@ -50,7 +52,27 @@ def add_host_group(request):
 @login_required
 def edit_host_group(request, *args, **kwargs):
     """主机组删除视图"""
-    print(kwargs['hid'])
+    hid = kwargs['hid']
+    if request.method == 'GET':
+        form_obj = host_group_form.EditHostGroupForm(initial={'hid': hid})
+        return render(request, 'edit_host_group.html', {'form_obj': form_obj, 'hid': hid})
+    elif request.method == 'POST':
+        form_obj = host_group_form.EditHostGroupForm(request.POST, initial={'hid': hid})
+        if form_obj.is_valid():
+            template_id_list = form_obj.cleaned_data.pop('template_id')
+            data = form_obj.cleaned_data
+            try:
+                with transaction.atomic():
+                    models.HostGroup.objects.filter(id=hid).update(**data)
+                    host_group_obj = models.HostGroup.objects.filter(id=hid).first()
+                    host_group_obj.templates.set(template_id_list)
+                Logger().log(message='修改主机组成功,%s' % host_group_obj.name, mode=True)
+                return redirect('/monitor_web/host_group.html')
+            except Exception as e:
+                Logger().log(message='修改主机组失败,%s' % str(e), mode=False)
+                raise ValidationError(_('修改主机组失败'), code='invalid')
+        else:
+            return render(request, 'edit_host_group.html', {'form_obj': form_obj, 'hid': hid})
 
 
 @login_required
