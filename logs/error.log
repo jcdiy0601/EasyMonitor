@@ -1,43 +1,15 @@
-2018-05-17 09:40:00,236 - ERROR : API认证未通过
-2018-05-17 09:40:01,698 - ERROR : API认证未通过
-2018-05-17 09:40:03,690 - ERROR : API认证未通过
-2018-05-17 09:40:08,651 - ERROR : API认证未通过
-2018-05-17 09:40:10,252 - ERROR : API认证未通过
-2018-05-17 09:40:10,272 - ERROR : API认证未通过
-2018-05-17 09:40:10,293 - ERROR : API认证未通过
-2018-05-17 09:40:13,311 - ERROR : API认证未通过
-2018-05-17 09:40:15,321 - ERROR : API认证未通过
-2018-05-17 09:40:18,680 - ERROR : API认证未通过
-2018-05-17 09:40:20,328 - ERROR : API认证未通过
-2018-05-17 09:40:28,739 - ERROR : API认证未通过
-2018-05-17 09:40:30,333 - ERROR : API认证未通过
-2018-05-17 09:40:31,730 - ERROR : API认证未通过
-2018-05-17 09:40:38,738 - ERROR : API认证未通过
-2018-05-17 09:40:40,378 - ERROR : API认证未通过
-2018-05-17 09:40:43,427 - ERROR : API认证未通过
-2018-05-17 09:40:48,759 - ERROR : API认证未通过
-2018-05-17 09:40:50,404 - ERROR : API认证未通过
-2018-05-17 09:40:58,893 - ERROR : API认证未通过
-2018-05-17 09:40:58,898 - ERROR : API认证未通过
-2018-05-17 09:40:58,910 - ERROR : API认证未通过
-2018-05-17 09:41:00,413 - ERROR : API认证未通过
-2018-05-17 09:41:01,839 - ERROR : API认证未通过
-2018-05-17 09:41:03,886 - ERROR : API认证未通过
-2018-05-17 09:41:08,926 - ERROR : API认证未通过
-2018-05-17 09:41:10,502 - ERROR : API认证未通过
-2018-05-17 09:41:10,505 - ERROR : API认证未通过
-2018-05-17 09:41:10,524 - ERROR : API认证未通过
-2018-05-17 09:41:13,544 - ERROR : API认证未通过
-2018-05-17 09:41:15,565 - ERROR : API认证未通过
-2018-05-17 09:41:18,931 - ERROR : API认证未通过
-2018-05-17 09:41:20,554 - ERROR : API认证未通过
-2018-05-17 09:41:28,969 - ERROR : API认证未通过
-2018-05-17 09:41:30,575 - ERROR : API认证未通过
-2018-05-17 09:41:31,982 - ERROR : API认证未通过
-2018-05-17 09:41:38,999 - ERROR : API认证未通过
-2018-05-17 09:41:40,582 - ERROR : API认证未通过
-2018-05-17 09:41:43,597 - ERROR : API认证未通过
-2018-05-17 16:03:53,159 - ERROR : 修改主机组失败,'HostGroup' object has no attribute 'update'
-2018-05-17 16:04:51,703 - ERROR : 修改主机组失败,'HostGroup' object has no attribute 'update'
-2018-05-17 17:57:14,078 - ERROR : 删除主机组失败,'tuple' object has no attribute 'name'
-2018-05-17 17:57:25,798 - ERROR : 删除主机组失败,'tuple' object has no attribute 'name'
+2018-05-18 09:46:45,339 - ERROR : 删除主机组失败,'tuple' object has no attribute 'name'
+2018-05-18 11:44:09,294 - ERROR : 删除主机组失败,'tuple' object has no attribute 'name'
+2018-05-18 11:44:29,943 - ERROR : 删除主机组失败,'tuple' object has no attribute 'name'
+2018-05-18 11:45:46,770 - ERROR : 删除主机组失败,'tuple' object has no attribute 'name'
+2018-05-18 11:46:32,125 - ERROR : 删除主机组失败,'tuple' object has no attribute 'name'
+2018-05-18 11:47:02,642 - ERROR : 删除主机组失败,'tuple' object has no attribute 'name'
+2018-05-18 11:47:47,556 - ERROR : 删除主机组失败,'tuple' object has no attribute 'name'
+2018-05-18 11:49:17,099 - ERROR : 删除主机组失败,'tuple' object has no attribute 'name'
+2018-05-18 11:49:35,829 - ERROR : 删除主机组失败,'NoneType' object is not iterable
+2018-05-18 13:00:44,868 - ERROR : 删除主机组失败,'NoneType' object is not iterable
+2018-05-18 13:01:26,249 - ERROR : 删除主机组失败,'NoneType' object is not iterable
+2018-05-18 13:02:23,951 - ERROR : 删除主机组失败,'tuple' object has no attribute 'name'
+2018-05-18 13:03:37,507 - ERROR : 删除主机组失败,'tuple' object has no attribute 'name'
+2018-05-18 13:05:32,064 - ERROR : 删除主机组失败,'tuple' object has no attribute 'name'
+2018-05-18 13:10:53,301 - ERROR : 删除主机组失败,'NoneType' object has no attribute 'delete'

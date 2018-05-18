@@ -82,12 +82,13 @@ def del_host_group(request):
     """主机组删除视图"""
     if request.method == 'POST':
         response = WebResponse()
-        host_group_list = request.POST.get('host_group_list')
+        host_group_list = request.POST.getlist('host_group_list')
         try:
             with transaction.atomic():
                 for host_group_id in host_group_list:
                     host_group_id = int(host_group_id)
-                    host_group_obj = models.HostGroup.objects.filter(id=host_group_id).delete()
+                    host_group_obj = models.HostGroup.objects.filter(id=host_group_id).first()
+                    host_group_obj.delete()
                     Logger().log(message='删除主机组成功,%s' % host_group_obj.name, mode=True)
             response.message = '删除主机组成功'
         except Exception as e:

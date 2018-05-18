@@ -43,14 +43,14 @@
                             </label>
                         </td>
                         <td>{{ host_group_obj.name }}</td>
-                        <td><a href="#" style="">主机</a>{{ host_group_obj.host_set.all.count }}</td>
-                        <td><a href="#" style="">模板</a>{{ host_group_obj.templates.all.count }}</td>
+                        <td><a href="#" style="text-decoration:underline; color: #0e90d2">主机</a>{{ host_group_obj.host_set.all.count }}</td>
+                        <td><a href="#" style="text-decoration:underline; color: #0e90d2">模板</a>{{ host_group_obj.templates.all.count }}</td>
                         <td>
                             {% for host_obj in host_group_obj.host_set.all %}
                                 {% if forloop.last %}
-                                    <a href="#">{{ host_obj.ip }}</a>
+                                    <a href="#" style="text-decoration:underline; color: #0e90d2">{{ host_obj.ip }}</a>
                                 {% else %}
-                                    <a href="#">{{ host_obj.ip }},</a>
+                                    <a href="#" style="text-decoration:underline; color: #0e90d2">{{ host_obj.ip }},</a>
                                 {% endif %}
                             {% endfor %}
                         </td>
@@ -106,5 +106,5 @@
 {% endblock %}
 
 {% block js %}
-    <script type="text/javascript" src="/static/js/user_group.js"></script>
+    <script type="text/javascript" src="/static/js/host_group.js"></script>
 {% endblock %}
