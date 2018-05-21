@@ -2,6 +2,10 @@
 # Author: 'JiaChen'
 
 
+import requests
+import hashlib
+import time
+from django.conf import settings
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
@@ -34,3 +38,19 @@ def add_host(request):
     if request.method == 'GET':
         form_obj = host_form.AddHostForm()
         return render(request, 'add_host.html', {'form_obj': form_obj})
+
+
+@login_required
+def hostname_check(request):
+    """主机名检测视图"""
+    if request.method == 'POST':
+        hostname = request.POST.get('hostname')
+        ha = hashlib.md5(settings.CMDB_AUTH_KEY.encode('utf-8'))
+        timestamp = time.time()
+        ha.update(bytes('%s|%f' % (settings.CMDB_AUTH_KEY, timestamp), encoding='utf-8'))
+        encrypt = ha.hexdigest()
+        result = '%s|%f' % (encrypt, timestamp)
+        headers = {settings.CMDB_AUTH_KEY_NAME: result}
+        payload = {'hostname': hostname}
+        response = requests.get(url=settings.CMDB_API_URL, params=payload, headers=headers).json()
+        return JsonResponse(response)

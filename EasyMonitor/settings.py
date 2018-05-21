@@ -204,5 +204,14 @@ EMAIL_USE_TLS = False
 EMAIL_HOST = 'smtp.secflower.cn'
 EMAIL_PORT = 25
 EMAIL_HOST_USER = 'xxx@xxx.cn'
-EMAIL_HOST_PASSWORD = 'xxx'
+EMAIL_HOST_PASSWORD = 'xxx@xxx'
 DEFAULT_FROM_EMAIL = 'EasyMonitor<xxx@xxx.cn>'
+
+# cmdb api 主机名检测
+CMDB_API_URL = 'http://10.10.30.93/cmdb_api/v1/softwareserver'
+# 用于API认证的KEY
+CMDB_AUTH_KEY = '299095cc-1330-11e5-b06a-a45e60bec08b'
+# 用于API认证的请求头
+CMDB_AUTH_KEY_NAME = 'cmdb-api-auth-key'
+
+

@@ -26,9 +26,10 @@
                         <div class="col-lg-6">
                             {{ field_obj }}
                         </div>
-                        <div class="col-lg-1">
+                        <div id="hostname-check-div" class="col-lg-1">
                             {% if field_obj.label == "主机名称" %}
-                                <button type="button" class="btn btn-default">主机检测</button>
+                                <button id="hostname-check" type="button" class="btn btn-default">主机检测</button>
+                                <i id="hostname-check-icon" class="fa fa-check-circle" style="color: green; display: none">可用</i>
                             {% endif %}
                         </div>
                         {% if field_obj.errors %}
@@ -50,4 +51,8 @@
         </div>
         <!-- /.panel-body -->
     </div>
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript" src="/static/js/hostname_check.js"></script>
 {% endblock %}

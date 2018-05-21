@@ -10,4 +10,5 @@ urlpatterns = [
     # 主机
     url(r'^host.html$', host_view.host, name='host'),
     url(r'^add_host.html$', host_view.add_host, name='add_host'),
+    url(r'^hostname_check.html', host_view.hostname_check, name='hostname_check'),
 ]
