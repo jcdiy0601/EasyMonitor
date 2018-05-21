@@ -38,6 +38,22 @@ def add_host(request):
     if request.method == 'GET':
         form_obj = host_form.AddHostForm()
         return render(request, 'add_host.html', {'form_obj': form_obj})
+    elif request.method == 'POST':
+        form_obj = host_form.AddHostForm(request.POST)
+        if form_obj.is_valid():
+            host_group_id_list = form_obj.cleaned_data.pop('host_group_id')
+            data = form_obj.cleaned_data
+            try:
+                with transaction.atomic():
+                    host_obj = models.Host.objects.create(**data)
+                    host_obj.host_groups.add(*host_group_id_list)
+                Logger().log(message='创建主机成功,%s' % host_obj.hostname, mode=True)
+                return redirect('/monitor_web/host.html')
+            except Exception as e:
+                Logger().log(message='创建主机失败,%s' % str(e), mode=False)
+                raise ValidationError(_('添加主机失败'), code='invalid')
+        else:
+            return render(request, 'add_host.html', {'form_obj': form_obj})
 
 
 @login_required

@@ -41,7 +41,7 @@ def add_host_group(request):
             try:
                 with transaction.atomic():
                     host_group_obj = models.HostGroup.objects.create(**data)
-                    host_group_obj.templates.add(template_id_list)
+                    host_group_obj.templates.add(*template_id_list)
                 Logger().log(message='创建主机组成功,%s' % host_group_obj.name, mode=True)
                 return redirect('/monitor_web/host_group.html')
             except Exception as e:
