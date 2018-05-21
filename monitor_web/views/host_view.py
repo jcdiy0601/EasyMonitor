@@ -30,5 +30,7 @@ def host(request):
 
 @login_required
 def add_host(request):
-    """"""
-
+    """创建主机视图"""
+    if request.method == 'GET':
+        form_obj = host_form.AddHostForm()
+        return render(request, 'add_host.html', {'form_obj': form_obj})
