@@ -2,22 +2,22 @@
 
 {% load format_error_message %}
 
-{% block page-title %}创建主机{% endblock %}
+{% block page-title %}编辑主机{% endblock %}
 
 {% block page-path %}
     <li><a href="{% url 'index' %}">仪表盘</a></li>
     <li><a href="{% url 'host' %}">主机</a></li>
-    <li><a href="{% url 'add_host' %}">创建主机</a></li>
+    <li><a href="{% url 'edit_host' hid %}">编辑主机</a></li>
 {% endblock %}
 
 {% block page-content %}
     <div class="panel">
         <div class="panel-heading">
-            <h3 class="panel-title">创建主机</h3>
+            <h3 class="panel-title">编辑主机</h3>
         </div>
         <!-- /.panel-heading -->
         <div class="panel-body">
-            <form class="form-horizontal" method="post" action="{% url 'add_host' %}">
+            <form class="form-horizontal" method="post" action="{% url 'edit_host' hid %}">
                 {% csrf_token %}
                 {% for field_obj in form_obj %}
                     <div class="form-group">

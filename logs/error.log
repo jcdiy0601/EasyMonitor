@@ -51,3 +51,12 @@
 2018-05-22 09:50:47,650 - ERROR : API认证未通过
 2018-05-22 09:50:50,184 - ERROR : API认证未通过
 2018-05-22 09:50:50,673 - ERROR : API认证未通过
+2018-05-22 13:02:27,466 - ERROR : 修改主机失败,'Host' object has no attribute 'name'
+2018-05-22 13:09:04,952 - ERROR : 修改主机失败,(1062, "Duplicate entry 'CentOS-02_172.16.99.24' for key 'hostname'")
+2018-05-22 13:16:34,825 - ERROR : 修改主机失败,(1062, "Duplicate entry 'CentOS-02_172.16.99.24' for key 'hostname'")
+2018-05-22 13:17:45,521 - ERROR : 修改主机失败,(1062, "Duplicate entry 'CentOS-02_172.16.99.24' for key 'hostname'")
+2018-05-22 13:18:08,197 - ERROR : 修改主机失败,(1062, "Duplicate entry 'CentOS-02_172.16.99.24' for key 'hostname'")
+2018-05-22 13:24:37,413 - ERROR : 修改主机失败,'int' object has no attribute 'host_groups'
+2018-05-22 13:26:18,437 - ERROR : 修改主机失败,'Host' object has no attribute 'update'
+2018-05-22 13:28:26,514 - ERROR : 修改主机失败,'Host' object has no attribute 'update'
+2018-05-22 13:41:43,261 - ERROR : 修改主机失败,set() takes 2 positional arguments but 3 were given

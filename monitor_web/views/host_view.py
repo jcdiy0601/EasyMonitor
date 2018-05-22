@@ -75,3 +75,50 @@ def hostname_check(request):
         else:
             response = requests.get(url=settings.CMDB_API_URL, params=payload, headers=headers).json()
             return JsonResponse(response)
+
+
+@login_required
+def edit_host(request, *args, **kwargs):
+    """主机组删除视图"""
+    hid = kwargs['hid']
+    if request.method == 'GET':
+        form_obj = host_form.EditHostForm(initial={'hid': hid})
+        return render(request, 'edit_host.html', {'form_obj': form_obj, 'hid': hid})
+    elif request.method == 'POST':
+        form_obj = host_form.EditHostForm(request.POST, initial={'hid': hid})
+        if form_obj.is_valid():
+            host_group_id_list = form_obj.cleaned_data.pop('host_group_id')
+            data = form_obj.cleaned_data
+            try:
+                with transaction.atomic():
+                    host_obj = models.Host.objects.filter(id=hid).first()
+                    models.Host.objects.filter(id=hid).update(**data)
+                    host_obj.host_groups.set(host_group_id_list)
+                Logger().log(message='修改主机成功,%s' % host_obj.hostname, mode=True)
+                return redirect('/monitor_web/host.html')
+            except Exception as e:
+                Logger().log(message='修改主机失败,%s' % str(e), mode=False)
+                raise ValidationError(_('修改主机失败'), code='invalid')
+        else:
+            return render(request, 'edit_host.html', {'form_obj': form_obj, 'hid': hid})
+
+
+@login_required
+def del_host(request):
+    """主机组删除视图"""
+    if request.method == 'POST':
+        response = WebResponse()
+        host_list = request.POST.getlist('host_list')
+        try:
+            with transaction.atomic():
+                for host_id in host_list:
+                    host_id = int(host_id)
+                    host_obj = models.Host.objects.filter(id=host_id).first()
+                    host_obj.delete()
+                    Logger().log(message='删除主机成功,%s' % host_obj.name, mode=True)
+            response.message = '删除主机成功'
+        except Exception as e:
+            response.status = False
+            response.error = str(e)
+            Logger().log(message='删除主机失败,%s' % str(e), mode=False)
+        return JsonResponse(response.__dict__)

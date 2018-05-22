@@ -10,5 +10,7 @@ urlpatterns = [
     # 主机
     url(r'^host.html$', host_view.host, name='host'),
     url(r'^add_host.html$', host_view.add_host, name='add_host'),
-    url(r'^hostname_check.html', host_view.hostname_check, name='hostname_check'),
+    url(r'^hostname_check.html$', host_view.hostname_check, name='hostname_check'),
+    url(r'^edit_host_(?P<hid>\d+).html$', host_view.edit_host, name='edit_host'),
+    url(r'^del_host.html$', host_view.del_host, name='del_host'),
 ]
