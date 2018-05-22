@@ -1,7 +1,7 @@
 $(function () {
     // 主机名检测
     $("#hostname-check").click(function () {
-        var hostname=$("input[name='hostname']").val();
+        var hostname = $("input[name='hostname']").val();
         // 不为空发送到后台
         if (hostname.length) {
             $.ajax({
@@ -12,14 +12,14 @@ $(function () {
                 headers: {"X-CSRFtoken": $.cookie("csrftoken")},
                 success: function (response) {
                     if (response.status) {
-                        alert("主机名在CMDB中不存在，不可使用");
-                    } else {
                         $("#hostname-check").css("display", "none");
                         $("#hostname-check-icon").css("display", "block");
+                    } else {
+                        alert("主机名在CMDB中不存在，不可使用");
                     }
                 },
                 error: function () {
-                    
+
                 }
             });
         } else {

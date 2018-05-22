@@ -201,14 +201,14 @@ HOST_ALIVE_PID_FILE = os.path.join(BASE_DIR, 'logs', 'host_alive.pid')
 # 邮件报警配置
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = False
-EMAIL_HOST = 'smtp.secflower.cn'
+EMAIL_HOST = ''
 EMAIL_PORT = 25
-EMAIL_HOST_USER = 'xxx@xxx.cn'
-EMAIL_HOST_PASSWORD = 'xxx@xxx'
-DEFAULT_FROM_EMAIL = 'EasyMonitor<xxx@xxx.cn>'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+DEFAULT_FROM_EMAIL = ''
 
 # cmdb api 主机名检测
-CMDB_API_URL = 'http://10.10.30.93/cmdb_api/v1/softwareserver'
+CMDB_API_URL = 'http://10.10.30.93/cmdb_api/v1/monitor'
 # 用于API认证的KEY
 CMDB_AUTH_KEY = '299095cc-1330-11e5-b06a-a45e60bec08b'
 # 用于API认证的请求头

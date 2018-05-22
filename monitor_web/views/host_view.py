@@ -5,6 +5,7 @@
 import requests
 import hashlib
 import time
+import re
 from django.conf import settings
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
@@ -68,5 +69,9 @@ def hostname_check(request):
         result = '%s|%f' % (encrypt, timestamp)
         headers = {settings.CMDB_AUTH_KEY_NAME: result}
         payload = {'hostname': hostname}
-        response = requests.get(url=settings.CMDB_API_URL, params=payload, headers=headers).json()
-        return JsonResponse(response)
+        if re.match(r"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$", hostname):
+            response = {'message': '', 'error': None, 'status': True, 'data': None}
+            return JsonResponse(response)
+        else:
+            response = requests.get(url=settings.CMDB_API_URL, params=payload, headers=headers).json()
+            return JsonResponse(response)
