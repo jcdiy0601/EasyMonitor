@@ -7,7 +7,7 @@
 {% block page-path %}
     <li><a href="{% url 'index' %}">仪表盘</a></li>
     <li><a href="{% url 'host_group' %}">主机组</a></li>
-    <li><a href="{% url 'edit_host_group' hid %}">编辑主机组</a></li>
+    <li><a href="{% url 'edit_host_group' gid %}">编辑主机组</a></li>
 {% endblock %}
 
 {% block page-content %}
@@ -17,7 +17,7 @@
         </div>
         <!-- /.panel-heading -->
         <div class="panel-body">
-            <form class="form-horizontal" method="post" action="{% url 'edit_host_group' hid %}">
+            <form class="form-horizontal" method="post" action="{% url 'edit_host_group' gid %}">
                 {% csrf_token %}
                 {% for field_obj in form_obj %}
                     <div class="form-group">

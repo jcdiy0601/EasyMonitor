@@ -3,6 +3,7 @@
 
 
 import requests
+import json
 import hashlib
 import time
 import re
@@ -18,6 +19,9 @@ from monitor_web.forms import host_form
 from utils.pagination import Page
 from utils.log import Logger
 from utils.web_response import WebResponse
+from utils.redis_conn import redis_conn
+
+REDIS_OBJ = redis_conn(settings)
 
 
 @login_required
@@ -65,6 +69,13 @@ def add_host(request):
                 with transaction.atomic():
                     host_obj = models.Host.objects.create(**data)
                     host_obj.host_groups.add(*host_group_id_list)
+                    if data['monitor_by'] == 'agent':   # 客户端模式要添加默认模板	Template OS Linux, Template App EasyMonitor Agent
+                        template_id_list = []
+                        template_os_linux_id = models.Template.objects.filter(name='Template OS Linux').first().id
+                        template_app_easymonitor_agent_id = models.Template.objects.filter(name='Template App EasyMonitor Agent').first().id
+                        template_id_list.append(template_os_linux_id)
+                        template_id_list.append(template_app_easymonitor_agent_id)
+                        host_obj.templates.add(*template_id_list)
                 Logger().log(message='创建主机成功,%s' % host_obj.hostname, mode=True)
                 return redirect('/monitor_web/host.html')
             except Exception as e:
@@ -109,8 +120,25 @@ def edit_host(request, *args, **kwargs):
             try:
                 with transaction.atomic():
                     host_obj = models.Host.objects.filter(id=hid).first()
+                    old_hostname = host_obj.hostname
                     models.Host.objects.filter(id=hid).update(**data)
                     host_obj.host_groups.set(host_group_id_list)
+                    if data['hostname'] != old_hostname:    # 主机名变更了
+                        # 修改redis中相关数据
+                        alert_counter_redis_key = settings.ALERT_COUNTER_REDIS_KEY
+                        key_in_redis = '*_%s_*' % old_hostname
+                        key_list = REDIS_OBJ.keys(key_in_redis)
+                        for key in key_list:  # 循环删除trigger key相关数据
+                            new_key = key.decode().replace(old_hostname, data['hostname'])
+                            REDIS_OBJ.rename(key, new_key)
+                        alert_counter_data = json.loads(REDIS_OBJ.get(alert_counter_redis_key).decode())
+                        for key, value in alert_counter_data.items():  # 删除报警计数中相关数据
+                            for hostname in list(value.keys()):
+                                if hostname == old_hostname:
+                                    old_data = alert_counter_data[key][old_hostname]
+                                    del alert_counter_data[key][hostname]
+                                    alert_counter_data[key][data['hostname']] = old_data
+                        REDIS_OBJ.set(alert_counter_redis_key, json.dumps(alert_counter_data))
                 Logger().log(message='修改主机成功,%s' % host_obj.hostname, mode=True)
                 return redirect('/monitor_web/host.html')
             except Exception as e:
@@ -132,6 +160,18 @@ def del_host(request):
                     host_id = int(host_id)
                     host_obj = models.Host.objects.filter(id=host_id).first()
                     host_obj.delete()
+                    # 删除redis中相关数据
+                    alert_counter_redis_key = settings.ALERT_COUNTER_REDIS_KEY
+                    key_in_redis = '*_%s_*' % host_obj.hostname
+                    key_list = REDIS_OBJ.keys(key_in_redis)
+                    for key in key_list:    # 循环删除trigger key相关数据
+                        REDIS_OBJ.delete(key)
+                    alert_counter_data = json.loads(REDIS_OBJ.get(alert_counter_redis_key).decode())
+                    for key, value in alert_counter_data.items():   # 删除报警计数中相关数据
+                        for hostname in list(value.keys()):
+                            if hostname == host_obj.hostname:
+                                del alert_counter_data[key][hostname]
+                    REDIS_OBJ.set(alert_counter_redis_key, json.dumps(alert_counter_data))
                     Logger().log(message='删除主机成功,%s' % host_obj.hostname, mode=True)
             response.message = '删除主机成功'
         except Exception as e:

@@ -1,2 +1,10 @@
 2018-05-23 15:36:06,534 - ERROR : 删除主机失败,'Host' object has no attribute 'name'
 2018-05-23 15:36:06,528 - ERROR : 删除主机失败,'Host' object has no attribute 'name'
+2018-05-23 15:54:45,843 - ERROR : 服务器错误,dictionary changed size during iteration
+2018-05-23 16:07:32,014 - ERROR : 服务器错误,'NoneType' object has no attribute 'decode'
+2018-05-23 16:11:47,858 - ERROR : 服务器错误,dictionary changed size during iteration
+2018-05-23 16:54:28,695 - ERROR : 客户端主机名不存在,xxx
+2018-05-23 17:03:55,715 - ERROR : 删除主机失败,dictionary changed size during iteration
+2018-05-23 17:04:36,368 - ERROR : 删除主机失败,dictionary changed size during iteration
+2018-05-23 17:31:46,589 - ERROR : 修改主机失败,a bytes-like object is required, not 'str'
+2018-05-23 17:35:05,143 - ERROR : 修改主机失败,'bytes' object has no attribute 'deocde'
