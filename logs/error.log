@@ -8,3 +8,5 @@
 2018-05-23 17:04:36,368 - ERROR : 删除主机失败,dictionary changed size during iteration
 2018-05-23 17:31:46,589 - ERROR : 修改主机失败,a bytes-like object is required, not 'str'
 2018-05-23 17:35:05,143 - ERROR : 修改主机失败,'bytes' object has no attribute 'deocde'
+2018-05-23 17:49:20,166 - ERROR : 监控数据优化、存储失败,Error 10060 connecting to 192.168.222.52:6379. 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。.
+2018-05-23 17:50:02,200 - ERROR : 服务器错误,Error 10060 connecting to 192.168.222.52:6379. 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。.
