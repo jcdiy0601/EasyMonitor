@@ -23,13 +23,13 @@ $(function () {
     // 获取check-box id
     $("#delete_host_group").click(function () {
         if (parseInt($("#selected_count span").text()) !== 0) {
-            var hostGroupList = [];
+            var hostList = [];
             $("tbody input").each(function () {
-               if ($(this).prop("checked")) {
-                   hostGroupList.push($(this).val());
-               }
+                if ($(this).prop("checked")) {
+                    hostList.push($(this).val());
+                }
             });
-            console.log(hostGroupList);
+            console.log(hostList);
             // 显示模态对话框
             $("#project-del-div").css("display", "block");
             // 点击取消按钮
@@ -53,7 +53,7 @@ $(function () {
                     dataType: "JSON",
                     headers: {"X-CSRFtoken": $.cookie("csrftoken")},
                     traditional: true,
-                    data: {"host_group_list": hostGroupList},
+                    data: {"host_list": hostList},
                     success: function (response) {
                         if (response.status) {
                             window.location.reload();
@@ -66,10 +66,15 @@ $(function () {
                         }
                     },
                     error: function () {
-
                     }
                 });
             });
         }
     });
+
+    // 查询
+    $("#select-host-group").on("change", function () {
+        var hostGroupID = $("#select-host-group option:selected").val();
+        window.location.href = "/monitor_web/host.html?groupid=" + hostGroupID;
+    })
 });

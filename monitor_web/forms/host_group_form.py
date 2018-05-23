@@ -97,19 +97,19 @@ class EditHostGroupForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super(EditHostGroupForm, self).__init__(*args, **kwargs)
-        self.hid = self.initial['hid']
-        host_group_obj = models.HostGroup.objects.filter(id=self.hid).first()
+        self.gid = self.initial['gid']
+        host_group_obj = models.HostGroup.objects.filter(id=self.gid).first()
         self.fields['name'].initial = host_group_obj.name
         self.fields['template_id'].choices = models.Template.objects.values_list('id', 'name')
         self.fields['template_id'].initial = []
-        query_set = models.HostGroup.objects.filter(id=self.hid).values('templates__id')
+        query_set = models.HostGroup.objects.filter(id=self.gid).values('templates__id')
         for item in query_set:
             self.fields['template_id'].initial.append(item['templates__id'])
         self.fields['memo'].initial = host_group_obj.memo
 
     def clean_name(self):
         name = self.cleaned_data.get('name')
-        count = models.HostGroup.objects.exclude(id=self.hid).filter(name=name).count()
+        count = models.HostGroup.objects.exclude(id=self.gid).filter(name=name).count()
         if count:
             raise ValidationError(_('主机组%(name)s已存在'), code='invalid', params={'name': name})
         else:

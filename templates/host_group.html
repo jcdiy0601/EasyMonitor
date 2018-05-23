@@ -43,14 +43,20 @@
                             </label>
                         </td>
                         <td>{{ host_group_obj.name }}</td>
-                        <td><a href="#" style="text-decoration:underline; color: #0e90d2">主机</a>{{ host_group_obj.host_set.all.count }}</td>
-                        <td><a href="#" style="text-decoration:underline; color: #0e90d2">模板</a>{{ host_group_obj.templates.all.count }}</td>
+                        <td><a href="#"
+                               style="text-decoration:underline; color: #0e90d2">主机</a>{{ host_group_obj.host_set.all.count }}
+                        </td>
+                        <td><a href="#"
+                               style="text-decoration:underline; color: #0e90d2">模板</a>{{ host_group_obj.templates.all.count }}
+                        </td>
                         <td>
                             {% for host_obj in host_group_obj.host_set.all %}
                                 {% if forloop.last %}
-                                    <a href="#" style="text-decoration:underline; color: #0e90d2">{{ host_obj.ip }}</a>
+                                    <a href="/monitor_web/edit_host_{{ host_obj.id }}.html"
+                                       style="text-decoration:underline; color: #0e90d2">{{ host_obj.ip }}</a>
                                 {% else %}
-                                    <a href="#" style="text-decoration:underline; color: #0e90d2">{{ host_obj.ip }},</a>
+                                    <a href="/monitor_web/edit_host_{{ host_obj.id }}.html"
+                                       style="text-decoration:underline; color: #0e90d2">{{ host_obj.ip }},</a>
                                 {% endif %}
                             {% endfor %}
                         </td>
@@ -99,7 +105,8 @@
     </div>
 
     <!--警告-->
-    <div id="project-del-fall" class="alert alert-danger fade in" style="display: none; position: fixed; top:50px;right:0;left:800px">
+    <div id="project-del-fall" class="alert alert-danger fade in"
+         style="display: none; position: fixed; top:50px;right:0;left:800px">
         <button class="close" data-dismiss="alert"><span>×</span></button>
         <strong>删除失败!</strong>
     </div>

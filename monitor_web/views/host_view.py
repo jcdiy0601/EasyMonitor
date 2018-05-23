@@ -23,14 +23,31 @@ from utils.web_response import WebResponse
 @login_required
 def host(request):
     """主机组视图"""
+    host_group_id = request.GET.get('groupid')
+    if host_group_id:
+        host_group_id = int(host_group_id)
+    else:
+        host_group_id = 0
+    host_group_obj_list = models.HostGroup.objects.all()
+    host_group_obj = models.HostGroup.objects.filter(id=host_group_id).first()
     current_page = request.GET.get("p", 1)
     current_page = int(current_page)
-    host_obj_list = models.Host.objects.all()
-    host_obj_count = host_obj_list.count()
-    page_obj = Page(current_page, host_obj_count)
-    host_obj_list = host_obj_list[page_obj.start:page_obj.end]
-    page_str = page_obj.pager('host.html')
-    return render(request, 'host.html', {'host_obj_list': host_obj_list, 'page_str': page_str})
+    if host_group_obj:
+        host_obj_list = host_group_obj.host_set.all()
+        host_obj_count = host_obj_list.count()
+        page_obj = Page(current_page, host_obj_count)
+        host_obj_list = host_obj_list[page_obj.start:page_obj.end]
+        page_str = page_obj.pager(base_url='host.html', host_group_id=host_group_id)
+    else:   # 没找到相关主机组
+        host_obj_list = models.Host.objects.all()
+        host_obj_count = host_obj_list.count()
+        page_obj = Page(current_page, host_obj_count)
+        host_obj_list = host_obj_list[page_obj.start:page_obj.end]
+        page_str = page_obj.pager(base_url='host.html', host_group_id=host_group_id)
+    return render(request, 'host.html', {'host_obj_list': host_obj_list,
+                                         'page_str': page_str,
+                                         'host_group_obj_list': host_group_obj_list,
+                                         'host_group_id': host_group_id})
 
 
 @login_required

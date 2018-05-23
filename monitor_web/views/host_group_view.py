@@ -54,19 +54,19 @@ def add_host_group(request):
 @login_required
 def edit_host_group(request, *args, **kwargs):
     """主机组删除视图"""
-    hid = kwargs['hid']
+    gid = kwargs['gid']
     if request.method == 'GET':
-        form_obj = host_group_form.EditHostGroupForm(initial={'hid': hid})
-        return render(request, 'edit_host_group.html', {'form_obj': form_obj, 'hid': hid})
+        form_obj = host_group_form.EditHostGroupForm(initial={'gid': gid})
+        return render(request, 'edit_host_group.html', {'form_obj': form_obj, 'gid': gid})
     elif request.method == 'POST':
-        form_obj = host_group_form.EditHostGroupForm(request.POST, initial={'hid': hid})
+        form_obj = host_group_form.EditHostGroupForm(request.POST, initial={'gid': gid})
         if form_obj.is_valid():
             template_id_list = form_obj.cleaned_data.pop('template_id')
             data = form_obj.cleaned_data
             try:
                 with transaction.atomic():
-                    models.HostGroup.objects.filter(id=hid).update(**data)
-                    host_group_obj = models.HostGroup.objects.filter(id=hid).first()
+                    models.HostGroup.objects.filter(id=gid).update(**data)
+                    host_group_obj = models.HostGroup.objects.filter(id=gid).first()
                     host_group_obj.templates.set(template_id_list)
                 Logger().log(message='修改主机组成功,%s' % host_group_obj.name, mode=True)
                 return redirect('/monitor_web/host_group.html')
@@ -74,7 +74,7 @@ def edit_host_group(request, *args, **kwargs):
                 Logger().log(message='修改主机组失败,%s' % str(e), mode=False)
                 raise ValidationError(_('修改主机组失败'), code='invalid')
         else:
-            return render(request, 'edit_host_group.html', {'form_obj': form_obj, 'hid': hid})
+            return render(request, 'edit_host_group.html', {'form_obj': form_obj, 'gid': gid})
 
 
 @login_required

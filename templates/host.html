@@ -17,6 +17,24 @@
             <div class="panel-control">
                 <a href="{% url 'add_host' %}" class="btn btn-dark">创建主机</a>
             </div>
+            <div class="panel-control">
+                <select name="group" class="form-control" id="select-host-group"
+                        style="float: right; height: 30px; margin-top: 10px;">
+                    {% if host_group_id == 0 %}
+                        <option value="0" selected="selected">所有</option>
+                    {% else %}
+                        <option value="0">所有</option>
+                    {% endif %}
+                    {% for host_group_obj in host_group_obj_list %}
+                        {% if host_group_id == host_group_obj.id %}
+                            <option value="{{ host_group_obj.id }}"
+                                    selected="selected">{{ host_group_obj.name }}</option>
+                        {% else %}
+                            <option value="{{ host_group_obj.id }}">{{ host_group_obj.name }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
             <h3 class="panel-title">主机组</h3>
         </div>
         <!--Default panel contents-->
@@ -44,11 +62,17 @@
                                 <input type="checkbox" name="host" value="{{ host_obj.id }}">
                             </label>
                         </td>
-                        <td><a href="#" style="text-decoration:underline; color: #0e90d2">{{ host_obj.hostname }}</a></td>
+                        <td><a href="/monitor_web/edit_host_{{ host_obj.id }}.html"
+                               style="text-decoration:underline; color: #0e90d2">{{ host_obj.hostname }}</a></td>
                         <td>{{ host_obj.ip }}</td>
-                        <td><a href="#" style="text-decoration:underline; color: #0e90d2">应用集</a>{% application_count host_obj %}</td>
-                        <td><a href="#" style="text-decoration:underline; color: #0e90d2">监控项</a>{% item_count host_obj %}</td>
-                        <td><a href="#" style="text-decoration:underline; color: #0e90d2">触发器</a>{% trigger_count host_obj %}</td>
+                        <td><a href="#"
+                               style="text-decoration:underline; color: #0e90d2">应用集</a>{% application_count host_obj %}
+                        </td>
+                        <td><a href="#"
+                               style="text-decoration:underline; color: #0e90d2">监控项</a>{% item_count host_obj %}</td>
+                        <td><a href="#"
+                               style="text-decoration:underline; color: #0e90d2">触发器</a>{% trigger_count host_obj %}
+                        </td>
                         <td>{% template_display host_obj %}</td>
                         <td>{% serialize_url "host" host_obj %}</td>
                     </tr>
@@ -95,7 +119,8 @@
     </div>
 
     <!--警告-->
-    <div id="project-del-fall" class="alert alert-danger fade in" style="display: none; position: fixed; top:50px;right:0;left:800px">
+    <div id="project-del-fall" class="alert alert-danger fade in"
+         style="display: none; position: fixed; top:50px;right:0;left:800px">
         <button class="close" data-dismiss="alert"><span>×</span></button>
         <strong>删除失败!</strong>
     </div>
