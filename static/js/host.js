@@ -21,7 +21,7 @@ $(function () {
     });
 
     // 获取check-box id
-    $("#delete_host_group").click(function () {
+    $("#delete_host").click(function () {
         if (parseInt($("#selected_count span").text()) !== 0) {
             var hostList = [];
             $("tbody input").each(function () {
@@ -29,7 +29,6 @@ $(function () {
                     hostList.push($(this).val());
                 }
             });
-            console.log(hostList);
             // 显示模态对话框
             $("#project-del-div").css("display", "block");
             // 点击取消按钮

@@ -29,7 +29,6 @@ $(function () {
                    hostGroupList.push($(this).val());
                }
             });
-            console.log(hostGroupList);
             // 显示模态对话框
             $("#project-del-div").css("display", "block");
             // 点击取消按钮

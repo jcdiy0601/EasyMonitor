@@ -132,7 +132,7 @@ def del_host(request):
                     host_id = int(host_id)
                     host_obj = models.Host.objects.filter(id=host_id).first()
                     host_obj.delete()
-                    Logger().log(message='删除主机成功,%s' % host_obj.name, mode=True)
+                    Logger().log(message='删除主机成功,%s' % host_obj.hostname, mode=True)
             response.message = '删除主机成功'
         except Exception as e:
             response.status = False
