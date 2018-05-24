@@ -1,5 +1,6 @@
 {% extends 'index.html' %}
 {% load serialize %}
+{% load serialize_template %}
 
 {% block css %}
     <link href="/static/css/commons.css" rel="stylesheet">
@@ -7,7 +8,7 @@
 
 {% block page-path %}
     <li><a href="{% url 'index' %}">仪表盘</a></li>
-    <li><a href="{% url 'host_group' %}">主机组</a></li>
+    <li><a href="{% url 'template' %}">模板</a></li>
 {% endblock %}
 
 {% block page-content %}
@@ -15,9 +16,9 @@
         <!--Panel heading-->
         <div class="panel-heading">
             <div class="panel-control">
-                <a href="{% url 'add_host_group' %}" class="btn btn-dark">创建主机组</a>
+                <a href="{% url 'add_template' %}" class="btn btn-dark">创建模板</a>
             </div>
-            <h3 class="panel-title">主机组</h3>
+            <h3 class="panel-title">模板</h3>
         </div>
         <!--Default panel contents-->
         <div class="panel-body">
@@ -27,40 +28,36 @@
                 <tr>
                     <th><label class="form-checkbox form-icon form-text"><input
                             type="checkbox"></label></th>
-                    <th>名称</th>
-                    <th>主机</th>
                     <th>模板</th>
-                    <th>成员</th>
+                    <th>应用集</th>
+                    <th>监控项</th>
+                    <th>触发器</th>
+                    <th>已链接到</th>
                     <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
-                {% for host_group_obj in host_group_obj_list %}
+                {% for template_obj in template_obj_list %}
                     <tr>
                         <td>
                             <label class="form-checkbox form-icon form-text">
-                                <input type="checkbox" name="host_group" value="{{ host_group_obj.id }}">
+                                <input type="checkbox" name="template" value="{{ template_obj.id }}">
                             </label>
                         </td>
-                        <td>{{ host_group_obj.name }}</td>
-                        <td><a href="{% url 'host' %}?groupid={{ host_group_obj.id }}"
-                               style="text-decoration:underline; color: #0e90d2">主机</a>{{ host_group_obj.host_set.all.count }}
+                        <td>{{ template_obj.name }}</td>
+                        <td><a href="#"
+                               style="text-decoration:underline; color: #0e90d2">应用集</a>{{ template_obj.applications.all.count }}
                         </td>
-                        <td><a href="{% url 'template' %}"
-                               style="text-decoration:underline; color: #0e90d2">模板</a>{{ host_group_obj.templates.all.count }}
+                        <td><a href="#"
+                               style="text-decoration:underline; color: #0e90d2">监控项</a>{% item_count template_obj %}
+                        </td>
+                        <td><a href="#"
+                               style="text-decoration:underline; color: #0e90d2">触发器</a>{{ template_obj.trigger_set.all.count }}
                         </td>
                         <td>
-                            {% for host_obj in host_group_obj.host_set.all %}
-                                {% if forloop.last %}
-                                    <a href="/monitor_web/edit_host_{{ host_obj.id }}.html"
-                                       style="text-decoration:underline; color: #0e90d2">{{ host_obj.ip }}</a>
-                                {% else %}
-                                    <a href="/monitor_web/edit_host_{{ host_obj.id }}.html"
-                                       style="text-decoration:underline; color: #0e90d2">{{ host_obj.ip }},</a>
-                                {% endif %}
-                            {% endfor %}
+                            {% display_host template_obj %}
                         </td>
-                        <td>{% serialize_url "host_group" host_group_obj %}</td>
+                        <td>{% serialize_url "template" template_obj %}</td>
                     </tr>
                 {% endfor %}
                 </tbody>
@@ -71,7 +68,7 @@
                             <span id="selected_count" style="font-weight: bold">
                                 <span>0</span> 选择
                             </span>
-        <button id="delete_host_group" class="btn btn-danger btn-icon icon-1x fa fa-trash">删除</button>
+        <button id="delete_template" class="btn btn-danger btn-icon icon-1x fa fa-trash">删除</button>
     </div>
 
     <div>
@@ -113,5 +110,5 @@
 {% endblock %}
 
 {% block js %}
-    <script type="text/javascript" src="/static/js/host_group.js"></script>
+    <script type="text/javascript" src="/static/js/template.js"></script>
 {% endblock %}

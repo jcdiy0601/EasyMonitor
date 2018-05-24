@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # Author: 'JiaChen'
 
-
 import requests
 import json
 import hashlib
@@ -26,7 +25,7 @@ REDIS_OBJ = redis_conn(settings)
 
 @login_required
 def host(request):
-    """主机组视图"""
+    """主机视图"""
     host_group_id = request.GET.get('groupid')
     if host_group_id:
         host_group_id = int(host_group_id)
@@ -107,7 +106,7 @@ def hostname_check(request):
 
 @login_required
 def edit_host(request, *args, **kwargs):
-    """主机组删除视图"""
+    """修改主机视图"""
     hid = kwargs['hid']
     if request.method == 'GET':
         form_obj = host_form.EditHostForm(initial={'hid': hid})
@@ -150,7 +149,7 @@ def edit_host(request, *args, **kwargs):
 
 @login_required
 def del_host(request):
-    """主机组删除视图"""
+    """删除主机视图"""
     if request.method == 'POST':
         response = WebResponse()
         host_list = request.POST.getlist('host_list')

@@ -29,7 +29,7 @@ def host_group(request):
 
 @login_required
 def add_host_group(request):
-    """主机组添加视图"""
+    """添加主机组视图"""
     if request.method == 'GET':
         form_obj = host_group_form.AddHostGroupForm()
         return render(request, 'add_host_group.html', {'form_obj': form_obj})
@@ -53,7 +53,7 @@ def add_host_group(request):
 
 @login_required
 def edit_host_group(request, *args, **kwargs):
-    """主机组删除视图"""
+    """修改主机组视图"""
     gid = kwargs['gid']
     if request.method == 'GET':
         form_obj = host_group_form.EditHostGroupForm(initial={'gid': gid})
@@ -79,7 +79,7 @@ def edit_host_group(request, *args, **kwargs):
 
 @login_required
 def del_host_group(request):
-    """主机组删除视图"""
+    """删除主机组视图"""
     if request.method == 'POST':
         response = WebResponse()
         host_group_list = request.POST.getlist('host_group_list')
