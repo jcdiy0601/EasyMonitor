@@ -63,8 +63,7 @@
                                 <input type="checkbox" name="host" value="{{ host_obj.id }}">
                             </label>
                         </td>
-                        <td><a href="/monitor_web/edit_host_{{ host_obj.id }}.html"
-                               style="text-decoration:underline; color: #0e90d2">{{ host_obj.hostname }}</a></td>
+                        <td>{{ host_obj.hostname }}</td>
                         <td>{{ host_obj.ip }}</td>
                         <td><a href="#"
                                style="text-decoration:underline; color: #0e90d2">应用集</a>{% application_count host_obj %}

@@ -43,12 +43,16 @@ def add_template(request):
     elif request.method == 'POST':
         form_obj = template_form.AddTemplateForm(request.POST)
         if form_obj.is_valid():
-            application_id_list = form_obj.cleaned_data.pop('template_id')
+            application_id_list = form_obj.cleaned_data.pop('application_id')
+            host_id_list = form_obj.cleaned_data.pop('host_id')
+            host_group_id_list = form_obj.cleaned_data.pop('host_group_id')
             data = form_obj.cleaned_data
             try:
                 with transaction.atomic():
                     template_obj = models.Template.objects.create(**data)
                     template_obj.applications.add(*application_id_list)
+                    template_obj.host_set.add(*host_id_list)
+                    template_obj.hostgroup_set.add(*host_group_id_list)
                 Logger().log(message='创建模板成功,%s' % template_obj.name, mode=True)
                 return redirect('/monitor_web/template.html')
             except Exception as e:
@@ -59,9 +63,33 @@ def add_template(request):
 
 
 @login_required
-def edit_template(request):
+def edit_template(request, *args, **kwargs):
     """修改模板视图"""
-    pass
+    tid = kwargs['tid']
+    if request.method == 'GET':
+        form_obj = template_form.EditTemplateForm(initial={'tid': tid})
+        return render(request, 'edit_template.html', {'form_obj': form_obj, 'tid': tid})
+    elif request.method == 'POST':
+        form_obj = template_form.EditTemplateForm(request.POST, initial={'tid': tid})
+        if form_obj.is_valid():
+            application_id_list = form_obj.cleaned_data.pop('application_id')
+            host_id_list = form_obj.cleaned_data.pop('host_id')
+            host_group_id_list = form_obj.cleaned_data.pop('host_group_id')
+            data = form_obj.cleaned_data
+            try:
+                with transaction.atomic():
+                    models.Template.objects.filter(id=tid).update(**data)
+                    template_obj = models.Template.objects.filter(id=tid).first()
+                    template_obj.applications.set(application_id_list)
+                    template_obj.host_set.set(host_id_list)
+                    template_obj.hostgroup_set.set(host_group_id_list)
+                Logger().log(message='修改模板成功,%s' % template_obj.name, mode=True)
+                return redirect('/monitor_web/template.html')
+            except Exception as e:
+                Logger().log(message='修改模板失败,%s' % str(e), mode=False)
+                raise ValidationError(_('修改模板失败'), code='invalid')
+        else:
+            return render(request, 'edit_template.html', {'form_obj': form_obj, 'tid': tid})
 
 
 @login_required

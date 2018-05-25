@@ -60,7 +60,6 @@ class AddHostGroupForm(forms.Form):
 
 class EditHostGroupForm(forms.Form):
     """编辑主机组表单验证类"""
-
     name = fields.CharField(
         max_length=64,
         error_messages={
