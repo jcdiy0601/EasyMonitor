@@ -14,10 +14,10 @@ urlpatterns = [
     url(r'^edit_host_(?P<hid>\d+).html$', host_view.edit_host, name='edit_host'),
     url(r'^del_host.html$', host_view.del_host, name='del_host'),
     # 模板
-    url(r'^template.html', template_view.template, name='template'),
-    url(r'^add_template.html', template_view.add_template, name='add_template'),
-    url(r'^edit_template_(?P<tid>\d+).html', template_view.edit_template, name='edit_template'),
-    url(r'^del_template.html', template_view.del_template, name='del_template'),
+    url(r'^template.html$', template_view.template, name='template'),
+    url(r'^add_template.html$', template_view.add_template, name='add_template'),
+    url(r'^edit_template_(?P<tid>\d+).html$', template_view.edit_template, name='edit_template'),
+    url(r'^del_template.html$', template_view.del_template, name='del_template'),
     # 应用集
-    url(r'^application.html', application_view.application, name='application')
+    url(r'^application.html$', application_view.application, name='application')
 ]
