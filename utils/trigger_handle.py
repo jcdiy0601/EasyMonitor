@@ -14,7 +14,9 @@ class TriggerHandle(object):
         self.settings = settings    # 加载设置
         self.redis_obj = redis_conn(self.settings)  # 获取redis连接实例
         self.alert_counter_dict_key = settings.ALERT_COUNTER_REDIS_KEY  # 报警计数字典key name
-        self.redis_obj.set(self.alert_counter_dict_key, json.dumps({}))
+        alter_counter_dict = self.redis_obj.get(self.alert_counter_dict_key)
+        if not alter_counter_dict:
+            self.redis_obj.set(self.alert_counter_dict_key, json.dumps({}))
         '''alert_counter_dict = {
             1: {'CentOS-02_172.16.99.24': {'last_alert': 1525837186.268634, 'counter': 1}}
         }'''
