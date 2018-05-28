@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from monitor_web.views import host_group_view, host_view, template_view
+from monitor_web.views import host_group_view, host_view, template_view, application_view
 
 urlpatterns = [
     # 主机组
@@ -18,4 +18,6 @@ urlpatterns = [
     url(r'^add_template.html', template_view.add_template, name='add_template'),
     url(r'^edit_template_(?P<tid>\d+).html', template_view.edit_template, name='edit_template'),
     url(r'^del_template.html', template_view.del_template, name='del_template'),
+    # 应用集
+    url(r'^application.html', application_view.application, name='application')
 ]
