@@ -2,22 +2,22 @@
 
 {% load format_error_message %}
 
-{% block page-title %}编辑模板{% endblock %}
+{% block page-title %}编辑应用集{% endblock %}
 
 {% block page-path %}
     <li><a href="{% url 'index' %}">仪表盘</a></li>
-    <li><a href="{% url 'template' %}">模板</a></li>
-    <li><a href="{% url 'edit_template' tid %}">编辑模板</a></li>
+    <li><a href="{% url 'application' %}">应用集</a></li>
+    <li><a href="{% url 'edit_application' aid %}">编辑应用集</a></li>
 {% endblock %}
 
 {% block page-content %}
     <div class="panel">
         <div class="panel-heading">
-            <h3 class="panel-title">编辑模板</h3>
+            <h3 class="panel-title">编辑应用集</h3>
         </div>
         <!-- /.panel-heading -->
         <div class="panel-body">
-            <form class="form-horizontal" method="post" action="{% url 'edit_template' tid %}">
+            <form class="form-horizontal" method="post" action="{% url 'edit_application' aid %}">
                 {% csrf_token %}
                 {% for field_obj in form_obj %}
                     <div class="form-group">

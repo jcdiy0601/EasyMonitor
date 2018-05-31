@@ -1,12 +1,6 @@
 #!/usr/bin/env python
 # Author: 'JiaChen'
 
-import requests
-import json
-import hashlib
-import time
-import re
-from django.conf import settings
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
@@ -18,11 +12,10 @@ from monitor_web.forms import application_form
 from utils.pagination import Page
 from utils.log import Logger
 from utils.web_response import WebResponse
-from utils.redis_conn import redis_conn
 
 
 @login_required
-def application(request):
+def item(request):
     """应用集视图"""
     template_id = request.GET.get('templateid')
     if template_id:
@@ -52,7 +45,7 @@ def application(request):
 
 
 @login_required
-def add_application(request):
+def add_item(request):
     """创建应用集视图"""
     if request.method == 'GET':
         form_obj = application_form.AddApplicationForm()
@@ -76,7 +69,7 @@ def add_application(request):
 
 
 @login_required
-def edit_application(request, *args, **kwargs):
+def edit_item(request, *args, **kwargs):
     """编辑应用集视图"""
     aid = kwargs['aid']
     if request.method == 'GET':
@@ -102,7 +95,7 @@ def edit_application(request, *args, **kwargs):
 
 
 @login_required
-def del_application(request):
+def del_item(request):
     """删除应用集视图"""
     if request.method == 'POST':
         response = WebResponse()
@@ -113,8 +106,6 @@ def del_application(request):
                     application_id = int(application_id)
                     application_obj = models.Application.objects.filter(id=application_id).first()
                     application_obj.delete()
-                    # 删除redis中相关数据
-
                     Logger().log(message='删除应用集成功,%s' % application_obj.name, mode=True)
             response.message = '删除应用集成功'
         except Exception as e:

@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from monitor_web.views import host_group_view, host_view, template_view, application_view
+from monitor_web.views import host_group_view, host_view, template_view, application_view, item_view
 
 urlpatterns = [
     # 主机组
@@ -21,4 +21,11 @@ urlpatterns = [
     # 应用集
     url(r'^application.html$', application_view.application, name='application'),
     url(r'^add_application.html$', application_view.add_application, name='add_application'),
+    url(r'^edit_application_(?P<aid>\d+).html$', application_view.edit_application, name='edit_application'),
+    url(r'^del_application.html$', application_view.del_application, name='del_application'),
+    # 监控项
+    url(r'^item.html$', item_view.item, name='item'),
+    url(r'^add_item.html$', item_view.add_item, name='add_item'),
+    url(r'^edit_item_(?P<iid>\d+).html$', item_view.edit_item, name='edit_item'),
+    url(r'^del_item.html$', item_view.del_item, name='del_item'),
 ]

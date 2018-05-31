@@ -56,22 +56,24 @@ class ActionHandle(object):
                     if str(action_obj.id) not in self.alert_counter_dict:    # 第一次被触发，先初始化一个action_counter_dict
                         self.alert_counter_dict[str(action_obj.id)] = {}
                     if hostname not in self.alert_counter_dict[str(action_obj.id)]:  # 这个主机第一次触发这个报警
-                        self.alert_counter_dict[str(action_obj.id)][hostname] = {"counter": 1, "last_alert": time.time()}
+                        self.alert_counter_dict[str(action_obj.id)][hostname] = {}
+                    if str(trigger_id) not in self.alert_counter_dict[str(action_obj.id)][hostname]:
+                        self.alert_counter_dict[str(action_obj.id)][hostname][str(trigger_id)] = {"counter": 1, "last_alert": time.time()}
                         for action_operation_obj in action_obj.action_operations.all().order_by('-step'):
-                            if self.alert_counter_dict[str(action_obj.id)][hostname]["counter"] >= action_operation_obj.step:     # 报警计数大于报警升级阈值
+                            if self.alert_counter_dict[str(action_obj.id)][hostname][str(trigger_id)]["counter"] >= action_operation_obj.step:     # 报警计数大于报警升级阈值
                                 action_func = getattr(action, '%s' % action_operation_obj.action_type)
                                 action_func(action_operation_obj, hostname, self.trigger_data, action_obj, status=False)
-                                self.alert_counter_dict[str(action_obj.id)][hostname]["last_alert"] = time.time()    # 报完警后更新一下报警时间，这样就又重新计算报警间隔了
+                                self.alert_counter_dict[str(action_obj.id)][hostname][str(trigger_id)]["last_alert"] = time.time()    # 报完警后更新一下报警时间，这样就又重新计算报警间隔了
                                 self.redis_obj.set(self.alert_counter_dict_key, json.dumps(self.alert_counter_dict))
                                 self.record_log(hostname, self.trigger_data)  # 记录日志
                     else:
                         # 如果达到报警触发interval次数，就记数+1
-                        if time.time() - self.alert_counter_dict[str(action_obj.id)][hostname]["last_alert"] >= action_obj.interval:
-                            self.alert_counter_dict[str(action_obj.id)][hostname]["counter"] += 1
+                        if time.time() - self.alert_counter_dict[str(action_obj.id)][hostname][str(trigger_id)]["last_alert"] >= action_obj.interval:
+                            self.alert_counter_dict[str(action_obj.id)][hostname][str(trigger_id)]["counter"] += 1
                             for action_operation_obj in action_obj.action_operations.all().order_by('-step'):
-                                if self.alert_counter_dict[str(action_obj.id)][hostname]["counter"] >= action_operation_obj.step:  # 报警计数大于报警升级阈值
+                                if self.alert_counter_dict[str(action_obj.id)][hostname][str(trigger_id)]["counter"] >= action_operation_obj.step:  # 报警计数大于报警升级阈值
                                     action_func = getattr(action, '%s' % action_operation_obj.action_type)
                                     action_func(action_operation_obj, hostname, self.trigger_data, action_obj, status=False)
-                                    self.alert_counter_dict[str(action_obj.id)][hostname]["last_alert"] = time.time()  # 报完警后更新一下报警时间，这样就又重新计算报警间隔了
+                                    self.alert_counter_dict[str(action_obj.id)][hostname][str(trigger_id)]["last_alert"] = time.time()  # 报完警后更新一下报警时间，这样就又重新计算报警间隔了
                                     self.redis_obj.set(self.alert_counter_dict_key, json.dumps(self.alert_counter_dict))
                                     self.record_log(hostname, self.trigger_data)  # 记录日志

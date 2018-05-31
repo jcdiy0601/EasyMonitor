@@ -18,7 +18,14 @@ class TriggerHandle(object):
         if not alter_counter_dict:
             self.redis_obj.set(self.alert_counter_dict_key, json.dumps({}))
         '''alert_counter_dict = {
-            1: {'CentOS-02_172.16.99.24': {'last_alert': 1525837186.268634, 'counter': 1}}
+            action_id: {
+                'CentOS-02_172.16.99.24': {
+                    trigger_id: {
+                        'last_alert': 1525837186.268634, 
+                        'counter': 1
+                    },
+                },
+            },
         }'''
 
     def start_watching(self):
