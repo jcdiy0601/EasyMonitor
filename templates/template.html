@@ -18,6 +18,24 @@
             <div class="panel-control">
                 <a href="{% url 'add_template' %}" class="btn btn-dark">创建模板</a>
             </div>
+            <div class="panel-control">
+                <select name="group" class="form-control" id="select-host-group"
+                        style="float: right; height: 30px; margin-top: 10px;">
+                    {% if host_group_id == 0 %}
+                        <option value="0" selected="selected">所有</option>
+                    {% else %}
+                        <option value="0">所有</option>
+                    {% endif %}
+                    {% for host_group_obj in host_group_obj_list %}
+                        {% if host_group_id == host_group_obj.id %}
+                            <option value="{{ host_group_obj.id }}"
+                                    selected="selected">{{ host_group_obj.name }}</option>
+                        {% else %}
+                            <option value="{{ host_group_obj.id }}">{{ host_group_obj.name }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
             <h3 class="panel-title">模板</h3>
         </div>
         <!--Default panel contents-->

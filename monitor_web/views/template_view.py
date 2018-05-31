@@ -24,14 +24,31 @@ from utils.redis_conn import redis_conn
 @login_required
 def template(request):
     """模板视图"""
+    host_group_id = request.GET.get('groupid')
+    if host_group_id:
+        host_group_id = int(host_group_id)
+    else:
+        host_group_id = 0
+    host_group_obj_list = models.HostGroup.objects.all()
+    host_group_obj = models.HostGroup.objects.filter(id=host_group_id).first()
     current_page = request.GET.get("p", 1)
     current_page = int(current_page)
-    template_obj_list = models.Template.objects.all()
-    template_obj_count = template_obj_list.count()
-    page_obj = Page(current_page, template_obj_count)
-    template_obj_list = template_obj_list[page_obj.start:page_obj.end]
-    page_str = page_obj.pager('template.html')
-    return render(request, 'template.html', {'template_obj_list': template_obj_list, 'page_str': page_str})
+    if host_group_obj:
+        template_obj_list = host_group_obj.templates.all()
+        template_obj_count = template_obj_list.count()
+        page_obj = Page(current_page, template_obj_count)
+        template_obj_list = template_obj_list[page_obj.start:page_obj.end]
+        page_str = page_obj.pager(base_url='template.html', host_group_id=host_group_id)
+    else:
+        template_obj_list = models.Template.objects.all()
+        template_obj_count = template_obj_list.count()
+        page_obj = Page(current_page, template_obj_count)
+        template_obj_list = template_obj_list[page_obj.start:page_obj.end]
+        page_str = page_obj.pager(base_url='template.html', host_group_id=host_group_id)
+    return render(request, 'template.html', {'template_obj_list': template_obj_list,
+                                             'page_str': page_str,
+                                             'host_group_obj_list': host_group_obj_list,
+                                             'host_group_id': host_group_id})
 
 
 @login_required

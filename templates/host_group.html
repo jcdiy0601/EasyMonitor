@@ -46,7 +46,7 @@
                         <td><a href="{% url 'host' %}?groupid={{ host_group_obj.id }}"
                                style="text-decoration:underline; color: #0e90d2">主机</a>{{ host_group_obj.host_set.all.count }}
                         </td>
-                        <td><a href="{% url 'template' %}"
+                        <td><a href="{% url 'template' %}?groupid={{ host_group_obj.id }}"
                                style="text-decoration:underline; color: #0e90d2">模板</a>{{ host_group_obj.templates.all.count }}
                         </td>
                         <td>

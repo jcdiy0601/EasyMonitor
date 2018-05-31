@@ -71,4 +71,10 @@ $(function () {
             });
         }
     });
+
+    // 查询
+    $("#select-host-group").on("change", function () {
+        var hostGroupID = $("#select-host-group option:selected").val();
+        window.location.href = "/monitor_web/template.html?groupid=" + hostGroupID;
+    })
 });
