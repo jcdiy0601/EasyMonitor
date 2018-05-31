@@ -73,14 +73,8 @@ $(function () {
     });
 
     // 查询
-    $("#select-host-group").on("change", function () {
-        var hostGroupID = $("#select-host-group option:selected").val();
-        var hostID = $("#select-host option:selected").val();
-        window.location.href = "/monitor_web/application.html?groupid=" + hostGroupID + "&hostid=" + hostID;
-    });
-    $("#select-host").on("change", function () {
-        var hostGroupID = $("#select-host-group option:selected").val();
-        var hostID = $("#select-host option:selected").val();
-        window.location.href = "/monitor_web/application.html?groupid=" + hostGroupID + "&hostid=" + hostID;
+    $("#select-template").on("change", function () {
+        var templateID = $("#select-template option:selected").val();
+        window.location.href = "/monitor_web/application.html?templateid=" + templateID;
     });
 });

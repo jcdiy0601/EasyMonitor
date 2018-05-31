@@ -65,7 +65,7 @@
                         </td>
                         <td>{{ host_obj.hostname }}</td>
                         <td>{{ host_obj.ip }}</td>
-                        <td><a href="{% url 'application' %}?hostid={{ host_obj.id }}"
+                        <td><a href="{% url 'application' %}"
                                style="text-decoration:underline; color: #0e90d2">应用集</a>{% application_count host_obj %}
                         </td>
                         <td><a href="#"

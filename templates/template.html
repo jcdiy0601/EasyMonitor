@@ -63,7 +63,7 @@
                             </label>
                         </td>
                         <td>{{ template_obj.name }}</td>
-                        <td><a href="#"
+                        <td><a href="{% url 'application' %}?templateid={{ template_obj.id }}"
                                style="text-decoration:underline; color: #0e90d2">应用集</a>{{ template_obj.applications.all.count }}
                         </td>
                         <td><a href="#"

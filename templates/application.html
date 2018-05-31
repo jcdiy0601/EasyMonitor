@@ -19,37 +19,19 @@
                 <a href="{% url 'add_application' %}" class="btn btn-dark">创建应用集</a>
             </div>
             <div class="panel-control">
-                <select name="group" class="form-control" id="select-host-group"
+                <select name="template" class="form-control" id="select-template"
                         style="float: right; height: 30px; margin-top: 10px;">
-                    {% if host_group_id == 0 %}
+                    {% if template_id == 0 %}
                         <option value="0" selected="selected">所有</option>
                     {% else %}
                         <option value="0">所有</option>
                     {% endif %}
-                    {% for host_group_obj in host_group_obj_list %}
-                        {% if host_group_id == host_group_obj.id %}
-                            <option value="{{ host_group_obj.id }}"
-                                    selected="selected">{{ host_group_obj.name }}</option>
+                    {% for template_obj in template_obj_list %}
+                        {% if template_id == template_obj.id %}
+                            <option value="{{ template_obj.id }}"
+                                    selected="selected">{{ template_obj.name }}</option>
                         {% else %}
-                            <option value="{{ host_group_obj.id }}">{{ host_group_obj.name }}</option>
-                        {% endif %}
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="panel-control">
-                <select name="host" class="form-control" id="select-host"
-                        style="float: right; height: 30px; margin-top: 10px;">
-                    {% if host_id == 0 %}
-                        <option value="0" selected="selected">所有</option>
-                    {% else %}
-                        <option value="0">所有</option>
-                    {% endif %}
-                    {% for host_obj in host_obj_list %}
-                        {% if host_id == host_obj.id %}
-                            <option value="{{ host_obj.id }}"
-                                    selected="selected">{{ host_obj.ip }}</option>
-                        {% else %}
-                            <option value="{{ host_obj.id }}">{{ host_obj.ip }}</option>
+                            <option value="{{ template_obj.id }}">{{ template_obj.name }}</option>
                         {% endif %}
                     {% endfor %}
                 </select>
