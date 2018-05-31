@@ -1,6 +1,6 @@
 {% extends 'index.html' %}
 {% load serialize %}
-{% load serialize_host %}
+{% load serialize_application %}
 
 {% block css %}
     <link href="/static/css/commons.css" rel="stylesheet">
@@ -8,7 +8,7 @@
 
 {% block page-path %}
     <li><a href="{% url 'index' %}">仪表盘</a></li>
-    <li><a href="{% url 'host' %}">主机</a></li>
+    <li><a href="{% url 'application' %}">应用集</a></li>
 {% endblock %}
 
 {% block page-content %}
@@ -16,7 +16,7 @@
         <!--Panel heading-->
         <div class="panel-heading">
             <div class="panel-control">
-                <a href="{% url 'add_host' %}" class="btn btn-dark">创建主机</a>
+                <a href="{% url 'add_application' %}" class="btn btn-dark">创建应用集</a>
             </div>
             <div class="panel-control">
                 <select name="group" class="form-control" id="select-host-group"
@@ -36,7 +36,25 @@
                     {% endfor %}
                 </select>
             </div>
-            <h3 class="panel-title">主机组</h3>
+            <div class="panel-control">
+                <select name="host" class="form-control" id="select-host"
+                        style="float: right; height: 30px; margin-top: 10px;">
+                    {% if host_id == 0 %}
+                        <option value="0" selected="selected">所有</option>
+                    {% else %}
+                        <option value="0">所有</option>
+                    {% endif %}
+                    {% for host_obj in host_obj_list %}
+                        {% if host_id == host_obj.id %}
+                            <option value="{{ host_obj.id }}"
+                                    selected="selected">{{ host_obj.ip }}</option>
+                        {% else %}
+                            <option value="{{ host_obj.id }}">{{ host_obj.ip }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            <h3 class="panel-title">应用集</h3>
         </div>
         <!--Default panel contents-->
         <div class="panel-body">
@@ -46,35 +64,24 @@
                 <tr>
                     <th><label class="form-checkbox form-icon form-text"><input
                             type="checkbox"></label></th>
-                    <th>名称</th>
-                    <th>IP</th>
                     <th>应用集</th>
                     <th>监控项</th>
-                    <th>触发器</th>
-                    <th>模板</th>
                     <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
-                {% for host_obj in host_obj_list %}
+                {% for application_obj in application_obj_list %}
                     <tr>
                         <td>
                             <label class="form-checkbox form-icon form-text">
-                                <input type="checkbox" name="host" value="{{ host_obj.id }}">
+                                <input type="checkbox" name="application" value="{{ application_obj.id }}">
                             </label>
                         </td>
-                        <td>{{ host_obj.hostname }}</td>
-                        <td>{{ host_obj.ip }}</td>
-                        <td><a href="{% url 'application' %}?hostid={{ host_obj.id }}"
-                               style="text-decoration:underline; color: #0e90d2">应用集</a>{% application_count host_obj %}
-                        </td>
+                        <td>{{ application_obj.name }}</td>
                         <td><a href="#"
-                               style="text-decoration:underline; color: #0e90d2">监控项</a>{% item_count host_obj %}</td>
-                        <td><a href="#"
-                               style="text-decoration:underline; color: #0e90d2">触发器</a>{% trigger_count host_obj %}
+                               style="text-decoration:underline; color: #0e90d2">监控项</a>{% item_count application_obj %}
                         </td>
-                        <td>{% template_display host_obj %}</td>
-                        <td>{% serialize_url "host" host_obj %}</td>
+                        <td>{% serialize_url "application" application_obj %}</td>
                     </tr>
                 {% endfor %}
                 </tbody>
@@ -85,7 +92,7 @@
                             <span id="selected_count" style="font-weight: bold">
                                 <span>0</span> 选择
                             </span>
-        <button id="delete_host" class="btn btn-danger btn-icon icon-1x fa fa-trash">删除</button>
+        <button id="delete_application" class="btn btn-danger btn-icon icon-1x fa fa-trash">删除</button>
     </div>
 
     <div>
@@ -127,5 +134,5 @@
 {% endblock %}
 
 {% block js %}
-    <script type="text/javascript" src="/static/js/host.js"></script>
+    <script type="text/javascript" src="/static/js/application.js"></script>
 {% endblock %}

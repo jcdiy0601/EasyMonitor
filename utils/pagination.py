@@ -39,9 +39,11 @@ class Page(object):
         val = self.current_page * self.per_items
         return val
 
-    def pager(self, base_url, host_group_id=None):
+    def pager(self, base_url, host_group_id=None, host_id=None):
         """
         :param base_url: 基础页的url
+        :param host_group_id: 主机组ID
+        :param host_id: 主机ID
         :return:
         """
         page_html = []
@@ -49,7 +51,7 @@ class Page(object):
         all_page_count = self.total_page    # 总页数
         total_items = self.total_items      # 数据总数
 
-        if host_group_id is not None:
+        if host_group_id is not None and host_id is None:
             # 首页
             first_html = "<li><a href='%s?groupid=%d&p=1'>首页</a></li>" % (base_url, host_group_id)
             page_html.append(first_html)
@@ -91,6 +93,67 @@ class Page(object):
             page_html.append(next_html)
             # 尾页
             end_html = "<li><a href='%s?groupid=%d&p=%d'>尾页</a></li>" % (base_url, host_group_id, all_page_count)
+            page_html.append(end_html)
+            # 页码概要
+            end_html = "<li><a href='javascript:void(0)'>共 %d页 / %d 条数据</a></li>" % (all_page_count, total_items)
+            page_html.append(end_html)
+            # 将列表中的元素拼接成页码字符串
+            page_str = mark_safe(''.join(page_html))
+        elif host_group_id is not None and host_id is not None:
+            # 首页
+            first_html = "<li><a href='%s?groupid=%d&hostid=%d&p=1'>首页</a></li>" % (base_url, host_group_id, host_id)
+            page_html.append(first_html)
+            # 上一页
+            if page <= 1:
+                prev_html = "<li class='disabled'><a href='javascript:void(0)'>上一页</a></li>"
+            else:
+                prev_html = "<li><a href='%s?groupid=%d&hostid=%d&p=%d'>上一页</a></li>" % (base_url,
+                                                                                         host_group_id,
+                                                                                         host_id,
+                                                                                         page - 1)
+            page_html.append(prev_html)
+            # 11个页码
+            if all_page_count < 11:
+                begin = 0
+                end = all_page_count
+            # 总页数大于 11
+            else:
+                #
+                if page < 6:
+                    begin = 0
+                    end = 11
+                else:
+                    if page + 6 > all_page_count:
+                        begin = page - 6
+                        end = all_page_count
+                    else:
+                        begin = page - 6
+                        end = page + 5
+            for i in range(begin, end):
+                # 当前页
+                if page == i + 1:
+                    a_html = "<li class='active'><a href='javascript:void(0)'>%d</a></li>" % (i + 1)
+                else:
+                    a_html = "<li><a href='%s?groupid=%d&hostid=%d&p=%d'>%d</a></li>" % (base_url,
+                                                                                         host_group_id,
+                                                                                         host_id,
+                                                                                         i + 1,
+                                                                                         i + 1)
+                page_html.append(a_html)
+            # 下一页
+            if page + 1 > all_page_count:
+                next_html = "<li class='disabled'><a href='javascript:void(0)'>下一页</a></li>"
+            else:
+                next_html = "<li><a href='%s?groupid=%d&hostid=%d&p=%d'>下一页</a></li>" % (base_url,
+                                                                                         host_group_id,
+                                                                                         host_id,
+                                                                                         page + 1)
+            page_html.append(next_html)
+            # 尾页
+            end_html = "<li><a href='%s?groupid=%d&hostid=%d&p=%d'>尾页</a></li>" % (base_url,
+                                                                                   host_group_id,
+                                                                                   host_id,
+                                                                                   all_page_count)
             page_html.append(end_html)
             # 页码概要
             end_html = "<li><a href='javascript:void(0)'>共 %d页 / %d 条数据</a></li>" % (all_page_count, total_items)

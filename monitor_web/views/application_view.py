@@ -24,8 +24,7 @@ from utils.redis_conn import redis_conn
 @login_required
 def application(request):
     """应用集视图"""
-    pass
-    # return render(request, 'application.html')
+    return render(request, 'application.html')
 
 
 @login_required

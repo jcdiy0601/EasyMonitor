@@ -261,7 +261,6 @@ class ExpressionProcess(object):
 
     def process(self):
         """算出单条expression表达式的结果"""
-
         data_list = self.load_data_from_redis()     # 已经按照用户的配置把数据从redis里取出来了, 比如最近5分钟,或10分钟的数据
         data_calc_func = getattr(self, 'get_%s' % self.expression_obj.data_calc_func)   # 反射计算方法
         single_expression_calc_result_list = data_calc_func(data_list)   # 一个表达式计算结果列表
@@ -323,13 +322,10 @@ class ExpressionProcess(object):
                 avg_res = round(0 if sum(clean_data_list) == 0 else sum(clean_data_list) / len(clean_data_list), 2)
                 if self.expression_obj.specified_item_key:  # 监控了特定的指标,比如有多个网卡,但这里只特定监控eth0
                     if name == self.expression_obj.specified_item_key:  # # 就是监控这个特定指标,match上了
-                        calc_res = self.judge(avg_res)
-                        if calc_res:
-                            return [calc_res, avg_res, name]  # 后面的循环不用走了,反正 已经成立了一个了
+                        # 后面的循环不用走了,反正 已经成立了一个了
+                        return [self.judge(avg_res), avg_res, name]
                 else:  # 监控这个服务的所有项, 比如一台机器的多个网卡, 任意一个超过了阈值,都算是有问题的
-                    calc_res = self.judge(avg_res)
-                    if calc_res:
-                        return [calc_res, avg_res, None]
+                    return [self.judge(avg_res), avg_res, None]
         else:  # 可能是由于最近这个服务没有数据汇报过来,取到的数据为空,所以没办法判断阈值
             return [False, None, None]
 
@@ -347,7 +343,7 @@ class ExpressionProcess(object):
                         if name not in clean_data_dict:
                             clean_data_dict[name] = []
                         clean_data_dict[name].append(value_dict[self.expression_obj.items.key])
-        if clean_data_list: # [24.16]
+        if clean_data_list:     # [24.16]
             last_res = clean_data_list[0]
             return [self.judge(last_res), last_res, None]
         elif clean_data_dict:   # {'/': [5], '/boot': [8]}

@@ -19,5 +19,6 @@ urlpatterns = [
     url(r'^edit_template_(?P<tid>\d+).html$', template_view.edit_template, name='edit_template'),
     url(r'^del_template.html$', template_view.del_template, name='del_template'),
     # 应用集
-    url(r'^application.html$', application_view.application, name='application')
+    url(r'^application.html$', application_view.application, name='application'),
+    url(r'^add_application.html$', application_view.add_application, name='add_application'),
 ]

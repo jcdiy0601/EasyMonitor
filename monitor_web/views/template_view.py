@@ -1,12 +1,6 @@
 #!/usr/bin/env python
 # Author: 'JiaChen'
 
-import requests
-import json
-import hashlib
-import time
-import re
-from django.conf import settings
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
@@ -18,7 +12,6 @@ from monitor_web.forms import template_form
 from utils.pagination import Page
 from utils.log import Logger
 from utils.web_response import WebResponse
-from utils.redis_conn import redis_conn
 
 
 @login_required
