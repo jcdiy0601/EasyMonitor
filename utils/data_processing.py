@@ -173,26 +173,28 @@ class DataHandle(object):
             action_set = trigger_obj.action_set.all()   # 获取报警策略集合
             for action_obj in action_set:   # 循环每个报警策略
                 if str(action_obj.id) in alert_counter_dict:   # 如果报警计数字典中存在报警策略id
-                    for hostname in alert_counter_dict[str(action_obj.id)]:
+                    for hostname, value in alert_counter_dict[str(action_obj.id)].items():
                         if host_obj.hostname == hostname:   # 主机也对上了
-                            del alert_counter_dict[str(action_obj.id)][hostname]
-                            self.redis_obj.set(alert_counter_dict_key, json.dumps(alert_counter_dict))
-                            # 删除redis上触发器报警的key
-                            self.redis_obj.delete(trigger_redis_key)
-                            # 将主机状态改为正常在线
-                            host_obj.status = 1
-                            host_obj.save()
-                            Logger().log(message='服务器状态改变,%s' % host_obj.hostname, mode=True)
-                            # 发送恢复通知
-                            if action_obj.recover_notice:   # 开启了恢复通知功能
-                                action_operation_obj_list = action_obj.action_operations.all()
-                                for action_operation_obj in action_operation_obj_list:
-                                    if old_alert_counter_dict[str(action_obj.id)][hostname]['counter'] >= action_operation_obj.step:
-                                        action_func = getattr(action, '%s' % action_operation_obj.action_type)
-                                        action_func(action_operation_obj=action_operation_obj,
-                                                    hostname=hostname,
-                                                    trigger_data=trigger_data,
-                                                    action_obj=action_obj)  # 通过反射发送相关恢复通知
+                            for trigger_id in value:
+                                if trigger_id == str(trigger_obj.id):
+                                    del alert_counter_dict[str(action_obj.id)][hostname][str(trigger_obj.id)]
+                                    self.redis_obj.set(alert_counter_dict_key, json.dumps(alert_counter_dict))
+                                    # 删除redis上触发器报警的key
+                                    self.redis_obj.delete(trigger_redis_key)
+                                    # 将主机状态改为正常在线
+                                    host_obj.status = 1
+                                    host_obj.save()
+                                    Logger().log(message='服务器状态改变,%s' % host_obj.hostname, mode=True)
+                                    # 发送恢复通知
+                                    if action_obj.recover_notice:   # 开启了恢复通知功能
+                                        action_operation_obj_list = action_obj.action_operations.all()
+                                        for action_operation_obj in action_operation_obj_list:
+                                            if old_alert_counter_dict[str(action_obj.id)][hostname][str(trigger_obj.id)]['counter'] >= action_operation_obj.step:
+                                                action_func = getattr(action, '%s' % action_operation_obj.action_type)
+                                                action_func(action_operation_obj=action_operation_obj,
+                                                            hostname=hostname,
+                                                            trigger_data=trigger_data,
+                                                            action_obj=action_obj)  # 通过反射发送相关恢复通知
 
     def looping(self):
         """检测所有主机状态，Agent ping"""
