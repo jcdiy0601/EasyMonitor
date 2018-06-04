@@ -76,19 +76,19 @@ def add_trigger(request):
 @login_required
 def edit_trigger(request, *args, **kwargs):
     """编辑触发器视图"""
-    aid = kwargs['aid']
+    tid = kwargs['tid']
     if request.method == 'GET':
-        form_obj = application_form.EditApplicationForm(initial={'aid': aid})
-        return render(request, 'edit_application.html', {'form_obj': form_obj, 'aid': aid})
+        form_obj = application_form.EditApplicationForm(initial={'tid': tid})
+        return render(request, 'edit_application.html', {'form_obj': form_obj, 'tid': tid})
     elif request.method == 'POST':
-        form_obj = application_form.EditApplicationForm(request.POST, initial={'aid': aid})
+        form_obj = application_form.EditApplicationForm(request.POST, initial={'tid': tid})
         if form_obj.is_valid():
             item_id_list = form_obj.cleaned_data.pop('item_id')
             data = form_obj.cleaned_data
             try:
                 with transaction.atomic():
-                    models.Application.objects.filter(id=aid).update(**data)
-                    application_obj = models.Application.objects.filter(id=aid).first()
+                    models.Application.objects.filter(id=tid).update(**data)
+                    application_obj = models.Application.objects.filter(id=tid).first()
                     application_obj.items.set(item_id_list)
                 Logger().log(message='修改触发器成功,%s' % application_obj.name, mode=True)
                 return redirect('/monitor_web/application.html')
@@ -96,7 +96,7 @@ def edit_trigger(request, *args, **kwargs):
                 Logger().log(message='修改触发器失败,%s' % str(e), mode=False)
                 raise ValidationError(_('修改触发器失败'), code='invalid')
         else:
-            return render(request, 'edit_application.html', {'form_obj': form_obj, 'aid': aid})
+            return render(request, 'edit_application.html', {'form_obj': form_obj, 'tid': tid})
 
 
 @login_required
