@@ -60,7 +60,7 @@
                             </label>
                         </td>
                         <td>{{ application_obj.name }}</td>
-                        <td><a href="#"
+                        <td><a href="{% url 'item' %}?applicationid={{ application_obj.id }}"
                                style="text-decoration:underline; color: #0e90d2">监控项</a>{% item_count application_obj %}
                         </td>
                         <td>{% serialize_url "application" application_obj %}</td>

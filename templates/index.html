@@ -288,7 +288,7 @@
                                 </a>
                             </li>
                             <li class="col-xs-4" data-content="主机">
-                                <a id="demo-page-alert" class="shortcut-grid" href="#">
+                                <a id="demo-page-alert" class="shortcut-grid" href="{% url 'host' %}">
                                     <i class="fa fa-laptop"></i>
                                 </a>
                             </li>
@@ -347,6 +347,9 @@
                                             <li><a href="{% url 'host_group' %}">主机组</a></li>
                                             <li><a href="{% url 'host' %}">主机</a></li>
                                             <li><a href="{% url 'template' %}">模板</a></li>
+                                            <li><a href="{% url 'application' %}">应用集</a></li>
+                                            <li><a href="{% url 'item' %}">监控项</a></li>
+                                            <li><a href="{% url 'trigger' %}">触发器</a></li>
                                             <li><a href="">动作</a></li>
                                         </ul>
                                     </li>

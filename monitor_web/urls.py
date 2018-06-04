@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from monitor_web.views import host_group_view, host_view, template_view, application_view, item_view
+from monitor_web.views import host_group_view, host_view, template_view, application_view, item_view, trigger_view
 
 urlpatterns = [
     # 主机组
@@ -28,4 +28,9 @@ urlpatterns = [
     url(r'^add_item.html$', item_view.add_item, name='add_item'),
     url(r'^edit_item_(?P<iid>\d+).html$', item_view.edit_item, name='edit_item'),
     url(r'^del_item.html$', item_view.del_item, name='del_item'),
+    # 触发器
+    url(r'^trigger.html$', trigger_view.trigger, name='trigger'),
+    url(r'^add_trigger.html$', trigger_view.add_trigger, name='add_trigger'),
+    url(r'^edit_trigger_(?P<tid>\d+).html$', trigger_view.edit_trigger, name='edit_trigger'),
+    url(r'^del_trigger.html$', trigger_view.del_trigger, name='del_trigger'),
 ]

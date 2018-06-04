@@ -68,9 +68,9 @@
                         <td><a href="{% url 'application' %}"
                                style="text-decoration:underline; color: #0e90d2">应用集</a>{% application_count host_obj %}
                         </td>
-                        <td><a href="#"
+                        <td><a href="{% url 'item' %}"
                                style="text-decoration:underline; color: #0e90d2">监控项</a>{% item_count host_obj %}</td>
-                        <td><a href="#"
+                        <td><a href="{% url 'trigger' %}"
                                style="text-decoration:underline; color: #0e90d2">触发器</a>{% trigger_count host_obj %}
                         </td>
                         <td>{% template_display host_obj %}</td>
