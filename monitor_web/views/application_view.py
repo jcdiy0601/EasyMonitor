@@ -1,11 +1,6 @@
 #!/usr/bin/env python
 # Author: 'JiaChen'
 
-import requests
-import json
-import hashlib
-import time
-import re
 from django.conf import settings
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
@@ -19,6 +14,8 @@ from utils.pagination import Page
 from utils.log import Logger
 from utils.web_response import WebResponse
 from utils.redis_conn import redis_conn
+
+REDIS_OBJ = redis_conn(settings)
 
 
 @login_required
@@ -89,7 +86,16 @@ def edit_application(request, *args, **kwargs):
             data = form_obj.cleaned_data
             try:
                 with transaction.atomic():
+                    application_obj = models.Application.objects.filter(id=aid).first()
+                    old_application_name = application_obj.name
                     models.Application.objects.filter(id=aid).update(**data)
+                    if data['name'] != old_application_name:    # 应用集名称变更了
+                        # 修改redis中相关数据
+                        key_in_redis = '*_%s_*' % old_application_name
+                        key_list = REDIS_OBJ.keys(key_in_redis)
+                        for key in key_list:  # 循环修改trigger key相关数据
+                            new_key = key.decode().replace(old_application_name, data['name'])
+                            REDIS_OBJ.rename(key, new_key)
                     application_obj = models.Application.objects.filter(id=aid).first()
                     application_obj.items.set(item_id_list)
                 Logger().log(message='修改应用集成功,%s' % application_obj.name, mode=True)
@@ -112,6 +118,10 @@ def del_application(request):
                 for application_id in application_list:
                     application_id = int(application_id)
                     application_obj = models.Application.objects.filter(id=application_id).first()
+                    key_in_redis = '*_%s_*' % application_obj.name
+                    key_list = REDIS_OBJ.keys(key_in_redis)
+                    for key in key_list:
+                        REDIS_OBJ.delete(key)  # 删除redis中相关监控项
                     application_obj.delete()
                     # 删除redis中相关数据
 
