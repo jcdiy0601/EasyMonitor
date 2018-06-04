@@ -128,7 +128,7 @@ class DataHandle(object):
                 'duration': None  # 持续时间
             }
             # 先把之前的trigger加载回来,获取上次报警的时间,以统计故障持续时间
-            trigger_redis_key = 'host_%s_trigger_%s' % (host_obj.hostname, trigger_obj.id)
+            trigger_redis_key = 'Host_%s_trigger_%s' % (host_obj.hostname, trigger_obj.id)
             old_trigger_data = self.redis_obj.get(trigger_redis_key)  # 获取旧的触发器数据
             if old_trigger_data:  # 不是第一次触发
                 old_trigger_data = old_trigger_data.decode()
@@ -150,7 +150,7 @@ class DataHandle(object):
                 'start_time': time.time(),  # 开始时间
                 'duration': None    # 持续时间
             }
-            host_alive_redis_key = 'host_%s_host_alive' % host_obj.hostname
+            host_alive_redis_key = 'Host_%s_host_alive' % host_obj.hostname
             old_host_alive_data = self.redis_obj.get(host_alive_redis_key)  # 获取旧的主机检测数据
             if old_host_alive_data:     # 不是第一次触发
                 old_host_alive_data = old_host_alive_data.decode()
@@ -163,7 +163,7 @@ class DataHandle(object):
 
     def check_and_alert_recover_notifier(self, host_obj, trigger_obj):
         """检查报警恢复并通知"""
-        trigger_redis_key = 'host_%s_trigger_%s' % (host_obj.hostname, trigger_obj.id)
+        trigger_redis_key = 'Host_%s_trigger_%s' % (host_obj.hostname, trigger_obj.id)
         trigger_data = self.redis_obj.get(trigger_redis_key)
         if trigger_data:
             trigger_data = json.loads(trigger_data.decode())

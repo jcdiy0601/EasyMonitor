@@ -127,11 +127,11 @@ def edit_host(request, *args, **kwargs):
                         alert_counter_redis_key = settings.ALERT_COUNTER_REDIS_KEY
                         key_in_redis = '*_%s_*' % old_hostname
                         key_list = REDIS_OBJ.keys(key_in_redis)
-                        for key in key_list:  # 循环删除trigger key相关数据
+                        for key in key_list:  # 循环修改trigger key相关数据
                             new_key = key.decode().replace(old_hostname, data['hostname'])
                             REDIS_OBJ.rename(key, new_key)
                         alert_counter_data = json.loads(REDIS_OBJ.get(alert_counter_redis_key).decode())
-                        for key, value in alert_counter_data.items():  # 删除报警计数中相关数据
+                        for key, value in alert_counter_data.items():  # 修改报警计数中相关数据
                             for hostname in list(value.keys()):
                                 if hostname == old_hostname:
                                     old_data = alert_counter_data[key][old_hostname]
