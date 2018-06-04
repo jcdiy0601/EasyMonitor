@@ -31,7 +31,7 @@ def display_data_type(item_obj, data_type):
     :param data_type: 数据类型
     :return:
     """
-    data_type_choice_list = item_obj.data_type_choices
-    for data_type_choice in data_type_choice_list:
-        if data_type == data_type_choice[0]:
-            return mark_safe(data_type_choice[1])
+    data_type_choices_list = item_obj.data_type_choices
+    for data_type_choices in data_type_choices_list:
+        if data_type == data_type_choices[0]:
+            return mark_safe(data_type_choices[1])

@@ -1,0 +1,120 @@
+{% extends 'index.html' %}
+{% load serialize %}
+{% load serialize_trigger %}
+
+{% block css %}
+    <link href="/static/css/commons.css" rel="stylesheet">
+{% endblock %}
+
+{% block page-path %}
+    <li><a href="{% url 'index' %}">仪表盘</a></li>
+    <li><a href="{% url 'trigger' %}">触发器</a></li>
+{% endblock %}
+
+{% block page-content %}
+    <div class="panel">
+        <!--Panel heading-->
+        <div class="panel-heading">
+            <div class="panel-control">
+                <a href="{% url 'add_trigger' %}" class="btn btn-dark">创建触发器</a>
+            </div>
+            <div class="panel-control">
+                <select name="template" class="form-control" id="select-template"
+                        style="float: right; height: 30px; margin-top: 10px;">
+                    {% if template_id == 0 %}
+                        <option value="0" selected="selected">所有</option>
+                    {% else %}
+                        <option value="0">所有</option>
+                    {% endif %}
+                    {% for template_obj in template_obj_list %}
+                        {% if template_id == template_obj.id %}
+                            <option value="{{ template_obj.id }}"
+                                    selected="selected">{{ template_obj.name }}</option>
+                        {% else %}
+                            <option value="{{ template_obj.id }}">{{ template_obj.name }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            <h3 class="panel-title">触发器</h3>
+        </div>
+        <!--Default panel contents-->
+        <div class="panel-body">
+            <!--Table-->
+            <table class="table">
+                <thead>
+                <tr>
+                    <th><label class="form-checkbox form-icon form-text"><input
+                            type="checkbox"></label></th>
+                    <th>触发器</th>
+                    <th>报警级别</th>
+                    <th>是否启用</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for trigger_obj in trigger_obj_list %}
+                    <tr>
+                        <td>
+                            <label class="form-checkbox form-icon form-text">
+                                <input type="checkbox" name="trigger" value="{{ trigger_obj.id }}">
+                            </label>
+                        </td>
+                        <td>{{ trigger_obj.name }}</td>
+                        <td>{% display_severity trigger_obj trigger_obj.severity %}</td>
+                        <td>{% display_enabled trigger_obj.enabled %}</td>
+                        <td>{% serialize_url "trigger" trigger_obj %}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="action_buttons">
+                            <span id="selected_count" style="font-weight: bold">
+                                <span>0</span> 选择
+                            </span>
+        <button id="delete_trigger" class="btn btn-danger btn-icon icon-1x fa fa-trash">删除</button>
+    </div>
+
+    <div>
+        <div class="right">
+            <ul class="pagination pagination-sm no-margin">
+                {{ page_str }}
+            </ul>
+        </div>
+    </div>
+
+    <!--模态-->
+    <div id="project-del-div" class="bootbox modal fade bootbox-confirm in" tabindex="-1" role="dialog"
+         aria-hidden="false"
+         style="display: none; padding-right: 17px;">
+        <div class="modal-backdrop fade in" style="height: 100%;"></div>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button id="close-modal-div" type="button" class="bootbox-close-button close" data-dismiss="modal"
+                            aria-hidden="true"
+                            style="margin-top: -10px;">×
+                    </button>
+                    <div class="bootbox-body">确定删除?</div>
+                </div>
+                <div class="modal-footer">
+                    <button id="cancel-del" data-bb-handler="cancel" type="button" class="btn btn-default">取消</button>
+                    <button id="confirm-del" data-bb-handler="confirm" type="button" class="btn btn-danger">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--警告-->
+    <div id="project-del-fall" class="alert alert-danger fade in"
+         style="display: none; position: fixed; top:50px;right:0;left:800px">
+        <button class="close" data-dismiss="alert"><span>×</span></button>
+        <strong>删除失败!</strong>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript" src="/static/js/trigger.js"></script>
+{% endblock %}

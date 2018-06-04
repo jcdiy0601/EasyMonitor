@@ -2,3 +2,5 @@
 2018-06-04 13:51:21,820 - ERROR : 删除主机组失败,"<HostGroup: test>" needs to have a value for field "id" before this many-to-many relationship can be used.
 2018-06-04 13:54:35,196 - ERROR : 删除主机组失败,"<HostGroup: test>" needs to have a value for field "id" before this many-to-many relationship can be used.
 2018-06-04 16:07:58,786 - ERROR : 修改监控项失败,'Item' object has no attribute 'update'
+2018-06-04 17:31:10,016 - ERROR : 服务器错误,dictionary changed size during iteration
+2018-06-04 17:31:10,026 - ERROR : 服务器错误,dictionary changed size during iteration

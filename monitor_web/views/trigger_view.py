@@ -27,21 +27,21 @@ def trigger(request):
     current_page = request.GET.get("p", 1)
     current_page = int(current_page)
     if template_obj:
-        application_obj_list = template_obj.applications.all()
-        application_obj_count = application_obj_list.count()
-        page_obj = Page(current_page, application_obj_count)
-        application_obj_list = application_obj_list[page_obj.start:page_obj.end]
-        page_str = page_obj.pager(base_url='application.html', template_id=template_id)
+        trigger_obj_list = template_obj.trigger_set.all()
+        trigger_obj_count = trigger_obj_list.count()
+        page_obj = Page(current_page, trigger_obj_count)
+        trigger_obj_list = trigger_obj_list[page_obj.start:page_obj.end]
+        page_str = page_obj.pager(base_url='trigger.html', template_id=template_id)
     else:
-        application_obj_list = models.Application.objects.all()
-        application_obj_count = application_obj_list.count()
-        page_obj = Page(current_page, application_obj_count)
-        application_obj_list = application_obj_list[page_obj.start:page_obj.end]
-        page_str = page_obj.pager(base_url='application.html', template_id=template_id)
-    return render(request, 'application.html', {'application_obj_list': application_obj_list,
-                                                'page_str': page_str,
-                                                'template_obj_list': template_obj_list,
-                                                'template_id': template_id})
+        trigger_obj_list = models.Trigger.objects.all()
+        trigger_obj_count = trigger_obj_list.count()
+        page_obj = Page(current_page, trigger_obj_count)
+        trigger_obj_list = trigger_obj_list[page_obj.start:page_obj.end]
+        page_str = page_obj.pager(base_url='trigger.html', template_id=template_id)
+    return render(request, 'trigger.html', {'trigger_obj_list': trigger_obj_list,
+                                            'page_str': page_str,
+                                            'template_obj_list': template_obj_list,
+                                            'template_id': template_id})
 
 
 @login_required
