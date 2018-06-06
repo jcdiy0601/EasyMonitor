@@ -10,7 +10,7 @@ from django.utils.translation import ugettext as _
 from django.http import JsonResponse
 from django.conf import settings
 from monitor_data import models
-from monitor_web.forms import application_form
+from monitor_web.forms import trigger_form
 from utils.pagination import Page
 from utils.log import Logger
 from utils.web_response import WebResponse
@@ -53,24 +53,76 @@ def trigger(request):
 def add_trigger(request):
     """创建触发器视图"""
     if request.method == 'GET':
-        form_obj = application_form.AddApplicationForm()
-        return render(request, 'add_application.html', {'form_obj': form_obj})
+        form_obj = trigger_form.AddTriggerForm()
+        return render(request, 'add_trigger.html', {'form_obj': form_obj})
     elif request.method == 'POST':
-        form_obj = application_form.AddApplicationForm(request.POST)
+        applications_id_list = request.POST.getlist('applications_id')
+        items_id_list = request.POST.getlist('items_id')
+        specified_item_key_list = request.POST.getlist('specified_item_key')
+        operator_list = request.POST.getlist('operator')
+        threshold_list = request.POST.getlist('threshold')
+        logic_with_next_list = request.POST.getlist('logic_with_next')
+        data_calc_func_list = request.POST.getlist('data_calc_func')
+        data_calc_func_args_list = request.POST.getlist('data_calc_func_args')
+        count = 0
+        while count < len(applications_id_list):
+            if applications_id_list[count] == '' and items_id_list[count] == '' and operator_list[count] == '':
+                applications_id_list.pop(count)
+                items_id_list.pop(count)
+                specified_item_key_list.pop(count)
+                operator_list.pop(count)
+                threshold_list.pop(count)
+                logic_with_next_list.pop(count)
+                data_calc_func_list.pop(count)
+                data_calc_func_args_list.pop(count)
+                if count == 0:
+                    pass
+                else:
+                    count -= 1
+            else:
+                count += 1
+        trigger_data = {'name': request.POST.get('name'),
+                        'templates_id': request.POST.get('templates_id'),
+                        'severity': request.POST.get('severity'),
+                        'enabled': request.POST.get('enabled'),
+                        'memo': request.POST.get('memo')}
+        form_obj = trigger_form.AddTriggerForm(trigger_data)
         if form_obj.is_valid():
-            item_id_list = form_obj.cleaned_data.pop('item_id')
-            data = form_obj.cleaned_data
             try:
                 with transaction.atomic():
-                    application_obj = models.Application.objects.create(**data)
-                    application_obj.items.add(*item_id_list)
-                Logger().log(message='创建触发器成功,%s' % application_obj.name, mode=True)
-                return redirect('/monitor_web/application.html')
+                    trigger_obj = models.Trigger.objects.create(**trigger_data)
+                    triggers_id = trigger_obj.id
+                    for index in range(len(applications_id_list)):
+                        trigger_expression_data = {'triggers_id': triggers_id,
+                                                   'applications_id': applications_id_list[index],
+                                                   'items_id': items_id_list[index],
+                                                   'specified_item_key': specified_item_key_list[index],
+                                                   'operator': operator_list[index],
+                                                   'threshold': threshold_list[index],
+                                                   'logic_with_next': logic_with_next_list[index],
+                                                   'data_calc_func': data_calc_func_list[index],
+                                                   'data_calc_func_args': data_calc_func_args_list[index]}
+                        if trigger_expression_data['threshold'] == '':  # 无阈值
+                            if trigger_expression_data['applications_id'] != '' or trigger_expression_data['items_id'] != '':  # 应用集或监控项不为空
+                                raise Exception('触发器表达式有误，有应用集或监控项，但无阈值')
+                        elif trigger_expression_data['threshold'] != '':  # 有阈值
+                            if trigger_expression_data['applications_id'] == '' or trigger_expression_data['items_id'] == '':  # 应用集或监控项为空
+                                raise Exception('触发器表达式有误，有阈值，但无对应应用集或监控项')
+                            else:
+                                if trigger_expression_data['data_calc_func_args'] != '':
+                                    json.loads(trigger_expression_data['data_calc_func_args'])
+                                print(len(applications_id_list), index+1)
+                                if len(applications_id_list) == index + 1:  # 最后一个表达式
+                                    if trigger_expression_data['logic_with_next']:
+                                        raise Exception('触发器表达式有误，最后一个表达式不能有逻辑关系符号')
+                                models.TriggerExpression.objects.create(**trigger_expression_data)
+                Logger().log(message='创建触发器成功,%s' % trigger_obj.name, mode=True)
+                return redirect('/monitor_web/trigger.html')
             except Exception as e:
                 Logger().log(message='创建触发器失败,%s' % str(e), mode=False)
                 raise ValidationError(_('添加触发器失败'), code='invalid')
         else:
-            return render(request, 'add_application.html', {'form_obj': form_obj})
+            return render(request, 'add_trigger.html', {'form_obj': form_obj})
 
 
 @login_required
@@ -78,25 +130,21 @@ def edit_trigger(request, *args, **kwargs):
     """编辑触发器视图"""
     tid = kwargs['tid']
     if request.method == 'GET':
-        form_obj = application_form.EditApplicationForm(initial={'tid': tid})
-        return render(request, 'edit_application.html', {'form_obj': form_obj, 'tid': tid})
+        form_obj = trigger_form.EditTriggerForm(initial={'tid': tid})
+        return render(request, 'edit_trigger.html', {'form_obj': form_obj, 'tid': tid})
     elif request.method == 'POST':
-        form_obj = application_form.EditApplicationForm(request.POST, initial={'tid': tid})
+        form_obj = trigger_form.EditTriggerForm(request.POST, initial={'tid': tid})
         if form_obj.is_valid():
-            item_id_list = form_obj.cleaned_data.pop('item_id')
-            data = form_obj.cleaned_data
             try:
                 with transaction.atomic():
-                    models.Application.objects.filter(id=tid).update(**data)
-                    application_obj = models.Application.objects.filter(id=tid).first()
-                    application_obj.items.set(item_id_list)
-                Logger().log(message='修改触发器成功,%s' % application_obj.name, mode=True)
-                return redirect('/monitor_web/application.html')
+                    models.Trigger.objects.filter(id=tid).update(**data)
+                Logger().log(message='修改触发器成功,%s' % trigger_obj.name, mode=True)
+                return redirect('/monitor_web/trigger.html')
             except Exception as e:
                 Logger().log(message='修改触发器失败,%s' % str(e), mode=False)
                 raise ValidationError(_('修改触发器失败'), code='invalid')
         else:
-            return render(request, 'edit_application.html', {'form_obj': form_obj, 'tid': tid})
+            return render(request, 'edit_trigger.html', {'form_obj': form_obj, 'tid': tid})
 
 
 @login_required
@@ -128,4 +176,32 @@ def del_trigger(request):
             response.status = False
             response.error = str(e)
             Logger().log(message='删除触发器失败,%s' % str(e), mode=False)
+        return JsonResponse(response.__dict__)
+
+
+@login_required
+def select_application(request):
+    """选择应用集"""
+    if request.method == 'POST':
+        response = WebResponse()
+        template_id = request.POST.get('template_id')
+        template_obj = models.Template.objects.filter(id=template_id).first()
+        data = list(template_obj.applications.all().values('id', 'name'))
+        response.data = data
+        return JsonResponse(response.__dict__)
+
+
+@login_required
+def select_item(request):
+    """选择监控项"""
+    if request.method == 'POST':
+        response = WebResponse()
+        application_id = request.POST.get('application_id')
+        application_obj = models.Application.objects.filter(id=application_id).first()
+        temp_data = list(application_obj.items.all().values('id', 'name', 'key'))
+        data = []
+        for item in temp_data:
+            name = '%s %s' % (item['name'], item['key'])
+            data.append({'id': item['id'], 'name': name})
+        response.data = data
         return JsonResponse(response.__dict__)

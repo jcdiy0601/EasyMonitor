@@ -1,6 +1,40 @@
-2018-06-04 13:51:02,902 - ERROR : 删除主机组失败,"<HostGroup: test>" needs to have a value for field "id" before this many-to-many relationship can be used.
-2018-06-04 13:51:21,820 - ERROR : 删除主机组失败,"<HostGroup: test>" needs to have a value for field "id" before this many-to-many relationship can be used.
-2018-06-04 13:54:35,196 - ERROR : 删除主机组失败,"<HostGroup: test>" needs to have a value for field "id" before this many-to-many relationship can be used.
-2018-06-04 16:07:58,786 - ERROR : 修改监控项失败,'Item' object has no attribute 'update'
-2018-06-04 17:31:10,016 - ERROR : 服务器错误,dictionary changed size during iteration
-2018-06-04 17:31:10,026 - ERROR : 服务器错误,dictionary changed size during iteration
+2018-06-06 10:58:25,998 - ERROR : API认证未通过
+2018-06-06 10:58:26,100 - ERROR : API认证未通过
+2018-06-06 10:58:27,069 - ERROR : API认证未通过
+2018-06-06 10:58:31,014 - ERROR : API认证未通过
+2018-06-06 10:58:32,373 - ERROR : API认证未通过
+2018-06-06 10:58:36,180 - ERROR : API认证未通过
+2018-06-06 10:58:37,347 - ERROR : API认证未通过
+2018-06-06 10:58:37,357 - ERROR : API认证未通过
+2018-06-06 10:58:37,363 - ERROR : API认证未通过
+2018-06-06 10:58:40,419 - ERROR : API认证未通过
+2018-06-06 10:58:40,438 - ERROR : API认证未通过
+2018-06-06 10:58:42,430 - ERROR : API认证未通过
+2018-06-06 10:58:47,465 - ERROR : API认证未通过
+2018-06-06 10:58:52,477 - ERROR : API认证未通过
+2018-06-06 10:58:57,486 - ERROR : API认证未通过
+2018-06-06 11:20:32,294 - ERROR : 创建触发器失败,list index out of range
+2018-06-06 11:22:30,705 - ERROR : 创建触发器失败,list index out of range
+2018-06-06 13:29:49,257 - ERROR : 创建触发器失败,触发器表达式有误，有应用集或监控项，但无阈值
+2018-06-06 13:30:47,235 - ERROR : 创建触发器失败,触发器表达式有误，有应用集或监控项，但无阈值
+2018-06-06 13:36:36,071 - ERROR : 创建触发器失败,触发器表达式有误，有阈值，但无对应应用集或监控项
+2018-06-06 13:37:37,516 - ERROR : 创建触发器失败,触发器表达式有误，有应用集或监控项，但无阈值
+2018-06-06 13:37:43,948 - ERROR : 创建触发器失败,触发器表达式有误，有应用集或监控项，但无阈值
+2018-06-06 13:40:25,402 - ERROR : 创建触发器失败,Expecting value: line 1 column 1 (char 0)
+2018-06-06 13:41:40,234 - ERROR : 创建触发器失败,Expecting value: line 1 column 1 (char 0)
+2018-06-06 13:42:01,448 - ERROR : 创建触发器失败,触发器表达式有误，有应用集或监控项，但无阈值
+2018-06-06 13:42:18,761 - ERROR : 创建触发器失败,Expecting value: line 1 column 1 (char 0)
+2018-06-06 13:43:55,439 - ERROR : 创建触发器失败,触发器表达式有误，有阈值，但无对应应用集或监控项
+2018-06-06 13:44:32,010 - ERROR : 创建触发器失败,触发器表达式有误，有应用集或监控项，但无阈值
+2018-06-06 13:48:19,317 - ERROR : 创建触发器失败,触发器表达式有误，有应用集或监控项，但无阈值
+2018-06-06 13:50:19,066 - ERROR : 创建触发器失败,触发器表达式有误，有应用集或监控项，但无阈值
+2018-06-06 13:53:06,556 - ERROR : 创建触发器失败,触发器表达式有误，有应用集或监控项，但无阈值
+2018-06-06 14:04:45,414 - ERROR : 创建触发器失败,Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-06-06 14:04:59,459 - ERROR : 创建触发器失败,Expecting value: line 1 column 1 (char 0)
+2018-06-06 14:11:46,941 - ERROR : 创建触发器失败,Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2018-06-06 14:13:32,849 - ERROR : 创建触发器失败,触发器表达式有误，有应用集或监控项，但无阈值
+2018-06-06 14:14:07,231 - ERROR : 创建触发器失败,触发器表达式有误，有应用集或监控项，但无阈值
+2018-06-06 14:14:09,031 - ERROR : 创建触发器失败,触发器表达式有误，有应用集或监控项，但无阈值
+2018-06-06 14:14:13,081 - ERROR : 创建触发器失败,触发器表达式有误，有应用集或监控项，但无阈值
+2018-06-06 14:20:13,199 - ERROR : 创建触发器失败,触发器表达式有误，有应用集或监控项，但无阈值
+2018-06-06 15:28:31,928 - ERROR : 创建触发器失败,触发器表达式有误，最后一个表达式不能有逻辑关系符号

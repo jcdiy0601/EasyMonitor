@@ -33,4 +33,6 @@ urlpatterns = [
     url(r'^add_trigger.html$', trigger_view.add_trigger, name='add_trigger'),
     url(r'^edit_trigger_(?P<tid>\d+).html$', trigger_view.edit_trigger, name='edit_trigger'),
     url(r'^del_trigger.html$', trigger_view.del_trigger, name='del_trigger'),
+    url(r'^select_application.html$', trigger_view.select_application, name='select_application'),
+    url(r'^select_item.html$', trigger_view.select_item, name='select_item'),
 ]
