@@ -131,7 +131,12 @@ def edit_trigger(request, *args, **kwargs):
     tid = kwargs['tid']
     if request.method == 'GET':
         form_obj = trigger_form.EditTriggerForm(initial={'tid': tid})
-        return render(request, 'edit_trigger.html', {'form_obj': form_obj, 'tid': tid})
+        trigger_obj = models.Trigger.objects.filter(id=tid).first()
+        trigger_expression_obj_list = list(trigger_obj.triggerexpression_set.all())
+        return render(request, 'edit_trigger.html', {'form_obj': form_obj,
+                                                     'tid': tid,
+                                                     'trigger_expression_obj_list': trigger_expression_obj_list,
+                                                     'trigger_obj': trigger_obj})
     elif request.method == 'POST':
         form_obj = trigger_form.EditTriggerForm(request.POST, initial={'tid': tid})
         if form_obj.is_valid():

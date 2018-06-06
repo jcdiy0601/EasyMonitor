@@ -93,43 +93,43 @@ class EditTriggerForm(forms.Form):
             attrs={'class': 'form-control'}
         )
     )
-    key = fields.CharField(
-        max_length=64,
+    templates_id = fields.IntegerField(
         error_messages={
             'required': '不能为空',
             'invalid': '格式错误',
-            'max_length': '最大长度不能大于64位'
         },
-        label='键值',
-        help_text='必填项',
-        widget=widgets.TextInput(
-            attrs={'class': 'form-control'}
-        )
-    )
-    data_type = fields.CharField(
-        max_length=64,
-        error_messages={
-            'required': '不能为空',
-            'invalid': '格式错误',
-            'max_length': '最大长度不能大于64位'
-        },
-        label='数据类型',
+        label='模板',
         help_text='必填项',
         widget=widgets.Select(
-            choices=[('int', '整数'), ('float', '小数')],
-            attrs={'class': 'form-control'}
+            choices=[],
+            attrs={'class': 'form-control',
+                   'disabled': 'true'}
         )
     )
-    data_unit = fields.CharField(
-        required=False,
+    severity = fields.CharField(
         max_length=64,
         error_messages={
+            'required': '不能为空',
             'invalid': '格式错误',
             'max_length': '最大长度不能大于64位'
         },
-        label='数据单位',
-        widget=widgets.TextInput(
+        label='报警级别',
+        help_text='必填项',
+        widget=widgets.Select(
+            choices=[('information', '信息'), ('warning', '警告'), ('general', '一般严重'), ('high', '严重'), ('disaster', '灾难')],
             attrs={'class': 'form-control'}
+        )
+    )
+    enabled = fields.BooleanField(
+        required=False,
+        error_messages={
+            'required': '不能为空',
+            'invalid': '格式错误',
+        },
+        initial='True',
+        label='是否启用',
+        help_text='必填项',
+        widget=widgets.CheckboxInput(
         )
     )
     memo = fields.CharField(
@@ -145,18 +145,11 @@ class EditTriggerForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super(EditTriggerForm, self).__init__(*args, **kwargs)
-        self.iid = self.initial['iid']
-        item_obj = models.Item.objects.filter(id=self.iid).first()
-        self.fields['name'].initial = item_obj.name
-        self.fields['key'].initial = item_obj.key
-        self.fields['data_type'].initial = item_obj.data_type
-        self.fields['data_unit'].initial = item_obj.data_unit
-        self.fields['memo'].initial = item_obj.memo
-
-    def clean_key(self):
-        key = self.cleaned_data.get('key')
-        count = models.Item.objects.exclude(id=self.iid).filter(key=key).count()
-        if count:
-            raise ValidationError(_('触发器%(key)s已存在'), code='invalid', params={'key': key})
-        else:
-            return self.cleaned_data.get('key')
+        self.tid = self.initial['tid']
+        trigger_obj = models.Trigger.objects.filter(id=self.tid).first()
+        self.fields['templates_id'].widget.choices = models.Template.objects.all().values_list('id', 'name')
+        self.fields['name'].initial = trigger_obj.name
+        self.fields['templates_id'].initial = trigger_obj.templates_id
+        self.fields['severity'].initial = trigger_obj.severity
+        self.fields['enabled'].initial = trigger_obj.enabled
+        self.fields['memo'].initial = trigger_obj.memo

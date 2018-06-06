@@ -1,0 +1,176 @@
+{% extends 'index.html' %}
+
+{% load format_error_message %}
+
+{% block page-title %}编辑触发器{% endblock %}
+
+{% block page-path %}
+    <li><a href="{% url 'index' %}">仪表盘</a></li>
+    <li><a href="{% url 'trigger' %}">触发器</a></li>
+    <li><a href="{% url 'edit_trigger' tid %}">编辑触发器</a></li>
+{% endblock %}
+
+{% block page-content %}
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">编辑触发器</h3>
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <form class="form-horizontal" method="post" action="{% url 'edit_trigger' tid %}">
+                {% csrf_token %}
+                {% for field_obj in form_obj %}
+                    <div class="form-group">
+                        <label for="{{ field_obj.id_for_label }}"
+                               class="col-lg-2 control-label">{{ field_obj.label }}</label>
+                        <div class="col-lg-7">
+                            {{ field_obj }}
+                        </div>
+                        {% if field_obj.errors %}
+                            <span style="color: red">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                                {% error_msg field_obj.errors.as_json %}
+                            </span>
+                        {% else %}
+                            <span style="color: red">{{ field_obj.help_text }}</span>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                <hr>
+                <table class="table">
+                    <thead>
+                    <tr class="active">
+                        <th>应用集</th>
+                        <th>监控项</th>
+                        <th>KEY(只监控专门的指标)</th>
+                        <th>运算符</th>
+                        <th>阈值</th>
+                        <th>逻辑关系</th>
+                        <th>数据运算函数</th>
+                        <th>非固定参数,JSON格式{"time":5}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for trigger_expression_obj in trigger_expression_obj_list %}
+                        <tr>
+                            <td>
+                                <select name="applications_id" class="form-control">
+                                    <option value="">-----</option>
+                                    {% for application_obj in trigger_obj.templates.applications.all %}
+                                        {% if trigger_expression_obj.applications.id == application_obj.id %}
+                                            <option value="{{ application_obj.id }}"
+                                                    selected="selected">{{ application_obj.name }}</option>
+                                        {% else %}
+                                            <option value="{{ application_obj.id }}">{{ application_obj.name }}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </td>
+                            <td>
+                                <select name="items_id" class="form-control">
+                                    <option value="">-----</option>
+                                    {% for item_obj in trigger_expression_obj.applications.items.all %}
+                                        {% if trigger_expression_obj.items.id == item_obj.id %}
+                                            <option value="{{ item_obj.id }}"
+                                                    selected="selected">{{ item_obj.name }} {{ item_obj.key }}</option>
+                                        {% else %}
+                                            <option value="{{ item_obj.id }}">{{ item_obj.name }} {{ item_obj.key }}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </td>
+                            <td>
+                                {% if trigger_expression_obj.specified_item_key %}
+                                    <input name="specified_item_key" type="text" class="form-control"
+                                           value="{{ trigger_expression_obj.specified_item_key }}">
+                                {% else %}
+                                    <input name="specified_item_key" type="text" class="form-control">
+                                {% endif %}
+                            </td>
+                            <td>
+                                <select name="operator" class="form-control">
+                                    {% if trigger_expression_obj.operator == 'eq' %}
+                                        <option value="eq" selected="selected">=</option>
+                                    {% else %}
+                                        <option value="eq">=</option>
+                                    {% endif %}
+                                    {% if trigger_expression_obj.operator == 'lt' %}
+                                        <option value="lt" selected="selected"><</option>
+                                    {% else %}
+                                        <option value="lt"><</option>
+                                    {% endif %}
+                                    {% if trigger_expression_obj.operator == 'gt' %}
+                                        <option value="gt" selected="selected">></option>
+                                    {% else %}
+                                        <option value="gt">></option>
+                                    {% endif %}
+                                </select>
+                            </td>
+                            <td>
+                                <input name="threshold" type="number" class="form-control"
+                                       value="{{ trigger_expression_obj.threshold }}">
+                            </td>
+                            <td>
+                                <select name="logic_with_next" class="form-control">
+                                    {% if trigger_expression_obj.logic_with_next == '' %}
+                                        <option value="" selected="selected"></option>
+                                    {% else %}
+                                        <option value=""></option>
+                                    {% endif %}
+                                    {% if trigger_expression_obj.logic_with_next == 'or' %}
+                                        <option value="or" selected="selected">OR</option>
+                                    {% else %}
+                                        <option value="or">OR</option>
+                                    {% endif %}
+                                    {% if trigger_expression_obj.logic_with_next == 'and' %}
+                                        <option value="and" selected="selected">AND</option>
+                                    {% else %}
+                                        <option value="and">AND</option>
+                                    {% endif %}
+                                </select>
+                            </td>
+                            <td>
+                                <select name="data_calc_func" class="form-control">
+                                    {% if trigger_expression_obj.data_calc_func == 'avg' %}
+                                        <option value="avg" selected="selected">平均值</option>
+                                    {% else %}
+                                        <option value="avg">平均值</option>
+                                    {% endif %}
+                                    {% if trigger_expression_obj.data_calc_func == 'last' %}
+                                        <option value="last" selected="selected">最近的值</option>
+                                    {% else %}
+                                        <option value="last">最近的值</option>
+                                    {% endif %}
+                                </select>
+                            </td>
+                            <td>
+                                {% if trigger_expression_obj.data_calc_func_args %}
+                                    <input name="data_calc_func_args" type="text" class="form-control"
+                                           value="{{ trigger_expression_obj.data_calc_func_args }}">
+                                {% else %}
+                                    <input name="data_calc_func_args" type="text" class="form-control">
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        <button id="add-triggerexpression" type="button" class="btn btn-default pull-left">新增触发器表达式
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                        <button type="submit" class="btn btn-dark pull-right">保存</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- /.panel-body -->
+    </div>
+{% endblock %}
+{% block js %}
+    {#    <script type="text/javascript" src="/static/js/add_trigger.js"></script>#}
+{% endblock %}
