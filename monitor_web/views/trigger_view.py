@@ -90,7 +90,7 @@ def add_trigger(request):
         if form_obj.is_valid():
             try:
                 with transaction.atomic():
-                    trigger_obj = models.Trigger.objects.create(**trigger_data)
+                    trigger_obj = models.Trigger.objects.create(**form_obj.cleaned_data)
                     triggers_id = trigger_obj.id
                     for index in range(len(applications_id_list)):
                         trigger_expression_data = {'triggers_id': triggers_id,
@@ -111,7 +111,6 @@ def add_trigger(request):
                             else:
                                 if trigger_expression_data['data_calc_func_args'] != '':
                                     json.loads(trigger_expression_data['data_calc_func_args'])
-                                print(len(applications_id_list), index+1)
                                 if len(applications_id_list) == index + 1:  # 最后一个表达式
                                     if trigger_expression_data['logic_with_next']:
                                         raise Exception('触发器表达式有误，最后一个表达式不能有逻辑关系符号')
@@ -138,18 +137,79 @@ def edit_trigger(request, *args, **kwargs):
                                                      'trigger_expression_obj_list': trigger_expression_obj_list,
                                                      'trigger_obj': trigger_obj})
     elif request.method == 'POST':
-        form_obj = trigger_form.EditTriggerForm(request.POST, initial={'tid': tid})
+        trigger_obj = models.Trigger.objects.filter(id=tid).first()
+        trigger_expression_obj_list = list(trigger_obj.triggerexpression_set.all())
+        applications_id_list = request.POST.getlist('applications_id')
+        items_id_list = request.POST.getlist('items_id')
+        specified_item_key_list = request.POST.getlist('specified_item_key')
+        operator_list = request.POST.getlist('operator')
+        threshold_list = request.POST.getlist('threshold')
+        logic_with_next_list = request.POST.getlist('logic_with_next')
+        data_calc_func_list = request.POST.getlist('data_calc_func')
+        data_calc_func_args_list = request.POST.getlist('data_calc_func_args')
+        count = 0
+        while count < len(applications_id_list):
+            if applications_id_list[count] == '' and items_id_list[count] == '' and operator_list[count] == '':
+                applications_id_list.pop(count)
+                items_id_list.pop(count)
+                specified_item_key_list.pop(count)
+                operator_list.pop(count)
+                threshold_list.pop(count)
+                logic_with_next_list.pop(count)
+                data_calc_func_list.pop(count)
+                data_calc_func_args_list.pop(count)
+                if count == 0:
+                    pass
+                else:
+                    count -= 1
+            else:
+                count += 1
+        trigger_data = {'name': request.POST.get('name'),
+                        'templates_id': request.POST.get('templates_id'),
+                        'severity': request.POST.get('severity'),
+                        'enabled': request.POST.get('enabled'),
+                        'memo': request.POST.get('memo')}
+        form_obj = trigger_form.EditTriggerForm(trigger_data, initial={'tid': tid})
         if form_obj.is_valid():
             try:
                 with transaction.atomic():
-                    models.Trigger.objects.filter(id=tid).update(**data)
-                Logger().log(message='修改触发器成功,%s' % trigger_obj.name, mode=True)
+                    models.Trigger.objects.filter(id=tid).update(**form_obj.cleaned_data)
+                    triggers_id = trigger_obj.id
+                    for index in range(len(applications_id_list)):
+                        trigger_expression_data = {'triggers_id': triggers_id,
+                                                   'applications_id': applications_id_list[index],
+                                                   'items_id': items_id_list[index],
+                                                   'specified_item_key': specified_item_key_list[index],
+                                                   'operator': operator_list[index],
+                                                   'threshold': threshold_list[index],
+                                                   'logic_with_next': logic_with_next_list[index],
+                                                   'data_calc_func': data_calc_func_list[index],
+                                                   'data_calc_func_args': data_calc_func_args_list[index]}
+                        if trigger_expression_data['threshold'] == '':  # 无阈值
+                            if trigger_expression_data['applications_id'] != '' or trigger_expression_data['items_id'] != '':  # 应用集或监控项不为空
+                                raise Exception('触发器表达式有误，有应用集或监控项，但无阈值')
+                        elif trigger_expression_data['threshold'] != '':  # 有阈值
+                            if trigger_expression_data['applications_id'] == '' or trigger_expression_data['items_id'] == '':  # 应用集或监控项为空
+                                raise Exception('触发器表达式有误，有阈值，但无对应应用集或监控项')
+                            else:
+                                if trigger_expression_data['data_calc_func_args'] != '':
+                                    json.loads(trigger_expression_data['data_calc_func_args'])
+
+                                if len(applications_id_list) == index + 1:  # 最后一个表达式
+                                    if trigger_expression_data['logic_with_next']:
+                                        raise Exception('触发器表达式有误，最后一个表达式不能有逻辑关系符号')
+                                trigger_obj.triggerexpression_set.all().delete()
+                                models.TriggerExpression.objects.create(**trigger_expression_data)
+                Logger().log(message='编辑触发器成功,%s' % trigger_obj.name, mode=True)
                 return redirect('/monitor_web/trigger.html')
             except Exception as e:
-                Logger().log(message='修改触发器失败,%s' % str(e), mode=False)
-                raise ValidationError(_('修改触发器失败'), code='invalid')
+                Logger().log(message='编辑触发器失败,%s' % str(e), mode=False)
+                raise ValidationError(_('编辑触发器失败'), code='invalid')
         else:
-            return render(request, 'edit_trigger.html', {'form_obj': form_obj, 'tid': tid})
+            return render(request, 'edit_trigger.html', {'form_obj': form_obj,
+                                                         'tid': tid,
+                                                         'trigger_expression_obj_list': trigger_expression_obj_list,
+                                                         'trigger_obj': trigger_obj})
 
 
 @login_required

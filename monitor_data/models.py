@@ -176,7 +176,7 @@ class Trigger(models.Model):
         ('disaster', '灾难')
     )
     severity = models.CharField(verbose_name='报警级别', max_length=64, choices=severity_choices)
-    enabled = models.BooleanField(verbose_name='是否启用', default=True)
+    enabled = models.BooleanField(verbose_name='是否启用', default=False)
     memo = models.TextField(verbose_name='备注', null=True, blank=True)
 
     class Meta:
@@ -241,7 +241,7 @@ IP:{ip}
 恢复时间:{recover_time}'''
     recover_msg_format = models.TextField(verbose_name='恢复通知格式', default=_recover_msg_format)
     action_operations = models.ManyToManyField(verbose_name='所属报警动作', to='ActionOperation')
-    enabled = models.BooleanField(verbose_name='是否启用', default=True)
+    enabled = models.BooleanField(verbose_name='是否启用', default=False)
     memo = models.TextField(verbose_name='备注', null=True, blank=True)
 
     class Meta:

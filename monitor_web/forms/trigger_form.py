@@ -56,10 +56,11 @@ class AddTriggerForm(forms.Form):
             'required': '不能为空',
             'invalid': '格式错误',
         },
-        initial='True',
         label='是否启用',
         help_text='必填项',
         widget=widgets.CheckboxInput(
+            attrs={'value': 'True',
+                   'checked': 'checked'}
         )
     )
     memo = fields.CharField(
@@ -126,10 +127,11 @@ class EditTriggerForm(forms.Form):
             'required': '不能为空',
             'invalid': '格式错误',
         },
-        initial='True',
         label='是否启用',
         help_text='必填项',
         widget=widgets.CheckboxInput(
+            attrs={'value': 'True',
+                   'checked': 'checked'}
         )
     )
     memo = fields.CharField(

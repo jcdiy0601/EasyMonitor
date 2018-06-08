@@ -155,7 +155,7 @@ RUN_LOG_FILE = os.path.join(BASE_DIR, "logs", 'run.log')
 
 # redis连接参数
 REDIS_CONN = {
-    'HOST': '127.0.0.1',
+    'HOST': '10.10.30.93',
     'PORT': 6379,
     'PASSWD': '',
     'DB': 0

@@ -153,6 +153,50 @@
                             </td>
                         </tr>
                     {% endfor %}
+                    <tr id="example" style="display: none">
+                        <td>
+                            <select name="applications_id" class="form-control">
+                                <option value="">-----</option>
+                                {% for application_obj in trigger_obj.templates.applications.all %}
+                                    <option value="{{ application_obj.id }}">{{ application_obj.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                        <td>
+                            <select name="items_id" class="form-control">
+                                <option value="">-----</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input name="specified_item_key" type="text" class="form-control">
+                        </td>
+                        <td>
+                            <select name="operator" class="form-control">
+                                <option value="eq">=</option>
+                                <option value="lt"><</option>
+                                <option value="gt">></option>
+                            </select>
+                        </td>
+                        <td>
+                            <input name="threshold" type="number" class="form-control">
+                        </td>
+                        <td>
+                            <select name="logic_with_next" class="form-control">
+                                <option value=""></option>
+                                <option value="or">OR</option>
+                                <option value="and">AND</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="data_calc_func" class="form-control">
+                                <option value="avg">平均值</option>
+                                <option value="last">最近的值</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input name="data_calc_func_args" type="text" class="form-control">
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
                 <div class="form-group">
@@ -172,5 +216,5 @@
     </div>
 {% endblock %}
 {% block js %}
-    {#    <script type="text/javascript" src="/static/js/add_trigger.js"></script>#}
+    <script type="text/javascript" src="/static/js/edit_trigger.js"></script>
 {% endblock %}
