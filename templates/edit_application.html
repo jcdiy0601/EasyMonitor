@@ -4,26 +4,32 @@
 
 {% block page-title %}编辑应用集{% endblock %}
 
+{% block page-header %}
+    <h1 class="page-header"><i class="im-copy"></i> 应用集</h1>
+{% endblock %}
+
 {% block page-path %}
     <li><a href="{% url 'index' %}">仪表盘</a></li>
+    <span>-></span>
     <li><a href="{% url 'application' %}">应用集</a></li>
+    <span>-></span>
     <li><a href="{% url 'edit_application' aid %}">编辑应用集</a></li>
 {% endblock %}
 
 {% block page-content %}
-    <div class="panel">
+    <div class="panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">编辑应用集</h3>
         </div>
         <!-- /.panel-heading -->
         <div class="panel-body">
-            <form class="form-horizontal" method="post" action="{% url 'edit_application' aid %}">
+            <form class="form-horizontal hover-stripped" method="post" action="{% url 'edit_application' aid %}">
                 {% csrf_token %}
                 {% for field_obj in form_obj %}
                     <div class="form-group">
                         <label for="{{ field_obj.id_for_label }}"
-                               class="col-lg-2 control-label">{{ field_obj.label }}</label>
-                        <div class="col-lg-7">
+                               class="col-lg-2 col-md-2 col-sm-12 control-label">{{ field_obj.label }}</label>
+                        <div class="col-lg-5 col-md-5">
                             {{ field_obj }}
                         </div>
                         {% if field_obj.errors %}
@@ -37,8 +43,8 @@
                     </div>
                 {% endfor %}
                 <div class="form-group">
-                    <div class="col-lg-offset-2 col-lg-10">
-                        <button type="submit" class="btn btn-dark">保存</button>
+                    <div class="col-lg-2 pull-right">
+                        <button type="submit" class="btn btn-primary">保存</button>
                     </div>
                 </div>
             </form>
