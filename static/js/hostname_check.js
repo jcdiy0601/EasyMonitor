@@ -13,7 +13,7 @@ $(function () {
                 success: function (response) {
                     if (response.status) {
                         $("#hostname-check").css("display", "none");
-                        $("#hostname-check-icon").css("display", "block");
+                        $("#hostname-check-icon").css("display", "inline-block");
                     } else {
                         alert("主机名在CMDB中不存在，不可使用");
                     }
@@ -29,13 +29,13 @@ $(function () {
 
     // 检测主机名栏检测后又被更改
     $("input[name='hostname']").on("input", function () {
-        $("#hostname-check").css("display", "block");
+        $("#hostname-check").css("display", "inline-block");
         $("#hostname-check-icon").css("display", "none");
     });
 
     // 如果没有检测成功不予许提交数据
     $("button[type='submit']").click(function () {
-        if ($("#hostname-check").css("display") === "block") {
+        if ($("#hostname-check").css("display") === "inline-block") {
             alert("请进行主机名检测");
             return false;
         }

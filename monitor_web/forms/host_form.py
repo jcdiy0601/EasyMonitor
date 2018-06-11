@@ -65,7 +65,7 @@ class AddHostForm(forms.Form):
     )
     host_alive_check_interval = fields.IntegerField(
         error_messages={'invalid': '格式错误'},
-        label='主机存活状态检测间隔(s)',
+        label='主机存活检测间隔(s)',
         help_text='必填项',
         initial=30,
         widget=widgets.NumberInput(
@@ -104,7 +104,7 @@ class EditHostForm(forms.Form):
             'max_length': '最大长度不能大于64位'
         },
         label='主机名称',
-        help_text='必填项，Agent与cmdb配置hostname一致（只对Agent做检测），SNMP、API输入管理IP',
+        help_text='必填项，Agent与cmdb配置hostname一致',
         widget=widgets.TextInput(
             attrs={'class': 'form-control'}
         )
@@ -150,7 +150,7 @@ class EditHostForm(forms.Form):
     )
     host_alive_check_interval = fields.IntegerField(
         error_messages={'invalid': '格式错误'},
-        label='主机存活状态检测间隔(s)',
+        label='主机存活检测间隔(s)',
         help_text='必填项',
         initial=30,
         widget=widgets.NumberInput(

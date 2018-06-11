@@ -32,9 +32,9 @@
                         <div class="col-lg-5 col-md-5">
                             {{ field_obj }}
                         </div>
-                        <div id="hostname-check-div" class="col-lg-1" style="display: inline">
+                        <div id="hostname-check-div" class="col-lg-1" style="display: inline-block">
                             {% if field_obj.label == "主机名称" %}
-                                <input id="hostname-check" type="button" class="btn btn-default" value="主机检测">
+                                <input id="hostname-check" type="button" class="btn btn-default" value="主机检测" style="display: inline-block">
                                 <i id="hostname-check-icon" class="im-checkmark-circle"
                                    style="color: green; display: none">可用</i>
                             {% endif %}
