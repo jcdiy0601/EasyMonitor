@@ -63,18 +63,14 @@ IP:{ip}
             attrs={'class': 'form-control'}
         )
     )
-    recover_notice = fields.BooleanField(
+    recover_notice = fields.CharField(
         required=False,
         error_messages={
-            'required': '不能为空',
             'invalid': '格式错误',
         },
         label='恢复后是否发送通知',
         help_text='必填项',
-        widget=widgets.CheckboxInput(
-            attrs={'value': 'True',
-                   'checked': 'checked'}
-        )
+        widget=widgets.CheckboxInput()
     )
     recover_msg_format = fields.CharField(
         error_messages={
@@ -104,18 +100,14 @@ IP:{ip}
                    'size': 10}
         )
     )
-    enabled = fields.BooleanField(
+    enabled = fields.CharField(
         required=False,
         error_messages={
-            'required': '不能为空',
             'invalid': '格式错误',
         },
         label='是否启用',
         help_text='必填项',
-        widget=widgets.CheckboxInput(
-            attrs={'value': 'True',
-                   'checked': 'checked'}
-        )
+        widget=widgets.CheckboxInput()
     )
     memo = fields.CharField(
         required=False,
@@ -151,21 +143,96 @@ class EditActionForm(forms.Form):
             'invalid': '格式错误',
             'max_length': '最大长度不能大于64位'
         },
-        label='主机组名称',
+        label='报警策略名称',
         help_text='必填项',
         widget=widgets.TextInput(
             attrs={'class': 'form-control'}
         )
     )
-    template_id = fields.MultipleChoiceField(
+    trigger_id = fields.MultipleChoiceField(
         required=False,
         error_messages={'invalid': '格式错误'},
-        label='模板',
+        label='触发器',
         choices=[],
         widget=widgets.SelectMultiple(
             attrs={'class': 'form-control',
                    'size': 10}
         )
+    )
+    interval = fields.IntegerField(
+        error_messages={
+            'required': '不能为空',
+            'invalid': '格式错误',
+        },
+        initial=300,
+        label='报警间隔(s)',
+        help_text='必填项',
+        widget=widgets.NumberInput(
+            attrs={'class': 'form-control'}
+        )
+    )
+    alert_msg_format = fields.CharField(
+        error_messages={
+            'required': '不能为空',
+            'invalid': '格式错误',
+        },
+        initial='''主机:{hostname}
+    IP:{ip}
+    应用集:{name}
+    内容:{msg},存在问题
+    开始时间:{start_time}
+    持续时间:{duration}''',
+        label='报警通知格式',
+        help_text='必填项',
+        widget=widgets.Textarea(
+            attrs={'class': 'form-control'}
+        )
+    )
+    recover_notice = fields.CharField(
+        required=False,
+        error_messages={
+            'invalid': '格式错误',
+        },
+        label='恢复后是否发送通知',
+        help_text='必填项',
+        widget=widgets.CheckboxInput()
+    )
+    recover_msg_format = fields.CharField(
+        error_messages={
+            'required': '不能为空',
+            'invalid': '格式错误',
+        },
+        initial='''主机:{hostname}
+    IP:{ip}
+    应用集:{name}
+    内容:{msg},问题恢复
+    开始时间:{start_time}
+    持续时间:{duration}
+    恢复时间:{recover_time}''',
+        label='报警通知格式',
+        help_text='必填项',
+        widget=widgets.Textarea(
+            attrs={'class': 'form-control'}
+        )
+    )
+    action_operation_id = fields.MultipleChoiceField(
+        required=False,
+        error_messages={'invalid': '格式错误'},
+        label='报警动作',
+        choices=[],
+        widget=widgets.SelectMultiple(
+            attrs={'class': 'form-control',
+                   'size': 10}
+        )
+    )
+    enabled = fields.CharField(
+        required=False,
+        error_messages={
+            'invalid': '格式错误',
+        },
+        label='是否启用',
+        help_text='必填项',
+        widget=widgets.CheckboxInput()
     )
     memo = fields.CharField(
         required=False,
@@ -179,20 +246,30 @@ class EditActionForm(forms.Form):
     )
 
     def __init__(self, *args, **kwargs):
-        super(EditHostGroupForm, self).__init__(*args, **kwargs)
-        self.gid = self.initial['gid']
-        host_group_obj = models.HostGroup.objects.filter(id=self.gid).first()
-        self.fields['name'].initial = host_group_obj.name
-        self.fields['template_id'].choices = models.Template.objects.values_list('id', 'name')
-        self.fields['template_id'].initial = []
-        query_set = models.HostGroup.objects.filter(id=self.gid).values('templates__id')
+        super(EditActionForm, self).__init__(*args, **kwargs)
+        self.aid = self.initial['aid']
+        action_obj = models.Action.objects.filter(id=self.aid).first()
+        self.fields['name'].initial = action_obj.name
+        self.fields['trigger_id'].choices = models.Trigger.objects.values_list('id', 'name')
+        self.fields['trigger_id'].initial = []
+        query_set = models.Action.objects.filter(id=self.aid).values('triggers__id')
         for item in query_set:
-            self.fields['template_id'].initial.append(item['templates__id'])
-        self.fields['memo'].initial = host_group_obj.memo
+            self.fields['trigger_id'].initial.append(item['triggers__id'])
+        self.fields['interval'].initial = action_obj.interval
+        self.fields['alert_msg_format'].initial = action_obj.alert_msg_format
+        self.fields['recover_notice'].initial = action_obj.recover_notice
+        self.fields['recover_msg_format'].initial = action_obj.recover_msg_format
+        self.fields['action_operation_id'].choices = models.ActionOperation.objects.values_list('id', 'name')
+        self.fields['action_operation_id'].initial = []
+        query_set = models.Action.objects.filter(id=self.aid).values('action_operations__id')
+        for item in query_set:
+            self.fields['action_operation_id'].initial.append(item['action_operations__id'])
+        self.fields['enabled'].initial = action_obj.enabled
+        self.fields['memo'].initial = action_obj.memo
 
     def clean_name(self):
         name = self.cleaned_data.get('name')
-        count = models.HostGroup.objects.exclude(id=self.gid).filter(name=name).count()
+        count = models.HostGroup.objects.exclude(id=self.aid).filter(name=name).count()
         if count:
             raise ValidationError(_('主机组%(name)s已存在'), code='invalid', params={'name': name})
         else:

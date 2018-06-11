@@ -39,4 +39,6 @@ urlpatterns = [
     # 报警策略
     url(r'^action.html$', action_view.action, name='action'),
     url(r'^add_action.html$', action_view.add_action, name='add_action'),
+    url(r'^edit_action_(?P<aid>\d+).html$', action_view.edit_action, name='edit_action'),
+    url(r'^del_action.html$', action_view.del_action, name='del_action'),
 ]

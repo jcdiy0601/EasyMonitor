@@ -50,18 +50,14 @@ class AddTriggerForm(forms.Form):
             attrs={'class': 'form-control'}
         )
     )
-    enabled = fields.BooleanField(
+    enabled = fields.CharField(
         required=False,
         error_messages={
-            'required': '不能为空',
             'invalid': '格式错误',
         },
         label='是否启用',
         help_text='必填项',
-        widget=widgets.CheckboxInput(
-            attrs={'value': 'True',
-                   'checked': 'checked'}
-        )
+        widget=widgets.CheckboxInput()
     )
     memo = fields.CharField(
         required=False,
@@ -121,18 +117,14 @@ class EditTriggerForm(forms.Form):
             attrs={'class': 'form-control'}
         )
     )
-    enabled = fields.BooleanField(
+    enabled = fields.CharField(
         required=False,
         error_messages={
-            'required': '不能为空',
             'invalid': '格式错误',
         },
         label='是否启用',
         help_text='必填项',
-        widget=widgets.CheckboxInput(
-            attrs={'value': 'True',
-                   'checked': 'checked'}
-        )
+        widget=widgets.CheckboxInput()
     )
     memo = fields.CharField(
         required=False,

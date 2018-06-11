@@ -2,7 +2,7 @@
 
 {% load format_error_message %}
 
-{% block page-title %}创建报警策略{% endblock %}
+{% block page-title %}编辑报警策略{% endblock %}
 
 {% block page-header %}
     <h1 class="page-header"><i class="im-quill"></i> 报警策略</h1>
@@ -13,17 +13,17 @@
     <span>-></span>
     <li><a href="{% url 'action' %}">报警策略</a></li>
     <span>-></span>
-    <li><a href="{% url 'add_action' %}">创建报警策略</a></li>
+    <li><a href="{% url 'edit_action' aid %}">编辑报警策略</a></li>
 {% endblock %}
 
 {% block page-content %}
     <div class="panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">创建报警策略</h3>
+            <h3 class="panel-title">编辑报警策略</h3>
         </div>
         <!-- /.panel-heading -->
         <div class="panel-body">
-            <form class="form-horizontal hover-stripped" method="post" action="{% url 'add_action' %}">
+            <form class="form-horizontal hover-stripped" method="post" action="{% url 'edit_action' aid %}">
                 {% csrf_token %}
                 {% for field_obj in form_obj %}
                     <div class="form-group">
