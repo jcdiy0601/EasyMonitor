@@ -1,52 +1,33 @@
 {% extends 'index.html' %}
 {% load serialize %}
-{% load serialize_trigger %}
+{% load serialize_action %}
 
 {% block css %}
     <link href="/static/css/commons.css" rel="stylesheet">
 {% endblock %}
 
 {% block page-header %}
-    <h1 class="page-header"><i class="ec-chat"></i> 触发器</h1>
+    <h1 class="page-header"><i class="im-quill"></i> 报警策略</h1>
 {% endblock %}
 
 {% block page-path %}
     <li><a href="{% url 'index' %}">仪表盘</a></li>
     <span>-></span>
-    <li><a href="{% url 'trigger' %}">触发器</a></li>
+    <li><a href="{% url 'action' %}">报警策略</a></li>
 {% endblock %}
 
 {% block page-content %}
     <div class="panel-default">
         <!--Panel heading-->
         <div class="panel-heading">
-            <div class="panel-control">
-                <h3 class="panel-title">触发器</h3>
-                <div class="panel-control pull-right" style="margin-top: 5px;">
-                    <a href="{% url 'add_trigger' %}" class="btn btn-primary">
-                        <i class="ec-star"></i>
-                        创建触发器
-                    </a>
-                </div>
-                <div class="col-lg-2 col-md-2 pull-right">
-                <select name="template" class="form-control" id="select-template"
-                        style="float: right; height: 34px; margin-top: 5px;">
-                    {% if template_id == 0 %}
-                        <option value="0" selected="selected">所有</option>
-                    {% else %}
-                        <option value="0">所有</option>
-                    {% endif %}
-                    {% for template_obj in template_obj_list %}
-                        {% if template_id == template_obj.id %}
-                            <option value="{{ template_obj.id }}"
-                                    selected="selected">{{ template_obj.name }}</option>
-                        {% else %}
-                            <option value="{{ template_obj.id }}">{{ template_obj.name }}</option>
-                        {% endif %}
-                    {% endfor %}
-                </select>
+            <h3 class="panel-title">报警策略</h3>
+            <div class="panel-controls pull-right" style="margin-top: 5px;">
+                <a href="{% url 'add_action' %}" class="btn btn-primary">
+                    <i class="ec-star"></i>
+                    创建报警策略
+                </a>
             </div>
-            </div>
+
         </div>
         <!--Default panel contents-->
         <div class="panel-body">
@@ -59,24 +40,22 @@
                             <input type="checkbox">
                         </label>
                     </th>
-                    <th>触发器</th>
-                    <th>报警级别</th>
+                    <th>报警策略名称</th>
                     <th>是否启用</th>
                     <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
-                {% for trigger_obj in trigger_obj_list %}
+                {% for action_obj in action_obj_list %}
                     <tr>
                         <td>
                             <label class="checkbox">
-                                <input type="checkbox" name="trigger" value="{{ trigger_obj.id }}">
+                                <input type="checkbox" name="action" value="{{ action_obj.id }}">
                             </label>
                         </td>
-                        <td>{{ trigger_obj.name }}</td>
-                        <td>{% display_severity trigger_obj trigger_obj.severity %}</td>
-                        <td>{% display_enabled trigger_obj.enabled %}</td>
-                        <td>{% serialize_url "trigger" trigger_obj %}</td>
+                        <td>{{ action_obj.name }}</td>
+                        <td>{% display_enabled action_obj.enabled %}</td>
+                        <td>{% serialize_url "action" action_obj %}</td>
                     </tr>
                 {% endfor %}
                 </tbody>
@@ -87,7 +66,7 @@
                             <span id="selected_count" style="font-weight: bold">
                                 <span>0</span> 选择
                             </span>
-        <button id="delete_trigger" class="btn btn-danger">
+        <button id="delete_action" class="btn btn-danger">
             <i class="ec-star"></i>
             删除
         </button>
@@ -131,5 +110,5 @@
 {% endblock %}
 
 {% block js %}
-    <script type="text/javascript" src="/static/js/trigger.js"></script>
+    <script type="text/javascript" src="/static/js/action.js"></script>
 {% endblock %}

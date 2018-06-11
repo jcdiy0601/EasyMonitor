@@ -45,6 +45,6 @@ def display_enabled(enabled):
     :return:
     """
     if enabled:
-        return mark_safe('<i class="fa fa-check-circle"></i>')
+        return mark_safe('<i class="im-checkmark-circle"></i>')
     else:
-        return mark_safe('<i class ="fa fa-times-circle" ></i>')
+        return mark_safe('<i class ="im-cancel-circle" ></i>')

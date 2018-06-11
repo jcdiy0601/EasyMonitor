@@ -231,7 +231,7 @@ IP:{ip}
 开始时间:{start_time}
 持续时间:{duration}'''
     alert_msg_format = models.TextField(verbose_name='报警通知格式', default=_alert_msg_format)
-    recover_notice = models.BooleanField(verbose_name='故障恢复后是否发送通知', default=True)
+    recover_notice = models.BooleanField(verbose_name='故障恢复后是否发送通知', default=False)
     _recover_msg_format = '''主机:{hostname}
 IP:{ip}
 应用集:{name}

@@ -599,7 +599,7 @@ body.remove-scroll {
   overflow: hidden;
 }
 body.login-page {
-  background: #75b9e6;
+  /*background: #75b9e6;*/
 }
 body.login-page #login {
   margin: 10% auto 0 auto;

@@ -1,5 +1,6 @@
 from django.conf.urls import url
-from monitor_web.views import host_group_view, host_view, template_view, application_view, item_view, trigger_view
+from monitor_web.views import host_group_view, host_view, template_view, application_view, item_view, trigger_view, \
+    action_view
 
 urlpatterns = [
     # 主机组
@@ -35,4 +36,7 @@ urlpatterns = [
     url(r'^del_trigger.html$', trigger_view.del_trigger, name='del_trigger'),
     url(r'^select_application.html$', trigger_view.select_application, name='select_application'),
     url(r'^select_item.html$', trigger_view.select_item, name='select_item'),
+    # 报警策略
+    url(r'^action.html$', action_view.action, name='action'),
+    url(r'^add_action.html$', action_view.add_action, name='add_action'),
 ]

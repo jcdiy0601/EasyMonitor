@@ -66,7 +66,7 @@ def add_trigger(request):
         data_calc_func_args_list = request.POST.getlist('data_calc_func_args')
         count = 0
         while count < len(applications_id_list):
-            if applications_id_list[count] == '' and items_id_list[count] == '' and operator_list[count] == '':
+            if applications_id_list[count] == '' and items_id_list[count] == '' and threshold_list[count] == '':
                 applications_id_list.pop(count)
                 items_id_list.pop(count)
                 specified_item_key_list.pop(count)
@@ -149,7 +149,7 @@ def edit_trigger(request, *args, **kwargs):
         data_calc_func_args_list = request.POST.getlist('data_calc_func_args')
         count = 0
         while count < len(applications_id_list):
-            if applications_id_list[count] == '' and items_id_list[count] == '' and operator_list[count] == '':
+            if applications_id_list[count] == '' and items_id_list[count] == '' and threshold_list[count] == '':
                 applications_id_list.pop(count)
                 items_id_list.pop(count)
                 specified_item_key_list.pop(count)
