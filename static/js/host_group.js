@@ -1,16 +1,16 @@
 $(function () {
     // 全选
-    $("thead input").click(function () {
+    $("thead ins").click(function () {
         // 判断是否被点中
-        if ($(this).prop("checked")) {  // 点中
-            $("tbody input").prop("checked", true).parent().addClass("active");
+        if ($(this).parent().hasClass("checked")) {  // 点中
+            $("tbody input").prop("checked", true).parent().addClass("checked");
         } else {                       // 取消
-            $("tbody input").prop("checked", false).parent().removeClass("active");
+            $("tbody input").prop("checked", false).parent().removeClass("checked");
         }
     });
 
     // 计算被选中check-box个数
-    $("table input").click(function () {
+    $("table ins").click(function () {
         var count = 0;
         $("tbody input").each(function () {
             if ($(this).prop("checked")) {

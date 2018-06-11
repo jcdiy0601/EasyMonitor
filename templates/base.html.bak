@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyMonitor | 监控系统</title>
+
+
+    <!--STYLESHEET-->
+    <!--=================================================-->
+
+    <!--Open Sans Font [ OPTIONAL ] -->
+    <!--<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=latin" rel="stylesheet">-->
+
+
+    <!--Bootstrap Stylesheet [ REQUIRED ]-->
+    <link href="/static/plugin/nifty/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!--Nifty Stylesheet [ REQUIRED ]-->
+    <link href="/static/plugin/nifty/css/nifty.min.css" rel="stylesheet">
+
+
+    <!--Font Awesome [ OPTIONAL ]-->
+    <link href="/static/plugin/nifty/css/font-awesome.min.css" rel="stylesheet">
+
+
+    <!-- Create your own class to load custum image [ SAMPLE ]-->
+    <style>
+        .demo-my-bg {
+            background-image: url("/static/plugin/nifty/img/bg.jpg");
+        }
+    </style>
+
+    <!--SCRIPT-->
+    <!--=================================================-->
+
+    <!--Page Load Progress Bar [ OPTIONAL ]-->
+    <link href="/static/plugin/nifty/css/pace.min.css" rel="stylesheet">
+    <script src="/static/plugin/nifty/js/pace.min.js"></script>
+
+
+    <!--
+
+    REQUIRED
+    You must include this in your project.
+
+    RECOMMENDED
+    This category must be included but you may modify which plugins or components which should be included in your project.
+
+    OPTIONAL
+    Optional plugins. You may choose whether to include it in your project or not.
+
+
+    Detailed information and more samples can be found in the document.
+
+    -->
+    <link id="theme" href="/static/plugin/nifty/css/themes/type-a/theme-mint.min.css" rel="stylesheet">
+    {% block css %}{% endblock %}
+
+</head>
+
+<!--TIPS-->
+<!--You may remove all ID or Class names which contain "demo-", they are only used for demonstration. -->
+
+<body>
+
+{% block body %}body content{% endblock %}
+
+
+
+<!--JAVASCRIPT-->
+<!--=================================================-->
+
+<!--jQuery [ REQUIRED ]-->
+<script src="/static/plugin/nifty/js/jquery-2.1.1.min.js"></script>
+
+
+<!--BootstrapJS [ RECOMMENDED ]-->
+<script src="/static/plugin/nifty/js/bootstrap.min.js"></script>
+
+
+<!--Fast Click [ OPTIONAL ]-->
+<script src="/static/plugin/nifty/js/fastclick.min.js"></script>
+
+
+<!--Nifty Admin [ RECOMMENDED ]-->
+<script src="/static/plugin/nifty/js/nifty.min.js"></script>
+
+
+<!--
+
+REQUIRED
+You must include this in your project.
+
+RECOMMENDED
+This category must be included but you may modify which plugins or components which should be included in your project.
+
+OPTIONAL
+Optional plugins. You may choose whether to include it in your project or not.
+
+
+Detailed information and more samples can be found in the document.
+
+-->
+
+<script src="/static/plugin/jquery.cookie.js"></script>
+
+{% block js %}{% endblock %}
+</body>
+</html>

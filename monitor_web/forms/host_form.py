@@ -19,7 +19,7 @@ class AddHostForm(forms.Form):
             'max_length': '最大长度不能大于64位'
         },
         label='主机名称',
-        help_text='必填项，Agent与cmdb配置hostname一致（只对Agent做检测），SNMP、API输入管理IP',
+        help_text='必填项，Agent与cmdb配置hostname一致',
         widget=widgets.TextInput(
             attrs={'class': 'form-control'}
         )
