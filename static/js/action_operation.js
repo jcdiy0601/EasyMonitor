@@ -21,12 +21,12 @@ $(function () {
     });
 
     // 获取check-box id
-    $("#delete_action").click(function () {
+    $("#delete_action_operation").click(function () {
         if (parseInt($("#selected_count span").text()) !== 0) {
-            var actionList = [];
+            var actionOperationList = [];
             $("tbody input").each(function () {
                if ($(this).prop("checked")) {
-                   actionList.push($(this).val());
+                   actionOperationList.push($(this).val());
                }
             });
             // 显示模态对话框
@@ -47,12 +47,12 @@ $(function () {
                 $("#project-del-div").css("display", "none");
                 // 发送ajax删除数据
                 $.ajax({
-                    url: "del_action.html",
+                    url: "del_action_operation.html",
                     type: "POST",
                     dataType: "JSON",
                     headers: {"X-CSRFtoken": $.cookie("csrftoken")},
                     traditional: true,
-                    data: {"action_list": actionList},
+                    data: {"action_operation_list": actionOperationList},
                     success: function (response) {
                         if (response.status) {
                             window.location.reload();

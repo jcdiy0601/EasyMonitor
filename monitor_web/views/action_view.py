@@ -1,22 +1,17 @@
 #!/usr/bin/env python
 # Author: 'JiaChen'
 
-import json
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext as _
 from django.http import JsonResponse
-from django.conf import settings
 from monitor_data import models
 from monitor_web.forms import action_form
 from utils.pagination import Page
 from utils.log import Logger
 from utils.web_response import WebResponse
-from utils.redis_conn import redis_conn
-
-REDIS_OBJ = redis_conn(settings)
 
 
 @login_required
@@ -54,7 +49,6 @@ def add_action(request):
             except Exception as e:
                 Logger().log(message='创建报警策略失败,%s' % str(e), mode=False)
                 raise ValidationError(_('添加报警策略失败'), code='invalid')
-
         else:
             return render(request, 'add_action.html', {'form_obj': form_obj})
 
