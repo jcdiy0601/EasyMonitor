@@ -35,12 +35,13 @@ def display_is_admin(user_obj):
 
 
 @register.simple_tag
-def serialize_url(table_name, table_object):
+def serialize_operation(uid):
     """
     初始化项目编辑
-    :param table_name: 表名
-    :param table_object: 对象
+    :param uid: uid
     :return:
     """
-    temp = '<a href="/monitor_web/edit_%s_%s.html"><i class="ec-pencil"></i></a>' % (table_name, table_object.id)
+    temp = '<a href="/monitor_web/edit_user_%s.html"><button type="button" class="btn btn-xs btn-danger">编辑</button></a> | ' % uid
+    temp += '<a href="/monitor_web/change_pass_user_%s.html"><button type="button" class="btn btn-xs btn-danger">修改密码</button></a> | ' % uid
+    temp += '<a href="/monitor_web/change_permission_user_%s.html"><button type="button" class="btn btn-xs btn-danger">修改权限</button></a>' % uid
     return mark_safe(temp)

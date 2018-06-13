@@ -15,11 +15,13 @@ from utils.pagination import Page
 from utils.log import Logger
 from utils.web_response import WebResponse
 from utils.redis_conn import redis_conn
+from utils.permissions import check_permission
 
 REDIS_OBJ = redis_conn(settings)
 
 
 @login_required
+@check_permission
 def host_group(request):
     """主机组视图"""
     current_page = request.GET.get("p", 1)
@@ -33,6 +35,7 @@ def host_group(request):
 
 
 @login_required
+@check_permission
 def add_host_group(request):
     """添加主机组视图"""
     if request.method == 'GET':
@@ -57,6 +60,7 @@ def add_host_group(request):
 
 
 @login_required
+@check_permission
 def edit_host_group(request, *args, **kwargs):
     """修改主机组视图"""
     gid = kwargs['gid']
@@ -83,6 +87,7 @@ def edit_host_group(request, *args, **kwargs):
 
 
 @login_required
+@check_permission
 def del_host_group(request):
     """删除主机组视图"""
     if request.method == 'POST':

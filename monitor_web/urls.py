@@ -48,4 +48,9 @@ urlpatterns = [
     url(r'^del_action_operation.html$', action_operation_view.del_action_operation, name='del_action_operation'),
     # 用户管理
     url(r'^user.html$', user_view.user, name='user'),
+    url(r'^add_user.html$', user_view.add_user, name='add_user'),
+    url(r'^edit_user_(?P<uid>\d+).html$', user_view.edit_user, name='edit_user'),
+    url(r'^del_user.html$', user_view.del_user, name='del_user'),
+    url(r'^change_pass_user_(?P<uid>\d+).html$', user_view.change_pass_user, name='change_pass_user'),
+    url(r'^change_permission_user_(?P<uid>\d+).html$', user_view.change_permission_user, name='change_permission_user'),
 ]

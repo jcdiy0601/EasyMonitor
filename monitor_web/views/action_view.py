@@ -12,9 +12,11 @@ from monitor_web.forms import action_form
 from utils.pagination import Page
 from utils.log import Logger
 from utils.web_response import WebResponse
+from utils.permissions import check_permission
 
 
 @login_required
+@check_permission
 def action(request):
     """报警策略视图"""
     current_page = request.GET.get("p", 1)
@@ -28,6 +30,7 @@ def action(request):
 
 
 @login_required
+@check_permission
 def add_action(request):
     """创建报警策略视图"""
     if request.method == 'GET':
@@ -54,6 +57,7 @@ def add_action(request):
 
 
 @login_required
+@check_permission
 def edit_action(request, *args, **kwargs):
     """修改报警策略视图"""
     aid = kwargs['aid']
@@ -82,6 +86,7 @@ def edit_action(request, *args, **kwargs):
 
 
 @login_required
+@check_permission
 def del_action(request):
     """删除报警策略视图"""
     if request.method == 'POST':

@@ -14,11 +14,13 @@ from utils.pagination import Page
 from utils.log import Logger
 from utils.web_response import WebResponse
 from utils.redis_conn import redis_conn
+from utils.permissions import check_permission
 
 REDIS_OBJ = redis_conn(settings)
 
 
 @login_required
+@check_permission
 def application(request):
     """应用集视图"""
     template_id = request.GET.get('templateid')
@@ -49,6 +51,7 @@ def application(request):
 
 
 @login_required
+@check_permission
 def add_application(request):
     """创建应用集视图"""
     if request.method == 'GET':
@@ -73,6 +76,7 @@ def add_application(request):
 
 
 @login_required
+@check_permission
 def edit_application(request, *args, **kwargs):
     """编辑应用集视图"""
     aid = kwargs['aid']
@@ -108,6 +112,7 @@ def edit_application(request, *args, **kwargs):
 
 
 @login_required
+@check_permission
 def del_application(request):
     """删除应用集视图"""
     if request.method == 'POST':

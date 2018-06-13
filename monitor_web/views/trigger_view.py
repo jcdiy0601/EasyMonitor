@@ -15,11 +15,13 @@ from utils.pagination import Page
 from utils.log import Logger
 from utils.web_response import WebResponse
 from utils.redis_conn import redis_conn
+from utils.permissions import check_permission
 
 REDIS_OBJ = redis_conn(settings)
 
 
 @login_required
+@check_permission
 def trigger(request):
     """触发器视图"""
     template_id = request.GET.get('templateid')
@@ -50,6 +52,7 @@ def trigger(request):
 
 
 @login_required
+@check_permission
 def add_trigger(request):
     """创建触发器视图"""
     if request.method == 'GET':
@@ -125,6 +128,7 @@ def add_trigger(request):
 
 
 @login_required
+@check_permission
 def edit_trigger(request, *args, **kwargs):
     """编辑触发器视图"""
     tid = kwargs['tid']
@@ -213,6 +217,7 @@ def edit_trigger(request, *args, **kwargs):
 
 
 @login_required
+@check_permission
 def del_trigger(request):
     """删除触发器视图"""
     if request.method == 'POST':

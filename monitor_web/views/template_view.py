@@ -15,11 +15,13 @@ from utils.pagination import Page
 from utils.log import Logger
 from utils.web_response import WebResponse
 from utils.redis_conn import redis_conn
+from utils.permissions import check_permission
 
 REDIS_OBJ = redis_conn(settings)
 
 
 @login_required
+@check_permission
 def template(request):
     """模板视图"""
     host_group_id = request.GET.get('groupid')
@@ -50,6 +52,7 @@ def template(request):
 
 
 @login_required
+@check_permission
 def add_template(request):
     """创建模板视图"""
     if request.method == 'GET':
@@ -78,6 +81,7 @@ def add_template(request):
 
 
 @login_required
+@check_permission
 def edit_template(request, *args, **kwargs):
     """修改模板视图"""
     tid = kwargs['tid']
@@ -108,6 +112,7 @@ def edit_template(request, *args, **kwargs):
 
 
 @login_required
+@check_permission
 def del_template(request):
     """删除视图模板"""
     if request.method == 'POST':

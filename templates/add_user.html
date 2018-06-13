@@ -1,0 +1,54 @@
+{% extends 'index.html' %}
+
+{% load format_error_message %}
+
+{% block page-title %}创建用户{% endblock %}
+
+{% block page-header %}
+    <h1 class="page-header"><i class="ec-users"></i> 用户</h1>
+{% endblock %}
+
+{% block page-path %}
+    <li><a href="{% url 'index' %}">仪表盘</a></li>
+    <span>-></span>
+    <li><a href="{% url 'user' %}">用户</a></li>
+    <span>-></span>
+    <li><a href="{% url 'add_user' %}">创建用户</a></li>
+{% endblock %}
+
+{% block page-content %}
+    <div class="panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">创建用户</h3>
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <form class="form-horizontal hover-stripped" method="post" action="{% url 'add_user' %}">
+                {% csrf_token %}
+                {% for field_obj in form_obj %}
+                    <div class="form-group">
+                        <label for="{{ field_obj.id_for_label }}"
+                               class="col-lg-2 col-md-2 col-sm-12 control-label">{{ field_obj.label }}</label>
+                        <div class="col-lg-5 col-md-5">
+                            {{ field_obj }}
+                        </div>
+                        {% if field_obj.errors %}
+                            <span style="color: red">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                                {% error_msg field_obj.errors.as_json %}
+                            </span>
+                        {% else %}
+                            <span style="color: red">{{ field_obj.help_text }}</span>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                <div class="form-group">
+                    <div class="col-lg-2 pull-right">
+                        <button type="submit" class="btn btn-primary">保存</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- /.panel-body -->
+    </div>
+{% endblock %}

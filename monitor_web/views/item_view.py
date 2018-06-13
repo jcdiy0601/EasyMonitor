@@ -12,9 +12,11 @@ from monitor_web.forms import item_form
 from utils.pagination import Page
 from utils.log import Logger
 from utils.web_response import WebResponse
+from utils.permissions import check_permission
 
 
 @login_required
+@check_permission
 def item(request):
     """监控项视图"""
     application_id = request.GET.get('applicationid')
@@ -45,6 +47,7 @@ def item(request):
 
 
 @login_required
+@check_permission
 def add_item(request):
     """创建监控项视图"""
     if request.method == 'GET':
@@ -67,6 +70,7 @@ def add_item(request):
 
 
 @login_required
+@check_permission
 def edit_item(request, *args, **kwargs):
     """编辑监控项视图"""
     iid = kwargs['iid']
@@ -91,6 +95,7 @@ def edit_item(request, *args, **kwargs):
 
 
 @login_required
+@check_permission
 def del_item(request):
     """删除监控项视图"""
     if request.method == 'POST':

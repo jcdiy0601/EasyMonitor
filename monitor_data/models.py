@@ -42,6 +42,18 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
 
     class Meta:
         verbose_name_plural = '用户表'
+        permissions = (
+            ('can_show_user', '可访问用户页面'),
+            ('can_show_add_user', '可访问创建用户页面'),
+            ('can_add_user', '可创建用户'),
+            ('can_del_user', '可删除用户'),
+            ('can_show_edit_user', '可访问编辑用户页面'),
+            ('can_edit_user', '可编辑用户'),
+            ('can_show_change_pass_user', '可访问重置密码页面'),
+            ('can_change_pass_user', '可重置密码'),
+            ('can_show_change_permission_user', '可访问修改权限页面'),
+            ('can_change_permission_user', '可修改权限'),
+        )
 
     objects = UserProfileManager()
 
@@ -99,6 +111,14 @@ class Host(models.Model):
 
     class Meta:
         verbose_name_plural = '主机表'
+        permissions = (
+            ('can_show_host', '可访问主机页面'),
+            ('can_show_add_host', '可访问创建主机页面'),
+            ('can_add_host', '可创建主机'),
+            ('can_del_host', '可删除主机'),
+            ('can_show_edit_host', '可访问编辑主机页面'),
+            ('can_edit_host', '可编辑主机'),
+        )
 
     def __str__(self):
         return '%s %s' % (self.hostname, self.ip)
@@ -112,6 +132,14 @@ class HostGroup(models.Model):
 
     class Meta:
         verbose_name_plural = '主机组表'
+        permissions = (
+            ('can_show_host_group', '可访问主机组页面'),
+            ('can_show_add_host_group', '可访问创建主机组页面'),
+            ('can_add_host_group', '可创建主机组'),
+            ('can_del_host_group', '可删除主机组'),
+            ('can_show_edit_host_group', '可访问编辑主机组页面'),
+            ('can_edit_host_group', '可编辑主机组'),
+        )
 
     def __str__(self):
         return self.name
@@ -127,6 +155,14 @@ class Application(models.Model):
 
     class Meta:
         verbose_name_plural = '应用集表'
+        permissions = (
+            ('can_show_application', '可访问应用集页面'),
+            ('can_show_add_application', '可访问创建应用集页面'),
+            ('can_add_application', '可创建应用集'),
+            ('can_del_application', '可删除应用集'),
+            ('can_show_edit_application', '可访问编辑应用集页面'),
+            ('can_edit_application', '可编辑应用集'),
+        )
 
     def __str__(self):
         return self.name
@@ -146,6 +182,14 @@ class Item(models.Model):
 
     class Meta:
         verbose_name_plural = '监控项表'
+        permissions = (
+            ('can_show_item', '可访问监控项页面'),
+            ('can_show_add_item', '可访问创建监控项页面'),
+            ('can_add_item', '可创建监控项'),
+            ('can_del_item', '可删除监控项'),
+            ('can_show_edit_item', '可访问编辑监控项页面'),
+            ('can_edit_item', '可编辑监控项'),
+        )
 
     def __str__(self):
         return '%s %s' % (self.name, self.key)
@@ -159,6 +203,14 @@ class Template(models.Model):
 
     class Meta:
         verbose_name_plural = '模板表'
+        permissions = (
+            ('can_show_template', '可访问模板页面'),
+            ('can_show_add_template', '可访问创建模板页面'),
+            ('can_add_template', '可创建模板'),
+            ('can_del_template', '可删除模板'),
+            ('can_show_edit_template', '可访问编辑模板页面'),
+            ('can_edit_template', '可编辑模板'),
+        )
 
     def __str__(self):
         return self.name
@@ -181,6 +233,14 @@ class Trigger(models.Model):
 
     class Meta:
         verbose_name_plural = '触发器表'
+        permissions = (
+            ('can_show_trigger', '可访问触发器页面'),
+            ('can_show_add_trigger', '可访问创建触发器页面'),
+            ('can_add_trigger', '可创建触发器'),
+            ('can_del_trigger', '可删除触发器'),
+            ('can_show_edit_trigger', '可访问编辑触发器页面'),
+            ('can_edit_trigger', '可编辑触发器'),
+        )
 
     def __str__(self):
         return self.name
@@ -246,6 +306,14 @@ IP:{ip}
 
     class Meta:
         verbose_name_plural = '报警策略表'
+        permissions = (
+            ('can_show_action', '可访问报警策略页面'),
+            ('can_show_add_action', '可访问创建报警策略页面'),
+            ('can_add_action', '可创建报警策略'),
+            ('can_del_action', '可删除报警策略'),
+            ('can_show_edit_action', '可访问编辑报警策略页面'),
+            ('can_edit_action', '可编辑报警策略'),
+        )
 
     def __str__(self):
         return self.name
@@ -268,6 +336,14 @@ class ActionOperation(models.Model):
 
     class Meta:
         verbose_name_plural = '报警动作表'
+        permissions = (
+            ('can_show_action_operation', '可访问报警动作页面'),
+            ('can_show_add_action_operation', '可访问创建报警动作页面'),
+            ('can_add_action_operation', '可创建报警动作'),
+            ('can_del_action_operation', '可删除报警动作'),
+            ('can_show_edit_action_operation', '可访问编辑报警动作页面'),
+            ('can_edit_action_operation', '可编辑报警动作'),
+        )
 
     def __str__(self):
         return self.name
