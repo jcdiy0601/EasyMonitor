@@ -15,7 +15,7 @@ def serialize_url(table_name, table_object):
     :param table_object: 对象
     :return:
     """
-    temp = '<a href="/monitor_web/edit_%s_%s.html"><i class="fa-edit"></i></a>' % (table_name, table_object.id)
+    temp = '<a href="/monitor_web/edit_%s_%s.html"><i class="ec-pencil"></i></a>' % (table_name, table_object.id)
     return mark_safe(temp)
 
 

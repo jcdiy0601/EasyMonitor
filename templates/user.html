@@ -1,0 +1,130 @@
+{% extends 'index.html' %}
+{% load serialize %}
+{% load serialize_user %}
+
+{% block css %}
+    <link href="/static/css/commons.css" rel="stylesheet">
+{% endblock %}
+
+{% block page-header %}
+    <h1 class="page-header"><i class="ec-users"></i> 用户</h1>
+{% endblock %}
+
+{% block page-path %}
+    <li><a href="{% url 'index' %}">仪表盘</a></li>
+    <span>-></span>
+    <li><a href="{% url 'user' %}">用户</a></li>
+{% endblock %}
+
+{% block page-content %}
+    <div class="panel-default">
+        <!--Panel heading-->
+        <div class="panel-heading">
+            <h3 class="panel-title">用户</h3>
+            <div class="panel-controls pull-right" style="margin-top: 5px;">
+                <a href="" class="btn btn-primary">
+                    <i class="ec-star"></i>
+                    创建用户
+                </a>
+            </div>
+
+        </div>
+        <!--Default panel contents-->
+        <div class="panel-body">
+            <!--Table-->
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>
+                        <label class="checkbox">
+                            <input type="checkbox">
+                        </label>
+                    </th>
+                    <th>邮箱</th>
+                    <th>姓名</th>
+                    <th>手机号</th>
+                    <th>微信号</th>
+                    <th>是否可登录</th>
+                    <th>是否为管理员</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for user_obj in user_obj_list %}
+                    <tr>
+                        <td>
+                            <label class="checkbox">
+                                <input type="checkbox" name="user" value="{{ user_obj.id }}">
+                            </label>
+                        </td>
+                        <td>{{ user_obj.email }}</td>
+                        <td>{{ user_obj.name }}</td>
+                        {% if user_obj.phone %}
+                            <td>{{ user_obj.phone }}</td>
+                        {% else %}
+                            <td></td>
+                        {% endif %}
+                        {% if user_obj.weixin %}
+                            <td>{{ user_obj.weixin }}</td>
+                        {% else %}
+                            <td></td>
+                        {% endif %}
+                        <td>{% display_is_active user_obj %}</td>
+                        <td>{% display_is_admin user_obj %}</td>
+                        <td>{% serialize_url "user" user_obj %}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="action_buttons" style="margin-top: 10px;">
+                            <span id="selected_count" style="font-weight: bold">
+                                <span>0</span> 选择
+                            </span>
+        <button id="delete_user" class="btn btn-danger">
+            <i class="ec-star"></i>
+            删除
+        </button>
+    </div>
+
+    <div>
+        <div class="right">
+            <ul class="pagination pagination-sm no-margin">
+                {{ page_str }}
+            </ul>
+        </div>
+    </div>
+
+    <!--模态-->
+    <div id="project-del-div" class="bootbox modal fade bootbox-confirm in" tabindex="-1" role="dialog"
+         aria-hidden="false"
+         style="display: none; padding-right: 17px;">
+        <div class="modal-backdrop fade in" style="height: 100%; z-index:10"></div>
+        <div class="modal-dialog" style="margin-top: 200px; z-index: 20">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button id="close-modal-div" type="button" class="bootbox-close-button close" data-dismiss="modal"
+                            aria-hidden="true"
+                            style="margin-top: -10px;">×
+                    </button>
+                    <div class="bootbox-body">确定删除?</div>
+                </div>
+                <div class="modal-footer">
+                    <button id="cancel-del" data-bb-handler="cancel" type="button" class="btn btn-default">取消</button>
+                    <button id="confirm-del" data-bb-handler="confirm" type="button" class="btn btn-danger">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--警告-->
+    <div id="project-del-fall" class="alert alert-danger fade in" style="display: none; position: fixed; top:50px;right:0;left:800px">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <strong>删除失败!</strong>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript" src="/static/js/user.js"></script>
+{% endblock %}

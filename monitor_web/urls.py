@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from monitor_web.views import host_group_view, host_view, template_view, application_view, item_view, trigger_view, \
-    action_view, action_operation_view
+    action_view, action_operation_view, user_view
 
 urlpatterns = [
     # 主机组
@@ -46,4 +46,6 @@ urlpatterns = [
     url(r'^add_action_operation.html$', action_operation_view.add_action_operation, name='add_action_operation'),
     url(r'^edit_action_operation_(?P<aid>\d+).html$', action_operation_view.edit_action_operation, name='edit_action_operation'),
     url(r'^del_action_operation.html$', action_operation_view.del_action_operation, name='del_action_operation'),
+    # 用户管理
+    url(r'^user.html$', user_view.user, name='user'),
 ]
