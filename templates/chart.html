@@ -1,0 +1,75 @@
+{% extends 'index.html' %}
+{% load serialize %}
+
+{% block css %}
+    <link href="/static/css/commons.css" rel="stylesheet">
+{% endblock %}
+
+{% block page-header %}
+    <h1 class="page-header"><i class="st-chart"></i> 图形</h1>
+{% endblock %}
+
+{% block page-path %}
+    <li><a href="{% url 'index' %}">仪表盘</a></li>
+    <span>-></span>
+    <li><a href="{% url 'chart' %}">图形</a></li>
+{% endblock %}
+
+{% block page-content %}
+    <div class="panel-default">
+        <!--Panel heading-->
+        <div class="panel-heading">
+            <h3 class="panel-title">图形</h3>
+            <div class="col-lg-2 col-md-2 pull-right">
+                <select name="item" class="form-control" id="select-item"
+                        style="float: right; height: 34px; margin-top: 5px;">
+                        <option value="0">所有</option>
+                </select>
+            </div>
+            <div class="col-lg-2 col-md-2 pull-right">
+                <select name="application" class="form-control" id="select-application"
+                        style="float: right; height: 34px; margin-top: 5px;">
+                        <option value="0">所有</option>
+                </select>
+            </div>
+            <div class="col-lg-2 col-md-2 pull-right">
+                <select name="host" class="form-control" id="select-host"
+                        style="float: right; height: 34px; margin-top: 5px;">
+                        <option value="0">所有</option>
+                        {% for host_obj in host_obj_list %}
+                        <option value="{{ host_obj.id }}">{{ host_obj.ip }}</option>
+                        {% endfor %}
+                </select>
+            </div>
+            <div class="col-lg-2 col-md-2 pull-right">
+                <select name="group" class="form-control" id="select-host-group"
+                        style="float: right; height: 34px; margin-top: 5px;">
+                    {% if host_group_id == 0 %}
+                        <option value="0" selected="selected">所有</option>
+                    {% else %}
+                        <option value="0">所有</option>
+                    {% endif %}
+                    {% for host_group_obj in host_group_obj_list %}
+                        {% if host_group_id == host_group_obj.id %}
+                            <option value="{{ host_group_obj.id }}"
+                                    selected="selected">{{ host_group_obj.name }}</option>
+                        {% else %}
+                            <option value="{{ host_group_obj.id }}">{{ host_group_obj.name }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+
+
+        </div>
+        <!--Default panel contents-->
+        <div class="panel-body">
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block js %}
+        <script type="text/javascript" src="/static/js/chart.js"></script>
+{% endblock %}

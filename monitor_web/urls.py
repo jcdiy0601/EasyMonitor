@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from monitor_web.views import host_group_view, host_view, template_view, application_view, item_view, trigger_view, \
-    action_view, action_operation_view, user_view
+    action_view, action_operation_view, user_view, chart_view
 
 urlpatterns = [
     # 主机组
@@ -53,4 +53,7 @@ urlpatterns = [
     url(r'^del_user.html$', user_view.del_user, name='del_user'),
     url(r'^change_pass_user_(?P<uid>\d+).html$', user_view.change_pass_user, name='change_pass_user'),
     url(r'^change_permission_user_(?P<uid>\d+).html$', user_view.change_permission_user, name='change_permission_user'),
+    # 图形
+    url(r'^chart.html$', chart_view.chart, name='chart'),
+    url(r'^select_host_group_for_chart.html$', chart_view.select_host_group_for_chart, name='select_host_group_for_chart'),
 ]
