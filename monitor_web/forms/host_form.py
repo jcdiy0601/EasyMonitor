@@ -45,6 +45,16 @@ class AddHostForm(forms.Form):
                    'size': 10}
         )
     )
+    template_id = fields.MultipleChoiceField(
+        required=False,
+        error_messages={'invalid': '格式错误'},
+        label='模板',
+        choices=[],
+        widget=widgets.SelectMultiple(
+            attrs={'class': 'form-control',
+                   'size': 10}
+        )
+    )
     monitor_by = fields.CharField(
         error_messages={'invalid': '格式错误'},
         label='监控方式',
@@ -84,6 +94,7 @@ class AddHostForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(AddHostForm, self).__init__(*args, **kwargs)
         self.fields['host_group_id'].choices = models.HostGroup.objects.values_list('id', 'name')
+        self.fields['template_id'].choices = models.Template.objects.values_list('id', 'name')
 
     def clean_hostname(self):
         hostname = self.cleaned_data.get('hostname')
@@ -124,6 +135,16 @@ class EditHostForm(forms.Form):
         required=False,
         error_messages={'invalid': '格式错误'},
         label='主机组',
+        choices=[],
+        widget=widgets.SelectMultiple(
+            attrs={'class': 'form-control',
+                   'size': 10}
+        )
+    )
+    template_id = fields.MultipleChoiceField(
+        required=False,
+        error_messages={'invalid': '格式错误'},
+        label='模板',
         choices=[],
         widget=widgets.SelectMultiple(
             attrs={'class': 'form-control',
@@ -177,6 +198,11 @@ class EditHostForm(forms.Form):
         query_set = models.Host.objects.filter(id=self.hid).values('host_groups__id')
         for item in query_set:
             self.fields['host_group_id'].initial.append(item['host_groups__id'])
+        self.fields['template_id'].choices = models.Template.objects.values_list('id', 'name')
+        self.fields['template_id'].initial = []
+        query_set = models.Host.objects.filter(id=self.hid).values('templates__id')
+        for item in query_set:
+            self.fields['template_id'].initial.append(item['templates__id'])
         self.fields['monitor_by'].initial = host_obj.monitor_by
         self.fields['status'].initial = host_obj.status
         self.fields['host_alive_check_interval'].initial = host_obj.host_alive_check_interval

@@ -1,75 +1,115 @@
 {% extends 'index.html' %}
 {% load serialize %}
+{% load serialize_chart %}
 
 {% block css %}
     <link href="/static/css/commons.css" rel="stylesheet">
 {% endblock %}
 
 {% block page-header %}
-    <h1 class="page-header"><i class="st-chart"></i> 图形</h1>
+    <h1 class="page-header"><i class="st-cube"></i> 图表</h1>
 {% endblock %}
 
 {% block page-path %}
     <li><a href="{% url 'index' %}">仪表盘</a></li>
     <span>-></span>
-    <li><a href="{% url 'chart' %}">图形</a></li>
+    <li><a href="{% url 'chart' %}">图表</a></li>
 {% endblock %}
 
 {% block page-content %}
     <div class="panel-default">
         <!--Panel heading-->
         <div class="panel-heading">
-            <h3 class="panel-title">图形</h3>
-            <div class="col-lg-2 col-md-2 pull-right">
-                <select name="item" class="form-control" id="select-item"
-                        style="float: right; height: 34px; margin-top: 5px;">
-                        <option value="0">所有</option>
-                </select>
+            <div class="panel-control">
+                <h3 class="panel-title">图表</h3>
+                <div class="panel-control pull-right" style="margin-top: 5px;">
+                    <a href="{% url 'add_chart' %}" class="btn btn-primary">
+                        <i class="ec-star"></i>
+                        创建图表
+                    </a>
+                </div>
             </div>
-            <div class="col-lg-2 col-md-2 pull-right">
-                <select name="application" class="form-control" id="select-application"
-                        style="float: right; height: 34px; margin-top: 5px;">
-                        <option value="0">所有</option>
-                </select>
-            </div>
-            <div class="col-lg-2 col-md-2 pull-right">
-                <select name="host" class="form-control" id="select-host"
-                        style="float: right; height: 34px; margin-top: 5px;">
-                        <option value="0">所有</option>
-                        {% for host_obj in host_obj_list %}
-                        <option value="{{ host_obj.id }}">{{ host_obj.ip }}</option>
-                        {% endfor %}
-                </select>
-            </div>
-            <div class="col-lg-2 col-md-2 pull-right">
-                <select name="group" class="form-control" id="select-host-group"
-                        style="float: right; height: 34px; margin-top: 5px;">
-                    {% if host_group_id == 0 %}
-                        <option value="0" selected="selected">所有</option>
-                    {% else %}
-                        <option value="0">所有</option>
-                    {% endif %}
-                    {% for host_group_obj in host_group_obj_list %}
-                        {% if host_group_id == host_group_obj.id %}
-                            <option value="{{ host_group_obj.id }}"
-                                    selected="selected">{{ host_group_obj.name }}</option>
-                        {% else %}
-                            <option value="{{ host_group_obj.id }}">{{ host_group_obj.name }}</option>
-                        {% endif %}
-                    {% endfor %}
-                </select>
-            </div>
-
-
         </div>
         <!--Default panel contents-->
         <div class="panel-body">
+            <!--Table-->
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>
+                        <label class="checkbox">
+                            <input type="checkbox">
+                        </label>
+                    </th>
+                    <th>名称</th>
+                    <th>图表类型</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for chart_obj in chart_obj_list %}
+                    <tr>
+                        <td>
+                            <label class="checkbox">
+                                <input type="checkbox" name="chart" value="{{ chart_obj.id }}">
+                            </label>
+                        </td>
+                        <td>{{ chart_obj.name }}</td>
+                        <td>{% display_chart_type chart_obj chart_obj.chart_type %}</td>
+                        <td>{% serialize_url "chart" chart_obj %}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="action_buttons" style="margin-top: 10px;">
+                            <span id="selected_count" style="font-weight: bold">
+                                <span>0</span> 选择
+                            </span>
+        <button id="delete_chart" class="btn btn-danger">
+            <i class="ec-star"></i>
+            删除
+        </button>
+    </div>
 
+    <div>
+        <div class="right">
+            <ul class="pagination pagination-sm no-margin">
+                {{ page_str }}
+            </ul>
         </div>
     </div>
 
+    <!--模态-->
+    <div id="project-del-div" class="bootbox modal fade bootbox-confirm in" tabindex="-1" role="dialog"
+         aria-hidden="false"
+         style="display: none; padding-right: 17px;">
+        <div class="modal-backdrop fade in" style="height: 100%; z-index:10"></div>
+        <div class="modal-dialog" style="margin-top: 200px; z-index: 20">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button id="close-modal-div" type="button" class="bootbox-close-button close" data-dismiss="modal"
+                            aria-hidden="true"
+                            style="margin-top: -10px;">×
+                    </button>
+                    <div class="bootbox-body">确定删除?</div>
+                </div>
+                <div class="modal-footer">
+                    <button id="cancel-del" data-bb-handler="cancel" type="button" class="btn btn-default">取消</button>
+                    <button id="confirm-del" data-bb-handler="confirm" type="button" class="btn btn-danger">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--警告-->
+    <div id="project-del-fall" class="alert alert-danger fade in" style="display: none; position: fixed; top:50px;right:0;left:800px">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <strong>删除失败!</strong>
+    </div>
 {% endblock %}
 
 {% block js %}
-        <script type="text/javascript" src="/static/js/chart.js"></script>
+    <script type="text/javascript" src="/static/js/chart.js"></script>
 {% endblock %}

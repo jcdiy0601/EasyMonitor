@@ -66,18 +66,20 @@ def add_host(request):
         form_obj = host_form.AddHostForm(request.POST)
         if form_obj.is_valid():
             host_group_id_list = form_obj.cleaned_data.pop('host_group_id')
+            template_id_list = form_obj.cleaned_data.pop('template_id')
             data = form_obj.cleaned_data
             try:
                 with transaction.atomic():
                     host_obj = models.Host.objects.create(**data)
                     host_obj.host_groups.add(*host_group_id_list)
                     if data['monitor_by'] == 'agent':   # 客户端模式要添加默认模板	Template OS Linux, Template App EasyMonitor Agent
-                        template_id_list = []
                         template_os_linux_id = models.Template.objects.filter(name='Template OS Linux').first().id
                         template_app_easymonitor_agent_id = models.Template.objects.filter(name='Template App EasyMonitor Agent').first().id
                         template_id_list.append(template_os_linux_id)
                         template_id_list.append(template_app_easymonitor_agent_id)
                         host_obj.templates.add(*template_id_list)
+                    else:
+                        pass
                 Logger().log(message='创建主机成功,%s' % host_obj.hostname, mode=True)
                 return redirect('/monitor_web/host.html')
             except Exception as e:
@@ -120,6 +122,7 @@ def edit_host(request, *args, **kwargs):
         form_obj = host_form.EditHostForm(request.POST, initial={'hid': hid})
         if form_obj.is_valid():
             host_group_id_list = form_obj.cleaned_data.pop('host_group_id')
+            template_id_list = form_obj.cleaned_data.pop('template_id')
             data = form_obj.cleaned_data
             try:
                 with transaction.atomic():
@@ -127,6 +130,7 @@ def edit_host(request, *args, **kwargs):
                     old_hostname = host_obj.hostname
                     models.Host.objects.filter(id=hid).update(**data)
                     host_obj.host_groups.set(host_group_id_list)
+                    host_obj.templates.set(template_id_list)
                     if data['hostname'] != old_hostname:    # 主机名变更了
                         # 修改redis中相关数据
                         alert_counter_redis_key = settings.ALERT_COUNTER_REDIS_KEY

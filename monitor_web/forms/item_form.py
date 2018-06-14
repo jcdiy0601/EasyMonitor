@@ -59,7 +59,8 @@ class AddItemForm(forms.Form):
             'max_length': '最大长度不能大于64位'
         },
         label='数据单位',
-        widget=widgets.TextInput(
+        widget=widgets.Select(
+            choices=[('', '无'), ('KB', 'KB'), ('MB', 'MB'), ('GB', 'GB'), ('%', '百分比'), ('KB/s', 'KB/s'), ('MB/s', 'MB/s'),],
             attrs={'class': 'form-control'}
         )
     )
@@ -133,7 +134,8 @@ class EditItemForm(forms.Form):
             'max_length': '最大长度不能大于64位'
         },
         label='数据单位',
-        widget=widgets.TextInput(
+        widget=widgets.Select(
+            choices=[('', '无'), ('KB', 'KB'), ('MB', 'MB'), ('GB', 'GB'), ('%', '百分比'), ('KB/s', 'KB/s'), ('MB/s', 'MB/s'), ],
             attrs={'class': 'form-control'}
         )
     )

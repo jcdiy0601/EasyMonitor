@@ -177,7 +177,16 @@ class Item(models.Model):
         ('float', '小数'),
     )
     data_type = models.CharField(verbose_name='数据类型', max_length=64, choices=data_type_choices)
-    data_unit = models.CharField(verbose_name='数据单位', max_length=64, null=True, blank=True)
+    data_unit_choices = (
+        ('', '无'),
+        ('KB', 'KB'),
+        ('MB', 'MB'),
+        ('GB', 'GB'),
+        ('%', '百分比'),
+        ('KB/s', 'KB/s'),
+        ('MB/s', 'MB/s'),
+    )
+    data_unit = models.CharField(verbose_name='数据单位', max_length=64, choices=data_unit_choices, null=True, blank=True)
     memo = models.TextField(verbose_name='备注', null=True, blank=True)
 
     class Meta:
@@ -343,6 +352,34 @@ class ActionOperation(models.Model):
             ('can_del_action_operation', '可删除报警动作'),
             ('can_show_edit_action_operation', '可访问编辑报警动作页面'),
             ('can_edit_action_operation', '可编辑报警动作'),
+        )
+
+    def __str__(self):
+        return self.name
+
+
+class Chart(models.Model):
+    """图表"""
+    name = models.CharField(verbose_name='图表名称', max_length=64, unique=True)
+    chart_type_choices = (
+        ('line', '线型图'),
+        ('area', '面积图'),
+        ('pie', '饼图'),
+    )
+    chart_type = models.CharField(verbose_name='图表类型', max_length=64, choices=chart_type_choices)
+    templates = models.ForeignKey(verbose_name='所属模板', to='Template')
+    items = models.ManyToManyField(verbose_name='所属监控项', to='Item')
+    memo = models.TextField(verbose_name='备注', null=True, blank=True)
+
+    class Meta:
+        verbose_name_plural = '图表'
+        permissions = (
+            ('can_show_chart', '可访问图表页面'),
+            ('can_show_add_chart', '可访问创建图表页面'),
+            ('can_add_chart', '可创建图表'),
+            ('can_del_chart', '可删除图表'),
+            ('can_show_edit_chart', '可访问编辑图表页面'),
+            ('can_edit_chart', '可编辑图表'),
         )
 
     def __str__(self):

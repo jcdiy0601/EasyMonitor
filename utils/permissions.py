@@ -420,6 +420,49 @@ perm_dic = {
         'url': 'edit_action_operation',
         'method': 'POST',
         'args': []
+    },
+    # 图表
+    # 可访问图表页面
+    'monitor_data.can_show_chart': {
+        'url_type': 0,
+        'url': 'chart',
+        'method': 'GET',
+        'args': []
+    },
+    # 可访问创建图表页面
+    'monitor_data.can_show_add_chart': {
+        'url_type': 0,
+        'url': 'add_chart',
+        'method': 'GET',
+        'args': []
+    },
+    # 可创建图表
+    'monitor_data.can_add_chart': {
+        'url_type': 0,
+        'url': 'add_chart',
+        'method': 'POST',
+        'args': []
+    },
+    # 可删除图表
+    'monitor_data.can_del_chart': {
+        'url_type': 0,
+        'url': 'del_chart',
+        'method': 'POST',
+        'args': []
+    },
+    # 可访问编辑图表页面
+    'monitor_data.can_show_edit_chart': {
+        'url_type': 0,
+        'url': 'edit_chart',
+        'method': 'GET',
+        'args': []
+    },
+    # 可编辑图表
+    'monitor_data.can_edit_chart': {
+        'url_type': 0,
+        'url': 'edit_chart',
+        'method': 'POST',
+        'args': []
     }
 }
 
