@@ -1,5 +1,4 @@
 {% extends 'index.html' %}
-{% load serialize %}
 {% load serialize_chart %}
 
 {% block css %}
@@ -43,7 +42,6 @@
                     </th>
                     <th>名称</th>
                     <th>图表类型</th>
-                    <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -56,7 +54,6 @@
                         </td>
                         <td>{{ chart_obj.name }}</td>
                         <td>{% display_chart_type chart_obj chart_obj.chart_type %}</td>
-                        <td>{% serialize_url "chart" chart_obj %}</td>
                     </tr>
                 {% endfor %}
                 </tbody>

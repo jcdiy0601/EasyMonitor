@@ -368,6 +368,7 @@ class Chart(models.Model):
     )
     chart_type = models.CharField(verbose_name='图表类型', max_length=64, choices=chart_type_choices)
     templates = models.ForeignKey(verbose_name='所属模板', to='Template')
+    applications = models.ForeignKey(verbose_name='所属应用集', to='Application')
     items = models.ManyToManyField(verbose_name='所属监控项', to='Item')
     memo = models.TextField(verbose_name='备注', null=True, blank=True)
 

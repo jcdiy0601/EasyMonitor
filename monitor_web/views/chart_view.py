@@ -37,6 +37,7 @@ def add_chart(request):
         form_obj = chart_form.AddChartForm()
         return render(request, 'add_chart.html', {'form_obj': form_obj})
     elif request.method == 'POST':
+        print(request.POST)
         form_obj = chart_form.AddChartForm(request.POST)
         if form_obj.is_valid():
             item_id_list = form_obj.cleaned_data.pop('item_id')
@@ -100,4 +101,26 @@ def del_chart(request):
             response.status = False
             response.error = str(e)
             Logger().log(message='删除图表失败,%s' % str(e), mode=False)
+        return JsonResponse(response.__dict__)
+
+
+@login_required
+def get_application(request):
+    if request.method == 'POST':
+        response = WebResponse()
+        template_id = request.POST.get('template_id')
+        template_obj = models.Template.objects.filter(id=template_id).first()
+        data = list(template_obj.applications.all().values('id', 'name'))
+        response.data = data
+        return JsonResponse(response.__dict__)
+
+
+@login_required
+def get_item(request):
+    if request.method == 'POST':
+        response = WebResponse()
+        application_id = request.POST.get('application_id')
+        application_obj = models.Application.objects.filter(id=application_id).first()
+        data = list(application_obj.items.all().values('id', 'name', 'key'))
+        response.data = data
         return JsonResponse(response.__dict__)

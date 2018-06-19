@@ -45,6 +45,17 @@ class AddChartForm(forms.Form):
             attrs={'class': 'form-control'}
         )
     )
+    applications_id = fields.IntegerField(
+        error_messages={'required': '不能为空',
+                        'invalid': '格式错误'
+                        },
+        label='应用集',
+        help_text='必填项',
+        widget=widgets.Select(
+            choices=[],
+            attrs={'class': 'form-control'}
+        )
+    )
     item_id = fields.MultipleChoiceField(
         error_messages={'required': '不能为空',
                         'invalid': '格式错误'
