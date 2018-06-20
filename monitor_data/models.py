@@ -370,6 +370,7 @@ class Chart(models.Model):
     templates = models.ForeignKey(verbose_name='所属模板', to='Template')
     applications = models.ForeignKey(verbose_name='所属应用集', to='Application')
     items = models.ManyToManyField(verbose_name='所属监控项', to='Item')
+    auto = models.BooleanField(verbose_name='是否自动', default=False)
     memo = models.TextField(verbose_name='备注', null=True, blank=True)
 
     class Meta:

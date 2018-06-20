@@ -27,12 +27,6 @@
                 </select>
             </div>
             <div class="col-lg-2 col-md-2 pull-right">
-                <select name="template" class="form-control" id="select-template"
-                        style="float: right; height: 34px; margin-top: 5px;">
-                    <option value="0">所有</option>
-                </select>
-            </div>
-            <div class="col-lg-2 col-md-2 pull-right">
                 <select name="host" class="form-control" id="select-host"
                         style="float: right; height: 34px; margin-top: 5px;">
                     <option value="0">所有</option>
@@ -59,20 +53,18 @@
                     {% endfor %}
                 </select>
             </div>
-
-
         </div>
         <!--Default panel contents-->
         <div class="panel-body">
             <td class="fc-header-right">
-                <button id="search-time-5-minute" type="button" class="btn" search-time="5">5分钟</button>
-                <button type="button" class="btn btn-default">30分钟</button>
-                <button type="button" class="btn btn-default">1小时</button>
-                <button type="button" class="btn btn-default">1天</button>
-                <button type="button" class="btn btn-default">1周</button>
-                <button type="button" class="btn btn-default">1个月</button>
-                <button type="button" class="btn btn-default">3个月</button>
-                <button type="button" class="btn btn-default">1年</button>
+                <button type="button" class="btn" search-time="300">5分钟</button>
+                <button type="button" class="btn btn-default" search-time="3600">1小时</button>
+                <button type="button" class="btn btn-default" search-time="10800">3小时</button>
+                <button type="button" class="btn btn-default" search-time="86400">1天</button>
+                <button type="button" class="btn btn-default" search-time="604800">7天</button>
+                <button type="button" class="btn btn-default" search-time="2592000">1个月</button>
+                <button type="button" class="btn btn-default" search-time="7776000">3个月</button>
+                <button type="button" class="btn btn-default" search-time="31536000">1年</button>
             </td>
             <div id="show-chart" style="max-width:1200px;height:400px">
 
