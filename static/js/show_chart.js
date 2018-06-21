@@ -3,6 +3,7 @@ $(function () {
     // 选择主机组
 
     $("#select-host-group").on("change", function () {
+        $("#show-chart").empty();
         var hostGroupID = $("#select-host-group").val();
         if (hostGroupID === '0') {
             $("#select-host").empty();
@@ -40,6 +41,7 @@ $(function () {
 
     // 选择主机
     $("#select-host").on("change", function () {
+        $("#show-chart").empty();
         var hostGroupID = $("#select-host-group").val();
         var hostID = $("#select-host").val();
         if (hostID === '0') {
@@ -73,12 +75,14 @@ $(function () {
 
     // 选择图
     $("#select-chart").on("change", function () {
+        // 恢复按钮
+        $("button").removeAttr("disabled");
         // 恢复默认5分钟按钮
         $("button[search-time='300']").removeClass("btn-default").siblings().addClass("btn-default");
         // 获取并渲染数据
         var chartID = $("#select-chart").val();
         var chartName = $("#select-chart").find("option:selected").text();
-        var searchTime = parseInt($("button[search-time='300']").attr("search-time"));
+        var searchTime = 300;
         var hostID = $("#select-host").val();
         if (chartID === '0') {
             return false;
@@ -211,6 +215,48 @@ $(function () {
                                     }
                                 },
                                 series: [],
+                                credits: {
+                                    enabled: false // 禁用版权信息
+                                }
+                            });
+                        } else {
+                            $("button").attr("disabled", "disabled");
+                            var used = response.data.chart_data[0].data;
+                            var unused = 100 - response.data.chart_data[0].data;
+                            $("#show-chart").highcharts({
+                                title: {
+                                    text: chartTitle
+                                },
+                                tooltip: {
+                                    headerFormat: '{series.name}<br>',
+                                    pointFormat: '{point.name}: <b>{point.percentage:.2f}%</b>'
+                                },
+                                plotOptions: {
+                                    pie: {
+                                        allowPointSelect: true,  // 可以被选择
+                                        cursor: 'pointer',       // 鼠标样式
+                                        dataLabels: {
+                                            enabled: true,
+                                            format: '<b>{point.name}</b>: {point.percentage:.2f} %',
+                                            style: {
+                                                color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                                            }
+                                        }
+                                    }
+                                },
+                                series: [{
+                                    type: 'pie',
+                                    name: chartTitle,
+                                    data: [
+                                        {
+                                            name: '已使用',
+                                            y: used,
+                                            sliced: true,  // 默认突出
+                                            selected: true // 默认选中
+                                        },
+                                        ['未使用', unused]
+                                    ]
+                                }],
                                 credits: {
                                     enabled: false // 禁用版权信息
                                 }

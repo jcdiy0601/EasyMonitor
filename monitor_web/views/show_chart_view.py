@@ -132,9 +132,9 @@ def select_chart_for_show_chart(request):
             last_point = None
         if last_point:
             if 'data' in last_point:    # 有data
-                for item_name in item_name_list:
-                    chart_data.append({'name': item_name, 'data': []})
                 if chart_obj.chart_type == 'line' or chart_obj.chart_type == 'area':    # 线型图或面积图
+                    for item_name in item_name_list:
+                        chart_data.append({'name': item_name, 'data': []})
                     for data_point in data_list:
                         data_dict = data_point[0]   # {'data': {'lo': {'t_out': 0.0, 't_in': 0.0}, 'ens33': {'t_out': 0.07, 't_in': 0.17}}
                         save_time = data_point[1]
@@ -148,12 +148,17 @@ def select_chart_for_show_chart(request):
                                         if item['name'] == k2:
                                             item['data'].append(temp_list)
                 else:   # 饼图
-                    pass
+                    # {'data': {'/boot': {'Use': 16, 'Avail': 860, 'Used': 155, 'Size': 1014}, '/': {'Use': 5, 'Avail': 46055, 'Used': 2043, 'Size': 48097}}}
+                    for k, v in last_point['data'].items():
+                        if k == special_key:    # 对上了
+                            key = item_name_list[0]
+                            # [{'data': 5, 'name': '已使用'}]
+                            chart_data.append({'name': '已使用', 'data': v[key]})
             else:   # 无data
-                for item_name in item_name_list:
-                    chart_data.append({'name': item_name, 'data': []})
                 if time_tag == 'latest':    # 无优化值
                     if chart_obj.chart_type == 'line' or chart_obj.chart_type == 'area':    # 线型图或面积图
+                        for item_name in item_name_list:
+                            chart_data.append({'name': item_name, 'data': []})
                         for data_point in data_list:
                             data_dict = data_point[0]
                             save_time = data_point[1]
@@ -168,6 +173,8 @@ def select_chart_for_show_chart(request):
                         pass
                 else:   # 优化值
                     if chart_obj.chart_type == 'line' or chart_obj.chart_type == 'area':    # 线型图或面积图
+                        for item_name in item_name_list:
+                            chart_data.append({'name': item_name, 'data': []})
                         for data_point in data_list:
                             data_dict = data_point[0]
                             save_time = data_point[1]
