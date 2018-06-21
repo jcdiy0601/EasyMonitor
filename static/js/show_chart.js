@@ -85,6 +85,7 @@ $(function () {
         var searchTime = 300;
         var hostID = $("#select-host").val();
         if (chartID === '0') {
+            $("#show-chart").empty();
             return false;
         } else {
             $.ajax({

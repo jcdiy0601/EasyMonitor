@@ -170,7 +170,11 @@ def select_chart_for_show_chart(request):
                                     if item['name'] == k:
                                         item['data'].append(temp_list)
                     else:   # 饼图
-                        pass
+                        for k, v in last_point.items():
+                            key = item_name_list[0]
+                            if k == key:    # 对上了
+                                # [{'data': 5, 'name': '已使用'}]
+                                chart_data.append({'name': '已使用', 'data': v})
                 else:   # 优化值
                     if chart_obj.chart_type == 'line' or chart_obj.chart_type == 'area':    # 线型图或面积图
                         for item_name in item_name_list:
