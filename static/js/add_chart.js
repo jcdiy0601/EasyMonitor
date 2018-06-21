@@ -97,3 +97,30 @@ $(function () {
         });
     })
 });
+
+$(function () {
+    $("select[name='applications_id']").on("change", function () {
+        $("select[name='item_id']").empty();
+        var applicationID = $("select[name='applications_id']").val();
+        $.ajax({
+                url: "get_item.html",
+                type: "POST",
+                dataType: "JSON",
+                traditional: true,
+                headers: {"X-CSRFtoken": $.cookie("csrftoken")},
+                data: {"application_id": applicationID},
+                success: function (response) {
+                    if (response.status) {
+                        $.each(response.data, function (index, item) {
+                            var tag = '<option value="' + item.id + '">' + item.name + " " + item.key + "</option>";
+                            $("select[name='item_id']").append(tag);
+                        });
+                    }
+                },
+                error: function () {
+
+                }
+            }
+        );
+    })
+});

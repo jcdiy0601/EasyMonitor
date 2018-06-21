@@ -56,7 +56,7 @@ urlpatterns = [
     # 图形管理
     url(r'^chart.html$', chart_view.chart, name='chart'),
     url(r'^add_chart.html$', chart_view.add_chart, name='add_chart'),
-    url(r'^edit_chart_(?P<cid>\d+).html$', chart_view.edit_chart, name='edit_chart'),
+    # url(r'^edit_chart_(?P<cid>\d+).html$', chart_view.edit_chart, name='edit_chart'),
     url(r'^del_chart.html$', chart_view.del_chart, name='del_chart'),
     url(r'^get_application.html', chart_view.get_application, name='get_application'),
     url(r'^get_item.html', chart_view.get_item, name='get_item'),

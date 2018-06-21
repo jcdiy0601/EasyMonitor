@@ -37,7 +37,6 @@ def add_chart(request):
         form_obj = chart_form.AddChartForm()
         return render(request, 'add_chart.html', {'form_obj': form_obj})
     elif request.method == 'POST':
-        print(request.POST)
         form_obj = chart_form.AddChartForm(request.POST)
         if form_obj.is_valid():
             item_id_list = form_obj.cleaned_data.pop('item_id')
@@ -55,31 +54,31 @@ def add_chart(request):
             return render(request, 'add_chart.html', {'form_obj': form_obj})
 
 
-@login_required
-@check_permission
-def edit_chart(request, *args, **kwargs):
-    """编辑图表视图"""
-    cid = kwargs['cid']
-    if request.method == 'GET':
-        form_obj = chart_form.EditChartForm(initial={'cid': cid})
-        return render(request, 'edit_chart.html', {'form_obj': form_obj, 'cid': cid})
-    elif request.method == 'POST':
-        form_obj = chart_form.EditChartForm(request.POST, initial={'cid': cid})
-        if form_obj.is_valid():
-            item_id_list = form_obj.cleaned_data.pop('item_id')
-            data = form_obj.cleaned_data
-            try:
-                with transaction.atomic():
-                    chart_obj = models.Chart.objects.filter(id=cid).first()
-                    models.Chart.objects.filter(id=cid).update(**data)
-                    chart_obj.items.set(item_id_list)
-                Logger().log(message='修改图表成功,%s' % chart_obj.name, mode=True)
-                return redirect('/monitor_web/chart.html')
-            except Exception as e:
-                Logger().log(message='修改图表失败,%s' % str(e), mode=False)
-                raise ValidationError(_('修改图表失败'), code='invalid')
-        else:
-            return render(request, 'edit_chart.html', {'form_obj': form_obj, 'cid': cid})
+# @login_required
+# @check_permission
+# def edit_chart(request, *args, **kwargs):
+#     """编辑图表视图"""
+#     cid = kwargs['cid']
+#     if request.method == 'GET':
+#         form_obj = chart_form.EditChartForm(initial={'cid': cid})
+#         return render(request, 'edit_chart.html', {'form_obj': form_obj, 'cid': cid})
+#     elif request.method == 'POST':
+#         form_obj = chart_form.EditChartForm(request.POST, initial={'cid': cid})
+#         if form_obj.is_valid():
+#             item_id_list = form_obj.cleaned_data.pop('item_id')
+#             data = form_obj.cleaned_data
+#             try:
+#                 with transaction.atomic():
+#                     chart_obj = models.Chart.objects.filter(id=cid).first()
+#                     models.Chart.objects.filter(id=cid).update(**data)
+#                     chart_obj.items.set(item_id_list)
+#                 Logger().log(message='修改图表成功,%s' % chart_obj.name, mode=True)
+#                 return redirect('/monitor_web/chart.html')
+#             except Exception as e:
+#                 Logger().log(message='修改图表失败,%s' % str(e), mode=False)
+#                 raise ValidationError(_('修改图表失败'), code='invalid')
+#         else:
+#             return render(request, 'edit_chart.html', {'form_obj': form_obj, 'cid': cid})
 
 
 @login_required

@@ -187,8 +187,6 @@ def select_chart_for_show_chart(request):
                                         for item in chart_data:
                                             if item['name'] == k:
                                                 item['data'].append(temp_list)
-                    else:   # 饼图
-                        pass
         data['chart_data'] = chart_data
         response.data = data
         return JsonResponse(response.__dict__)
