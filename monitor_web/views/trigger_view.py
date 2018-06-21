@@ -179,6 +179,7 @@ def edit_trigger(request, *args, **kwargs):
                 with transaction.atomic():
                     models.Trigger.objects.filter(id=tid).update(**form_obj.cleaned_data)
                     triggers_id = trigger_obj.id
+                    trigger_obj.triggerexpression_set.all().delete()
                     for index in range(len(applications_id_list)):
                         trigger_expression_data = {'triggers_id': triggers_id,
                                                    'applications_id': applications_id_list[index],
@@ -198,11 +199,9 @@ def edit_trigger(request, *args, **kwargs):
                             else:
                                 if trigger_expression_data['data_calc_func_args'] != '':
                                     json.loads(trigger_expression_data['data_calc_func_args'])
-
                                 if len(applications_id_list) == index + 1:  # 最后一个表达式
                                     if trigger_expression_data['logic_with_next']:
                                         raise Exception('触发器表达式有误，最后一个表达式不能有逻辑关系符号')
-                                trigger_obj.triggerexpression_set.all().delete()
                                 models.TriggerExpression.objects.create(**trigger_expression_data)
                 Logger().log(message='编辑触发器成功,%s' % trigger_obj.name, mode=True)
                 return redirect('/monitor_web/trigger.html')

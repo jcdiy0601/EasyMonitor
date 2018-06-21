@@ -33,7 +33,7 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     """用户表"""
     email = models.EmailField(verbose_name='邮箱', max_length=255, unique=True)
     name = models.CharField(verbose_name='姓名', max_length=64)
-    phone = models.BigIntegerField(verbose_name='手机号', blank=True, null=True)
+    phone = models.CharField(verbose_name='手机号', max_length=11, blank=True, null=True)
     weixin = models.CharField(verbose_name='微信号', max_length=64, blank=True, null=True)
     is_active = models.BooleanField(verbose_name='是否可登录', default=True)
     is_admin = models.BooleanField(verbose_name='是否为管理员', default=False)

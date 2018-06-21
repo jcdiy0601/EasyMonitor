@@ -198,6 +198,13 @@ TRIGGER_WATCH_PID_FILE = os.path.join(BASE_DIR, 'logs', 'trigger_watch.pid')
 # Host Alive PID文件存放路径
 HOST_ALIVE_PID_FILE = os.path.join(BASE_DIR, 'logs', 'host_alive.pid')
 
+# cmdb api 主机名检测
+CMDB_API_URL = 'http://10.10.30.93/cmdb_api/v1/monitor'
+# 用于API认证的KEY
+CMDB_AUTH_KEY = '299095cc-1330-11e5-b06a-a45e60bec08b'
+# 用于API认证的请求头
+CMDB_AUTH_KEY_NAME = 'cmdb-api-auth-key'
+
 # 邮件报警配置
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = False
@@ -207,11 +214,9 @@ EMAIL_HOST_USER = 'warning@secflower.cn'
 EMAIL_HOST_PASSWORD = 'warning@2018%0202'
 DEFAULT_FROM_EMAIL = 'EasyMonitor<warning@secflower.cn>'
 
-# cmdb api 主机名检测
-CMDB_API_URL = 'http://10.10.30.93/cmdb_api/v1/monitor'
-# 用于API认证的KEY
-CMDB_AUTH_KEY = '299095cc-1330-11e5-b06a-a45e60bec08b'
-# 用于API认证的请求头
-CMDB_AUTH_KEY_NAME = 'cmdb-api-auth-key'
-
-
+# 企业微信报警配置
+GET_ACCESS_TOKEN_URL = 'https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid={corpid}&corpsecret={corpsecret}'
+SEND_MESSAGE_URL = 'https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token={access_token}'
+WEIXIN_ID = 1000005
+CORP_ID = 'ww91ac9eaaeb02351b'
+CORPSECRET = 'WnncEoPAWoKspLjMoK3iywafnmq_ZhJ9MQK1tPqkhIY'

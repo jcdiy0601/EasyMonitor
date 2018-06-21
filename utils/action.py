@@ -2,6 +2,7 @@
 # Author: 'JiaChen'
 
 import time
+import requests
 from django.core.mail import send_mail
 from django.conf import settings
 from monitor_data import models
@@ -72,3 +73,80 @@ def email(action_operation_obj, hostname, trigger_data, action_obj, status=True)
                                                        settings.DEFAULT_FROM_EMAIL,
                                                        notifier_mail_list),
                      mode=True)
+
+
+def weixin(action_operation_obj, hostname, trigger_data, action_obj, status=True):
+    """微信通知"""
+    trigger_id = trigger_data.get('trigger_id')
+    trigger_obj = models.Trigger.objects.filter(id=trigger_id).first()  # 获取触发器实例
+    severity = trigger_obj.severity
+    for severity_list in trigger_obj.severity_choices:
+        if severity == severity_list[0]:
+            severity = severity_list[1]
+    application_name = trigger_obj.triggerexpression_set.all()[0].applications.name
+    host_obj = models.Host.objects.filter(hostname=hostname).first()
+    start_time = time.strftime('%Y-%m-%d %H:%M:%S', time.gmtime(trigger_data['start_time'] + 28800))
+    duration = trigger_data.get('duration')
+    if duration is not None:
+        if 60 <= duration < 3600:  # 换算成分钟
+            duration = '%s分钟' % int(duration / 60)
+        elif duration < 60:  # 保留整数为秒
+            duration = '%s秒' % int(duration)
+        else:  # 换算成小时
+            duration = '%s小时' % int(duration / 60 / 60)
+    else:
+        duration = ''
+    # 获取access_token并拼接url
+    get_access_token_url = settings.GET_ACCESS_TOKEN_URL.format(corpid=settings.CORP_ID,
+                                                                corpsecret=settings.CORPSECRET)
+    result = requests.get(url=get_access_token_url)
+    access_token = result.json()['access_token']
+    send_message_url = settings.SEND_MESSAGE_URL.format(access_token=access_token)
+    if status is True:  # 恢复微信
+        msg = trigger_obj.name
+        recover_time = time.strftime('%Y-%m-%d %H:%M:%S', time.gmtime(time.time() + 28800))
+        message = action_obj.recover_msg_format.format(hostname=hostname,
+                                                       ip=host_obj.ip,
+                                                       name=application_name,
+                                                       msg=msg,
+                                                       start_time=start_time,
+                                                       duration=duration,
+                                                       recover_time=recover_time)
+        # 拼接报警人
+        notifier_weixin_list = [user_obj.weixin for user_obj in action_operation_obj.user_profiles.all()]
+        notifier_weixin_str = '|'.join(notifier_weixin_list)
+        # 发送微信
+        data = {
+            "touser": notifier_weixin_str,
+            "msgtype": "text",
+            "agentid": settings.WEIXIN_ID,
+            "text": {
+                "content": message
+            },
+            "safe": 0
+        }
+        requests.post(url=send_message_url, json=data)
+        Logger().log(message='发送恢复微信通知,%s,%s' % (message, notifier_weixin_list), mode=True)
+    else:   # 报警微信
+        msg = trigger_data.get('msg')
+        message = action_obj.alert_msg_format.format(hostname=hostname,
+                                                     ip=host_obj.ip,
+                                                     name=application_name,
+                                                     msg=msg,
+                                                     start_time=start_time,
+                                                     duration=duration)
+        # 拼接报警人
+        notifier_weixin_list = [user_obj.weixin for user_obj in action_operation_obj.user_profiles.all()]
+        notifier_weixin_str = '|'.join(notifier_weixin_list)
+        # 发送微信
+        data = {
+            "touser": notifier_weixin_str,
+            "msgtype": "text",
+            "agentid": settings.WEIXIN_ID,
+            "text": {
+                "content": message
+            },
+            "safe": 0
+        }
+        requests.post(url=send_message_url, json=data)
+        Logger().log(message='发送报警微信通知,%s,%s' % (message, notifier_weixin_list), mode=True)
