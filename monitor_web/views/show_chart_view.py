@@ -82,7 +82,7 @@ def select_chart_for_show_chart(request):
                 'chart_data_unit': None}
         chart_id = request.POST.get('chart_id')
         chart_name = request.POST.get('chart_name')
-        if len(chart_name.split()) == 2:
+        if len(chart_name.split()) >= 2:
             special_key = chart_name.split()[-1]
         else:
             special_key = None
