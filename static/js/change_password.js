@@ -28,7 +28,6 @@ $(function () {
 
                 } else {
                     var message = arg.message;
-                    console.log(message);
                     $("#change-password-div").css("display", "none");
                     $("#show-change-password-result").removeClass("hidden").addClass("btn-danger").text(message);
                     setTimeout(function () {
